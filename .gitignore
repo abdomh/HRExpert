@@ -1,0 +1,6 @@
+artifacts/
+HRExpert.Database/bin/
+HRExpert.Database/obj/
+*.lock.json
+*.xproj.user
+src/HRExpert/node_modules/
