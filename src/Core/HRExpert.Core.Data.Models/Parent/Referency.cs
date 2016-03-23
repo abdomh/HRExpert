@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using HRExpert.Core.Data.Models.Abstractions;
 namespace HRExpert.Core.Data.Models.Parent
 {
@@ -10,6 +11,7 @@ namespace HRExpert.Core.Data.Models.Parent
         /// <summary>
         /// Название
         /// </summary>
+        [Column("Name")]
         public string Name
         {
             get; set;

@@ -64,4 +64,7 @@
     <Build Include="Core\BaseObjects.sql" />
     <Build Include="Core\Users.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="HRExpert.Database.publish.xml" />
+  </ItemGroup>
 </Project>

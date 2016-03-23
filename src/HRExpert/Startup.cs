@@ -12,7 +12,8 @@ namespace HRExpert
           : base(hostingEnvironment, applicationEnvironment, assemblyLoaderContainer, assemblyLoadContextAccessor, libraryManager)
         {
             IConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
-              .AddJsonFile("appsettings.json");
+              .AddJsonFile("appsettings.json")
+              .AddJsonFile("dbconfig.json");
 
             this.configurationRoot = configurationBuilder.Build();
         }

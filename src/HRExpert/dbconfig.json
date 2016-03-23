@@ -1,0 +1,7 @@
+﻿{
+  "Data": {
+    "DefaultConnection": {
+      "ConnectionString": "Data Source=DESKTOP-GG4LU0G;Integrated Security=True;Pooling=False"
+    }
+  }
+}

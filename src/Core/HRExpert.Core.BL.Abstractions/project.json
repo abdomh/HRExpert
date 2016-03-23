@@ -5,9 +5,12 @@
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
-
   "frameworks": {
     "dnx451": { },
     "dnxcore50": { }
+  },
+  "dependencies": {
+    "HRExpert.Core.Data.Models": "1.0.0-*",
+    "HRExpert.Core.DTO": "1.0.0-*"
   }
 }

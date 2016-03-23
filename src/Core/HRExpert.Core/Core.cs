@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Cryptography;
 using Microsoft.AspNet.Authentication.Cookies;
+using HRExpert.Core.BL.Abstractions;
+using HRExpert.Core.BL;
 namespace HRExpert.Core
 {
     public class Core : ExtCore.Infrastructure.IExtension
@@ -31,6 +33,9 @@ namespace HRExpert.Core
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IBaseBL, BaseBL>();
+            services.AddSingleton<IAccountBL, AccountBL>();            
+
             services.Configure<MvcOptions>(options =>
             {
                 //options.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()));

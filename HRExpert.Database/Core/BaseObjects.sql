@@ -2,7 +2,7 @@
 (
 	[Id] uniqueidentifier primary key not null default(NEWID()),
 	[GUID1C] uniqueidentifier,
-	[ClassId] bigint not null,
+	[ClassId] bigint ,
 	[Name] nvarchar(100) not null default(''),
 	[Description] text,
 	[Version] int not null default(1),

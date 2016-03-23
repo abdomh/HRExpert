@@ -1,0 +1,8 @@
+﻿@model HRExpert.Core.DTO.ViewModels.Account.SignInViewModel
+@using (Html.BeginForm())
+{
+    @Html.TextBoxFor(x => x.Login)
+    @Html.TextBoxFor(x => x.Password)
+    <input type="submit" value="Send"/>
+
+}

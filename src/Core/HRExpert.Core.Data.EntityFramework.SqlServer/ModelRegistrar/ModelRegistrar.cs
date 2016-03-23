@@ -11,15 +11,9 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
     {
         public void RegisterModels(ModelBuilder modelbuilder)
         {
-
-          modelbuilder.Entity<User>(user =>
-            {
-                user.HasKey(e => e.Id);
-                user.Property(e => e.Id);
-                user.Property(e => e.Password);
-                user.Property(e => e.Email);
-            }
-          );
+            modelbuilder.Entity<BaseClass>();
+            modelbuilder.Entity<BaseObject>();
+            modelbuilder.Entity<User>();            
         }
   }
 }

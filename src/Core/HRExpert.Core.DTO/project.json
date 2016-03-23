@@ -1,0 +1,13 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "HRExpert.Core.DTO Class Library",
+  "authors": [ "baranov" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "dependencies": {"Microsoft.AspNet.Hosting": "1.0.0-rc1-final"},
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  }
+}
