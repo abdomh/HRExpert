@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ExtCore.Data.EntityFramework.SqlServer;
+﻿using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using Microsoft.Data.Entity;
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
@@ -13,7 +9,7 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
         {
             modelbuilder.Entity<BaseClass>();
             modelbuilder.Entity<BaseObject>();
-            modelbuilder.Entity<User>();            
+            modelbuilder.Entity<User>( etb=> { etb.HasOne<BaseObject>(x => x.Object); });                        
         }
   }
 }

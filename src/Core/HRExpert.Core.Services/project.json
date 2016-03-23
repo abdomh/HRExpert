@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0-*",
+  "description": "HRExpert.Core.Services Class Library",
+  "authors": [ "baranov" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "dependencies": {
+    "HRExpert.Core.Data.Models.Abstractions": "1.0.0-*",
+    "HRExpert.Core.Services.Abstractions": "1.0.0-*",
+    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+    "Microsoft.AspNet.Authentication.Cookies": "1.0.0-rc1-final"
+  },
+  "frameworks": {
+    
+      "dnx451": { },
+      "dnxcore50": { }
+    }
+  }
+

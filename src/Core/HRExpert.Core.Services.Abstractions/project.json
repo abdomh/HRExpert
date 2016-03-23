@@ -1,13 +1,13 @@
-{
+﻿{
   "version": "1.0.0-*",
-  "description": "HRExpert.Core.Abstractions Class Library",
+  "description": "HRExpert.Core.Services.Abstractions Class Library",
   "authors": [ "baranov" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "dependencies": {
-    "ExtCore.Data.Models.Abstractions": "1.0.0-alpha7",
-    "HRExpert.Core.Abstractions": "1.0.0-*"
+    "HRExpert.Core.Data.Models.Abstractions": "1.0.0-*",
+    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final"
   },
   "frameworks": {
     "dnx451": { },

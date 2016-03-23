@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿using HRExpert.Core.Abstractions;
 namespace HRExpert.Core.Data.Models.Abstractions
 {
-    public interface IReferency: IEntity
+    public interface IReferency: IEntity, IIdName
     {
-        string Name { get; set; }
     }
 }

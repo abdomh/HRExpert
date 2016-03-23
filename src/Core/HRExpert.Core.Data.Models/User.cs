@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using HRExpert.Core.Data.Models.Abstractions;
 
 namespace HRExpert.Core.Data.Models
@@ -11,7 +7,7 @@ namespace HRExpert.Core.Data.Models
     /// Позьователь
     /// </summary>
     [Table("Users")]
-    public class User: Parent.Entity, IUser
+    public class User: Parent.EntityWithObject, IUser
     {
         /// <summary>
         /// Пароль
@@ -22,6 +18,6 @@ namespace HRExpert.Core.Data.Models
         /// Email
         /// </summary>
         [Column("Email")]
-        public string Email { get; set; }
+        public string Email { get; set; }        
     }
 }

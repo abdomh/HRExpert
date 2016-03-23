@@ -1,19 +1,20 @@
 {
   "version": "1.0.0-*",
   "description": "HRExpert.Core Class Library",
-  "authors": [ "baranov" ],
+  "authors": [ "Baranov Artem" ],
   "tags": [ "" ],
   "projectUrl": "",
   "licenseUrl": "",
   "dependencies": {
+    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
     "ExtCore.Infrastructure": "1.0.0-alpha7",
     "HRExpert.Core.BL": "1.0.0-*",
     "HRExpert.Core.BL.Abstractions": "1.0.0-*",
     "HRExpert.Core.Data.Abstractions": "1.0.0-*",
-    "HRExpert.Core.Data.EntityFramework.SqlServer": "1.0.0-*",
     "HRExpert.Core.DTO": "1.0.0-*",
-    "Microsoft.AspNet.Authentication.Cookies": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final"
+    "HRExpert.Core.Services": "1.0.0-*",
+    "HRExpert.Core.Services.Abstractions": "1.0.0-*",
+    "HRExpert.Core.Data.EntityFramework.SqlServer": "1.0.0-*"
   },
   "frameworks": {
       "dnx451": { },

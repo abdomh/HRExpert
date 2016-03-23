@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HRExpert.Core.Data.Models.Abstractions;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
 {
@@ -12,16 +9,21 @@ namespace HRExpert.Core.Data.Models
     [Table("BaseObjects")]
     public class BaseObject
     {
+        public BaseObject()
+        {
+            CreateDate = DateTime.Now;
+        }
         /// <summary>
         /// Идентификатор
         /// </summary>
         [Column("Id")]
+        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
         /// <summary>
         /// Идентификатор 1C
         /// </summary>
-        [Column("Id_1C")]
+        [Column("GUID1C")]
         public Guid Id_1C { get; set; }
         /// <summary>
         /// Класс
@@ -47,7 +49,7 @@ namespace HRExpert.Core.Data.Models
         /// <summary>
         /// Дата создания
         /// </summary>
-        [Column("CreateDate")]
+        [Column("CreateDate")]        
         public DateTime? CreateDate { get; set; }
         /// <summary>
         /// Дата удаления

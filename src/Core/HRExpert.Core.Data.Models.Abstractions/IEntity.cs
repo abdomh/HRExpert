@@ -3,8 +3,7 @@
     /// <summary>
     /// Интерфейс сущности
     /// </summary>
-    public interface IEntity: ExtCore.Data.Models.Abstractions.IEntity
+    public interface IEntity: HRExpert.Core.Abstractions.IEntity, ExtCore.Data.Models.Abstractions.IEntity
     {
-        long Id { get; set; }
     }
 }

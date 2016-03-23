@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
@@ -22,6 +19,8 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
             entity.Email = Email;
             entity.Password = Password;
             entity.Object.Name = Name;
+
+            this.dbContext.Add(entity.Object);
             this.dbSet.Add(entity);
             this.dbContext.SaveChanges();
             return entity;

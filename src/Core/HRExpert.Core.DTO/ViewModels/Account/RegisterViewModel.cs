@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿using System.ComponentModel.DataAnnotations;
 namespace HRExpert.Core.DTO.ViewModels.Account
 {
     public class RegisterViewModel
@@ -11,8 +7,11 @@ namespace HRExpert.Core.DTO.ViewModels.Account
         {
 
         }
+        [Display(Name="Имя")]
         public string Name { get; set; }
+        [Display(Name="Пароль")]
         public string Password { get; set; }
+        [Display(Name="Email")]
         public string Email { get; set; }
     }
 }

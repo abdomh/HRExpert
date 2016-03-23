@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
+﻿using HRExpert.Core.Data.Models.Abstractions;
 namespace HRExpert.Core.DTO
 {
-    public class UserDto:IdNameDto
+    public class UserDto:IdNameDto, IUser
     {       
     }
 }

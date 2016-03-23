@@ -1,19 +1,15 @@
-﻿using System.Security.Claims;
-using Microsoft.AspNet.Authentication.Cookies;
-using Microsoft.AspNet.Http;
-using HRExpert.Core.DTO;
+﻿using HRExpert.Core.Services.Abstractions;
 namespace HRExpert.Core.BL
 {
     public class BaseBL: Abstractions.IBaseBL
     {
-        
-        public BaseBL(
-            
-            )
+        private IAuthService authService;
+        public IAuthService AuthService { get { return authService; } }
+        public BaseBL(IAuthService authService)
         {
-            
+            this.authService = authService;
         }
-        public static UserDto CurrentUser { get; set; }
-        public string GetCurrentUserName() => CurrentUser?.Name;
+        
+        public string GetCurrentUserName() => authService.CurrentContext.User.Identity.Name;
     }
 }
