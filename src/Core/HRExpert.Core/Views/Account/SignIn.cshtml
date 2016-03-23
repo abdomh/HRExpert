@@ -1,4 +1,7 @@
 ﻿@model HRExpert.Core.DTO.ViewModels.Account.SignInViewModel
+@{ 
+    Layout = "_Layout";
+}
 @using (Html.BeginForm())
 {
     @Html.LabelFor(x=>x.Login)
