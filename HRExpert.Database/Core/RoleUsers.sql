@@ -1,8 +1,8 @@
 ﻿CREATE TABLE [dbo].[RoleUsers]
 (
-	[UserId] bigint not null,
-	[RoleId] bigint not null,
-	Constraint FK_RoleUsers_User Foreign key (UserId) References Users(Id),
-	Constraint FK_RoleUsers_Role Foreign key (RoleId) References Roles(Id),
-	Constraint PK_RoleUsers Primary key (UserId,RoleId) 
+	[UserId] bigint NOT NULL,
+	[RoleId] bigint NOT NULL,
+	CONSTRAINT FK_RoleUsers_Users FOREIGN KEY (UserId) REFERENCES Users(Id),
+	CONSTRAINT FK_RoleUsers_Roles FOREIGN KEY (RoleId) REFERENCES Roles(Id),
+	CONSTRAINT PK_RoleUsers PRIMARY KEY (UserId,RoleId) 
 )
