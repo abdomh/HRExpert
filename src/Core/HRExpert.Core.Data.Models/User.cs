@@ -1,13 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using HRExpert.Core.Data.Models.Abstractions;
-
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
-{    
+{
     /// <summary>
     /// Позьователь
     /// </summary>
     [Table("Users")]
-    public class User: Parent.EntityWithObject, IUser
+    public class User : Parent.EntityWithObject
     {
         /// <summary>
         /// Пароль
@@ -18,6 +17,9 @@ namespace HRExpert.Core.Data.Models
         /// Email
         /// </summary>
         [Column("Email")]
-        public string Email { get; set; }        
+        public string Email { get; set; }
+
+        public ICollection<RoleUsers> Roles { get; set; }
+        
     }
 }

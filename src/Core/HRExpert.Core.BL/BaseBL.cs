@@ -5,6 +5,7 @@ namespace HRExpert.Core.BL
     {
         private IAuthService authService;
         public IAuthService AuthService { get { return authService; } }
+        
         public BaseBL(IAuthService authService)
         {
             this.authService = authService;

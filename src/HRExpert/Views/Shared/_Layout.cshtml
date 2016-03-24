@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -8,45 +8,32 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title></title>
+  <title>@ViewBag.Title</title>
 
   <!-- Bootstrap core CSS -->
   <link href="~/css/bootstrap.min.css" rel="stylesheet">
-
   <link href="~/fonts/css/font-awesome.min.css" rel="stylesheet">
   <link href="~/css/animate.min.css" rel="stylesheet">
-
   <!-- Custom styling plus plugins -->
   <link href="~/css/custom.css" rel="stylesheet">
-
   <script src="~/js/jquery.min.js"></script>
-
-
   <!--[if lt IE 9]>
         <script src="../assets/js/ie8-responsive-file-warning.js"></script>
         <![endif]-->
-
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
-
 </head>
-
-
 <body class="nav-md">
-
   <div class="container body">
-
-
     <div class="main_container">
-
       <div class="col-md-3 left_col">
         <div class="left_col scroll-view">
-
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-task"></i> <span>РУСКОНСАЛТ</span></a>
+            <a href="index.html" class="site_title">
+                <object type="image/svg+xml" data="~/images/logo.svg" style="margin-top:3px;" width="50" height="50"></object><span style="vertical-align:top;font-family:'Times New Roman', Times, serif">Русконсалт</span></a>
           </div>
           <div class="clearfix"></div>
 
@@ -68,7 +55,7 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
             <div class="menu_section">
-              <h3></h3>
+              <h3>Меню</h3>
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-calendar-o"></i> Табель <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
@@ -130,7 +117,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="images/user.png" alt="">John Doe
+                  <img src="~/images/user.png" alt="">Артём Баранов
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -232,37 +219,35 @@
 
 
       <!-- page content -->
-      <div class="right_col" role="main">
-
-		<div class="row">
-            @RenderBody()
+      <div class="right_col" style="background-image: url('/images/cover.svg');background-size: 50%;background-position: center;background-repeat: no-repeat;" role="main">
+          <div class="row" style="margin-bottom:5px;">
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <div id="Title" class="pull-left" style="background: #fff; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="fa fa-angle-right"></i>
+                      <span>@ViewBag.Title</span>
+                  </div>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                  <div id="CurrentDate" class="pull-right" style="background: #fff; padding: 5px 10px; border: 1px solid #ccc">
+                      <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                      <span>@System.DateTime.Now.ToShortDateString()</span>
+                  </div>
+              </div>
           </div>
+          <div class="row">              
+                    @RenderBody()
+                </div>
 
-        
 
-        <!-- footer content -->
 
-        <footer>
-          <div class="copyright-info">
-            <p class="pull-right">Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>  
-            </p>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
-      <!-- /page content -->
+                <!-- footer content -->
+                <!-- /footer content -->
+            </div>
+            <!-- /page content -->
+
+        </div>
 
     </div>
-
-  </div>
-
-  
-    <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
-    </ul>
-    <div class="clearfix"></div>
-    <div id="notif-group" class="tabbed_notifications"></div>
-  </div>
 
   <script src="~/js/bootstrap.min.js"></script>
   <script src="~/js/custom.js"></script>

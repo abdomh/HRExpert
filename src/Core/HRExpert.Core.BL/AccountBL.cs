@@ -40,7 +40,7 @@ namespace HRExpert.Core.BL
             var user = userRepository.GetByLoginAndSecret(viewModel.Login, viewModel.Password);
             if (user == null) return null;
             var dto = Convert(user);
-            AuthService.SignIn(user);
+            AuthService.SignIn(dto);
             return dto;
         }
         public UserDto Register(RegisterViewModel viewModel)

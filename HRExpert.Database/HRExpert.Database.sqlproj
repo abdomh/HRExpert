@@ -63,6 +63,8 @@
     <Build Include="Core\BaseClasses.sql" />
     <Build Include="Core\BaseObjects.sql" />
     <Build Include="Core\Users.sql" />
+    <Build Include="Core\Roles.sql" />
+    <Build Include="Core\RoleUsers.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

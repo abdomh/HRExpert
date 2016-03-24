@@ -9,7 +9,8 @@
     "HRExpert.Core.Data.Models.Abstractions": "1.0.0-*",
     "HRExpert.Core.Services.Abstractions": "1.0.0-*",
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Authentication.Cookies": "1.0.0-rc1-final"
+    "Microsoft.AspNet.Authentication.Cookies": "1.0.0-rc1-final",
+    "Newtonsoft.Json": "8.0.3"
   },
   "frameworks": {
     

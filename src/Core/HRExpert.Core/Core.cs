@@ -37,6 +37,8 @@ namespace HRExpert.Core
             services.AddSingleton<IBaseBL, BaseBL>();
             services.AddSingleton<IAccountBL, AccountBL>();
             services.AddSingleton<IAuthService, AuthService>();
+            services.AddSingleton<ISerializationService, SerializationService>();
+
             services.Configure<MvcOptions>(options =>
             {
                 options.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()));
@@ -48,7 +50,7 @@ namespace HRExpert.Core
         {
             applicationBuilder.Use( (context, next) => {
                 IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
-                authService.CurrentContext = context;
+                authService.SetCurrentContext(context);
                 return next.Invoke();
             });
             applicationBuilder.UseCookieAuthentication(options => {
