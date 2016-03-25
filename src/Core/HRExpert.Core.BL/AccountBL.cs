@@ -1,4 +1,5 @@
-﻿using ExtCore.Data.Abstractions;
+﻿using System.Linq;
+using ExtCore.Data.Abstractions;
 using HRExpert.Core.BL.Abstractions;
 using HRExpert.Core.Data.Abstractions;
 using HRExpert.Core.DTO;
@@ -15,18 +16,19 @@ namespace HRExpert.Core.BL
         {
             this.storage = storage;
             this.userRepository = storage.GetRepository<IUserRepository>();
+            this.credentialRepository = storage.GetRepository<ICredentialRepository>();
         }
         #endregion
         #region Private 
         private IStorage storage;
         private IUserRepository userRepository;
-        
+        private ICredentialRepository credentialRepository;
         private UserDto Convert(User user)
         {
             UserDto result = new UserDto
             {
                 Id = user.Id,
-                Name = user.Object.Name
+                Name = user.Credentials.FirstOrDefault(x => x.CredentialType.Code == "0001").Value
             };
             return result;
         }
@@ -37,9 +39,10 @@ namespace HRExpert.Core.BL
 
         public UserDto SignIn(SignInViewModel viewModel)
         {
-            var user = userRepository.GetByLoginAndSecret(viewModel.Login, viewModel.Password);
-            if (user == null) return null;
-            var dto = Convert(user);
+            var credential = credentialRepository.GetByValueTypeCodeAndSecret(viewModel.Login, "0001", viewModel.Password);
+
+            if (credential == null) return null;
+            var dto = Convert(credential.User);
             AuthService.SignIn(dto);
             return dto;
         }

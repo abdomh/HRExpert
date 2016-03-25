@@ -47,7 +47,6 @@ namespace HRExpert.Core.Services
             Claim[] claims = new[]
               {
                 new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.Role, RoleReferency.Names[user.Role]),
                 new Claim(ClaimTypes.UserData, SerializationServ.Serialize(user))                
               };
 

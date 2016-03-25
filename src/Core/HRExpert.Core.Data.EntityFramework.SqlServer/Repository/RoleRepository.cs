@@ -7,7 +7,7 @@ using HRExpert.Core.Data.Abstractions;
 
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
-    public class RoleRepository : RepositoryBase<Role>, IRoleRepository
+    public class RoleRepository : Base.ReferencyRepositoryBase<Role>, IRoleRepository
     {
         public IList<Role> All()
         {

@@ -1,8 +1,8 @@
-﻿CREATE TABLE [dbo].[DataSourcePermissions]
+﻿CREATE TABLE [dbo].[DataSourcePermissionTypes]
 (
 	DataSourceId bigint NOT NULL,
-	PermissionId bigint NOT NULL,
-	CONSTRAINT FK_DataSourcePermissions_DataSources FOREIGN KEY (DataSourceId) REFERENCES DataSources(Id),
-	CONSTRAINT FK_DataSourcePermissions_Permissions FOREIGN KEY (PermissionId) REFERENCES Permissions(Id),
-	CONSTRAINT PK_DataSourcePermissions PRIMARY KEY (DataSourceId,PermissionId)
+	PermissionTypeId bigint NOT NULL,
+	CONSTRAINT FK_DataSourcePermissionTypes_DataSources FOREIGN KEY (DataSourceId) REFERENCES DataSources(Id),
+	CONSTRAINT FK_DataSourcePermissionTypes_Permissions FOREIGN KEY (PermissionTypeId) REFERENCES PermissionTypes(Id),
+	CONSTRAINT PK_DataSourcePermissionTypes PRIMARY KEY (DataSourceId,PermissionTypeId)
 )

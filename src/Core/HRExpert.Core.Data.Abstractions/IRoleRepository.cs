@@ -2,7 +2,7 @@
 using HRExpert.Core.Data.Models;
 namespace HRExpert.Core.Data.Abstractions
 {
-    public interface IRoleRepository:ExtCore.Data.Abstractions.IRepository
+    public interface IRoleRepository:IReferencyRepository<Role>
     {
         IList<Role> All();
     }

@@ -65,7 +65,7 @@
     <Build Include="Core\Users.sql" />
     <Build Include="Core\Roles.sql" />
     <Build Include="Core\RoleUsers.sql" />
-    <Build Include="Core\Permissions.sql" />
+    <Build Include="Core\PermissionTypes.sql" />
     <Build Include="Core\RolePermissions.sql" />
     <Build Include="Core\DataSources.sql" />
     <Build Include="Core\DataSourcePermissions.sql" />
