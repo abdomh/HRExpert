@@ -1,39 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
 using HRExpert.Core.BL.Abstractions;
 using HRExpert.Core.DTO.ViewModels.Account;
 namespace HRExpert.Core.Controllers
-{
-    [AllowAnonymous]
-    public class AccountController : Controller
+{    
+    public class AccountController : BaseController
     {
         #region Ctor
         public AccountController(   
             IAccountBL accountBL,
             IBaseBL baseBL
             )
+            :base(baseBL)
         {
-            this.BaseBl = baseBL;
-            this.AccountBL = accountBL;
+            this.accountBL = accountBL;
         }
         #endregion
         #region Private
-        private IAccountBL AccountBL;
-        private IBaseBL BaseBl;
+        private IAccountBL accountBL;
+
+        #endregion
+        #region Public
+        public IAccountBL AccountBL
+        {
+            get { return accountBL; }
+        }
         #endregion
         #region Actions
         public string Hello() => String.Format("Добро пожаловать, {0}!",BaseBl.GetCurrentUserName());
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        [HttpGet]        
+        
+        [HttpGet]
+        [AllowAnonymous]
         public IActionResult SignIn()
         {
             var model = AccountBL.GetSignIn();
@@ -41,6 +39,7 @@ namespace HRExpert.Core.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult SignIn(SignInViewModel model)
         {
             var user = AccountBL.SignIn(model);
@@ -56,6 +55,7 @@ namespace HRExpert.Core.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Register()
         {
             var model = AccountBL.GetRegister();
@@ -63,6 +63,7 @@ namespace HRExpert.Core.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Register(RegisterViewModel model)
         {
             var user=AccountBL.Register(model);

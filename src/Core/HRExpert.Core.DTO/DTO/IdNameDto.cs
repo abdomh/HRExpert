@@ -1,6 +1,7 @@
-﻿namespace HRExpert.Core.DTO
+﻿using HRExpert.Core.Abstractions;
+namespace HRExpert.Core.DTO
 {
-    public class IdNameDto
+    public class IdNameDto:IIdName
     {
         public IdNameDto()
         { }

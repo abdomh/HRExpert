@@ -24,5 +24,6 @@ namespace HRExpert.Core.Data.Models.Parent
         {
             get;set;
         }
+       
     }
 }

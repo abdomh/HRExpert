@@ -8,10 +8,6 @@ using HRExpert.Core.Data.Abstractions;
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
     public class RoleRepository : Base.ReferencyRepositoryBase<Role>, IRoleRepository
-    {
-        public IList<Role> All()
-        {
-            return this.dbSet.Where(x => true).ToList();
-        }
+    {        
     }
 }

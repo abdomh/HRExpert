@@ -4,6 +4,6 @@ namespace HRExpert.Core.Data.Abstractions
 {
     public interface IRoleRepository:IReferencyRepository<Role>
     {
-        IList<Role> All();
+      
     }
 }

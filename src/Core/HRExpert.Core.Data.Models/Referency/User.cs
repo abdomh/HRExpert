@@ -6,10 +6,8 @@ namespace HRExpert.Core.Data.Models
     /// Позьователь
     /// </summary>
     [Table("Users")]
-    public class User : Parent.Entity
-    {
-        [Column("Name")]
-        public string Name { get; set; }
+    public class User : Parent.Referency
+    {        
         public ICollection<RoleUser> Roles { get; set; }
         public ICollection<Credential> Credentials { get; set; }
     }

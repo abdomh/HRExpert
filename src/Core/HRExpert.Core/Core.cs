@@ -36,6 +36,8 @@ namespace HRExpert.Core
         {
             services.AddSingleton<IBaseBL, BaseBL>();
             services.AddSingleton<IAccountBL, AccountBL>();
+            services.AddSingleton<IUsersBL, UsersBL>();
+            services.AddSingleton<IRoleBL, RolesBL>();
             services.AddSingleton<IAuthService, AuthService>();
             services.AddSingleton<ISerializationService, SerializationService>();
 
@@ -65,7 +67,7 @@ namespace HRExpert.Core
 
         public void RegisterRoutes(IRouteBuilder routeBuilder)
         {
-            routeBuilder.MapRoute("default", "{controller=Account}/{action=Index}/{id?}");
+            routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
         }
     }
 }

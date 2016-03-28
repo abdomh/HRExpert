@@ -12,17 +12,12 @@ namespace HRExpert.Core.BL
     {
         #region Ctor
         public AccountBL(IAuthService authService , IStorage storage)
-            :base(authService)
-        {
-            this.storage = storage;
-            this.userRepository = storage.GetRepository<IUserRepository>();
-            this.credentialRepository = storage.GetRepository<ICredentialRepository>();
+            :base(storage , authService)
+        {            
         }
         #endregion
         #region Private 
-        private IStorage storage;
-        private IUserRepository userRepository;
-        private ICredentialRepository credentialRepository;
+        
         private UserDto Convert(User user)
         {
             UserDto result = new UserDto
@@ -39,7 +34,7 @@ namespace HRExpert.Core.BL
 
         public UserDto SignIn(SignInViewModel viewModel)
         {
-            var credential = credentialRepository.GetByValueTypeCodeAndSecret(viewModel.Login, "0001", viewModel.Password);
+            var credential = CredentialRepository.GetByValueTypeCodeAndSecret(viewModel.Login, "0001", viewModel.Password);
 
             if (credential == null) return null;
             var dto = Convert(credential.User);
@@ -48,7 +43,7 @@ namespace HRExpert.Core.BL
         }
         public UserDto Register(RegisterViewModel viewModel)
         {
-            var user = userRepository.Create(viewModel.Name, viewModel.Email, viewModel.Password);
+            var user = UserRepository.Create(viewModel.Name, viewModel.Email, viewModel.Password);
             return user != null ?
                 null
                 : Convert(user);

@@ -5,7 +5,7 @@ using HRExpert.Core.Data.Abstractions;
 
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
-    public class UserRepository : RepositoryBase<User>, IUserRepository
+    public class UserRepository : Base.ReferencyRepositoryBase<User>, IUserRepository
     {        
         public User Create(string Name, string Email, string Password)
         {
