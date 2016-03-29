@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Authentication.Cookies;
+using Microsoft.AspNet.Authentication.JwtBearer;
 using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
@@ -41,11 +42,8 @@ namespace HRExpert.Core
             services.AddSingleton<IAuthService, AuthService>();
             services.AddSingleton<ISerializationService, SerializationService>();
 
-            services.Configure<MvcOptions>(options =>
-            {
-                options.Filters.Add(new AuthorizeFilter(new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build()));
-            }
-            );
+            services.AddAuthentication();
+            services.AddCaching();
         }
 
         public void Configure(IApplicationBuilder applicationBuilder)
@@ -60,6 +58,7 @@ namespace HRExpert.Core
                 authService.SetCurrentContext(context);
                 return next.Invoke();
             });
+            /*
             applicationBuilder.UseCookieAuthentication(options => {
                 options.AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 options.AutomaticAuthenticate = true;
@@ -68,11 +67,30 @@ namespace HRExpert.Core
                 options.ExpireTimeSpan = new System.TimeSpan(1, 0, 0);
                 options.LoginPath = new PathString("/account/signin");
             });
+            */
+            // Add a new middleware validating access tokens issued by the server.
+            applicationBuilder.UseJwtBearerAuthentication(options =>
+            {
+                options.AutomaticAuthenticate = true;
+                options.AutomaticChallenge = true;                
+                options.Audience = "resource_server_1";
+                options.Authority = "http://localhost:5000/";
+                options.RequireHttpsMetadata = false;
+            });
+
+            // Add a new middleware issuing tokens.
+            applicationBuilder.UseOpenIdConnectServer(options =>
+            {
+                options.AllowInsecureHttp = true;
+                options.AuthorizationEndpointPath = PathString.Empty;
+                options.TokenEndpointPath = "/connect/token";
+                options.Provider = new HRExpert.Core.Services.AuthorizationProvider();
+            });
         }
 
         public void RegisterRoutes(IRouteBuilder routeBuilder)
         {
-            routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+            //routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
         }
     }
 }
