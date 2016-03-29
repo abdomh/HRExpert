@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using HRExpert.Core.Abstractions;
 using HRExpert.Core.BL.Abstractions;
+using HRExpert.Core.DTO;
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace HRExpert.Core.Controllers
@@ -26,7 +27,7 @@ namespace HRExpert.Core.Controllers
         #endregion
         // GET: api/values
         [HttpGet]
-        public IEnumerable<IIdName> Get()
+        public IEnumerable<IdNameDto> Get()
         {
             return ReferencyBL.List();
         }
@@ -40,21 +41,21 @@ namespace HRExpert.Core.Controllers
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]IIdName value)
+        public void Post([FromBody]IdNameDto value)
         {
             ReferencyBL.Create(value);
         }
 
         // PUT api/values/5
         [HttpPut]
-        public void Put([FromBody]IIdName value)
+        public void Put([FromBody]IdNameDto value)
         {
             ReferencyBL.Update(value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(long id)
         {
         }
     }

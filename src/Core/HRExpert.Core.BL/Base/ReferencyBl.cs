@@ -5,7 +5,7 @@ using HRExpert.Core.Services.Abstractions;
 using HRExpert.Core.Data.Abstractions;
 using HRExpert.Core.Abstractions;
 using HRExpert.Core.Data.Models.Parent;
-
+using HRExpert.Core.DTO;
 namespace HRExpert.Core.BL
 {
     public class ReferencyBl<T> : Abstractions.IReferencyBl where T : Referency, new()
@@ -20,21 +20,21 @@ namespace HRExpert.Core.BL
         {
             this.referencyRepository = repository;
         }
-        public virtual IEnumerable<IIdName> List()
+        public virtual IEnumerable<IdNameDto> List()
         {
             return ReferencyRepository.All().Select(x => x.ToDto());
         }
-        public virtual void Create(IIdName dto)
+        public virtual void Create(IdNameDto dto)
         {
             T entity = new T { Name = dto.Name };
             ReferencyRepository.Create(entity);
             dto = entity.ToDto();
         }
-        public virtual IIdName Read(long id)
+        public virtual IdNameDto Read(long id)
         {
             return ReferencyRepository.Read(id).ToDto();
         }
-        public virtual void Update(IIdName dto)
+        public virtual void Update(IdNameDto dto)
         {
             T entity = ReferencyRepository.Read(dto.Id);            
             ReferencyRepository.Update(entity.FromDto(dto));            

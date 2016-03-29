@@ -35,7 +35,8 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository.Base
         }
         public void Edit(T entity)
         {
-            this.dbContext.Entry(entity).State = Microsoft.Data.Entity.EntityState.Modified;                        
+            this.dbContext.Entry(entity).State = Microsoft.Data.Entity.EntityState.Modified;
+            this.dbContext.SaveChanges();
         }
         public void Delete(long Id)
         {
@@ -44,10 +45,12 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository.Base
         public void Create(T entity)
         {
             this.dbSet.Add(entity);
+            this.dbContext.SaveChanges();
         }
         public void Delete(T entity)
         {
             this.dbSet.Remove(entity);
+            this.dbContext.SaveChanges();
         }
 
         public IQueryable<T> Range(IQueryable<T> collection, int take, int skip)

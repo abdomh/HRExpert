@@ -9,12 +9,12 @@ namespace HRExpert.Core.BL
 {
     public static class Extensions
     {
-        public static IIdName ToDto(this Referency entity)
+        public static IdNameDto ToDto(this Referency entity)
         {
-            IIdName result = new IdNameDto { Id = entity.Id, Name = entity.Name };
+            IdNameDto result = new IdNameDto { Id = entity.Id, Name = entity.Name };
             return result;
         }
-        public static T FromDto<T>(this T entity, IIdName dto) where T: Referency
+        public static T FromDto<T>(this T entity, IdNameDto dto) where T: Referency
         {
             entity.Name = dto.Name;
             return entity;

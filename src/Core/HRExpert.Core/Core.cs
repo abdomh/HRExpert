@@ -50,6 +50,11 @@ namespace HRExpert.Core
 
         public void Configure(IApplicationBuilder applicationBuilder)
         {
+            applicationBuilder.UseCors(x=> {
+                x.AllowAnyOrigin();
+                x.AllowAnyMethod();
+                x.AllowAnyHeader();
+            });
             applicationBuilder.Use( (context, next) => {
                 IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
                 authService.SetCurrentContext(context);
