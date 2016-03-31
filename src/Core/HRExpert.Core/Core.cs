@@ -12,7 +12,7 @@ using HRExpert.Core.BL.Abstractions;
 using HRExpert.Core.BL;
 using HRExpert.Core.Services.Abstractions;
 using HRExpert.Core.Services;
-
+using ExtCore.Data.Abstractions;
 namespace HRExpert.Core
 {
     public class Core : ExtCore.Infrastructure.IExtension
@@ -36,45 +36,34 @@ namespace HRExpert.Core
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<IBaseBL, BaseBL>();
-            services.AddSingleton<IAccountBL, AccountBL>();
             services.AddSingleton<IUsersBL, UsersBL>();
             services.AddSingleton<IRoleBL, RolesBL>();
             services.AddSingleton<IAuthService, AuthService>();
-            services.AddSingleton<ISerializationService, SerializationService>();
 
             services.AddAuthentication();
             services.AddCaching();
         }
 
         public void Configure(IApplicationBuilder applicationBuilder)
-        {
+        {            
             applicationBuilder.UseCors(x=> {
                 x.AllowAnyOrigin();
                 x.AllowAnyMethod();
                 x.AllowAnyHeader();
+                x.AllowCredentials();
             });
             applicationBuilder.Use( (context, next) => {
                 IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
                 authService.SetCurrentContext(context);
                 return next.Invoke();
-            });
-            /*
-            applicationBuilder.UseCookieAuthentication(options => {
-                options.AuthenticationScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.AutomaticAuthenticate = true;
-                options.AutomaticChallenge = true;
-                options.CookieName = "HRExpert";
-                options.ExpireTimeSpan = new System.TimeSpan(1, 0, 0);
-                options.LoginPath = new PathString("/account/signin");
-            });
-            */
-            // Add a new middleware validating access tokens issued by the server.
+            });            
             applicationBuilder.UseJwtBearerAuthentication(options =>
-            {
+            {                
                 options.AutomaticAuthenticate = true;
                 options.AutomaticChallenge = true;                
                 options.Audience = "resource_server_1";
-                options.Authority = "http://localhost:5000/";
+                options.Authority = "http://localhost:60729";
+                
                 options.RequireHttpsMetadata = false;
             });
 
@@ -84,7 +73,7 @@ namespace HRExpert.Core
                 options.AllowInsecureHttp = true;
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
-                options.Provider = new HRExpert.Core.Services.AuthorizationProvider();
+                options.Provider = new HRExpert.Core.Services.AuthorizationProvider(applicationBuilder.ApplicationServices.GetService<IStorage>());
             });
         }
 

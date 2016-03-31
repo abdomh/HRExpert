@@ -4,12 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
+using Microsoft.AspNet.Authentication.JwtBearer;
 using HRExpert.Core.BL.Abstractions;
 
 namespace HRExpert.Core.Controllers
 {
-    [Route("api/[controller]")]
-    [AllowAnonymous]
+    [Route("api/[controller]")]    
     public class RolesController : ReferencyController
     {
         #region Ctor

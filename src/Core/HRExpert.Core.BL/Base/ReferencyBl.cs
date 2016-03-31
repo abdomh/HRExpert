@@ -8,8 +8,14 @@ using HRExpert.Core.Data.Models.Parent;
 using HRExpert.Core.DTO;
 namespace HRExpert.Core.BL
 {
-    public class ReferencyBl<T> : Abstractions.IReferencyBl where T : Referency, new()
+    public class ReferencyBl<T> : BaseBL, Abstractions.IReferencyBl where T : Referency, new()
     {
+        #region
+        public ReferencyBl(IStorage storage, IAuthService authService)
+            :base(storage,authService)
+        {
+        }
+        #endregion
         #region Private
         private IReferencyRepository<T> referencyRepository;
         #endregion
@@ -22,6 +28,7 @@ namespace HRExpert.Core.BL
         }
         public virtual IEnumerable<IdNameDto> List()
         {
+            //var user=AuthService.CurrentUser;
             return ReferencyRepository.All().Select(x => x.ToDto());
         }
         public virtual void Create(IdNameDto dto)

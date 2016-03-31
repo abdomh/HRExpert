@@ -12,10 +12,29 @@ using Microsoft.AspNet.Authentication.JwtBearer;
 using Microsoft.AspNet.Http.Authentication;
 using AspNet.Security.OpenIdConnect.Extensions;
 using AspNet.Security.OpenIdConnect.Server;
+using ExtCore.Data.Abstractions;
+using HRExpert.Core.Data.Abstractions;
 namespace HRExpert.Core.Services
 {
     public class AuthorizationProvider: OpenIdConnectServerProvider
     {
+        public AuthorizationProvider(IStorage storage)
+            :base()
+        {
+            this.OnValidateAuthorizationRequest = context => 
+            {
+                context.HttpContext.User = context.AuthenticationTicket.Principal;
+                return Task.FromResult<object>(null);
+            };
+            this.SetStorage(storage);
+        }
+        private IStorage storage;
+        private ICredentialRepository credentialRepository;
+        public void SetStorage(IStorage storage)
+        {
+            this.storage = storage;
+            this.credentialRepository = storage.GetRepository<ICredentialRepository>();
+        }
         public override Task ValidateClientAuthentication(
         ValidateClientAuthenticationContext context)
         {
@@ -23,22 +42,26 @@ namespace HRExpert.Core.Services
             context.Skipped();
             return Task.FromResult(0);
         }
-
+       
         public override Task GrantResourceOwnerCredentials(
             GrantResourceOwnerCredentialsContext context)
         {
-            // Validate the credentials here (e.g using ASP.NET Identity).
-            // You can call Rejected() with an error code/description to reject
-            // the request and return a message to the caller.
-            
+            var cred = credentialRepository.GetByValueAndSecret(context.UserName, context.Password);
+            if (cred == null) { context.Rejected("Пользователь не найден"); return Task.FromResult<object>(null); }
             var identity =
                 new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
-            identity.AddClaim(ClaimTypes.NameIdentifier, "todo");
-            
+            identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value);
+            identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString());
+            if (cred.User.Roles != null)
+            {
+                foreach (var role in cred.User.Roles)
+                    identity.AddClaim(ClaimTypes.Role, role.Role.Name);
+             }
+            identity.AddClaim(ClaimTypes.Name, cred.User.Name);
             // By default, claims are not serialized in the access and identity tokens.
             // Use the overload taking a "destination" to make sure your claims
             // are correctly inserted in the appropriate tokens.
-            identity.AddClaim("urn:customclaim", "value", "token id_token");
+            //identity.AddClaim("urn:customclaim", "value", "token id_token");
 
             var ticket = new AuthenticationTicket(
                 new ClaimsPrincipal(identity),

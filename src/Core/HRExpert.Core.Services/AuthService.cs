@@ -1,10 +1,9 @@
 ﻿using System.Security.Claims;
 using System.Linq;
 using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Authentication.Cookies;
-using core = HRExpert.Core.Abstractions;
-using HRExpert.Core.Abstractions.Enum;
-using HRExpert.Core.Services.Abstractions;
+using ExtCore.Data.Abstractions;
+using HRExpert.Core.Data.Models;
+using HRExpert.Core.Data.Abstractions;
 namespace HRExpert.Core.Services
 {
     /// <summary>
@@ -12,11 +11,13 @@ namespace HRExpert.Core.Services
     /// </summary>
     public class AuthService: Abstractions.IAuthService
     {
-        private ISerializationService SerializationServ;
+        private IStorage storage;
+        private IUserRepository userRepository;
 
-        public AuthService( Abstractions.ISerializationService serializationServ)
+        public AuthService(IStorage storage)
         {
-            SerializationServ = serializationServ;
+            this.storage = storage;
+            userRepository = storage.GetRepository<IUserRepository>();
         }
         /// <summary>
         /// Текущий контекст
@@ -25,47 +26,17 @@ namespace HRExpert.Core.Services
         {
             get; set;
         }
-        public core.IUser CurrentUser
+        public User CurrentUser
         {
             get
-            {
-                string UserData = CurrentContext.User.Claims.Where(x => x.Type == ClaimTypes.UserData).First().Value;
-                core.IUser result = SerializationServ.Deserialize<core.IUser>(UserData);
-                return result;
+            {                
+                long id =long.Parse(CurrentContext.User.Claims.Where(x => x.Type == ClaimTypes.UserData).First().Value);
+                return userRepository.Read(id);
             }
         }
         public void SetCurrentContext(HttpContext context)
         {
             CurrentContext = context;
-        }
-        /// <summary>
-        /// Авторизация
-        /// </summary>
-        /// <param name="user">Пользователь для авторизации</param>
-        public async void SignIn(core.IUser user)
-        {
-            Claim[] claims = new[]
-              {
-                new Claim(ClaimTypes.Name, user.Name),
-                new Claim(ClaimTypes.UserData, SerializationServ.Serialize(user))                
-              };
-
-            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
-            
-            await CurrentContext.Authentication.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
-        }
-        /// <summary>
-        /// Выход
-        /// </summary>
-        public async void SignOut()
-        {
-            await CurrentContext.Authentication.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-        }
-        public async void ChangeAccount(core.IUser user)
-        {
-            await CurrentContext.Authentication.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            SignIn(user);
-        }
+        }        
     }
 }

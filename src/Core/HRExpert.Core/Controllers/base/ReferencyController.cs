@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Authorization;
 using HRExpert.Core.Abstractions;
 using HRExpert.Core.BL.Abstractions;
 using HRExpert.Core.DTO;
@@ -27,6 +28,7 @@ namespace HRExpert.Core.Controllers
         #endregion
         // GET: api/values
         [HttpGet]
+        [Authorize]
         public IEnumerable<IdNameDto> Get()
         {
             return ReferencyBL.List();
