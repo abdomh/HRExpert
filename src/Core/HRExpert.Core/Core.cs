@@ -39,7 +39,7 @@ namespace HRExpert.Core
             services.AddSingleton<IUsersBL, UsersBL>();
             services.AddSingleton<IRoleBL, RolesBL>();
             services.AddSingleton<IAuthService, AuthService>();
-
+            
             services.AddAuthentication();
             services.AddCaching();
         }
@@ -52,18 +52,13 @@ namespace HRExpert.Core
                 x.AllowAnyHeader();
                 x.AllowCredentials();
             });
-            applicationBuilder.Use( (context, next) => {
-                IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
-                authService.SetCurrentContext(context);
-                return next.Invoke();
-            });            
             applicationBuilder.UseJwtBearerAuthentication(options =>
-            {                
+            {
                 options.AutomaticAuthenticate = true;
-                options.AutomaticChallenge = true;                
+                options.AutomaticChallenge = true;
                 options.Audience = "resource_server_1";
-                options.Authority = "http://localhost:60729";
-                
+                options.Authority = "http://localhost:5000";
+
                 options.RequireHttpsMetadata = false;
             });
 
@@ -71,10 +66,18 @@ namespace HRExpert.Core
             applicationBuilder.UseOpenIdConnectServer(options =>
             {
                 options.AllowInsecureHttp = true;
+                options.AutomaticAuthenticate = true;
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
+
                 options.Provider = new HRExpert.Core.Services.AuthorizationProvider(applicationBuilder.ApplicationServices.GetService<IStorage>());
             });
+            applicationBuilder.Use( (context, next) => {
+                IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
+                authService.SetCurrentContext(context);
+                return next.Invoke();
+            });          
+            
         }
 
         public void RegisterRoutes(IRouteBuilder routeBuilder)

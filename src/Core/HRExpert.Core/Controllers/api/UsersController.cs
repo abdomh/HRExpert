@@ -4,7 +4,7 @@ using Microsoft.AspNet.Authorization;
 namespace HRExpert.Core.Controllers.api
 {
     [Route("api/[controller]")]
-    [AllowAnonymous]
+    [Authorize]
     public class UsersController : ReferencyController
     {
         #region Ctor

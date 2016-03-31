@@ -10,6 +10,7 @@ using HRExpert.Core.BL.Abstractions;
 namespace HRExpert.Core.Controllers
 {
     [Route("api/[controller]")]    
+    [Authorize]
     public class RolesController : ReferencyController
     {
         #region Ctor

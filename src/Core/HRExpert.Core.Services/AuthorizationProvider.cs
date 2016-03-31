@@ -21,11 +21,6 @@ namespace HRExpert.Core.Services
         public AuthorizationProvider(IStorage storage)
             :base()
         {
-            this.OnValidateAuthorizationRequest = context => 
-            {
-                context.HttpContext.User = context.AuthenticationTicket.Principal;
-                return Task.FromResult<object>(null);
-            };
             this.SetStorage(storage);
         }
         private IStorage storage;
@@ -38,6 +33,7 @@ namespace HRExpert.Core.Services
         public override Task ValidateClientAuthentication(
         ValidateClientAuthenticationContext context)
         {
+
             ///Тут требуется коммент. Поскольку пока у нас нет мобильного приложения и других клиентов, то их идентифицировать не надо, эту фазу пропускаем (Skipped)
             context.Skipped();
             return Task.FromResult(0);
@@ -45,17 +41,17 @@ namespace HRExpert.Core.Services
        
         public override Task GrantResourceOwnerCredentials(
             GrantResourceOwnerCredentialsContext context)
-        {
+        {            
             var cred = credentialRepository.GetByValueAndSecret(context.UserName, context.Password);
             if (cred == null) { context.Rejected("Пользователь не найден"); return Task.FromResult<object>(null); }
             var identity =
                 new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
             identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value);
-            identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString());
-            if (cred.User.Roles != null)
+            identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString(), "token id_token");
+            if (cred!=null && cred.User.Roles != null)
             {
                 foreach (var role in cred.User.Roles)
-                    identity.AddClaim(ClaimTypes.Role, role.Role.Name);
+                    identity.AddClaim(ClaimTypes.Role, role.Role.Name, "token id_token");
              }
             identity.AddClaim(ClaimTypes.Name, cred.User.Name);
             // By default, claims are not serialized in the access and identity tokens.
@@ -76,7 +72,6 @@ namespace HRExpert.Core.Services
             ticket.SetScopes(new[] { "profile", "offline_access" });
 
             context.Validated(ticket);
-
             return Task.FromResult<object>(null);
         }
     }
