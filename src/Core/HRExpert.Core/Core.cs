@@ -57,7 +57,7 @@ namespace HRExpert.Core
                 options.AutomaticAuthenticate = true;
                 options.AutomaticChallenge = true;
                 options.Audience = "resource_server_1";
-                options.Authority = "http://localhost:5000";
+                options.Authority = "http://ruscount.com:9034";
 
                 options.RequireHttpsMetadata = false;
             });

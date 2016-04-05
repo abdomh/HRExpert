@@ -28,7 +28,6 @@ namespace HRExpert.Core.BL
         }
         public virtual IEnumerable<IdNameDto> List()
         {
-            //var user=AuthService.CurrentUser;
             return ReferencyRepository.All().Select(x => x.ToDto());
         }
         public virtual void Create(IdNameDto dto)

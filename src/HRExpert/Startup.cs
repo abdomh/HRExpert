@@ -36,7 +36,7 @@ namespace HRExpert
             {
                 applicationBuilder.UseExceptionHandler("/");
             }
-
+            
             base.Configure(applicationBuilder, hostingEnvironment);
         }
         public static void Main(string[] args) => WebApplication.Run<Startup>(args);
