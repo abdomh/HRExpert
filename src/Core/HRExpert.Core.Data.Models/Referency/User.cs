@@ -8,7 +8,7 @@ namespace HRExpert.Core.Data.Models
     [Table("Users")]
     public class User : Parent.Referency
     {        
-        public ICollection<RoleUser> Roles { get; set; }
-        public ICollection<Credential> Credentials { get; set; }
+        public virtual ICollection<RoleUser> Roles { get; set; }
+        public virtual ICollection<Credential> Credentials { get; set; }
     }
 }

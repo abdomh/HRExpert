@@ -4,11 +4,11 @@ namespace HRExpert.Core.Data.Models
     [Table("RoleUsers")]
     public class RoleUser
     {
-        [Column("UserId")]
+        [ForeignKey("User")]
         public long UserId { get; set; }
-        public User User { get; set; }
-        [Column("RoleId")]
+        public virtual User User { get; set; }
+        [ForeignKey("Role")]
         public long RoleId { get; set; }
-        public Role Role { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

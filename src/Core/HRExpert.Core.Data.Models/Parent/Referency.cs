@@ -24,6 +24,13 @@ namespace HRExpert.Core.Data.Models.Parent
         {
             get;set;
         }
-       
+        /// <summary>
+        /// Флаг удаления
+        /// </summary>
+        [Column("Delete")]
+        public bool Delete
+        {
+            get; set;
+        }       
     }
 }

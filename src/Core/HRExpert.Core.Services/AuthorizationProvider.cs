@@ -33,7 +33,6 @@ namespace HRExpert.Core.Services
         public override Task ValidateClientAuthentication(
         ValidateClientAuthenticationContext context)
         {
-
             ///Тут требуется коммент. Поскольку пока у нас нет мобильного приложения и других клиентов, то их идентифицировать не надо, эту фазу пропускаем (Skipped)
             context.Skipped();
             return Task.FromResult(0);
@@ -66,7 +65,7 @@ namespace HRExpert.Core.Services
 
             // Call SetResources with the list of resource servers
             // the access token should be issued for.
-            ticket.SetResources(new[] { "resource_server_1" });            
+            ticket.SetResources(new[] { "ApiServer" });            
             // Call SetScopes with the list of scopes you want to grant
             // (specify offline_access to issue a refresh token).
             ticket.SetScopes(new[] { "profile", "offline_access" });

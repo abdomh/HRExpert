@@ -1,13 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
 using HRExpert.Core.Abstractions.Enum;
 using HRExpert.Core.Abstractions;
 namespace HRExpert.Core.DTO
 {
     public class UserDto : IdNameDto, IUser
-    {
-        public RolesEnum Role
+    {        
+        public UserDto()
         {
-            get; set;
+            this.Roles = new List<RoleDto>();
         }
+        public List<RoleDto> Roles { get; set; }
     }
 }

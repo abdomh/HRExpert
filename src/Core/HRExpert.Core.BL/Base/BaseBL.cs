@@ -27,9 +27,7 @@ namespace HRExpert.Core.BL
             this.userRepository = storage.GetRepository<IUserRepository>();
             this.credentialRepository = storage.GetRepository<ICredentialRepository>();
             this.roleRepository = storage.GetRepository<IRoleRepository>();
-        }
-        
-        public string GetCurrentUserName() => authService.CurrentContext.User.Identity.Name;
+        }       
 
         #region Private methods
         

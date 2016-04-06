@@ -67,14 +67,9 @@
     <Build Include="Core\RoleUsers.sql" />
     <Build Include="Core\PermissionTypes.sql" />
     <Build Include="Core\RolePermissions.sql" />
-    <Build Include="Core\DataSources.sql" />
-    <Build Include="Core\DataSourcePermissions.sql" />
-    <Build Include="Core\Menus.sql" />
-    <Build Include="Core\RoleMenus.sql" />
     <Build Include="Core\Credentials.sql" />
     <Build Include="Core\CredentialTypes.sql" />
     <Build Include="Core\ObjectLinks.sql" />
-    <Build Include="Core\LinkTypes.sql" />
     <Build Include="Core\Peoples.sql" />
     <Build Include="Core\Photos.sql" />
   </ItemGroup>

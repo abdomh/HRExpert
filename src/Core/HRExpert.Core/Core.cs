@@ -54,10 +54,12 @@ namespace HRExpert.Core
             });
             applicationBuilder.UseJwtBearerAuthentication(options =>
             {
+                string authority = this.configurationRoot["JWT:Authority"];
+                string audience = this.configurationRoot["JWT:Audience"];
                 options.AutomaticAuthenticate = true;
                 options.AutomaticChallenge = true;
-                options.Audience = "resource_server_1";
-                options.Authority = "http://ruscount.com:9034";
+                options.Audience = audience;
+                options.Authority = authority;
 
                 options.RequireHttpsMetadata = false;
             });

@@ -8,7 +8,7 @@ namespace HRExpert.Core.Data.Models
         public long RoleId { get; set; }
         [Column("PermissionTypeId")]
         public long PermissionTypeId { get; set; }
-        public Role Role { get; set; }
-        public PermissionType PermissionType { get; set; }
+        public virtual Role Role { get; set; }
+        public virtual PermissionType PermissionType { get; set; }
     }
 }

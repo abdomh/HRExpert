@@ -1,4 +1,6 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
+using Microsoft.Data.Entity;
 using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
@@ -6,16 +8,19 @@ using HRExpert.Core.Data.Abstractions;
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
     public class UserRepository : Base.ReferencyRepositoryBase<User>, IUserRepository
-    {        
-        public User Create(string Name, string Email, string Password)
+    {
+        public override IEnumerable<User> All()
+        {            
+            return this.dbSet.ToList();                
+        }
+        public override User Read(long Id)
         {
-            User entity = new User();
-            Credential EmailCredential = new Credential();
-            Credential NameCredential = new Credential();            
-                        
-            this.dbSet.Add(entity);
-            this.dbContext.SaveChanges();
-            return entity;
+            return this.dbSet
+                .Include(x => x.Roles).ThenInclude(x => x.Role)
+                .Include(x => x.Credentials)
+                .Where(x => x.Id == Id)
+                .ToList()
+                .FirstOrDefault();
         }
     }
 }

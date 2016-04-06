@@ -29,36 +29,37 @@ namespace HRExpert.Core.Controllers
         // GET: api/values
         [HttpGet]
         [Authorize]
-        public IEnumerable<IdNameDto> Get()
+        public virtual IEnumerable<IdNameDto> Get()
         {
             return ReferencyBL.List();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public IIdName Get(long id)
+        public virtual IIdName Get(long id)
         {
             return ReferencyBL.Read(id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody]IdNameDto value)
+        public virtual IdNameDto Post([FromBody]IdNameDto value)
         {
-            ReferencyBL.Create(value);
+            return ReferencyBL.Create(value);
         }
 
         // PUT api/values/5
         [HttpPut]
-        public void Put([FromBody]IdNameDto value)
+        public virtual IdNameDto Put([FromBody]IdNameDto value)
         {
-            ReferencyBL.Update(value);
+            return ReferencyBL.Update(value);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
-        public void Delete(long id)
+        public virtual IdNameDto Delete(long id)
         {
+            return ReferencyBL.Delete(id);
         }
     }
 }

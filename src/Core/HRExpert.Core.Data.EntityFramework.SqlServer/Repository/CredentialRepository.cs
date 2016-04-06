@@ -1,8 +1,9 @@
 ﻿using System.Linq;
+using Microsoft.Data.Entity;
 using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
-using Microsoft.Data.Entity;
+
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
     public class CredentialRepository: RepositoryBase<Credential>, ICredentialRepository

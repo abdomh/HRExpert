@@ -9,51 +9,51 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository.Base
 {
     public class ReferencyRepositoryBase<T>: RepositoryBase<T> where T : Referency
     {
-        public IEnumerable<T> All()
+        public virtual IEnumerable<T> All()
         {
             return this.dbSet.ToList();
         }
-        public IEnumerable<T> Range(int take, int skip)
+        public virtual IEnumerable<T> Range(int take, int skip)
         {
             return Range(this.dbSet, take, skip).ToList();
         }
-        public T Read(long Id)
+        public virtual T Read(long Id)
         {
             return this.WithKey(Id);
         }
-        public void Update(T entity)
+        public virtual void Update(T entity)
         {
             this.Edit(entity);
         }
-        public T GetByCode(string code)
-        {
-            return this.dbSet.FirstOrDefault(x => x.Code == code);
+        public virtual T GetByCode(string code)
+        {            
+            return this.dbSet.Where(x => x.Code == code).ToList().FirstOrDefault();
         }
-        public T WithKey(long Id)
-        {
-            return this.dbSet.FirstOrDefault(x => x.Id == Id);            
+        public virtual T WithKey(long Id)
+        {            
+            return this.dbSet.Where(x => x.Id == Id).ToList().FirstOrDefault();            
         }
-        public void Edit(T entity)
+        public virtual void Edit(T entity)
         {
             this.dbContext.Entry(entity).State = Microsoft.Data.Entity.EntityState.Modified;
             this.dbContext.SaveChanges();
         }
-        public void Delete(long Id)
+        public virtual void Delete(long Id)
         {
             this.Delete(this.WithKey(Id));
         }
-        public void Create(T entity)
+        public virtual void Create(T entity)
         {
             this.dbSet.Add(entity);
             this.dbContext.SaveChanges();
         }
-        public void Delete(T entity)
+        public virtual void Delete(T entity)
         {
             this.dbSet.Remove(entity);
             this.dbContext.SaveChanges();
         }
 
-        public IQueryable<T> Range(IQueryable<T> collection, int take, int skip)
+        public virtual IQueryable<T> Range(IQueryable<T> collection, int take, int skip)
         {
             return collection.Skip(skip).Take(take);
         }
