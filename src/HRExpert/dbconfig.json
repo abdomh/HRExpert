@@ -1,7 +1,7 @@
 ﻿{
   "Data": {
     "DefaultConnection": {
-      "ConnectionString": "Data Source=PC61\\SQLTMP;Database=HRExpert.Database;Integrated Security=True;MultipleActiveResultSets=True;"
+      "ConnectionString": "Data Source=WEBSRV\\SQLEXPRESS;Database=HRExpert.Database;User Id=sa;Password=nhbrkfaktrc;MultipleActiveResultSets=True;"
     }
   }
 }
