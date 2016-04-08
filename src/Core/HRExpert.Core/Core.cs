@@ -38,6 +38,7 @@ namespace HRExpert.Core
             services.AddSingleton<IBaseBL, BaseBL>();
             services.AddSingleton<IUsersBL, UsersBL>();
             services.AddSingleton<IRoleBL, RolesBL>();
+            services.AddSingleton<IModuleBL, ModulesBL>();
             services.AddSingleton<IAuthService, AuthService>();
             
             services.AddAuthentication();

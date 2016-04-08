@@ -8,12 +8,11 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
     {
         public void RegisterModels(ModelBuilder modelbuilder)
         {
-            modelbuilder.Entity<BaseClass>();
-            modelbuilder.Entity<BaseObject>();
             modelbuilder.Entity<User>();
             modelbuilder.Entity<Credential>();
             modelbuilder.Entity<CredentialType>();
             modelbuilder.Entity<Role>();
+            modelbuilder.Entity<Module>();
             modelbuilder.Entity<PermissionType>();
             modelbuilder.Entity<RolePermission>().HasKey(x => new { x.RoleId, x.PermissionTypeId });
             modelbuilder.Entity<RoleUser>().HasKey(x => new { x.UserId, x.RoleId });

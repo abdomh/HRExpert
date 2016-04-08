@@ -2,9 +2,9 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
-    <TargetDatabaseName>HRExpert.Database</TargetDatabaseName>
+    <TargetDatabaseName>HRExpert</TargetDatabaseName>
     <DeployScriptFileName>HRExpert.Database.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=PC61\SQLTMP;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=SQLCORE;Persist Security Info=True;User ID=sa;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>

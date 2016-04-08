@@ -60,8 +60,6 @@
     <Folder Include="Core" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Core\BaseClasses.sql" />
-    <Build Include="Core\BaseObjects.sql" />
     <Build Include="Core\Users.sql" />
     <Build Include="Core\Roles.sql" />
     <Build Include="Core\RoleUsers.sql" />
@@ -69,9 +67,8 @@
     <Build Include="Core\RolePermissions.sql" />
     <Build Include="Core\Credentials.sql" />
     <Build Include="Core\CredentialTypes.sql" />
-    <Build Include="Core\ObjectLinks.sql" />
-    <Build Include="Core\Peoples.sql" />
     <Build Include="Core\Photos.sql" />
+    <Build Include="Core\Modules.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />
