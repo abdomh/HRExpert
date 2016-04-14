@@ -68,7 +68,7 @@
     <Build Include="Core\Credentials.sql" />
     <Build Include="Core\CredentialTypes.sql" />
     <Build Include="Core\Photos.sql" />
-    <Build Include="Core\Modules.sql" />
+    <Build Include="Core\Sections.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

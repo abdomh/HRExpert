@@ -2,7 +2,7 @@
 using HRExpert.Core.Data.Models;
 namespace HRExpert.Core.Data.Abstractions
 {
-    public interface IModuleRepository : IReferencyRepository<Module>
+    public interface ISectionRepository : IReferencyRepository<Section>
     {
 
     }

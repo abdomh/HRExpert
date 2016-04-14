@@ -18,6 +18,25 @@ namespace HRExpert.Core.BL
         }
         #endregion
         #region Public
+        public ProfileDto Profile()
+        {
+            var user = AuthService.CurrentUser;
+            ProfileDto result = new ProfileDto();
+            result.UserName = user.Name;
+            List<PermissionDto> permissions = new List<PermissionDto>();
+            if(user.Roles!=null)
+            {
+                foreach(var role in user.Roles)
+                {
+                    var rolepermissions = role.Role.Permissions
+                        .Select(x => new PermissionDto { Id = x.PermissionTypeId, Name = x.PermissionType.Name, Section = new SectionDto { Id = x.PermissionType.SectionId, Name = x.PermissionType.Section.Name } })
+                        .ToList();
+                    permissions.AddRange(rolepermissions);                    
+                }
+            }
+            result.Permissions = permissions.ToArray();
+            return result;
+        }
         #region Converters
         public override IdNameDto ToDto(User entity)
         {
@@ -31,10 +50,11 @@ namespace HRExpert.Core.BL
         {
             var dto = (UserDto)indto;
             entity.Name = dto.Name; 
-            var toDelete = entity.Roles.Where(x => !dto.Roles.Any(y => y.Id == x.RoleId)).ToList();
+            var toDelete = entity.Roles?.Where(x => !dto.Roles.Any(y => y.Id == x.RoleId))?.ToList();
+            if(toDelete!=null)
             foreach (var del in toDelete)
                 entity.Roles.Remove(del);
-            var newRoles = dto.Roles.Where(x => !entity.Roles.Any(y => y.RoleId == x.Id)).ToList();
+            var newRoles = dto.Roles.Where(x => !entity.Roles.Any(y => y.RoleId == x.Id))?.ToList();
             foreach (var role in newRoles)
             {
                 var roleEntity = RoleRepository.Read(role.Id);

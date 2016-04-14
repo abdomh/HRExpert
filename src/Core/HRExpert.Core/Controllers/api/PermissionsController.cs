@@ -1,30 +1,27 @@
 ﻿using Microsoft.AspNet.Mvc;
 using HRExpert.Core.BL.Abstractions;
 using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Authentication;
-using Microsoft.AspNet.Authentication.JwtBearer;
 using HRExpert.Core.DTO;
 
 namespace HRExpert.Core.Controllers.api
 {
     [Route("api/[controller]")]
-    [Authorize]    
-    public class UsersController : ReferencyController
+    [Authorize]
+    public class PermissionsController : ReferencyController
     {
         #region Ctor
-        public UsersController(IUsersBL userBL)
-            : base(userBL)
+        public PermissionsController(IPermissionBL permissionsBl)
+            : base(permissionsBl)
         {
         }
         #endregion
-        
         [NonAction]
         public override IdNameDto Post([FromBody] IdNameDto value)
         {
             return base.Post(value);
         }
         [HttpPost]
-        public IdNameDto Post([FromBody] UserDto value)
+        public IdNameDto Post([FromBody] PermissionDto value)
         {
             return base.Post(value);
         }
@@ -34,7 +31,7 @@ namespace HRExpert.Core.Controllers.api
             return base.Put(value);
         }
         [HttpPut]
-        public IdNameDto Put([FromBody] UserDto value)
+        public IdNameDto Put([FromBody] PermissionDto value)
         {
             return base.Put(value);
         }

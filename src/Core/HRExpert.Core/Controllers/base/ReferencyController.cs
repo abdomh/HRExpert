@@ -18,7 +18,7 @@ namespace HRExpert.Core.Controllers
         IReferencyBl referencyBl;
         #endregion
         #region Public
-        IReferencyBl ReferencyBL { get { return referencyBl; } }
+        public IReferencyBl ReferencyBL { get { return referencyBl; } }
         #endregion
         #region Ctor
         public ReferencyController(IReferencyBl referencyBl)

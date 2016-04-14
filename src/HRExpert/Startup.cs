@@ -25,8 +25,10 @@ namespace HRExpert
 
         public override void Configure(IApplicationBuilder applicationBuilder, IHostingEnvironment hostingEnvironment)
         {
+            applicationBuilder.UseIISPlatformHandler();
             if (hostingEnvironment.IsEnvironment("Development"))
             {
+
                 applicationBuilder.UseBrowserLink();
                 applicationBuilder.UseDeveloperExceptionPage();
                 applicationBuilder.UseDatabaseErrorPage();

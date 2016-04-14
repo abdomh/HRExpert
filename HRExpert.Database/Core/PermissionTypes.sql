@@ -4,6 +4,6 @@
 	[Name] nvarchar(256),
 	[Code] nvarchar(32),
 	[Delete] bit not null default(0),
-	[ModuleId] bigint not null,
-	Constraint FK_PermissionTypes_Modules Foreign Key (ModuleId) References Modules(Id)
+	[SectionId] bigint not null,
+	Constraint FK_PermissionTypes_Sections Foreign Key (SectionId) References Sections(Id)
 )

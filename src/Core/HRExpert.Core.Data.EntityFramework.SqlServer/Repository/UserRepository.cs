@@ -22,5 +22,16 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
                 .ToList()
                 .FirstOrDefault();
         }
+        public User Profile(long Id)
+        {
+            return this.dbSet
+                .Include(x => x.Credentials)
+                .Include(x => x.Roles)
+                    .ThenInclude(x => x.Role)
+                        .ThenInclude(x => x.Permissions)
+                            .ThenInclude(x => x.PermissionType)
+                                .ThenInclude(x => x.Section)
+                .Where(x => x.Id == Id).FirstOrDefault();
+        }
     }
 }

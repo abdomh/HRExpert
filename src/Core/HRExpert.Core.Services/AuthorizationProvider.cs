@@ -40,17 +40,27 @@ namespace HRExpert.Core.Services
        
         public override Task GrantResourceOwnerCredentials(
             GrantResourceOwnerCredentialsContext context)
-        {            
+        {
+            List<string> sections = new List<string>();
+            sections.Add("offline_access");
             var cred = credentialRepository.GetByValueAndSecret(context.UserName, context.Password);
             if (cred == null) { context.Rejected("Пользователь не найден"); return Task.FromResult<object>(null); }
             var identity =
                 new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
             identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value);
             identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString(), "token id_token");
+            
             if (cred!=null && cred.User.Roles != null)
             {
                 foreach (var role in cred.User.Roles)
+                {
                     identity.AddClaim(ClaimTypes.Role, role.Role.Name, "token id_token");
+                    foreach(var permission in role.Role.Permissions)
+                    {
+                        identity.AddClaim("urn:permissionClaim", string.Format("{{ {0},{1},{2} }}", permission.PermissionType.SectionId, permission.PermissionTypeId, permission.PermissionType.Name));
+                        sections.Add(permission.PermissionType.Section.Name);
+                    }
+                }
              }
             identity.AddClaim(ClaimTypes.Name, cred.User.Name);
             // By default, claims are not serialized in the access and identity tokens.
@@ -62,13 +72,13 @@ namespace HRExpert.Core.Services
                 new ClaimsPrincipal(identity),
                 new AuthenticationProperties(),
                 context.Options.AuthenticationScheme);
-
+            
             // Call SetResources with the list of resource servers
             // the access token should be issued for.
             ticket.SetResources(new[] { "ApiServer" });            
             // Call SetScopes with the list of scopes you want to grant
             // (specify offline_access to issue a refresh token).
-            ticket.SetScopes(new[] { "profile", "offline_access" });
+            ticket.SetScopes(sections.Distinct().ToArray());
 
             context.Validated(ticket);
             return Task.FromResult<object>(null);

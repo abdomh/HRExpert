@@ -36,6 +36,7 @@ namespace HRExpert.Core.BL
         public virtual IdNameDto Create(IdNameDto dto)
         {
             T entity = new T { Name = dto.Name };
+            FromDto(entity, dto);
             ReferencyRepository.Create(entity);
             return ToDto(entity);
         }

@@ -12,7 +12,7 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
             modelbuilder.Entity<Credential>();
             modelbuilder.Entity<CredentialType>();
             modelbuilder.Entity<Role>();
-            modelbuilder.Entity<Module>();
+            modelbuilder.Entity<Section>();
             modelbuilder.Entity<PermissionType>();
             modelbuilder.Entity<RolePermission>().HasKey(x => new { x.RoleId, x.PermissionTypeId });
             modelbuilder.Entity<RoleUser>().HasKey(x => new { x.UserId, x.RoleId });

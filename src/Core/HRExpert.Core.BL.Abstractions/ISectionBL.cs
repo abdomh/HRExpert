@@ -1,6 +1,6 @@
 ﻿namespace HRExpert.Core.BL.Abstractions
 {
-    public interface IModuleBL : IReferencyBl
+    public interface ISectionBL : IReferencyBl
     {
     }
 }

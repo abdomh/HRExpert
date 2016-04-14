@@ -6,7 +6,7 @@ using HRExpert.Core.Data.Abstractions;
 
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
-    public class ModuleRepository : Base.ReferencyRepositoryBase<Module>, IModuleRepository
+    public class ModuleRepository : Base.ReferencyRepositoryBase<Section>, ISectionRepository
     {
     }
 }

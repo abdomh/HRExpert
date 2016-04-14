@@ -5,8 +5,7 @@ using System.Threading.Tasks;
 
 namespace HRExpert.Core.DTO
 {
-    public class RoleDto: IdNameDto
+    public class SectionDto : IdNameDto
     {
-        public List<PermissionDto> Permissions { get; set; }
     }
 }

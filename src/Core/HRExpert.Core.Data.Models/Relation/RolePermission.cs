@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
 {
-    [Table("RolePermissions")]
+    [Table("RolePermissionTypes")]
     public class RolePermission
     {
         [Column("RoleId")]

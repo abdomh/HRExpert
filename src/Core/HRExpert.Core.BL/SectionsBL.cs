@@ -4,13 +4,13 @@ using HRExpert.Core.Data.Models;
 using HRExpert.Core.Services.Abstractions;
 namespace HRExpert.Core.BL
 {
-    public class ModulesBL : ReferencyBl<Module>, Abstractions.IModuleBL
+    public class SectionsBL : ReferencyBl<Section>, Abstractions.ISectionBL
     {
         #region Ctor
-        public ModulesBL(IStorage storage, IAuthService authService)
+        public SectionsBL(IStorage storage, IAuthService authService)
             : base(storage, authService)
         {
-            var repository = storage.GetRepository<IModuleRepository>();
+            var repository = storage.GetRepository<ISectionRepository>();
             this.SetRepository(repository);
         }
         #endregion        

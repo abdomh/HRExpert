@@ -31,7 +31,7 @@ namespace HRExpert.Core.Services
             get
             {                
                 long id =long.Parse(CurrentContext.User.Claims.Where(x => x.Type == ClaimTypes.UserData)?.First()?.Value);
-                return userRepository.Read(id);
+                return userRepository.Profile(id);
             }
         }
         public void SetCurrentContext(HttpContext context)
