@@ -36,7 +36,9 @@ namespace HRExpert
 
             else
             {
-                applicationBuilder.UseExceptionHandler("/");
+                applicationBuilder.UseBrowserLink();
+                applicationBuilder.UseDeveloperExceptionPage();
+                applicationBuilder.UseDatabaseErrorPage();
             }
             
             base.Configure(applicationBuilder, hostingEnvironment);
