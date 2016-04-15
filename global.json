@@ -1,5 +1,5 @@
 {
-  "projects": [ "../ExtCore/src", "src", "src/Core" ],
+  "projects": [ "../ExtCore/src", "src", "src/Core", "." ],
   "sdk": {
     "version": "1.0.0-rc1-update2",
     "architecture": "x64",

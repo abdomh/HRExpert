@@ -58,6 +58,7 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Core" />
+    <Folder Include="Organization" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Core\Users.sql" />
@@ -69,6 +70,21 @@
     <Build Include="Core\CredentialTypes.sql" />
     <Build Include="Core\Photos.sql" />
     <Build Include="Core\Sections.sql" />
+    <Build Include="Organization\Documents.sql" />
+    <Build Include="Organization\Organizations.sql" />
+    <Build Include="Organization\Departments.sql" />
+    <Build Include="Organization\Persons.sql" />
+    <Build Include="Organization\StaffEstablishedPosts.sql" />
+    <Build Include="Organization\Positions.sql" />
+    <Build Include="Organization\StaffEstablishedPostPerson.sql" />
+    <Build Include="Organization\Statuses.sql" />
+    <Build Include="Organization\DocumentTypes.sql" />
+    <Build Include="Organization\EntityTypes.sql" />
+    <Build Include="Organization\Events.sql" />
+    <Build Include="Organization\Entities.sql" />
+    <Build Include="Organization\DepartmentLinks.sql" />
+    <Build Include="Organization\ManagerDepartmentLinks.sql" />
+    <Build Include="spInstall.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

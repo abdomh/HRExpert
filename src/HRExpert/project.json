@@ -26,7 +26,8 @@
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
     "ExtCore.WebApplication": "1.0.0-alpha7",
     "ExtCore.Data": "1.0.0-alpha7",
-    "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha7"
+    "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha7",
+    "HRExpert.Organization": "1.0.0-*"
   },
 
   "commands": {

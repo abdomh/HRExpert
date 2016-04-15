@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "HRExpert.Organization.BL Class Library",
+  "authors": [ "baranov" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  },
+  "dependencies": {
+    "ExtCore.Data.Abstractions": "1.0.0-alpha7",
+    "HRExpert.Core.BL": "1.0.0-*",
+    "HRExpert.Organization.Data.Models": "1.0.0-*",
+    "HRExpert.Organization.Data.Abstractions": "1.0.0-*",
+    "HRExpert.Organization.BL.Abstractions": "1.0.0-*",
+    "HRExpert.Organization.DTO": "1.0.0-*"
+  }
+}

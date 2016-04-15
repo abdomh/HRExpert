@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{183B03E0-A11A-43DD-9C61-BC2524FC80D2}"
 EndProject
@@ -41,6 +41,22 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Core.Services", "src\Core\HRExpert.Core.Services\HRExpert.Core.Services.xproj", "{592C3627-E568-4481-B573-A727BAA4714C}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Core.Abstractions", "src\Core\HRExpert.Core.Abstractions\HRExpert.Core.Abstractions.xproj", "{634D3FE7-3C00-4508-BDC3-B5C10D505DD9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Organization", "Organization", "{E32B7EE0-006E-428F-9E59-06B9F0E41348}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Organization", "HRExpert.Organization\HRExpert.Organization.xproj", "{CF2F0F65-F2D5-42FF-80FC-1E914219FEA7}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Organization.Data.Models", "HRExpert.Organization.Data.Models\HRExpert.Organization.Data.Models.xproj", "{E1100AAB-02DF-4919-9B5C-E6DDC9A3086A}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Organization.Data.EntityFramework.SqlServer", "HRExpert.Organization.Data.EntityFramework.SqlServer\HRExpert.Organization.Data.EntityFramework.SqlServer.xproj", "{FBD9F752-D3B7-414E-9B2A-9E995F8052A3}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Organization.Data.Abstractions", "HRExpert.Organization.Data.Abstractions\HRExpert.Organization.Data.Abstractions.xproj", "{2FED47A3-FF44-42B2-94C2-0802F32F1B25}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Organization.BL", "HRExpert.Organization.BL\HRExpert.Organization.BL.xproj", "{39B5FC3B-0244-4F94-9F87-B54453802823}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Organization.BL.Abstractions", "HRExpert.Organization.BL.Abstractions\HRExpert.Organization.BL.Abstractions.xproj", "{7D63BB76-9422-4B4A-875A-73F10C80CC8B}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HRExpert.Organization.DTO", "HRExpert.Organization.DTO\HRExpert.Organization.DTO.xproj", "{4D1DB373-E603-4155-A180-5D4D2A432FE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -102,6 +118,34 @@ Global
 		{634D3FE7-3C00-4508-BDC3-B5C10D505DD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{634D3FE7-3C00-4508-BDC3-B5C10D505DD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{634D3FE7-3C00-4508-BDC3-B5C10D505DD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2F0F65-F2D5-42FF-80FC-1E914219FEA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2F0F65-F2D5-42FF-80FC-1E914219FEA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2F0F65-F2D5-42FF-80FC-1E914219FEA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2F0F65-F2D5-42FF-80FC-1E914219FEA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1100AAB-02DF-4919-9B5C-E6DDC9A3086A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1100AAB-02DF-4919-9B5C-E6DDC9A3086A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1100AAB-02DF-4919-9B5C-E6DDC9A3086A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1100AAB-02DF-4919-9B5C-E6DDC9A3086A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD9F752-D3B7-414E-9B2A-9E995F8052A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD9F752-D3B7-414E-9B2A-9E995F8052A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD9F752-D3B7-414E-9B2A-9E995F8052A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD9F752-D3B7-414E-9B2A-9E995F8052A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FED47A3-FF44-42B2-94C2-0802F32F1B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FED47A3-FF44-42B2-94C2-0802F32F1B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FED47A3-FF44-42B2-94C2-0802F32F1B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FED47A3-FF44-42B2-94C2-0802F32F1B25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B5FC3B-0244-4F94-9F87-B54453802823}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B5FC3B-0244-4F94-9F87-B54453802823}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B5FC3B-0244-4F94-9F87-B54453802823}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B5FC3B-0244-4F94-9F87-B54453802823}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D63BB76-9422-4B4A-875A-73F10C80CC8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D63BB76-9422-4B4A-875A-73F10C80CC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D63BB76-9422-4B4A-875A-73F10C80CC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D63BB76-9422-4B4A-875A-73F10C80CC8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D1DB373-E603-4155-A180-5D4D2A432FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D1DB373-E603-4155-A180-5D4D2A432FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D1DB373-E603-4155-A180-5D4D2A432FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D1DB373-E603-4155-A180-5D4D2A432FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -122,5 +166,13 @@ Global
 		{C5AD99AA-766E-4E53-B642-1BCC3EA31E85} = {A3B8A7AA-1B5B-42B8-85FA-1CD685FFFF54}
 		{592C3627-E568-4481-B573-A727BAA4714C} = {A3B8A7AA-1B5B-42B8-85FA-1CD685FFFF54}
 		{634D3FE7-3C00-4508-BDC3-B5C10D505DD9} = {A3B8A7AA-1B5B-42B8-85FA-1CD685FFFF54}
+		{E32B7EE0-006E-428F-9E59-06B9F0E41348} = {183B03E0-A11A-43DD-9C61-BC2524FC80D2}
+		{CF2F0F65-F2D5-42FF-80FC-1E914219FEA7} = {E32B7EE0-006E-428F-9E59-06B9F0E41348}
+		{E1100AAB-02DF-4919-9B5C-E6DDC9A3086A} = {E32B7EE0-006E-428F-9E59-06B9F0E41348}
+		{FBD9F752-D3B7-414E-9B2A-9E995F8052A3} = {E32B7EE0-006E-428F-9E59-06B9F0E41348}
+		{2FED47A3-FF44-42B2-94C2-0802F32F1B25} = {E32B7EE0-006E-428F-9E59-06B9F0E41348}
+		{39B5FC3B-0244-4F94-9F87-B54453802823} = {E32B7EE0-006E-428F-9E59-06B9F0E41348}
+		{7D63BB76-9422-4B4A-875A-73F10C80CC8B} = {E32B7EE0-006E-428F-9E59-06B9F0E41348}
+		{4D1DB373-E603-4155-A180-5D4D2A432FE9} = {E32B7EE0-006E-428F-9E59-06B9F0E41348}
 	EndGlobalSection
 EndGlobal
