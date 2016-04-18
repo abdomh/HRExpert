@@ -9,5 +9,9 @@ namespace HRExpert.Organization.DTO
     {
         public OrganizationDto Organization { get; set; }
         public List<DepartmentDto> Childs { get; set; }
+        public DepartmentDto()
+        {
+            this.Childs = new List<DepartmentDto>();
+        }
     }
 }

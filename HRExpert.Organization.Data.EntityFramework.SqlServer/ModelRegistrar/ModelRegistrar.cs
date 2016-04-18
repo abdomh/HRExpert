@@ -11,6 +11,8 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer
         {
             modelbuilder.Entity<Models.Organization>();
             modelbuilder.Entity<Department>();
+            modelbuilder.Entity<DepartmentLink>().HasOne(x => x.Left).WithMany(x => x.Left).HasForeignKey(x=>x.LeftId);
+            modelbuilder.Entity<DepartmentLink>().HasOne(x => x.Right).WithMany(x => x.Right).HasForeignKey(x=>x.RightId);
             modelbuilder.Entity<DepartmentLink>().HasKey(x => new { x.LeftId, x.RightId });
             
         }

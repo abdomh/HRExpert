@@ -6,6 +6,8 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
 using HRExpert.Organization.BL.Abstractions;
 using HRExpert.Core.Controllers;
+using HRExpert.Organization.DTO;
+using HRExpert.Core.DTO;
 namespace HRExpert.Organization.Controllers
 {
     [Route("api/[controller]")]
@@ -18,6 +20,12 @@ namespace HRExpert.Organization.Controllers
         {
         }
         #endregion
+        [Route("/api/Organization/Departments/{id}")]
+        [HttpGet]
+        public IdNameDto[] Organization(long id)
+        {
+            return ((IDepartmentBL)ReferencyBL).ListByOrganization(id).ToArray();
+        }
 
     }
 }
