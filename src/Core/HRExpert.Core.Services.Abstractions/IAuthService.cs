@@ -6,6 +6,6 @@ namespace HRExpert.Core.Services.Abstractions
     {
         HttpContext CurrentContext { get;}
         User CurrentUser { get; }
-        void SetCurrentContext(HttpContext context);
+       // void SetCurrentContext(HttpContext context);
     }
 }

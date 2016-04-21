@@ -7,6 +7,7 @@
   "licenseUrl": "",
   "dependencies": {
     "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
+    "Microsoft.AspNet.Mvc.Cors": "6.0.0-rc1-final",
     "ExtCore.Infrastructure": "1.0.0-alpha7",
     "HRExpert.Core.BL": "1.0.0-*",
     "HRExpert.Core.BL.Abstractions": "1.0.0-*",

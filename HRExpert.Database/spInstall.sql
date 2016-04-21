@@ -32,13 +32,16 @@ AS
 	(Name)
 	Values
 	(N'Администрирование'),
-	(N'Организации')
+	(N'Базовые права')
 	--Права доступа
 	INSERT INTO PermissionTypes
 	(Name, SectionId)
 	VALUES
 	(N'Делать всё',1),
-	(N'Просмотр',2)
+	(N'Просмотр',2),
+	(N'Редактирование',2),
+	(N'Удаление',2)
+	
 	--Права доступа по ролям
 	INSERT INTO RolePermissionTypes
 	(RoleId,PermissionTypeId)

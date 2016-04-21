@@ -1,6 +1,7 @@
 ﻿using ExtCore.Data.Abstractions;
 using HRExpert.Core.Services.Abstractions;
 using HRExpert.Core.Data.Abstractions;
+
 namespace HRExpert.Core.BL
 {
     public class BaseBL: Abstractions.IBaseBL

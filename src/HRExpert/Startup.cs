@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Mvc;
+using Microsoft.AspNet.Mvc.Cors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
@@ -19,13 +21,13 @@ namespace HRExpert
         }
 
         public override void ConfigureServices(IServiceCollection services)
-        {
+        {           
             base.ConfigureServices(services);
         }
 
         public override void Configure(IApplicationBuilder applicationBuilder, IHostingEnvironment hostingEnvironment)
         {
-            applicationBuilder.UseIISPlatformHandler();
+            applicationBuilder.UseIISPlatformHandler();            
             if (hostingEnvironment.IsEnvironment("Development"))
             {
 
@@ -40,7 +42,12 @@ namespace HRExpert
                 applicationBuilder.UseDeveloperExceptionPage();
                 applicationBuilder.UseDatabaseErrorPage();
             }
-            
+            applicationBuilder.UseCors(x => {
+                x.AllowAnyOrigin();
+                x.AllowAnyMethod();
+                x.AllowAnyHeader();
+                x.AllowCredentials();
+            });
             base.Configure(applicationBuilder, hostingEnvironment);
         }
         public static void Main(string[] args) => WebApplication.Run<Startup>(args);

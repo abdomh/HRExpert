@@ -4,6 +4,8 @@ using Microsoft.AspNet.Http;
 using ExtCore.Data.Abstractions;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
+using System;
+
 namespace HRExpert.Core.Services
 {
     /// <summary>
@@ -13,10 +15,12 @@ namespace HRExpert.Core.Services
     {
         private IStorage storage;
         private IUserRepository userRepository;
-
-        public AuthService(IStorage storage)
+        private User currentUser;
+        private IHttpContextAccessor contextaccessor;
+        public AuthService(IStorage storage, IHttpContextAccessor contextaccessor)
         {
             this.storage = storage;
+            this.contextaccessor = contextaccessor;
             userRepository = storage.GetRepository<IUserRepository>();
         }
         /// <summary>
@@ -24,19 +28,32 @@ namespace HRExpert.Core.Services
         /// </summary>
         public HttpContext CurrentContext
         {
-            get; set;
+            get { return this.contextaccessor.HttpContext; }
         }
         public User CurrentUser
         {
             get
-            {                
-                long id =long.Parse(CurrentContext.User.Claims.Where(x => x.Type == ClaimTypes.UserData)?.First()?.Value);
-                return userRepository.Profile(id);
+            {
+                if (currentUser == null)
+                {
+                    long id = long.Parse(CurrentContext.User.Claims.Where(x => x.Type == ClaimTypes.UserData)?.First()?.Value);
+                    currentUser = userRepository.Profile(id);
+                }
+                return currentUser;
             }
+        }        
+
+        public bool CheckPermission(int PermissionId)
+        {
+            foreach(var role in CurrentUser.Roles)
+            {
+                if(role.Role.Permissions.Any(x => x.PermissionTypeId == PermissionId)) return true;
+            }
+            return false;
         }
-        public void SetCurrentContext(HttpContext context)
+        /*public void SetCurrentContext(HttpContext context)
         {
             CurrentContext = context;
-        }        
+        }  */      
     }
 }

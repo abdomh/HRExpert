@@ -12,7 +12,7 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
         public override Role Read(long Id)
         {
             return this.dbSet
-                .Include(x => x.Permissions).ThenInclude(x=>x.PermissionType)
+                .Include(x => x.Permissions).ThenInclude(x=>x.PermissionType).ThenInclude(x=>x.Section)
                 .Where(x => x.Id == Id)
                 .ToList()
                 .FirstOrDefault();

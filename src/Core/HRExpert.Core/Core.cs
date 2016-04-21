@@ -5,6 +5,7 @@ using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Filters;
+using Microsoft.AspNet.Cors;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -35,25 +36,20 @@ namespace HRExpert.Core
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IBaseBL, BaseBL>();
-            services.AddSingleton<IUsersBL, UsersBL>();
-            services.AddSingleton<IRoleBL, RolesBL>();
-            services.AddSingleton<ISectionBL, SectionsBL>();
-            services.AddSingleton<IPermissionBL, PermissionsBL>();
-            services.AddSingleton<IAuthService, AuthService>();
+            services.AddScoped<IBaseBL, BaseBL>();
+            services.AddScoped<IUsersBL, UsersBL>();
+            services.AddScoped<IRoleBL, RolesBL>();
+            services.AddScoped<ISectionBL, SectionsBL>();
+            services.AddScoped<IPermissionBL, PermissionsBL>();
+            services.AddScoped<IAuthService, AuthService>();
             
             services.AddAuthentication();
             services.AddCaching();
         }
 
         public void Configure(IApplicationBuilder applicationBuilder)
-        {            
-            applicationBuilder.UseCors(x=> {
-                x.AllowAnyOrigin();
-                x.AllowAnyMethod();
-                x.AllowAnyHeader();
-                x.AllowCredentials();
-            });
+        {           
+            
             applicationBuilder.UseJwtBearerAuthentication(options =>
             {
                 string authority = this.configurationRoot["JWT:Authority"];
@@ -62,7 +58,6 @@ namespace HRExpert.Core
                 options.AutomaticChallenge = true;
                 options.Audience = audience;
                 options.Authority = authority;
-
                 options.RequireHttpsMetadata = false;
             });
 
@@ -73,12 +68,11 @@ namespace HRExpert.Core
                 options.AutomaticAuthenticate = true;
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
-
                 options.Provider = new HRExpert.Core.Services.AuthorizationProvider(applicationBuilder.ApplicationServices.GetService<IStorage>());
             });
             applicationBuilder.Use( (context, next) => {
-                IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
-                authService.SetCurrentContext(context);
+                //IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
+                //authService.SetCurrentContext(context);
                 return next.Invoke();
             });          
             

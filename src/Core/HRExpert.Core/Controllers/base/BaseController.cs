@@ -18,8 +18,8 @@ namespace HRExpert.Core.Controllers
         public BaseController(
             IBaseBL baseBL
             )
-        {
-            this.baseBl = baseBL;
+        {           
+            this.baseBl = baseBL;            
         }
         #endregion 
 

@@ -7,3 +7,4 @@ src/HRExpert/node_modules/
 *.dbmdl
 *.suo
 *.suo
+*.log

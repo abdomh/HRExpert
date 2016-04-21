@@ -30,8 +30,8 @@ namespace HRExpert.Organization
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IOrganizationBL, OrganizationBL>();
-            services.AddSingleton<IDepartmentBL, DepartmentBL>();
+            services.AddScoped<IOrganizationBL, OrganizationBL>();
+            services.AddScoped<IDepartmentBL, DepartmentBL>();
         }
 
         public void Configure(IApplicationBuilder applicationBuilder)

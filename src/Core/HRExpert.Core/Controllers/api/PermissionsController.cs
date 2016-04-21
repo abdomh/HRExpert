@@ -6,7 +6,7 @@ using HRExpert.Core.DTO;
 namespace HRExpert.Core.Controllers.api
 {
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Roles = "Администратор")]
     public class PermissionsController : ReferencyController
     {
         #region Ctor

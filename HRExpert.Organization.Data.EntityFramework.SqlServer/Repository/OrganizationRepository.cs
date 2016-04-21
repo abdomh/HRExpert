@@ -11,7 +11,6 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
             return this.dbSet
                 .Include(x => x.Departments)
                 .Where(x => x.Id == Id)
-                .ToList()
                 .FirstOrDefault();
         }
     }
