@@ -42,16 +42,17 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository.Base
         {
             this.Delete(this.WithKey(Id));
         }
-        public virtual void Create(T entity)
-        {
-            this.dbSet.Add(entity);
-            this.dbContext.SaveChanges();
-        }
         public virtual void Delete(T entity)
         {
             this.dbSet.Remove(entity);
             this.dbContext.SaveChanges();
         }
+        public virtual void Create(T entity)
+        {
+            this.dbSet.Add(entity);
+            this.dbContext.SaveChanges();
+        }
+        
 
         public virtual IQueryable<T> Range(IQueryable<T> collection, int take, int skip)
         {

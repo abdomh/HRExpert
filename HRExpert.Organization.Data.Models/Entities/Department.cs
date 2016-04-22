@@ -17,5 +17,6 @@ namespace HRExpert.Organization.Data.Models
         public virtual Organization Organization { get; set; }
         public virtual ICollection<DepartmentLink> Left { get; set; }
         public virtual ICollection<DepartmentLink> Right { get; set; }
+        public virtual ICollection<StaffEstablishedPost> StaffEstablishedPosts { get; set; }
     }
 }

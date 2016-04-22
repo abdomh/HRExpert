@@ -32,6 +32,9 @@ namespace HRExpert.Organization
         {
             services.AddScoped<IOrganizationBL, OrganizationBL>();
             services.AddScoped<IDepartmentBL, DepartmentBL>();
+            services.AddScoped<IPositionsBL, PositionsBL>();
+            services.AddScoped<IPersonBL, PersonsBL>();
+            services.AddScoped<IStaffEstablishedPostBL, StaffEstablishedPostBL>();
         }
 
         public void Configure(IApplicationBuilder applicationBuilder)

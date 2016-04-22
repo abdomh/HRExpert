@@ -76,7 +76,6 @@
     <Build Include="Organization\Persons.sql" />
     <Build Include="Organization\StaffEstablishedPosts.sql" />
     <Build Include="Organization\Positions.sql" />
-    <Build Include="Organization\StaffEstablishedPostPerson.sql" />
     <Build Include="Organization\Statuses.sql" />
     <Build Include="Organization\DocumentTypes.sql" />
     <Build Include="Organization\EntityTypes.sql" />
