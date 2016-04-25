@@ -7,21 +7,28 @@ using System.Collections.Generic;
 using System.Linq;
 namespace HRExpert.Organization.BL
 {
-    public class PersonsBL : Core.BL.ReferencyBl<Person>, Abstractions.IPersonBL
+    public class PersonsBL : Abstractions.IPersonBL
     {
+        private IPersonRepository personsRepository;
+        private IAuthService authService;
         public PersonsBL(IStorage storage, IAuthService authService)
-           :base(storage, authService)
         {
-            var personRepository = storage.GetRepository<IPersonRepository>();
-            this.SetRepository(personRepository);
+            this.personsRepository = storage.GetRepository<IPersonRepository>();
+            this.authService = authService;
         }
         public List<PersonDto> GetByStaffEstablishedPost(long DepartmentId, long PositionId)
         {
             var result = new List<PersonDto>();
-            var data = ((IPersonRepository)this.ReferencyRepository).GetByStaffEstablishedPost(DepartmentId, PositionId);
+            var data = personsRepository.GetByStaffEstablishedPost(DepartmentId, PositionId);
             if (data != null)
                 result = data.Select(x => new PersonDto { Name = x.Name, Id = x.Id, PostCount = x.PostCount }).ToList();
             return result;
+        }
+        public void Create(PersonDto dto)
+        {
+            Person entity = new Person();
+            entity.Name = dto.Name;
+            entity.PostCount = dto.PostCount;            
         }
     }
 }

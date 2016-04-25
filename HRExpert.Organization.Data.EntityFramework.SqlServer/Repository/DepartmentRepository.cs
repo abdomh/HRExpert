@@ -6,39 +6,76 @@ using System.Collections.Generic;
 
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
-    public class DepartmentRepository : HRExpert.Core.Data.EntityFramework.SqlServer.Repository.Base.ReferencyRepositoryBase<Department>
-                                , IDepartmentRepository
+    /// <summary>
+    /// Репозиторий подразделений
+    /// </summary>
+    public class DepartmentRepository : ExtCore.Data.EntityFramework.SqlServer.RepositoryBase<Department>, IDepartmentRepository
     {
-        public override IEnumerable<Department> All()
+        /// <summary>
+        /// Все подразделения
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<Department> All()
         {
-            return this.dbSet
-                .Include(x => x.Organization)
-                .Include(x => x.Left)
-                    .ThenInclude(x => x.Right)        
-                .Include(x=>x.Right)                              
-                    .ThenInclude(x=>x.Left)
-                .ToList();
+            return this.dbSet.ToList();
         }
+        /// <summary>
+        /// Все подразделения по Id организации
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public IEnumerable<Department> AllByOrganization(long Id)
         {
-            return this.dbSet
-                .Include(x => x.Organization)
-                .Include(x => x.Left)
-                    .ThenInclude(x => x.Right)
-                .Include(x => x.Right)
-                    .ThenInclude(x => x.Left)
+            return this.dbSet                
                 .Where(x=>x.OrganizationId==Id)
                 .ToList();
         }
-        public override Department Read(long Id)
+        /// <summary>
+        /// Создание
+        /// </summary>
+        /// <param name="entity"></param>
+        public virtual void Create(Department entity)
+        {
+            this.dbSet.Add(entity);
+            this.dbContext.SaveChanges();
+        }
+        /// <summary>
+        /// Чтение
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public virtual Department Read(long Id)
         {
             return this.dbSet
-                .Include(x=>x.Right).ThenInclude(x=>x.Left)
-                .Include(x=>x.Left).ThenInclude(x=>x.Right)
-                .Include(x=>x.Organization)
                 .Where(x => x.Id == Id)
-                .ToList()
                 .FirstOrDefault();
         }
+        /// <summary>
+        /// Обновление
+        /// </summary>
+        /// <param name="entity"></param>
+        public virtual void Update(Department entity)
+        {
+            this.dbContext.Entry(entity).State = EntityState.Modified;
+            this.dbContext.SaveChanges();
+        }
+        /// <summary>
+        /// Удаление
+        /// </summary>
+        /// <param name="Id"></param>
+        public virtual void Delete(long Id)
+        {
+            this.Delete(Read(Id));
+        }
+        /// <summary>
+        /// Удаление
+        /// </summary>
+        /// <param name="entity"></param>
+        public virtual void Delete(Department entity)
+        {
+            this.dbSet.Remove(entity);
+            this.dbContext.SaveChanges();
+        }
+        
     }
 }

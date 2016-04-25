@@ -1,29 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using HRExpert.Organization.Data.Models;
 using HRExpert.Organization.DTO;
 using HRExpert.Organization.Data.Abstractions;
 using ExtCore.Data.Abstractions;
 using HRExpert.Core.Services.Abstractions;
-using HRExpert.Organization.DTO;
-using HRExpert.Core.DTO;
 namespace HRExpert.Organization.BL
 {
-    public class DepartmentBL : HRExpert.Core.BL.ReferencyBl<HRExpert.Organization.Data.Models.Department>, Abstractions.IDepartmentBL
+    public class DepartmentBL : Abstractions.IDepartmentBL
     {
+        private IAuthService authService;
+        private IDepartmentRepository departmentRepository;
         public DepartmentBL(IStorage storage, IAuthService authService)
-           : base(storage, authService)
         {
-            var departmentRepository = storage.GetRepository<IDepartmentRepository>();
-            this.SetRepository(departmentRepository);
+            this.departmentRepository = storage.GetRepository<IDepartmentRepository>();
+            this.authService = authService;
         }
 
         #region Public
-        public override IEnumerable<IdNameDto> List()
+        public IEnumerable<DepartmentDto> List()
         {
-            var all = ReferencyRepository.All();
+            var all = departmentRepository.All();
             var core = all.Where(x => !x.Right.Any()).ToList();
             var allDepartments = all.Select(x => new DepartmentDto { Id = x.Id, Name = x.Name }).ToList();
             foreach (var dep in all)
@@ -37,9 +34,9 @@ namespace HRExpert.Organization.BL
             }
             return allDepartments.Where(x => core.Any(y => y.Id == x.Id)).ToList();
         }
-        public IEnumerable<IdNameDto> ListByOrganization(long OrganizationId)
+        public IEnumerable<DepartmentDto> ListByOrganization(long OrganizationId)
         {
-            var all = ((IDepartmentRepository)ReferencyRepository).AllByOrganization(OrganizationId);
+            var all = departmentRepository.AllByOrganization(OrganizationId);
             var core = all.Where(x => !x.Right.Any()).ToList();
             var allDepartments = all.Select(x => new DepartmentDto { Id = x.Id, Name = x.Name }).ToList();
             foreach (var dep in all)
@@ -53,8 +50,32 @@ namespace HRExpert.Organization.BL
             }
             return allDepartments.Where(x => core.Any(y => y.Id == x.Id)).ToList();
         }
+        public virtual DepartmentDto Create(DepartmentDto dto)
+        {
+            var entity = new Department { Name = dto.Name };
+            this.departmentRepository.Create(entity);
+            return ToDto(entity);
+        }
+        public virtual DepartmentDto Read(long id)
+        {
+            return ToDto(departmentRepository.Read(id));
+        }
+        public virtual DepartmentDto Update(DepartmentDto dto)
+        {
+            var entity = departmentRepository.Read(dto.Id);
+            this.FromDto(entity, dto);
+            departmentRepository.Update(entity);
+            return ToDto(entity);
+        }
+        public virtual DepartmentDto Delete(long id)
+        {
+            var entity = departmentRepository.Read(id);
+            entity.Delete = true;
+            departmentRepository.Update(entity);
+            return ToDto(entity);
+        }
         #region Converters
-        public override IdNameDto ToDto(Department entity)
+        public DepartmentDto ToDto(Department entity)
         {
             DepartmentDto result = new DepartmentDto();
             result.Id = entity.Id;
@@ -66,7 +87,7 @@ namespace HRExpert.Organization.BL
             }
             return result;
         }
-        public override void FromDto(Department entity, IdNameDto indto)
+        public void FromDto(Department entity, DepartmentDto indto)
         {
             var dto = (DepartmentDto)indto;
             entity.Name = dto.Name;            

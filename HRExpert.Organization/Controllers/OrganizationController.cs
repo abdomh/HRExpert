@@ -1,23 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
 using HRExpert.Organization.BL.Abstractions;
-using HRExpert.Core.Controllers;
+using HRExpert.Organization.DTO;
 namespace HRExpert.Organization.Controllers
 {
-    [Route("api/[controller]")]
-    [AllowAnonymous]
-    public class OrganizationController : ReferencyController
+    [Route(OrganizationConstants.OrganizationController)]
+    [AllowAnonymous]    
+    public class OrganizationController:Controller
     {
+        private IOrganizationBL organizationBl;
         #region Ctor
         public OrganizationController(IOrganizationBL organizationBl)
-            : base(organizationBl)
         {
+            this.organizationBl = organizationBl;
         }
         #endregion
+
+        [HttpGet]
+        [Route(OrganizationConstants.OrganizationController)]
+        public virtual IEnumerable<OrganizationDto> Get()
+        {
+            return this.organizationBl.List();
+        }
+        [HttpGet]
+        [Route(OrganizationConstants.OrganizationController_key)]
+        public virtual OrganizationDto Get(long organizationid)
+        {
+            return this.organizationBl.Read(organizationid);
+        }
+        [HttpPost]
+        [Route(OrganizationConstants.OrganizationController)]
+        public virtual OrganizationDto Post([FromBody]OrganizationDto value)
+        {
+            return this.organizationBl.Create(value);
+        }
+        [HttpPut]
+        [Route(OrganizationConstants.OrganizationController)]
+        public virtual OrganizationDto Put([FromBody]OrganizationDto value)
+        {
+            return this.organizationBl.Update(value);
+        }
+        [HttpDelete]
+        [Route(OrganizationConstants.OrganizationController_key)]
+        public virtual OrganizationDto Delete(long id)
+        {
+            return this.organizationBl.Delete(id);
+        }
 
     }
 }

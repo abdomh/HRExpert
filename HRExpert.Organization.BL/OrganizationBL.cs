@@ -1,21 +1,60 @@
-﻿using System;
+﻿using ExtCore.Data.Abstractions;
+using HRExpert.Core.Services.Abstractions;
+using HRExpert.Organization.Data.Abstractions;
+using HRExpert.Organization.DTO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using HRExpert.Organization.Data.Models;
-using HRExpert.Organization.DTO;
-using HRExpert.Organization.Data.Abstractions;
-using ExtCore.Data.Abstractions;
-using HRExpert.Core.Services.Abstractions;
 namespace HRExpert.Organization.BL
 {
-    public class OrganizationBL: HRExpert.Core.BL.ReferencyBl<HRExpert.Organization.Data.Models.Organization>, Abstractions.IOrganizationBL
+    public class OrganizationBL: Abstractions.IOrganizationBL
     {
-        public OrganizationBL(IStorage storage, IAuthService authService )
-           :base(storage, authService)
+        private IOrganizationRepository organizationRepository;
+        private IAuthService authService;
+        public OrganizationBL(IStorage storage, IAuthService authService )           
         {
-            var organizationRepository = storage.GetRepository<IOrganizationRepository>();
-            this.SetRepository(organizationRepository);
+            this.organizationRepository = storage.GetRepository<IOrganizationRepository>();
+            this.authService = authService;
         }
+        #region CRUD
+        public virtual IEnumerable<OrganizationDto> List()
+        {
+            return this.organizationRepository.All().Select(x => ToDto(x));
+        }
+        public virtual OrganizationDto Create(OrganizationDto dto)
+        {
+            Data.Models.Organization entity = new Data.Models.Organization { Name = dto.Name };
+            this.organizationRepository.Create(entity);
+            return ToDto(entity);
+        }
+        public virtual OrganizationDto Read(long id)
+        {
+            return ToDto(organizationRepository.Read(id));
+        }
+        public virtual OrganizationDto Update(OrganizationDto dto)
+        {
+            var entity = organizationRepository.Read(dto.Id);
+            this.FromDto(entity, dto);
+            organizationRepository.Update(entity);
+            return ToDto(entity);
+        }
+        public virtual OrganizationDto Delete(long id)
+        {
+            var entity = organizationRepository.Read(id);
+            entity.Delete = true;
+            organizationRepository.Update(entity);
+            return ToDto(entity);
+        }
+        #endregion 
+        #region Converters
+        public virtual OrganizationDto ToDto(Data.Models.Organization entity)
+        {
+            OrganizationDto result = new OrganizationDto { Id = entity.Id, Name = entity.Name };
+            return result;
+        }
+        public virtual void FromDto(Data.Models.Organization entity, OrganizationDto dto)
+        {
+            entity.Name = dto.Name;
+        }
+        #endregion
     }
 }

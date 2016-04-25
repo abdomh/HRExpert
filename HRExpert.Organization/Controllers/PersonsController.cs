@@ -10,19 +10,22 @@ using HRExpert.Organization.DTO;
 using HRExpert.Core.DTO;
 namespace HRExpert.Organization.Controllers
 {
-    public class PersonsController : ReferencyController
+    [Route(OrganizationConstants.PersonsController)]
+    public class PersonsController : Controller
     {
+        private IPersonBL personsBl;
         #region Ctor
         public PersonsController(IPersonBL personsBl)
-            : base(personsBl)
         {
+            this.personsBl = personsBl;
         }
-        #endregion
-        [Route("/api/Organization/Departments/{departmentid}/StaffEstablishedPost/{positionid}/Persons")]
+
+        #endregion        
+        [Route(OrganizationConstants.PersonsControllerPath)]
         [HttpGet]
         public IdNameDto[] PersonsList(long departmentid,long positionid)
         {
-            return ((IPersonBL)ReferencyBL).GetByStaffEstablishedPost(departmentid,positionid).ToArray();
+            return personsBl.GetByStaffEstablishedPost(departmentid, positionid).ToArray();
         }
     }
 }

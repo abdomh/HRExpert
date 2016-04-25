@@ -1,31 +1,57 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
 using HRExpert.Organization.BL.Abstractions;
-using HRExpert.Core.Controllers;
 using HRExpert.Organization.DTO;
-using HRExpert.Core.DTO;
 namespace HRExpert.Organization.Controllers
 {
-    [Route("api/[controller]")]
+    [Route(OrganizationConstants.DepartmentController)]
     [AllowAnonymous]
-    public class DepartmentController : ReferencyController
+    public class DepartmentController : Controller
     {
+        private IDepartmentBL departmentBl;
         #region Ctor
         public DepartmentController(IDepartmentBL departmentBl)
-            : base(departmentBl)
         {
+            this.departmentBl = departmentBl;
         }
         #endregion
-        [Route("/api/Organization/Departments/{id}")]
+        [Route(OrganizationConstants.DepartmentControllerPath)]
         [HttpGet]
-        public IdNameDto[] Organization(long id)
+        public DepartmentDto[] ByOrganization(long organizationid)
         {
-            return ((IDepartmentBL)ReferencyBL).ListByOrganization(id).ToArray();
+            return departmentBl.ListByOrganization(organizationid).ToArray();
         }
-
+        [HttpGet]
+        [Route(OrganizationConstants.DepartmentController)]
+        public virtual IEnumerable<DepartmentDto> Get()
+        {
+            return this.departmentBl.List();
+        }
+        [HttpGet]
+        [Route(OrganizationConstants.DepartmentController_key)]
+        public virtual DepartmentDto Get(long departmentid)
+        {
+            return this.departmentBl.Read(departmentid);
+        }
+        [HttpPost]
+        [Route(OrganizationConstants.DepartmentController)]
+        public virtual DepartmentDto Post([FromBody]DepartmentDto value)
+        {
+            return this.departmentBl.Create(value);
+        }
+        [HttpPut]
+        [Route(OrganizationConstants.DepartmentController)]
+        public virtual DepartmentDto Put([FromBody]DepartmentDto value)
+        {
+            return this.departmentBl.Update(value);
+        }
+        [HttpDelete]
+        [Route(OrganizationConstants.DepartmentController_key)]
+        public virtual DepartmentDto Delete(long departmentid)
+        {
+            return this.departmentBl.Delete(departmentid);
+        }
     }
 }

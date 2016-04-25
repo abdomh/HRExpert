@@ -38,8 +38,7 @@ namespace HRExpert.Organization
         }
 
         public void Configure(IApplicationBuilder applicationBuilder)
-        {
-            
+        {            
         }
 
         public void RegisterRoutes(IRouteBuilder routeBuilder)

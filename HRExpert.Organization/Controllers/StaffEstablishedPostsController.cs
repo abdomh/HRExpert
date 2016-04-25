@@ -5,6 +5,7 @@ using Microsoft.AspNet.Authorization;
 namespace HRExpert.Organization.Controllers
 {
     [AllowAnonymous]
+    [Route(OrganizationConstants.StaffEstablishedPostsController)]
     public class StaffEstablishedPostsController:Controller
     {
         private IStaffEstablishedPostBL staffEstablishedPostBl;
@@ -13,18 +14,19 @@ namespace HRExpert.Organization.Controllers
         {
             this.staffEstablishedPostBl = staffEstablishedPostBl;
         }
-        #endregion
-        [Route("/api/Organization/Departments/{departmentid}/StaffEstablishedPosts")]
+        #endregion        
+        [Route(OrganizationConstants.StaffEstablishedPostsControllerPath)]
         [HttpGet]
         public StaffEstablishedPostDto[] List(long departmentid)
         {
             return this.staffEstablishedPostBl.GetByDepartment(departmentid).ToArray();
         }
-        [Route("/api/Organization/Departments/{departmentid}/StaffEstablishedPosts/{positionid}")]
+        
+        [Route(OrganizationConstants.StaffEstablishedPostsControllerPath_key)]
         [HttpGet]
         public StaffEstablishedPostDto Read(long departmentid, long positionid)
         {
-            return this.staffEstablishedPostBl.GetByDepartmentAndPosition(departmentid,positionid);
+            return this.staffEstablishedPostBl.GetByDepartmentAndPosition(departmentid, positionid);
         }
     }
 }
