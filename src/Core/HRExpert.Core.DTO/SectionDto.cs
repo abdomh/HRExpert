@@ -1,0 +1,17 @@
+﻿namespace HRExpert.Core.DTO
+{
+    /// <summary>
+    /// Модуль
+    /// </summary>
+    public class SectionDto
+    {
+        /// <summary>
+        /// Идентификатор
+        /// </summary>
+        public long Id { get; set; }
+        /// <summary>
+        /// Название
+        /// </summary>
+        public string Name { get; set; }
+    }
+}

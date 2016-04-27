@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace HRExpert.Organization.DTO
+﻿namespace HRExpert.Organization.DTO
 {
-    public class OrganizationDto: HRExpert.Core.DTO.IdNameDto
+    public class OrganizationDto
     {
+        /// <summary>
+        /// Идентификатор
+        /// </summary>
+        public long Id { get; set; }
+        /// <summary>
+        /// Название
+        /// </summary>
+        public string Name { get; set; }
         public OrganizationDto()
         {
         }

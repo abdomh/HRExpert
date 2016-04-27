@@ -23,35 +23,48 @@ namespace HRExpert.Organization.Controllers
         {
             return departmentBl.ListByOrganization(organizationid).ToArray();
         }
+        [Route(OrganizationConstants.DepartmentControllerPath_key)]
+        [HttpGet]
+        public DepartmentDto ByOrganizationAndKey(long organizationid,long departmentid)
+        {
+            return departmentBl.ByOrganizationAndKey(organizationid, departmentid);
+        }
+        #region ONLY FOR ADMIN
+        [Authorize(Roles = "Администратор")]
         [HttpGet]
         [Route(OrganizationConstants.DepartmentController)]
         public virtual IEnumerable<DepartmentDto> Get()
         {
             return this.departmentBl.List();
         }
+        [Authorize(Roles = "Администратор")]
         [HttpGet]
         [Route(OrganizationConstants.DepartmentController_key)]
         public virtual DepartmentDto Get(long departmentid)
         {
             return this.departmentBl.Read(departmentid);
         }
+        [Authorize(Roles = "Администратор")]
         [HttpPost]
         [Route(OrganizationConstants.DepartmentController)]
         public virtual DepartmentDto Post([FromBody]DepartmentDto value)
         {
             return this.departmentBl.Create(value);
         }
+        [Authorize(Roles = "Администратор")]
         [HttpPut]
         [Route(OrganizationConstants.DepartmentController)]
         public virtual DepartmentDto Put([FromBody]DepartmentDto value)
         {
             return this.departmentBl.Update(value);
         }
+        [Authorize(Roles = "Администратор")]
         [HttpDelete]
         [Route(OrganizationConstants.DepartmentController_key)]
         public virtual DepartmentDto Delete(long departmentid)
         {
             return this.departmentBl.Delete(departmentid);
         }
+        #endregion
     }
 }

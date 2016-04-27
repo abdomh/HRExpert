@@ -1,6 +1,9 @@
 ﻿using HRExpert.Core;
 namespace HRExpert.Organization
 {
+    /// <summary>
+    /// Константы для API организации
+    /// </summary>
     public static class OrganizationConstants
     {        
         /// <summary>

@@ -11,28 +11,21 @@ namespace HRExpert.Organization.BL
     {
         private IAuthService authService;
         private IDepartmentRepository departmentRepository;
+        private IDepartmentLinksRepository departmentLinksRepository;
+        private IPersonRepository personRepository;
         public DepartmentBL(IStorage storage, IAuthService authService)
         {
             this.departmentRepository = storage.GetRepository<IDepartmentRepository>();
+            this.departmentLinksRepository = storage.GetRepository<IDepartmentLinksRepository>();
             this.authService = authService;
         }
 
         #region Public
         public IEnumerable<DepartmentDto> List()
         {
-            var all = departmentRepository.All();
-            var core = all.Where(x => !x.Right.Any()).ToList();
-            var allDepartments = all.Select(x => new DepartmentDto { Id = x.Id, Name = x.Name }).ToList();
-            foreach (var dep in all)
-            {
-                var dto = allDepartments.Where(x => x.Id == dep.Id).First();
-                foreach(var child in dep.Left)
-                {
-                    var childdto = allDepartments.Where(x => x.Id == child.Right.Id).First();
-                    dto.Childs.Add(childdto);
-                }
-            }
-            return allDepartments.Where(x => core.Any(y => y.Id == x.Id)).ToList();
+            var all = departmentRepository.All();            
+            var allDepartments = all.Select(x => new DepartmentDto { Id = x.Id, Name = x.Name }).ToList();            
+            return allDepartments;
         }
         public IEnumerable<DepartmentDto> ListByOrganization(long OrganizationId)
         {
@@ -49,6 +42,11 @@ namespace HRExpert.Organization.BL
                 }
             }
             return allDepartments.Where(x => core.Any(y => y.Id == x.Id)).ToList();
+        }
+        public DepartmentDto ByOrganizationAndKey(long organizationid, long departmentid)
+        {
+            var entity = this.departmentRepository.ByOrganizationAndKey(organizationid, departmentid);
+            return ToDto(entity);
         }
         public virtual DepartmentDto Create(DepartmentDto dto)
         {
@@ -80,7 +78,7 @@ namespace HRExpert.Organization.BL
             DepartmentDto result = new DepartmentDto();
             result.Id = entity.Id;
             result.Name = entity.Name;
-            result.Organization = new OrganizationDto { Name = entity.Organization.Name, Id = entity.OrganizationId };
+            result.Organization = new OrganizationDto { Id = entity.OrganizationId };
             foreach(var childs in entity.Left)
             {
                 result.Childs.Add(new DepartmentDto { Id = childs.Right.Id, Name = childs.Right.Name });
@@ -93,6 +91,7 @@ namespace HRExpert.Organization.BL
             entity.Name = dto.Name;            
         }
         #endregion
-        #endregion   
+        
+        #endregion
     }
 }

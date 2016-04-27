@@ -7,20 +7,39 @@ using HRExpert.Core.DTO;
 using HRExpert.Core.Services.Abstractions;
 namespace HRExpert.Core.BL
 {
-    public class UsersBL: ReferencyBl<User>, Abstractions.IUsersBL
+    /// <summary>
+    /// Бизнес логика пользователей
+    /// </summary>
+    public class UsersBL: Abstractions.IUsersBL
     {
+        /// <summary>
+        /// Хранилище пользователей
+        /// </summary>
+        private IUserRepository userRepository;
+        /// <summary>
+        /// Сервис доступа к данным контекста
+        /// </summary>
+        private IAuthService authService;
         #region Ctor
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="storage"></param>
+        /// <param name="authService"></param>
         public UsersBL(IStorage storage,IAuthService authService)
-            :base(storage,authService)
         {
-            var repository = storage.GetRepository<IUserRepository>();
-            this.SetRepository(repository);
+            this.authService = authService;
+            userRepository = storage.GetRepository<IUserRepository>();
         }
         #endregion
         #region Public
+        /// <summary>
+        /// Получение профиля
+        /// </summary>
+        /// <returns>Профиль</returns>
         public ProfileDto Profile()
         {
-            var user = AuthService.CurrentUser;
+            var user = authService.CurrentUser;
             ProfileDto result = new ProfileDto();
             result.UserName = user.Name;
             List<PermissionDto> permissions = new List<PermissionDto>();
@@ -37,29 +56,80 @@ namespace HRExpert.Core.BL
             result.Permissions = permissions.ToArray();
             return result;
         }
+        /// <summary>
+        /// Список пользователей
+        /// </summary>
+        /// <returns>Коллекция записей</returns>
+        public virtual IEnumerable<UserDto> List()
+        {
+            return userRepository.All().Select(x => ToDto(x));
+        }
+        /// <summary>
+        /// Создание
+        /// </summary>
+        /// <param name="dto">Пользователь</param>
+        /// <returns>Пользователь</returns>
+        public virtual UserDto Create(UserDto dto)
+        {
+            User entity = new User { Name = dto.Name };
+            FromDto(entity, dto);
+            userRepository.Create(entity);
+            return ToDto(entity);
+        }
+        /// <summary>
+        /// Чтение
+        /// </summary>
+        /// <param name="id">Идентификатор</param>
+        /// <returns>Пользователь</returns>
+        public virtual UserDto Read(long id)
+        {
+            return ToDto(userRepository.Read(id));
+        }
+        /// <summary>
+        /// Обновление/редактирование
+        /// </summary>
+        /// <param name="dto">Пользователь</param>
+        /// <returns>Пользователь</returns>
+        public virtual UserDto Update(UserDto dto)
+        {
+            var entity = userRepository.Read(dto.Id);
+            this.FromDto(entity, dto);
+            userRepository.Update(entity);
+            return ToDto(entity);
+        }
+        /// <summary>
+        /// Удаление
+        /// </summary>
+        /// <param name="id">Идентификатор</param>
+        /// <returns></returns>
+        public virtual UserDto Delete(long id)
+        {
+            var entity = userRepository.Read(id);
+            entity.Delete = true;
+            userRepository.Update(entity);
+            return ToDto(entity);
+        }
         #region Converters
-        public override IdNameDto ToDto(User entity)
+        /// <summary>
+        /// Конвертер из сущности в dto
+        /// </summary>
+        /// <param name="entity">Сущность</param>
+        /// <returns>Пользователь</returns>
+        public UserDto ToDto(User entity)
         {
             UserDto result = new UserDto();
             result.Id = entity.Id; 
             result.Name = entity.Name;
-            result.Roles = entity.Roles?.Select(x => new RoleDto { Id=x.Role.Id, Name = x.Role.Name } ).ToList();
             return result;
         }
-        public override void FromDto(User entity, IdNameDto indto)        
-        {
-            var dto = (UserDto)indto;
-            entity.Name = dto.Name; 
-            var toDelete = entity.Roles?.Where(x => !dto.Roles.Any(y => y.Id == x.RoleId))?.ToList();
-            if(toDelete!=null)
-            foreach (var del in toDelete)
-                entity.Roles.Remove(del);
-            var newRoles = dto.Roles.Where(x => !entity.Roles.Any(y => y.RoleId == x.Id))?.ToList();
-            foreach (var role in newRoles)
-            {
-                var roleEntity = RoleRepository.Read(role.Id);
-                entity.Roles.Add(new RoleUser { Role = roleEntity, RoleId = roleEntity.Id, User = entity, UserId = entity.Id });
-            }            
+        /// <summary>
+        /// Конвертер из dto в сущность
+        /// </summary>
+        /// <param name="entity">Сущность</param>
+        /// <param name="dto">Пользователь</param>
+        public void FromDto(User entity, UserDto dto)        
+        {           
+            entity.Name = dto.Name;                       
         }
         #endregion
         #endregion

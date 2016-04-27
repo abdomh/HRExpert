@@ -7,19 +7,62 @@ using HRExpert.Core.Data.Abstractions;
 
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
-    public class PermissionTypesRepository : Base.ReferencyRepositoryBase<PermissionType>, IPermissionTypesRepository
+    /// <summary>
+    /// Хранилище типов прав
+    /// </summary>
+    public class PermissionTypesRepository : RepositoryBase<PermissionType>, IPermissionTypesRepository
     {
-        public override IEnumerable<PermissionType> All()
+        /// <summary>
+        /// Все записи
+        /// </summary>
+        /// <returns>Коллекция записей</returns>
+        public virtual IEnumerable<PermissionType> All()
         {
-            return base.All();
+            return this.dbSet.ToList();
         }
-        public override PermissionType Read(long Id)
+        /// <summary>
+        /// Создание сущности
+        /// </summary>
+        /// <param name="entity">Сущность</param>
+        public virtual void Create(PermissionType entity)
         {
-            return this.dbSet
-                .Include(x=>x.Section)
-                .Where(x => x.Id == Id)
-                .ToList()
-                .FirstOrDefault();
+            this.dbSet.Add(entity);
+            this.dbContext.SaveChanges();
+        }
+        /// <summary>
+        /// Чтение записи
+        /// </summary>
+        /// <param name="Id">Идентификатор</param>
+        /// <returns>Сущность</returns>
+        public virtual PermissionType Read(long Id)
+        {
+            return this.dbSet.Where(x => x.Id==Id).FirstOrDefault();
+        }
+        /// <summary>
+        /// Обновление/редактирование сущности
+        /// </summary>
+        /// <param name="entity">Сущность</param>
+        public virtual void Update(PermissionType entity)
+        {
+            this.dbContext.Entry(entity).State = EntityState.Modified;
+            this.dbContext.SaveChanges();
+        }
+        /// <summary>
+        /// Удаление по идентификатору
+        /// </summary>
+        /// <param name="Id">Идентификатор</param>
+        public virtual void Delete(long Id)
+        {
+            this.Delete(this.Read(Id));
+        }
+        /// <summary>
+        /// Удаление
+        /// </summary>
+        /// <param name="entity">Сущность</param>
+        public virtual void Delete(PermissionType entity)
+        {
+            this.dbSet.Remove(entity);
+            this.dbContext.SaveChanges();
         }
     }
 }

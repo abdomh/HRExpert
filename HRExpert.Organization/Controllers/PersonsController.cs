@@ -23,9 +23,15 @@ namespace HRExpert.Organization.Controllers
         #endregion        
         [Route(OrganizationConstants.PersonsControllerPath)]
         [HttpGet]
-        public IdNameDto[] PersonsList(long departmentid,long positionid)
+        public PersonDto[] PersonsList(long organizationid,long departmentid,long positionid)
         {
-            return personsBl.GetByStaffEstablishedPost(departmentid, positionid).ToArray();
+            return personsBl.GetByStaffEstablishedPost(organizationid, departmentid, positionid).ToArray();
+        }
+        [Route(OrganizationConstants.PersonsControllerPath_key)]
+        [HttpGet]
+        public PersonDto ByStaffEstablishedPostAndId(long organizationid, long departmentid, long positionid, long personid)
+        {
+            return personsBl.GetByStaffEstablishedPostAndId(organizationid, departmentid, positionid, personid);
         }
     }
 }

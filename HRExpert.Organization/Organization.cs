@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Filters;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,10 +6,15 @@ using HRExpert.Organization.BL;
 using HRExpert.Organization.BL.Abstractions;
 namespace HRExpert.Organization
 {
+    /// <summary>
+    /// Startup class для модуля организация
+    /// </summary>
     public class Organization : ExtCore.Infrastructure.IExtension
     {
         private IConfigurationRoot configurationRoot;
-
+        /// <summary>
+        /// Название модуля
+        /// </summary>
         public string Name
         {
             get
@@ -22,15 +23,17 @@ namespace HRExpert.Organization
             }
         }
 
-
         public void SetConfigurationRoot(IConfigurationRoot configurationRoot)
         {
             this.configurationRoot = configurationRoot;
         }
-
+        /// <summary>
+        /// Регистрация сервисов
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddScoped<IOrganizationBL, OrganizationBL>();
+        {           
+            services.AddScoped<IOrganizationBL, OrganizationBL>();            
             services.AddScoped<IDepartmentBL, DepartmentBL>();
             services.AddScoped<IPositionsBL, PositionsBL>();
             services.AddScoped<IPersonBL, PersonsBL>();

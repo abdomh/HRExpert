@@ -7,9 +7,18 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
     public class PersonRepository: ExtCore.Data.EntityFramework.SqlServer.RepositoryBase<Person>, IPersonRepository
     {
-        public List<Person> GetByStaffEstablishedPost(long DepartmentId, long PositionId)
+        public List<Person> GetByStaffEstablishedPost(long OrganizationId, long DepartmentId, long PositionId)
         {
-            return this.dbSet.Where(x => x.DepartmentId == DepartmentId && x.PositionId == PositionId).ToList();
+            return this.dbSet.Where(x => x.StaffEstablishedPost.Department.OrganizationId== OrganizationId && x.DepartmentId == DepartmentId && x.PositionId == PositionId).ToList();
+        }
+        public Person GetByStaffEstablishedPostAndId(long OrganizationId, long DepartmentId, long PositionId,long PersonId)
+        {
+            return this.dbSet.Where(x => 
+            x.StaffEstablishedPost.Department.OrganizationId == OrganizationId && 
+            x.DepartmentId == DepartmentId && 
+            x.PositionId == PositionId &&
+            x.Id == PersonId
+            ).FirstOrDefault();
         }
         /// <summary>
         /// Все персонажи

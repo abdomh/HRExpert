@@ -14,6 +14,13 @@ namespace HRExpert.Organization.Data.Abstractions
         /// <returns></returns>
         IEnumerable<Department> AllByOrganization(long Id);
         /// <summary>
+        /// Подразделение по организации и идентификатору
+        /// </summary>
+        /// <param name="organizationid"></param>
+        /// <param name="departmentid"></param>
+        /// <returns></returns>
+        Department ByOrganizationAndKey(long organizationid, long departmentid);
+        /// <summary>
         /// Все подразделения
         /// </summary>
         /// <returns></returns>

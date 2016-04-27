@@ -13,7 +13,9 @@
     "HRExpert.Organization.BL": "1.0.0-*",
     "HRExpert.Organization.BL.Abstractions": "1.0.0-*",
     "HRExpert.Organization.Data.Abstractions": "1.0.0-*",
-    "HRExpert.Organization.Data.EntityFramework.SqlServer": "1.0.0-*"
+    "HRExpert.Organization.Data.EntityFramework.SqlServer": "1.0.0-*",
+    "HRExpert.Organization.Services.Abstraction": "1.0.0-*",
+    "HRExpert.Organization.Services": "1.0.0-*"
   },
   "frameworks": {
     "dnx451": {      

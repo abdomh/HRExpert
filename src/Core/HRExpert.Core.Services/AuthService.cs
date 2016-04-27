@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Linq;
 using Microsoft.AspNet.Http;
+using Microsoft.Extensions.DependencyInjection;
 using ExtCore.Data.Abstractions;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
@@ -20,7 +21,7 @@ namespace HRExpert.Core.Services
         public AuthService(IStorage storage, IHttpContextAccessor contextaccessor)
         {
             this.storage = storage;
-            this.contextaccessor = contextaccessor;
+            this.contextaccessor = contextaccessor;            
             userRepository = storage.GetRepository<IUserRepository>();
         }
         /// <summary>
@@ -30,6 +31,9 @@ namespace HRExpert.Core.Services
         {
             get { return this.contextaccessor.HttpContext; }
         }
+        /// <summary>
+        /// Текущий пользователь
+        /// </summary>
         public User CurrentUser
         {
             get
@@ -42,18 +46,18 @@ namespace HRExpert.Core.Services
                 return currentUser;
             }
         }        
-
-        public bool CheckPermission(int PermissionId)
+        /// <summary>
+        /// Проверка прав пользователя
+        /// </summary>
+        /// <param name="PermissionId">Идентификтор прав</param>
+        /// <returns>true, если есть права, false в противном случае</returns>
+        public bool CheckPermission(long PermissionId)
         {
             foreach(var role in CurrentUser.Roles)
             {
                 if(role.Role.Permissions.Any(x => x.PermissionTypeId == PermissionId)) return true;
             }
             return false;
-        }
-        /*public void SetCurrentContext(HttpContext context)
-        {
-            CurrentContext = context;
-        }  */      
+        }      
     }
 }

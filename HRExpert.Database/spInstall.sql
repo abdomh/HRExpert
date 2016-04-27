@@ -8,11 +8,11 @@ AS
 	(N'Тестировщик')
 	--Добавление типов учетных данных
 	INSERT INTO CredentialTypes
-	(Name,Code)
+	(Name)
 	VALUES 
-	('Email','0001'),
-	('Login','0002'),
-	('Phone','0003')
+	('Email'),
+	('Login'),
+	('Phone')
 	--Добавление учетных данных
 	INSERT INTO Credentials
 	(CredentialTypeId,Secret,UserId,Value)

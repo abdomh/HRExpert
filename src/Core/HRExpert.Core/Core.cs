@@ -1,11 +1,5 @@
-﻿using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Authentication.Cookies;
-using Microsoft.AspNet.Authentication.JwtBearer;
-using Microsoft.AspNet.Builder;
+﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Filters;
-using Microsoft.AspNet.Cors;
 using Microsoft.AspNet.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,27 +10,33 @@ using HRExpert.Core.Services;
 using ExtCore.Data.Abstractions;
 namespace HRExpert.Core
 {
+    /// <summary>
+    /// Startup class для модуля ядра
+    /// </summary>
     public class Core : ExtCore.Infrastructure.IExtension
     {
         private IConfigurationRoot configurationRoot;
-
+        /// <summary>
+        /// Имя модуля
+        /// </summary>
         public string Name
         {
             get
             {
                 return "Core";
             }
-        }
-        
+        }        
 
         public void SetConfigurationRoot(IConfigurationRoot configurationRoot)
         {
             this.configurationRoot = configurationRoot;
         }
-
+        /// <summary>
+        /// Регистрация сервисов
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IBaseBL, BaseBL>();
             services.AddScoped<IUsersBL, UsersBL>();
             services.AddScoped<IRoleBL, RolesBL>();
             services.AddScoped<ISectionBL, SectionsBL>();
@@ -47,7 +47,10 @@ namespace HRExpert.Core
             services.AddAuthentication();
             services.AddCaching();
         }
-
+        /// <summary>
+        /// Конфигурация модуля
+        /// </summary>
+        /// <param name="applicationBuilder"></param>
         public void Configure(IApplicationBuilder applicationBuilder)
         {           
             
@@ -61,8 +64,7 @@ namespace HRExpert.Core
                 options.Authority = authority;
                 options.RequireHttpsMetadata = false;
             });
-
-            // Add a new middleware issuing tokens.
+            
             applicationBuilder.UseOpenIdConnectServer(options =>
             {
                 options.AllowInsecureHttp = true;
@@ -70,18 +72,11 @@ namespace HRExpert.Core
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
                 options.Provider = new HRExpert.Core.Services.AuthorizationProvider(applicationBuilder.ApplicationServices.GetService<IStorage>());
-            });
-            applicationBuilder.Use( (context, next) => {
-                //IAuthService authService = context.ApplicationServices.GetService<IAuthService>();
-                //authService.SetCurrentContext(context);
-                return next.Invoke();
-            });          
-            
+            });           
         }
 
         public void RegisterRoutes(IRouteBuilder routeBuilder)
         {
-            //routeBuilder.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
         }
     }
 }

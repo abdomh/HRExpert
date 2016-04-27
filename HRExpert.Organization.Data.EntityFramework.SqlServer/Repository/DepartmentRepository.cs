@@ -30,6 +30,12 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .Where(x=>x.OrganizationId==Id)
                 .ToList();
         }
+        public Department ByOrganizationAndKey(long organizationid, long departmentid)
+        {
+            return this.dbSet
+                .Where(x => x.OrganizationId == organizationid && x.Id == departmentid)
+                .FirstOrDefault();
+        }
         /// <summary>
         /// Создание
         /// </summary>

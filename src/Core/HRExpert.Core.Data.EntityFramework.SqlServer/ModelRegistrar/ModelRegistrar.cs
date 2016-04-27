@@ -1,11 +1,14 @@
 ﻿using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using Microsoft.Data.Entity;
-using Microsoft.Data.Entity.Metadata.Builders;
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
 {
     public class ModelRegistrar : IModelRegistrar
     {
+        /// <summary>
+        /// Регистрация моделей
+        /// </summary>
+        /// <param name="modelbuilder"></param>
         public void RegisterModels(ModelBuilder modelbuilder)
         {
             modelbuilder.Entity<User>();

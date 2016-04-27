@@ -11,7 +11,16 @@ namespace HRExpert.Organization.Data.Abstractions
         /// <param name="DepartmentId"></param>
         /// <param name="PositionId"></param>
         /// <returns></returns>
-        List<Person> GetByStaffEstablishedPost(long DepartmentId, long PositionId);
+        List<Person> GetByStaffEstablishedPost(long OrganizationId, long DepartmentId, long PositionId);
+        /// <summary>
+        /// Персонаж по организацииб подразделению, должности и Id
+        /// </summary>
+        /// <param name="OrganizationId"></param>
+        /// <param name="DepartmentId"></param>
+        /// <param name="PositionId"></param>
+        /// <param name="PersonId"></param>
+        /// <returns></returns>
+        Person GetByStaffEstablishedPostAndId(long OrganizationId, long DepartmentId, long PositionId, long PersonId);
         /// <summary>
         /// Все организации
         /// </summary>

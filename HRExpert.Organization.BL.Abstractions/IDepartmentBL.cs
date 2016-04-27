@@ -17,6 +17,13 @@ namespace HRExpert.Organization.BL.Abstractions
         /// <returns></returns>
         IEnumerable<DepartmentDto> ListByOrganization(long OrganizationId);
         /// <summary>
+        /// Подразделение по организации и ключу
+        /// </summary>
+        /// <param name="organizationid"></param>
+        /// <param name="departmentid"></param>
+        /// <returns></returns>
+        DepartmentDto ByOrganizationAndKey(long organizationid, long departmentid);
+        /// <summary>
         /// Создание
         /// </summary>
         /// <param name="dto"></param>

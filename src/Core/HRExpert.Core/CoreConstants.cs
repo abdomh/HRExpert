@@ -1,5 +1,8 @@
 ﻿namespace HRExpert.Core
 {
+    /// <summary>
+    /// Константы для API
+    /// </summary>
     public static class CoreConstants
     {
         /// <summary>

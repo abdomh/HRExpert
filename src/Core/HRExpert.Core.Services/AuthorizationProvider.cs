@@ -1,55 +1,62 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Http;
-using System.Security.Claims;
-using System.Security.Principal;
-using System.Security.Authentication.ExtendedProtection;
-using System.Security.Authentication;
-using Microsoft.AspNet.Authentication;
-using Microsoft.AspNet.Authentication.JwtBearer;
-using Microsoft.AspNet.Http.Authentication;
-using AspNet.Security.OpenIdConnect.Extensions;
+﻿using AspNet.Security.OpenIdConnect.Extensions;
 using AspNet.Security.OpenIdConnect.Server;
 using ExtCore.Data.Abstractions;
 using HRExpert.Core.Data.Abstractions;
+using Microsoft.AspNet.Authentication;
+using Microsoft.AspNet.Http.Authentication;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 namespace HRExpert.Core.Services
 {
+    /// <summary>
+    /// Провайдер авторизации
+    /// </summary>
     public class AuthorizationProvider: OpenIdConnectServerProvider
     {
+        private IStorage storage;
+        private ICredentialRepository credentialRepository;
+
         public AuthorizationProvider(IStorage storage)
             :base()
         {
             this.SetStorage(storage);
         }
-        private IStorage storage;
-        private ICredentialRepository credentialRepository;
+        /// <summary>
+        /// Установка хранилища
+        /// </summary>
+        /// <param name="storage"></param>
         public void SetStorage(IStorage storage)
         {
             this.storage = storage;
             this.credentialRepository = storage.GetRepository<ICredentialRepository>();
         }
-        public override Task ValidateClientAuthentication(
-        ValidateClientAuthenticationContext context)
+        /// <summary>
+        /// Проверка аутентификации клиента
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public override Task ValidateClientAuthentication(ValidateClientAuthenticationContext context)
         {
             ///Тут требуется коммент. Поскольку пока у нас нет мобильного приложения и других клиентов, то их идентифицировать не надо, эту фазу пропускаем (Skipped)
             context.Skipped();
             return Task.FromResult(0);
         }
-       
-        public override Task GrantResourceOwnerCredentials(
-            GrantResourceOwnerCredentialsContext context)
+        /// <summary>
+        /// Создание токена
+        /// </summary>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public override Task GrantResourceOwnerCredentials(GrantResourceOwnerCredentialsContext context)
         {
             List<string> sections = new List<string>();
             sections.Add("offline_access");
             var cred = credentialRepository.GetByValueAndSecret(context.UserName, context.Password);
             if (cred == null) { context.Rejected("Пользователь не найден"); return Task.FromResult<object>(null); }
-            var identity =
-                new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
+            var identity = new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
             identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value);
-            identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString(), "token id_token");
-            
+            identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString(), "token id_token");            
             if (cred!=null && cred.User.Roles != null)
             {
                 foreach (var role in cred.User.Roles)
@@ -63,23 +70,12 @@ namespace HRExpert.Core.Services
                 }
              }
             identity.AddClaim(ClaimTypes.Name, cred.User.Name);
-            // By default, claims are not serialized in the access and identity tokens.
-            // Use the overload taking a "destination" to make sure your claims
-            // are correctly inserted in the appropriate tokens.
-            //identity.AddClaim("urn:customclaim", "value", "token id_token");
-
             var ticket = new AuthenticationTicket(
                 new ClaimsPrincipal(identity),
                 new AuthenticationProperties(),
-                context.Options.AuthenticationScheme);
-            
-            // Call SetResources with the list of resource servers
-            // the access token should be issued for.
+                context.Options.AuthenticationScheme);            
             ticket.SetResources(new[] { "ApiServer" });            
-            // Call SetScopes with the list of scopes you want to grant
-            // (specify offline_access to issue a refresh token).
             ticket.SetScopes(sections.Distinct().ToArray());
-
             context.Validated(ticket);
             return Task.FromResult<object>(null);
         }

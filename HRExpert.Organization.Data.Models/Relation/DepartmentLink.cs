@@ -6,7 +6,7 @@ namespace HRExpert.Organization.Data.Models
     /// Связь между подразделениями
     /// </summary>
     [Table("DepartmentLinks")]
-    public class DepartmentLink
+    public class DepartmentLink: ExtCore.Data.Models.Abstractions.IEntity
     {
         /// <summary>
         /// Id левого подразделения(родитель)
