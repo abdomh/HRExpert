@@ -22,8 +22,8 @@ namespace HRExpert.Organization.BL
             var data = repository.GetByDepartmentId(DepartmentId);
             return data?.Select(x => new StaffEstablishedPostDto
             {
-                Department = new DepartmentDto {  Name = x.Department.Name, Id=x.Department.Id},
-                Position = new PositionDto { Id = x.Position.Id , Name = x.Position.Name},
+                DepartmentId = x.DepartmentId,
+                PositionId = x.PositionId,
                 PostCount = x.PostCount
             }).ToList();
         }
@@ -33,8 +33,8 @@ namespace HRExpert.Organization.BL
             if (data == null) return null;
             return new StaffEstablishedPostDto
             {
-                Department = new DepartmentDto { Id = data.Department.Id, Name = data.Department.Name },
-                Position = new PositionDto { Id = data.Position.Id, Name = data.Position.Name },
+                DepartmentId = data.DepartmentId,
+                PositionId = data.PositionId,
                 PostCount = data.PostCount
             };
         }

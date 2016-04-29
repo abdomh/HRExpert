@@ -1,5 +1,8 @@
 ﻿namespace HRExpert.Organization.DTO
 {
+    /// <summary>
+    /// Организация
+    /// </summary>
     public class OrganizationDto
     {
         /// <summary>

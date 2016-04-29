@@ -27,7 +27,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public IEnumerable<Department> AllByOrganization(long Id)
         {
             return this.dbSet                
-                .Where(x=>x.OrganizationId==Id)
+                .Where(x=>x.OrganizationId==Id && x.Right.Count==0)
                 .ToList();
         }
         public Department ByOrganizationAndKey(long organizationid, long departmentid)
@@ -53,6 +53,19 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public virtual Department Read(long Id)
         {
             return this.dbSet
+                .Where(x => x.Id == Id)
+                .FirstOrDefault();
+        }
+        /// <summary>
+        /// Чтение
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public virtual Department ReadWithChildsAndParents(long Id)
+        {
+            return this.dbSet
+                .Include(x=>x.Left).ThenInclude(x=>x.Right)
+                .Include(x=>x.Right).ThenInclude(x=>x.Left)
                 .Where(x => x.Id == Id)
                 .FirstOrDefault();
         }

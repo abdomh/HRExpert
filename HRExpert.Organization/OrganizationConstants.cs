@@ -47,6 +47,7 @@ namespace HRExpert.Organization
         /// Путь к подразделению по ключу
         /// </summary>
         public const string DepartmentController_key = DepartmentController + DepartmentKey;
+        public const string DepartmentController_key_childs = DepartmentController_key + "/childs";
         /// <summary>
         /// Путь к подразделениям организации
         /// </summary>
@@ -55,6 +56,7 @@ namespace HRExpert.Organization
         /// Путь к подразделению организации по ключу
         /// </summary>
         public const string DepartmentControllerPath_key = DepartmentControllerPath + DepartmentKey;
+        public const string DepartmentControllerPath_key_childs = DepartmentControllerPath_key + "/childs";
         //Штатные единицы 
         /// <summary>
         /// Штатные единицы

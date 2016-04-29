@@ -36,5 +36,26 @@ namespace HRExpert.Core.BL.Abstractions
         /// <param name="id">Идентификатор</param>
         /// <returns>Роль</returns>
         RoleDto Delete(long id);
+
+        /// <summary>
+        /// Создание/добавление роли пользователю
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        RoleDto CreateRoleToUser(long userid, RoleDto dto);
+        /// <summary>
+        /// Удаление роли у пользователя
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="dto"></param>
+        void RemoveRoleFromUser(long userid, RoleDto dto);
+        /// <summary>
+        /// Редактирование ролей списком
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="roles"></param>
+        /// <returns></returns>
+        IEnumerable<RoleDto> EditRolesList(long userid, List<RoleDto> roles);
     }
 }

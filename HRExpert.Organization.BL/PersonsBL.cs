@@ -21,7 +21,7 @@ namespace HRExpert.Organization.BL
             var result = new List<PersonDto>();
             var data = personsRepository.GetByStaffEstablishedPost(OrganizationId, DepartmentId, PositionId);
             if (data != null)
-                result = data.Select(x => new PersonDto { Name = x.Name, Id = x.Id, PostCount = x.PostCount }).ToList();
+                result = data.Select(x => new PersonDto { Name = x.Name, Id = x.Id, PostCount = x.PostCount, PositionId=x.PositionId, DepartmentId =x.DepartmentId }).ToList();
             return result;
         }
         public PersonDto GetByStaffEstablishedPostAndId(long OrganizationId, long DepartmentId, long PositionId,long PersonId)
@@ -29,7 +29,7 @@ namespace HRExpert.Organization.BL
             PersonDto result = null;
             var data = personsRepository.GetByStaffEstablishedPostAndId(OrganizationId, DepartmentId, PositionId, PersonId);
             if (data != null)
-                result = new PersonDto { Name = data.Name, Id = data.Id, PostCount = data.PostCount };
+                result = new PersonDto { Name = data.Name, Id = data.Id, PostCount = data.PostCount, DepartmentId=data.DepartmentId, PositionId=data.PositionId };
             return result;
         }
         public void Create(PersonDto dto)

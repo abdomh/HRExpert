@@ -1,5 +1,8 @@
 ﻿namespace HRExpert.Organization.DTO
 {
+    /// <summary>
+    /// Должность
+    /// </summary>
     public class PositionDto
     {
         /// <summary>

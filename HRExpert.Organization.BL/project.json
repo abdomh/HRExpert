@@ -16,7 +16,6 @@
     "HRExpert.Organization.Data.Models": "1.0.0-*",
     "HRExpert.Organization.Data.Abstractions": "1.0.0-*",
     "HRExpert.Organization.BL.Abstractions": "1.0.0-*",
-    "HRExpert.Organization.DTO": "1.0.0-*",
-    "HRExpert.Organization.Services.Abstraction": "1.0.0-*"
+    "HRExpert.Organization.DTO": "1.0.0-*"
   }
 }

@@ -18,6 +18,7 @@ namespace HRExpert.Organization.Data.Models
         /// </summary>
         [ForeignKey("Right")]
         public virtual long RightId { get; set; }
+        public int Distance { get; set; }
         /// <summary>
         /// Левое подразделение(родитель)
         /// </summary>

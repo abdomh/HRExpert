@@ -16,6 +16,7 @@ namespace HRExpert.Core.BL
         /// Хранилище ролей
         /// </summary>
         private IRoleRepository roleRepository;
+        private IRoleUserRepository roleUserRepository;
         #region Ctor
         /// <summary>
         /// Конструктор
@@ -25,6 +26,7 @@ namespace HRExpert.Core.BL
         public RolesBL(IStorage storage,IAuthService authService)
         {
             roleRepository = storage.GetRepository<IRoleRepository>();
+            roleUserRepository = storage.GetRepository<IRoleUserRepository>();
         }
         #endregion     
         #region Public
@@ -80,6 +82,56 @@ namespace HRExpert.Core.BL
             entity.Delete = true;
             roleRepository.Update(entity);
             return ToDto(entity);
+        }
+        /// <summary>
+        /// Создание/добавление роли пользователю
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public virtual RoleDto CreateRoleToUser(long userid, RoleDto dto)
+        {
+            if(dto.Id==0)
+            {
+                dto = Create(dto);
+            }
+            var existed = roleUserRepository.Read(userid, dto.Id);
+            if (existed != null) return dto;
+            RoleUser roleuser = new RoleUser { RoleId = dto.Id, UserId = userid };
+            roleUserRepository.Create(roleuser);
+            return dto;
+        }
+        /// <summary>
+        /// Редактирование ролей списком
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="roles"></param>
+        /// <returns></returns>
+        public virtual IEnumerable<RoleDto> EditRolesList(long userid, List<RoleDto> roles)
+        {
+            List<RoleUser> userroles = roleUserRepository.ListByUser(userid);
+            foreach (var dto in roles)
+            {
+                if (!userroles.Any(x => x.RoleId == dto.Id))
+                    CreateRoleToUser(userid, dto);
+            }
+            foreach (var role in userroles)
+            {
+                if (!roles.Any(x => x.Id == role.RoleId))
+                    roleUserRepository.Delete(role);
+            }
+            return roles;
+        }
+        /// <summary>
+        /// Удаление роли у пользователя
+        /// </summary>
+        /// <param name="userid"></param>
+        /// <param name="dto"></param>
+        public virtual void RemoveRoleFromUser(long userid, RoleDto dto)
+        {
+            var existed = roleUserRepository.Read(userid, dto.Id);
+            if (existed == null) return;
+            roleUserRepository.Delete(existed);
         }
         #region Converters
         /// <summary>

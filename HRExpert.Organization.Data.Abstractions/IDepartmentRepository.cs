@@ -47,6 +47,12 @@ namespace HRExpert.Organization.Data.Abstractions
         /// <returns></returns>
         Department Read(long Id);
         /// <summary>
+        /// Чтение с дочерними и родительскими подразделениями
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        Department ReadWithChildsAndParents(long Id);
+        /// <summary>
         /// Обновление
         /// </summary>
         /// <param name="entity"></param>

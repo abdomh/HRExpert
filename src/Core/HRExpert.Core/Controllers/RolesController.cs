@@ -49,7 +49,7 @@ namespace HRExpert.Core.Controllers
         public RoleDto Post([FromBody] RoleDto value)
         {
             return roleBl.Create(value);
-        }
+        }        
         /// <summary>
         /// Редактирование
         /// </summary>
@@ -69,6 +69,29 @@ namespace HRExpert.Core.Controllers
         public RoleDto Delete(long roleid)
         {
             return roleBl.Delete(roleid);
+        }
+
+        /// <summary>
+        /// Создание роли для сотрудниика
+        /// </summary>
+        /// <param name="value">Роль</param>
+        /// <returns>Роль</returns>
+        [Route(CoreConstants.RolesControllerPath)]
+        [HttpPost]
+        public RoleDto Post(long userid, [FromBody] RoleDto value)
+        {
+            return roleBl.Create(value);
+        }
+        /// <summary>
+        /// Создание роли для сотрудниика
+        /// </summary>
+        /// <param name="value">Роль</param>
+        /// <returns>Роль</returns>
+        [Route(CoreConstants.RolesControllerPath)]
+        [HttpPut]
+        public RoleDto Put(long userid, [FromBody] RoleDto value)
+        {
+            return roleBl.Create(value);
         }
     }
 }

@@ -10,6 +10,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public List<DepartmentLink> All()
         {
             return this.dbSet.ToList();
+        }        
+        public List<Department> Childs(long organizationid, long departmentid)
+        {
+            return this.dbSet.Where(x => x.LeftId == departmentid && x.Distance == 0 && x.Right.OrganizationId == organizationid).Select(x=>x.Right).ToList();
         }
     }
 }

@@ -5,7 +5,7 @@ namespace HRExpert.Core.Data.Models
     /// Связь Роль - Пользователь
     /// </summary>
     [Table("RoleUsers")]
-    public class RoleUser
+    public class RoleUser : ExtCore.Data.Models.Abstractions.IEntity
     {
         /// <summary>
         /// Идентификатор пользователя

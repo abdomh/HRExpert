@@ -13,16 +13,12 @@ namespace HRExpert.Organization.DTO
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// Организация
+        /// Идентификатор организации
         /// </summary>
-        public OrganizationDto Organization { get; set; }
-        /// <summary>
-        /// Дочерние подразделения
-        /// </summary>
-        public List<DepartmentDto> Childs { get; set; }
+        public long OrganizationId { get; set; }
+        
         public DepartmentDto()
         {
-            this.Childs = new List<DepartmentDto>();
         }
     }
 }
