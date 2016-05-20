@@ -31,6 +31,7 @@ namespace HRExpert.Core.Services
         {
             get { return this.contextaccessor.HttpContext; }
         }
+        public long CurrentRoleId { get; set; }
         /// <summary>
         /// Текущий пользователь
         /// </summary>

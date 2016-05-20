@@ -21,14 +21,7 @@ namespace HRExpert.Organization.Data.Models
         {
             get; set;
         }
-        /// <summary>
-        /// Код
-        /// </summary>
-        [Column("Code")]
-        public string Code
-        {
-            get; set;
-        }
+        
         /// <summary>
         /// Флаг удаления
         /// </summary>

@@ -4,8 +4,8 @@ namespace HRExpert.Organization
     /// <summary>
     /// Константы для API организации
     /// </summary>
-    public static class OrganizationConstants
-    {        
+    public static class OrganizationConstants 
+    {
         /// <summary>
         /// Организация
         /// </summary>
@@ -18,6 +18,7 @@ namespace HRExpert.Organization
         /// Организация по ключу
         /// </summary>
         public const string OrganizationKey = "({" + Organization + "id})";
+        /*
         /// <summary>
         /// Путь к контроллеру организаций
         /// </summary>
@@ -26,6 +27,7 @@ namespace HRExpert.Organization
         /// Путь к организации по ключу
         /// </summary>
         public const string OrganizationController_key = OrganizationController + OrganizationKey;
+        */
         //Подразделения
         /// <summary>
         /// Подразделение
@@ -39,6 +41,7 @@ namespace HRExpert.Organization
         /// Подразделение по ключу
         /// </summary>
         public const string DepartmentKey = "({" + Department + "id})";
+        /*
         /// <summary>
         /// Путь к подразделениям
         /// </summary>
@@ -57,6 +60,8 @@ namespace HRExpert.Organization
         /// </summary>
         public const string DepartmentControllerPath_key = DepartmentControllerPath + DepartmentKey;
         public const string DepartmentControllerPath_key_childs = DepartmentControllerPath_key + "/childs";
+        */
+
         //Штатные единицы 
         /// <summary>
         /// Штатные единицы
@@ -67,6 +72,7 @@ namespace HRExpert.Organization
         /// </summary>
         public const string StaffEstablishedPostsList = "/" + StaffEstablishedPosts + "s";
         
+        /*
         /// <summary>
         /// Путь к штатным единицам
         /// </summary>
@@ -83,6 +89,8 @@ namespace HRExpert.Organization
         /// Путь к штатной единице подразделения по ключу должности
         /// </summary>
         public const string StaffEstablishedPostsControllerPath_key = StaffEstablishedPostsControllerPath + PositionsKey;
+        */
+
         //Персонажи
         /// <summary>
         /// Персонаж
@@ -96,6 +104,7 @@ namespace HRExpert.Organization
         /// Персонаж по ключу
         /// </summary>
         public const string PersonKey = "({" + Person + "id})";
+        /*
         /// <summary>
         /// Путь к персонажам
         /// </summary>
@@ -112,6 +121,8 @@ namespace HRExpert.Organization
         /// Путь к персонажу штатной единицы по ключу
         /// </summary>
         public const string PersonsControllerPath_key = PersonsControllerPath + PersonKey;
+        */
+
         //Должности
         /// <summary>
         /// Должности
@@ -125,6 +136,7 @@ namespace HRExpert.Organization
         /// Должность по ключу
         /// </summary>
         public const string PositionsKey = "({" + Positions + "id})";
+        /*
         /// <summary>
         /// Путь к должностям 
         /// </summary>
@@ -133,6 +145,7 @@ namespace HRExpert.Organization
         /// Путь к должности по ключу
         /// </summary>
         public const string PositionsController_key = PositionsController + PositionsKey;
+        */
 
     }
 }

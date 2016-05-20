@@ -41,11 +41,12 @@ namespace HRExpert.Core
             services.AddScoped<IRoleBL, RolesBL>();
             services.AddScoped<ISectionBL, SectionsBL>();
             services.AddScoped<IPermissionBL, PermissionsBL>();
-
+            services.AddScoped<Filters.RoleActionFilter>();
             services.AddScoped<IAuthService, AuthService>();
             
             services.AddAuthentication();
             services.AddCaching();
+            services.AddMvc(config => config.Filters.AddService(typeof(Filters.RoleActionFilter)));
         }
         /// <summary>
         /// Конфигурация модуля

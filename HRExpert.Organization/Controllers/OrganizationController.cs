@@ -1,17 +1,18 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Authorization;
-using HRExpert.Organization.BL.Abstractions;
-using HRExpert.Organization.DTO;
+
 namespace HRExpert.Organization.Controllers
 {
+    using Core;
+    using DTO;
+    using BL.Abstractions;
     /// <summary>
     /// Контроллер организаций
     /// </summary>
-    [Route(OrganizationConstants.OrganizationController)]
-    [AllowAnonymous]    
+    [Authorize]
     public class OrganizationController:Controller
-    {
+    {        
         private IOrganizationBL organizationBl;
         #region Ctor
         public OrganizationController(IOrganizationBL organizationBl)
@@ -24,7 +25,11 @@ namespace HRExpert.Organization.Controllers
         /// </summary>
         /// <returns>Коллекция записей</returns>
         [HttpGet]
-        [Route(OrganizationConstants.OrganizationController)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList
+            )
+        ]
         public virtual IEnumerable<OrganizationDto> Get()
         {
             return this.organizationBl.List();
@@ -35,7 +40,12 @@ namespace HRExpert.Organization.Controllers
         /// <param name="organizationid">Идентификатор</param>
         /// <returns></returns>
         [HttpGet]
-        [Route(OrganizationConstants.OrganizationController_key)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList +
+            OrganizationConstants.OrganizationKey
+            )
+        ]
         public virtual OrganizationDto Get(long organizationid)
         {
             return this.organizationBl.Read(organizationid);
@@ -46,7 +56,11 @@ namespace HRExpert.Organization.Controllers
         /// <param name="value">Организация</param>
         /// <returns></returns>
         [HttpPost]
-        [Route(OrganizationConstants.OrganizationController)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList
+            )
+        ]
         public virtual OrganizationDto Post([FromBody]OrganizationDto value)
         {
             return this.organizationBl.Create(value);
@@ -57,7 +71,11 @@ namespace HRExpert.Organization.Controllers
         /// <param name="value">Организация</param>
         /// <returns></returns>
         [HttpPut]
-        [Route(OrganizationConstants.OrganizationController)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList
+            )
+        ]
         public virtual OrganizationDto Put([FromBody]OrganizationDto value)
         {
             return this.organizationBl.Update(value);
@@ -68,7 +86,12 @@ namespace HRExpert.Organization.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete]
-        [Route(OrganizationConstants.OrganizationController_key)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList +
+            OrganizationConstants.OrganizationKey
+            )
+        ]
         public virtual OrganizationDto Delete(long id)
         {
             return this.organizationBl.Delete(id);

@@ -5,9 +5,9 @@
 	[Code1C] uniqueidentifier,
 	[Name] nvarchar(256),
 	[AcceptDate] DateTime not null default(getdate()),
-	[DismissalDate] DateTime,	
-	[DepartmentId] bigint null,
-	[PositionId] bigint null,
+	[DismissalDate] DateTime,
+	[DepartmentId] bigint ,
+	[PositionId] bigint,
 	[PostCount] decimal(18,2),
 	CONSTRAINT FK_Person_StaffEstablishedPost FOREIGN KEY (DepartmentId,PositionId) References StaffEstablishedPosts(DepartmentId,PositionId),
 	CONSTRAINT FK_Person_User FOREIGN KEY (UserId) References Users(id)

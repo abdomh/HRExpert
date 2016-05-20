@@ -6,7 +6,7 @@ namespace HRExpert.Organization.Data.Abstractions
     /// <summary>
     /// Репозиторий штатных единиц
     /// </summary>
-    public interface IStaffEstablishedPostRepository :ExtCore.Data.Abstractions.IRepository
+    public interface IStaffEstablishedPostRepository : HRExpert.Core.Data.Abstractions.IRepositoryWithPermissions
     {
         /// <summary>
         /// Все по подразделению

@@ -1,5 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using HRExpert.Core.Data.Models;
 namespace HRExpert.Organization.Data.Models
 {
     /// <summary>
@@ -13,6 +14,11 @@ namespace HRExpert.Organization.Data.Models
         /// </summary>
         public long Id { get; set; }
         /// <summary>
+        /// Идентификатор пользователя
+        /// </summary>
+        [ForeignKey("User")]
+        public long UserId { get; set; }
+        /// <summary>
         /// Название
         /// </summary>
         [Column("Name")]
@@ -20,22 +26,8 @@ namespace HRExpert.Organization.Data.Models
         {
             get; set;
         }
-        /// <summary>
-        /// Код
-        /// </summary>
-        [Column("Code")]
-        public string Code
-        {
-            get; set;
-        }
-        /// <summary>
-        /// Флаг удаления
-        /// </summary>
-        [Column("Delete")]
-        public bool Delete
-        {
-            get; set;
-        }
+       
+        
         /// <summary>
         /// Id подразделения
         /// </summary>
@@ -52,5 +44,7 @@ namespace HRExpert.Organization.Data.Models
         /// Штатная единица
         /// </summary>
         public virtual StaffEstablishedPost StaffEstablishedPost { get; set; }
+        public virtual User User { get; set; }
+        public virtual ICollection<AccessLink> AccessLinks { get; set; }
     }
 }

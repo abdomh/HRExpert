@@ -24,6 +24,10 @@ namespace HRExpert.Core.Data.Models
             get; set;
         }
         /// <summary>
+        /// Имя маршрута
+        /// </summary>
+        public string RouteName { get; set; }
+        /// <summary>
         /// Флаг удаления
         /// </summary>
         [Column("Delete")]

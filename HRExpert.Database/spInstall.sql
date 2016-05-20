@@ -29,10 +29,13 @@ AS
 	(N'Тестировщик')
 	--Модули
 	INSERT INTO Sections
-	(Name)
+	(Name,RouteName)
 	Values
-	(N'Администрирование'),
-	(N'Базовые права')
+	(N'Пользователи','Users'),
+	(N'Роли','Roles'),
+	(N'Модули','Sections'),
+	(N'Права доступа','Permissions'),
+	(N'Организации','Organizations')
 	--Права доступа
 	INSERT INTO PermissionTypes
 	(Name, SectionId)
@@ -61,15 +64,7 @@ AS
 	(N'Экспресс Волга'),
 	(N'Совкомбанк'),
 	(N'Русконсалт')
-	--Типы сущностей
-	INSERT INTO EntityTypes
-	(Name)
-	VALUES
-	(N'Организация'),
-	(N'Подразделение'),
-	(N'Сотрудник'),
-	(N'Штатная единица'),
-	(N'Документ')
+	
 	--Статусы
 	INSERT INTO Statuses
 	(Name)
@@ -77,14 +72,5 @@ AS
 	(N'Черновик'),
 	(N'Завершено'),
 	(N'Отменено')
-	--Типы документов
-	INSERT INTO DocumentTypes
-	(Name)
-	VALUES
-	(N'Командировка'),
-	(N'Авансовый отчёт'),
-	(N'Удержание'),
-	(N'Больничный'),
-	(N'Отпуск'),
-	(N'Отпуск по уходу за ребенком')
+	
 RETURN 0

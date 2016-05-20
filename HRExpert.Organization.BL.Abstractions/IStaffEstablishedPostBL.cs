@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Linq.Expressions;
+using System.Collections.Generic;
+using HRExpert.Organization.Data.Models;
 using HRExpert.Organization.DTO;
 
 namespace HRExpert.Organization.BL.Abstractions
@@ -7,5 +10,6 @@ namespace HRExpert.Organization.BL.Abstractions
     {
         List<StaffEstablishedPostDto> GetByDepartment(long DepartmentId);
         StaffEstablishedPostDto GetByDepartmentAndPosition(long DepartmentId, long PositionId);
+        //Expression<Func<StaffEstablishedPost, bool>> CreatePermissionsExpression(long UserId);
     }
 }

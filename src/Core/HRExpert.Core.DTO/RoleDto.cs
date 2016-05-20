@@ -19,5 +19,9 @@ namespace HRExpert.Core.DTO
         /// Права
         /// </summary>
         public List<PermissionDto> Permissions { get; set; }
+        /// <summary>
+        /// Модули
+        /// </summary>
+        public List<SectionDto> Sections { get; set; }
     }
 }

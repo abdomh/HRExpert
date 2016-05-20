@@ -5,19 +5,24 @@ using HRExpert.Organization.Data.Abstractions;
 using HRExpert.Organization.Data.Models;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
-    public class PersonRepository: ExtCore.Data.EntityFramework.SqlServer.RepositoryBase<Person>, IPersonRepository
+    public class PersonRepository: HRExpert.Core.Data.EntityFramework.SqlServer.Repository.RepositoryWithPersmissions<Person>, IPersonRepository
     {
+        private IQueryable<Person> Query()
+        {
+            return this.dbSet.FromSql("SELECT * FROM vwStaffEstablishedPostWithAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1", CurrentUserId, CurrentRoleId);
+        }
         public List<Person> GetByStaffEstablishedPost(long OrganizationId, long DepartmentId, long PositionId)
         {
-            return this.dbSet.Where(x => x.StaffEstablishedPost.Department.OrganizationId== OrganizationId && x.DepartmentId == DepartmentId && x.PositionId == PositionId).ToList();
+            return Query().Where(x => x.StaffEstablishedPost.Department.OrganizationId== OrganizationId && x.DepartmentId == DepartmentId && x.PositionId == PositionId).ToList();
         }
         public Person GetByStaffEstablishedPostAndId(long OrganizationId, long DepartmentId, long PositionId,long PersonId)
         {
-            return this.dbSet.Where(x => 
-            x.StaffEstablishedPost.Department.OrganizationId == OrganizationId && 
-            x.DepartmentId == DepartmentId && 
-            x.PositionId == PositionId &&
-            x.Id == PersonId
+            return Query()
+            .Where(x => 
+                x.StaffEstablishedPost.Department.OrganizationId == OrganizationId && 
+                x.DepartmentId == DepartmentId && 
+                x.PositionId == PositionId &&
+                x.Id == PersonId
             ).FirstOrDefault();
         }
         /// <summary>

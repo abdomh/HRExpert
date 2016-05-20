@@ -42,18 +42,13 @@ namespace HRExpert.Core.BL
             var user = authService.CurrentUser;
             ProfileDto result = new ProfileDto();
             result.UserName = user.Name;
-            List<PermissionDto> permissions = new List<PermissionDto>();
-            if(user.Roles!=null)
+            result.Roles = user.Roles.Select(x => new RoleDto
             {
-                foreach(var role in user.Roles)
-                {
-                    var rolepermissions = role.Role.Permissions
-                        .Select(x => new PermissionDto { Id = x.PermissionTypeId, Name = x.PermissionType.Name, Section = new SectionDto { Id = x.PermissionType.SectionId, Name = x.PermissionType.Section.Name } })
-                        .ToList();
-                    permissions.AddRange(rolepermissions);                    
-                }
-            }
-            result.Permissions = permissions.ToArray();
+                Id = x.RoleId,
+                Name = x.Role.Name,
+                Permissions = x.Role.Permissions.Select(permission => new PermissionDto { Id = permission.PermissionTypeId, Name = permission.PermissionType.Name, SectionId=permission.PermissionType.SectionId }).ToList(),
+                Sections = x.Role.Permissions.Select(permission=>new SectionDto { Id = permission.PermissionType.Section.Id, Name = permission.PermissionType.Section.Name, RouteName=permission.PermissionType.Section.RouteName }).Distinct().ToList()
+            }).ToList();           
             return result;
         }
         /// <summary>

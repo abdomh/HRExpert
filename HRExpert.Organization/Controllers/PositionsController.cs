@@ -6,6 +6,7 @@ using HRExpert.Organization.DTO;
 
 namespace HRExpert.Organization.Controllers
 {
+    using Core;
     /// <summary>
     /// Контроллер должностей
     /// </summary>
@@ -24,7 +25,8 @@ namespace HRExpert.Organization.Controllers
         /// </summary>
         /// <returns>Коллекция записей</returns>
         [HttpGet]
-        [Route(OrganizationConstants.PositionsController)]
+        [Route(CoreConstants.Api+CoreConstants.version+OrganizationConstants.PositionsList)]
+        //[Route(OrganizationConstants.PositionsController)]
         public virtual IEnumerable<PositionDto> Get()
         {
             return this.positionsBl.List();
@@ -35,7 +37,7 @@ namespace HRExpert.Organization.Controllers
         /// <param name="positionid"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route(OrganizationConstants.PositionsController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + OrganizationConstants.PositionsList+ OrganizationConstants.PositionsKey)]
         public virtual PositionDto Get(long positionid)
         {
             return this.positionsBl.Read(positionid);
@@ -46,7 +48,7 @@ namespace HRExpert.Organization.Controllers
         /// <param name="value">Должность</param>
         /// <returns></returns>
         [HttpPost]
-        [Route(OrganizationConstants.PositionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + OrganizationConstants.PositionsList)]
         public virtual PositionDto Post([FromBody]PositionDto value)
         {
             return this.positionsBl.Create(value);
@@ -57,7 +59,7 @@ namespace HRExpert.Organization.Controllers
         /// <param name="value">должность</param>
         /// <returns>должность</returns>
         [HttpPut]
-        [Route(OrganizationConstants.PositionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + OrganizationConstants.PositionsList)]
         public virtual PositionDto Put([FromBody]PositionDto value)
         {
             return this.positionsBl.Update(value);
@@ -68,7 +70,7 @@ namespace HRExpert.Organization.Controllers
         /// <param name="positionid">Идентификатор должности</param>
         /// <returns></returns>
         [HttpDelete]
-        [Route(OrganizationConstants.PositionsController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + OrganizationConstants.PositionsList + OrganizationConstants.PositionsKey)]
         public virtual PositionDto Delete(long positionid)
         {
             return this.positionsBl.Delete(positionid);

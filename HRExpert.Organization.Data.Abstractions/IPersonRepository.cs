@@ -3,8 +3,8 @@ using HRExpert.Organization.Data.Models;
 using System.Collections.Generic;
 namespace HRExpert.Organization.Data.Abstractions
 {
-    public interface IPersonRepository : ExtCore.Data.Abstractions.IRepository
-    {
+    public interface IPersonRepository : HRExpert.Core.Data.Abstractions.IRepositoryWithPermissions
+    {        
         /// <summary>
         /// Все по штатной единице
         /// </summary>

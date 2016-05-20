@@ -6,11 +6,11 @@ using HRExpert.Organization.BL.Abstractions;
 using HRExpert.Organization.DTO;
 namespace HRExpert.Organization.Controllers
 {
+    using Core;
     /// <summary>
     /// Контроллер подразделений
-    /// </summary>
-    [Route(OrganizationConstants.DepartmentController)]
-    [AllowAnonymous]
+    /// </summary>    
+    [Authorize]
     public class DepartmentController : Controller
     {
         private IDepartmentBL departmentBl;
@@ -25,7 +25,13 @@ namespace HRExpert.Organization.Controllers
         /// </summary>
         /// <param name="organizationid"></param>
         /// <returns></returns>
-        [Route(OrganizationConstants.DepartmentControllerPath)]
+        [Route(CoreConstants.Api+
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList+
+            OrganizationConstants.OrganizationKey+
+            OrganizationConstants.DepartmentList
+            )
+        ]
         [HttpGet]
         public DepartmentDto[] ByOrganization(long organizationid)
         {
@@ -36,7 +42,15 @@ namespace HRExpert.Organization.Controllers
         /// </summary>
         /// <param name="organizationid"></param>
         /// <returns></returns>
-        [Route(OrganizationConstants.DepartmentControllerPath_key_childs)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList +
+            OrganizationConstants.OrganizationKey +
+            OrganizationConstants.DepartmentList +
+            OrganizationConstants.DepartmentKey +
+            CoreConstants.Childs
+            )
+        ]
         [HttpGet]
         public DepartmentDto[] ByOrganizationAndDepartment(long organizationid,long departmentid)
         {
@@ -48,12 +62,20 @@ namespace HRExpert.Organization.Controllers
         /// <param name="organizationid">Идентификатор организации</param>
         /// <param name="departmentid">Идентификатор подразделения</param>
         /// <returns></returns>
-        [Route(OrganizationConstants.DepartmentControllerPath_key)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList +
+            OrganizationConstants.OrganizationKey +
+            OrganizationConstants.DepartmentList +
+            OrganizationConstants.DepartmentKey         
+            )
+        ]
         [HttpGet]
         public DepartmentDto ByOrganizationAndKey(long organizationid,long departmentid)
         {
             return departmentBl.ByOrganizationAndKey(organizationid, departmentid);
         }
+        /*
         #region ONLY FOR ADMIN
         [Authorize(Roles = "Администратор")]
         [HttpGet]
@@ -91,5 +113,6 @@ namespace HRExpert.Organization.Controllers
             return this.departmentBl.Delete(departmentid);
         }
         #endregion
+        */
     }
 }

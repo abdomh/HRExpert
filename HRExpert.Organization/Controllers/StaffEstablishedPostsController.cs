@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNet.Mvc;
-using HRExpert.Organization.BL.Abstractions;
-using HRExpert.Organization.DTO;
 using Microsoft.AspNet.Authorization;
 namespace HRExpert.Organization.Controllers
 {
-    [AllowAnonymous]
-    [Route(OrganizationConstants.StaffEstablishedPostsController)]
+    using DTO;
+    using BL.Abstractions;
+    using Core;
+    [Authorize]
     public class StaffEstablishedPostsController:Controller
     {
         private IStaffEstablishedPostBL staffEstablishedPostBl;
@@ -15,14 +15,31 @@ namespace HRExpert.Organization.Controllers
             this.staffEstablishedPostBl = staffEstablishedPostBl;
         }
         #endregion        
-        [Route(OrganizationConstants.StaffEstablishedPostsControllerPath)]
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList +
+            OrganizationConstants.OrganizationKey +
+            OrganizationConstants.DepartmentList +
+            OrganizationConstants.DepartmentKey +
+            OrganizationConstants.StaffEstablishedPostsList
+            )
+        ]
         [HttpGet]
         public StaffEstablishedPostDto[] List(long departmentid)
         {
-            return this.staffEstablishedPostBl.GetByDepartment(departmentid).ToArray();
+            return this.staffEstablishedPostBl.GetByDepartment(departmentid)?.ToArray();
         }
-        
-        [Route(OrganizationConstants.StaffEstablishedPostsControllerPath_key)]
+
+        [Route(CoreConstants.Api +
+            CoreConstants.version +
+            OrganizationConstants.OrganizationList +
+            OrganizationConstants.OrganizationKey +
+            OrganizationConstants.DepartmentList +
+            OrganizationConstants.DepartmentKey +
+            OrganizationConstants.StaffEstablishedPostsList +
+            OrganizationConstants.PositionsKey
+            )
+        ]
         [HttpGet]
         public StaffEstablishedPostDto Read(long departmentid, long positionid)
         {

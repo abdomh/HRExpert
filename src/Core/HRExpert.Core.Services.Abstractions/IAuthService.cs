@@ -12,8 +12,12 @@ namespace HRExpert.Core.Services.Abstractions
         /// </summary>
         HttpContext CurrentContext { get;}
         /// <summary>
-        /// Текущий пользователь
+        /// Идентификатор текущей роли
         /// </summary>
+        long CurrentRoleId { get; set; }
+        /// <summary>
+        /// Текущий пользователь
+        /// </summary>  
         User CurrentUser { get; }
         /// <summary>
         /// Проверка прав пользователя

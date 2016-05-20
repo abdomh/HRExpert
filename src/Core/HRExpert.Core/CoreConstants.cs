@@ -10,6 +10,14 @@
         /// </summary>
         public const string Api = "/api";
         /// <summary>
+        /// Версия
+        /// </summary>
+        public const string version = "/v1";
+        /// <summary>
+        /// Дочерние элементы
+        /// </summary>
+        public const string Childs = "/childs";
+        /// <summary>
         /// Профиль
         /// </summary>
         public const string ProfileController = Api + "/Profile";

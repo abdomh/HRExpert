@@ -13,5 +13,10 @@
         /// Название
         /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Имя маршрута
+        /// </summary>
+        public string RouteName { get; set; }
     }
+
 }

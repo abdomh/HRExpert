@@ -26,14 +26,7 @@ namespace HRExpert.Organization.Data.Models
         {
             get; set;
         }
-        /// <summary>
-        /// Код
-        /// </summary>
-        [Column("Code")]
-        public string Code
-        {
-            get; set;
-        }
+        
         /// <summary>
         /// Флаг удаления
         /// </summary>
@@ -63,5 +56,9 @@ namespace HRExpert.Organization.Data.Models
         /// Штатные единицы
         /// </summary>
         public virtual ICollection<StaffEstablishedPost> StaffEstablishedPosts { get; set; }
+        /// <summary>
+        /// Доступ
+        /// </summary>
+        public virtual ICollection<AccessLink> AccessLinks { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿namespace HRExpert.Core.DTO
+﻿using System.Collections.Generic;
+namespace HRExpert.Core.DTO
 {
     /// <summary>
     /// Профиль
@@ -10,8 +11,9 @@
         /// </summary>
         public string UserName { get; set; }
         /// <summary>
-        /// Права
+        /// Роли
         /// </summary>
-        public PermissionDto[] Permissions { get; set; }        
+        public List<RoleDto> Roles { get; set; }
+
     }
 }

@@ -7,13 +7,13 @@ namespace HRExpert.Core.Data.Models
     /// </summary>
     [Table("Credentials")]
     public class Credential: ExtCore.Data.Models.Abstractions.IEntity
-    {
+    {/*
         /// <summary>
         /// Идентификатор
         /// </summary>
         [Column("Id")]
         [Key]
-        public long Id { get; set; }
+        public long Id { get; set; }*/
         /// <summary>
         /// Значение(Логин/емаил/и т.д.)
         /// </summary>
