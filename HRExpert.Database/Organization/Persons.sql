@@ -10,5 +10,5 @@
 	[PositionId] bigint,
 	[PostCount] decimal(18,2),
 	CONSTRAINT FK_Person_StaffEstablishedPost FOREIGN KEY (DepartmentId,PositionId) References StaffEstablishedPosts(DepartmentId,PositionId),
-	CONSTRAINT FK_Person_User FOREIGN KEY (UserId) References Users(id)
+	CONSTRAINT FK_Person_User FOREIGN KEY (UserId) References Users(Id)
 )

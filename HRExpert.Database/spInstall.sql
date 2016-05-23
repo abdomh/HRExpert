@@ -40,10 +40,10 @@ AS
 	INSERT INTO PermissionTypes
 	(Name)
 	VALUES
-	(N'Делать всё',1),
-	(N'Просмотр',2),
-	(N'Редактирование',2),
-	(N'Удаление',2)
+	(N'Делать всё'),
+	(N'Просмотр'),
+	(N'Редактирование'),
+	(N'Удаление')
 	
 	--Права доступа по ролям
 	INSERT INTO RolePermissionTypes

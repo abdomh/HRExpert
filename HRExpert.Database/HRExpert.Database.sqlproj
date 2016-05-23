@@ -61,6 +61,7 @@
     <Folder Include="Organization" />
     <Folder Include="Organization\Views" />
     <Folder Include="Organization\Procedures" />
+    <Folder Include="Organization\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Core\Users.sql" />
@@ -78,14 +79,15 @@
     <Build Include="Organization\StaffEstablishedPosts.sql" />
     <Build Include="Organization\Positions.sql" />
     <Build Include="Organization\Statuses.sql" />
-    <Build Include="Organization\DepartmentLinks.sql" />
     <Build Include="Organization\AccessLinks.sql" />
     <Build Include="spInstall.sql" />
     <Build Include="Organization\Views\vwStaffEstablishedPostWithAccessLinks.sql" />
     <Build Include="Organization\Views\vwDepartmentAccessLinks.sql" />
     <Build Include="Organization\Views\vwPersonsAccessLinks.sql" />
     <Build Include="Organization\Views\vwOrganizationAccessLinks.sql" />
-    <Build Include="Organization\Procedures\spCreateDepartment.sql" />
+    <Build Include="Core\RoleSections.sql" />
+    <Build Include="Organization\Functions\GetDepartmentChilds.sql" />
+    <Build Include="Organization\Functions\GetDepartmentsAccess.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

@@ -8,12 +8,7 @@ namespace HRExpert.Organization.Data.Models
     /// </summary>
     [Table("Departments")]
     public class Department : ExtCore.Data.Models.Abstractions.IEntity
-    {
-        public Department()
-        {
-            this.Right = new List<DepartmentLink>();
-            this.Left = new List<DepartmentLink>();
-        }
+    {        
         /// <summary>
         /// Идентификатор
         /// </summary>
@@ -26,7 +21,8 @@ namespace HRExpert.Organization.Data.Models
         {
             get; set;
         }
-        
+        [ForeignKey("Parent")]
+        public long ParentId { get; set; }
         /// <summary>
         /// Флаг удаления
         /// </summary>
@@ -47,11 +43,11 @@ namespace HRExpert.Organization.Data.Models
         /// <summary>
         /// Линк к дочерним подразделениям. (Текущее подразделение слева this.Left.select(x=>x.Right) - дочернии)
         /// </summary>
-        public virtual ICollection<DepartmentLink> Left { get; set; }
+        public virtual ICollection<Department> Childs { get; set; }
         /// <summary>
         /// Линк к родительским подразделениям (Текущее подразделение справа this.Right.Select(x=>x.Left) - родители) 
         /// </summary>
-        public virtual ICollection<DepartmentLink> Right { get; set; }
+        public virtual Department Parent { get; set; }
         /// <summary>
         /// Штатные единицы
         /// </summary>

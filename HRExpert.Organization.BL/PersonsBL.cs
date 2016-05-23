@@ -16,11 +16,7 @@ namespace HRExpert.Organization.BL
         public PersonsBL(IStorage storage, IAuthService authService)
         {
             this.personsRepository = storage.GetRepository<IPersonRepository>();
-            var StaffEstablishedPostPermissions = StaffEstablishedPostBL.CreatePermissionsExpression(authService.CurrentUser.Id);
-            ParameterExpression param = Expression.Parameter(typeof(Person));            
-            var property = Expression.Property(param, typeof(Person), "StaffEstablishedPost");
-            //this.personsRepository.PermissionExpression = Expression.Lambda<Func<Person,bool>>(Expression.IsTrue(Expression.Invoke(StaffEstablishedPostPermissions, property)), param);
-                //(x) => x.UserId==authService.CurrentUser.Id || x.StaffEstablishedPost.Department.AccessLinks.Where(y => y.Person.UserId == authService.CurrentUser.Id).Count() > 0;
+            
             this.authService = authService;
         }
         public List<PersonDto> GetByStaffEstablishedPost(long OrganizationId, long DepartmentId, long PositionId)

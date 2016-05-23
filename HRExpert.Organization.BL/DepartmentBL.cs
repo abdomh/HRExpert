@@ -11,11 +11,9 @@ namespace HRExpert.Organization.BL
     {
         private IAuthService authService;
         private IDepartmentRepository departmentRepository;
-        private IDepartmentLinksRepository departmentLinksRepository;
         public DepartmentBL(IStorage storage, IAuthService authService)
         {
             this.departmentRepository = storage.GetRepository<IDepartmentRepository>();
-            this.departmentLinksRepository = storage.GetRepository<IDepartmentLinksRepository>();
             this.authService = authService;
         }
 
@@ -33,7 +31,7 @@ namespace HRExpert.Organization.BL
         }
         public IEnumerable<DepartmentDto> ListByOrganizationAndDepartment(long OrganizationId,long DepartmentId)
         {
-            var all = departmentLinksRepository.Childs(OrganizationId,DepartmentId);
+            var all = departmentRepository.ReadWithChildsAndParents(DepartmentId).Childs;
             return all.Select(x => new DepartmentDto { Id = x.Id, Name = x.Name }).ToList();
         }
         public DepartmentDto ByOrganizationAndKey(long organizationid, long departmentid)

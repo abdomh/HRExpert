@@ -11,13 +11,7 @@ using HRExpert.Organization.Data.Models;
 namespace HRExpert.Organization.BL
 {
     public class StaffEstablishedPostBL: Abstractions.IStaffEstablishedPostBL
-    {
-        public static Expression<Func<StaffEstablishedPost, bool>> CreatePermissionsExpression(long UserId)
-        {
-           return x => x.Department.AccessLinks.Any(y => y!=null && y.Person.UserId == UserId)
-                    || x.Department.Right.Any(k=>k!=null && k.Left.AccessLinks.Any(n=>n!=null && n.Person.UserId==UserId))
-                    ;
-        }
+    {        
         private IStaffEstablishedPostRepository repository;
         private IAuthService authService;
         public StaffEstablishedPostBL(IAuthService authService, IStorage storage)
