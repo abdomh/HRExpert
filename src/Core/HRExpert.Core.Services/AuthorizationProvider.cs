@@ -61,12 +61,7 @@ namespace HRExpert.Core.Services
             {
                 foreach (var role in cred.User.Roles)
                 {
-                    identity.AddClaim(ClaimTypes.Role, role.Role.Name, "token id_token");
-                    foreach(var permission in role.Role.Permissions)
-                    {
-                        identity.AddClaim("urn:permissionClaim", string.Format("{{ {0},{1},{2} }}", permission.PermissionType.SectionId, permission.PermissionTypeId, permission.PermissionType.Name));
-                        sections.Add(permission.PermissionType.Section.Name);
-                    }
+                    identity.AddClaim(ClaimTypes.Role, role.Role.Name, "token id_token");                    
                 }
              }
             identity.AddClaim(ClaimTypes.Name, cred.User.Name);

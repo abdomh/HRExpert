@@ -101,8 +101,7 @@ namespace HRExpert.Core.BL
         {
             PermissionDto result = new PermissionDto();
             result.Id = entity.Id;
-            result.Name = entity.Name;
-            result.SectionId = entity.SectionId;            
+            result.Name = entity.Name;          
             return result;
         }
         /// <summary>
@@ -113,7 +112,6 @@ namespace HRExpert.Core.BL
         public void FromDto(PermissionType entity, PermissionDto dto)
         {            
             entity.Name = dto.Name;
-            entity.Section = sectionRepository.Read(dto.Section.Id);
         }
         #endregion
         #endregion

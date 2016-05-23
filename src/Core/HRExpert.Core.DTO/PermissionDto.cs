@@ -13,13 +13,5 @@
         /// Название
         /// </summary>
         public string Name { get; set; }
-        /// <summary>
-        /// Модуль
-        /// </summary>
-        public long SectionId { get; set; }
-        /// <summary>
-        /// Модуль
-        /// </summary>
-        public SectionDto Section { get; set; }
     }
 }

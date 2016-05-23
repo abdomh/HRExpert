@@ -27,7 +27,7 @@ namespace HRExpert.Core.Filters
             }
             catch(Exception e)
             {
-                _logger.LogWarning("User role argument not provided.");
+                _logger.LogWarning("User role argument not provided.",e);
             }
             _logger.LogInformation("OnActionExecuting");
             base.OnActionExecuting(context);

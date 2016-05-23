@@ -26,7 +26,7 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
                         .ThenInclude(x=>x.Role)
                             .ThenInclude(x=>x.Permissions)
                                 .ThenInclude(x=>x.PermissionType)
-                                    .ThenInclude(x=>x.Section)
+                .Include(x=>x.User).ThenInclude(x=>x.Roles).ThenInclude(x=>x.Role).ThenInclude(x=>x.Sections).ThenInclude(x=>x.Section)
                 .Include(x => x.CredentialType)
                 .FirstOrDefault(x => x.Value == Value && x.Secret == Secret);
         }

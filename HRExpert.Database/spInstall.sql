@@ -38,7 +38,7 @@ AS
 	(N'Организации','Organizations')
 	--Права доступа
 	INSERT INTO PermissionTypes
-	(Name, SectionId)
+	(Name)
 	VALUES
 	(N'Делать всё',1),
 	(N'Просмотр',2),

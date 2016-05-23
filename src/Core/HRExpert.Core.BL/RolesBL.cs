@@ -144,7 +144,7 @@ namespace HRExpert.Core.BL
             RoleDto result = new RoleDto();
             result.Id = entity.Id;
             result.Name = entity.Name;
-            result.Permissions = entity.Permissions?.Select(x => new PermissionDto { Id = x.PermissionType.Id, Name = x.PermissionType.Name, Section = new SectionDto { Name = x.PermissionType.Section.Name, Id = x.PermissionType.Section.Id } }).ToList();
+            result.Permissions = entity.Permissions?.Select(x => new PermissionDto { Id = x.PermissionType.Id, Name = x.PermissionType.Name }).ToList();
             return result;
         }
         /// <summary>

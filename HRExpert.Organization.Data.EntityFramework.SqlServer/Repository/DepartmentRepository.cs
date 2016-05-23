@@ -27,7 +27,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public IEnumerable<Department> AllByOrganization(long Id)
         {
             return this.dbSet                
-                .Where(x=>x.OrganizationId==Id && x.Right.Count==0)
+                .Where(x=>x.OrganizationId==Id && x.Right.Where(y=>y.Distance>0).Count()==0)
                 .ToList();
         }
         public Department ByOrganizationAndKey(long organizationid, long departmentid)

@@ -46,8 +46,8 @@ namespace HRExpert.Core.BL
             {
                 Id = x.RoleId,
                 Name = x.Role.Name,
-                Permissions = x.Role.Permissions.Select(permission => new PermissionDto { Id = permission.PermissionTypeId, Name = permission.PermissionType.Name, SectionId=permission.PermissionType.SectionId }).ToList(),
-                Sections = x.Role.Permissions.Select(permission=>new SectionDto { Id = permission.PermissionType.Section.Id, Name = permission.PermissionType.Section.Name, RouteName=permission.PermissionType.Section.RouteName }).Distinct().ToList()
+                Permissions = x.Role.Permissions.Select(permission => new PermissionDto { Id = permission.PermissionTypeId, Name = permission.PermissionType.Name, }).ToList(),
+                Sections = x.Role.Sections.Select(section => new SectionDto { Id = section.SectionId, Name = section.Section.Name, RouteName = section.Section.RouteName }).ToList()
             }).ToList();           
             return result;
         }

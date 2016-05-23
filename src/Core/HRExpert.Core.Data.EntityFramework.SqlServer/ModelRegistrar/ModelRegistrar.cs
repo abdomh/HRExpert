@@ -18,6 +18,7 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
             modelbuilder.Entity<Section>();
             modelbuilder.Entity<PermissionType>();
             modelbuilder.Entity<RolePermission>().HasKey(x => new { x.RoleId, x.PermissionTypeId });
+            modelbuilder.Entity<RoleSection>().HasKey(x => new { x.RoleId, x.SectionId });
             modelbuilder.Entity<RoleUser>().HasKey(x => new { x.UserId, x.RoleId });
         }
     }

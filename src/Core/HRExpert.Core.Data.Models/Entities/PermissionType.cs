@@ -31,14 +31,5 @@ namespace HRExpert.Core.Data.Models
         {
             get; set;
         }
-        /// <summary>
-        /// Идентификатор модуля
-        /// </summary>
-        [ForeignKey("Section")]
-        public long SectionId { get; set; }
-        /// <summary>
-        /// Модуль
-        /// </summary>
-        public Section Section { get; set; }
     }
 }
