@@ -22,7 +22,7 @@ namespace HRExpert.Organization.Data.Models
             get; set;
         }
         [ForeignKey("Parent")]
-        public long ParentId { get; set; }
+        public long? ParentId { get; set; }
         /// <summary>
         /// Флаг удаления
         /// </summary>

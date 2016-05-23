@@ -1,7 +1,7 @@
 ﻿{
   "Data": {
     "DefaultConnection": {
-      "ConnectionString": "Data Source=SQLCORE;Database=HRExpert_test;User Id=sa;Password=nhbrkfaktrc;MultipleActiveResultSets=True;"
+      "ConnectionString": "Data Source=SQLCORE;Database=HRExpert;User Id=sa;Password=nhbrkfaktrc;MultipleActiveResultSets=True;"
     }
   }
 }

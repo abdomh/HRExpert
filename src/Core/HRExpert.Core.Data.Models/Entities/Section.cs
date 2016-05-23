@@ -35,9 +35,5 @@ namespace HRExpert.Core.Data.Models
         {
             get; set;
         }
-        /// <summary>
-        /// Права
-        /// </summary>
-        public virtual ICollection<PermissionType> Permissions { get; set; }
     }
 }
