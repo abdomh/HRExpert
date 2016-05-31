@@ -10,7 +10,8 @@ namespace HRExpert.Core.Controllers.api
     /// Контроллер прав
     /// (доступ только для администраторов)
     /// </summary>
-    [Authorize(Roles = "Администратор")]
+    //[Authorize(Roles = "Администратор")]
+    [AllowAnonymous]
     public class PermissionsController: Controller
     {
         private IPermissionBL permissionBl;

@@ -62,6 +62,8 @@
     <Folder Include="Organization\Views" />
     <Folder Include="Organization\Procedures" />
     <Folder Include="Organization\Functions" />
+    <Folder Include="Organization\Timesheet" />
+    <Folder Include="Organization\Timesheet\Sicklist" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Core\Users.sql" />
@@ -88,6 +90,17 @@
     <Build Include="Core\RoleSections.sql" />
     <Build Include="Organization\Functions\GetDepartmentChilds.sql" />
     <Build Include="Organization\Functions\GetDepartmentsAccess.sql" />
+    <Build Include="Organization\DocumentTypes.sql" />
+    <Build Include="Organization\Timesheet\Sicklist\Sicklist.sql" />
+    <Build Include="Organization\Timesheet\Sicklist\SicklistTypes.sql" />
+    <Build Include="Organization\Timesheet\Sicklist\SicklistBabyMindingTypes.sql" />
+    <Build Include="Organization\Timesheet\Sicklist\SicklistPaymentPercent.sql" />
+    <Build Include="Organization\Timesheet\Sicklist\SicklistPaymentRestrictTypes.sql" />
+    <Build Include="Organization\PersonEvents.sql" />
+    <Build Include="Organization\Documents.sql" />
+    <Build Include="Organization\Timesheet\Timesheet.sql" />
+    <Build Include="Organization\Timesheet\TimesheetStatuses.sql" />
+    <Build Include="Organization\Views\vwDocumentAccessLinks.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

@@ -18,7 +18,9 @@
     "HRExpert.Core.Data.EntityFramework.SqlServer": "1.0.0-*"
   },
   "frameworks": {
-      "dnx451": { },
+    "dnx451": {
+      
+    },
       "dnxcore50": { }
     }
   }

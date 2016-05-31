@@ -4,9 +4,9 @@
 )
 RETURNS @returntable TABLE
 (
-	personId bigint,
-	departmentId bigint,
-	roleid bigint
+	PersonId bigint,
+    DepartmentId bigint,
+	RoleId bigint
 )
 AS
 BEGIN
