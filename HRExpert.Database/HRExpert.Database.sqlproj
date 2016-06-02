@@ -101,7 +101,7 @@
     <Build Include="Organization\Timesheet\Timesheet.sql" />
     <Build Include="Organization\Timesheet\TimesheetStatuses.sql" />
     <Build Include="Organization\Views\vwDocumentAccessLinks.sql" />
-    <Build Include="Organization\DocumentAprovements.sql" />
+    <Build Include="Organization\DocumentApprovements.sql" />
     <Build Include="Organization\DocumentFiles.sql" />
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,9 @@
 
 namespace HRExpert.Organization.DTO
 {
+    /// <summary>
+    /// Подразделение
+    /// </summary>
     public class DepartmentDto
     {
         /// <summary>
@@ -13,12 +16,13 @@ namespace HRExpert.Organization.DTO
         /// </summary>
         public string Name { get; set; }
         /// <summary>
-        /// Идентификатор организации
+        /// Идентификатор родителя
         /// </summary>
-        public long OrganizationId { get; set; }
+        public long ParentId { get; set; }
+        /// <summary>
+        /// Организация
+        /// </summary>
+        public OrganizationDto Organization { get; set; }
         
-        public DepartmentDto()
-        {
-        }
     }
 }

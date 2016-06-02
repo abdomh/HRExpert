@@ -12,6 +12,7 @@
     "ExtCore.Infrastructure": "1.0.0-alpha7",
     "HRExpert.Core.Data.EntityFramework.SqlServer": "",
     "HRExpert.Organization.Data.Models": "1.0.0-*",
+    "HRExpert.Organization.Data.Models.Abstractions": "1.0.0-*",
     "HRExpert.Organization.Data.Abstractions": "1.0.0-*"
   },
   "frameworks": {

@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 namespace HRExpert.Core.DTO
 {
+    /// <summary>
+    /// Пользователь
+    /// </summary>
     public class UserDto
     {
         public UserDto()
         {
             this.Roles = new List<RoleDto>();
+            this.Credentials = new List<CredentialDto>();
         }
         /// <summary>
         /// Идентификатор
@@ -20,5 +23,9 @@ namespace HRExpert.Core.DTO
         /// Роли
         /// </summary>
         public List<RoleDto> Roles { get; set; }
+        /// <summary>
+        /// Учётные данные
+        /// </summary>
+        public List<CredentialDto> Credentials { get; set; }
     }
 }

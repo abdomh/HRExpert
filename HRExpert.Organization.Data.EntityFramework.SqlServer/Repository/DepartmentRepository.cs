@@ -17,7 +17,9 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         /// <returns></returns>
         public IEnumerable<Department> All()
         {
-            return this.dbSet.ToList();
+            return this.dbSet
+                .Include(x=>x.Organization)
+                .ToList();
         }
         /// <summary>
         /// Все подразделения по Id организации
@@ -26,13 +28,15 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         /// <returns></returns>
         public IEnumerable<Department> AllByOrganization(long Id)
         {
-            return this.dbSet                
-                .Where(x=>x.OrganizationId==Id && !x.ParentId.HasValue)
+            return this.dbSet             
+                .Include(x=>x.Organization)   
+                .Where(x=>x.OrganizationId==Id)
                 .ToList();
         }
         public Department ByOrganizationAndKey(long organizationid, long departmentid)
         {
             return this.dbSet
+                .Include(x=>x.Organization)
                 .Where(x => x.OrganizationId == organizationid && x.Id == departmentid)
                 .FirstOrDefault();
         }
@@ -53,6 +57,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public virtual Department Read(long Id)
         {
             return this.dbSet
+                .Include(x=>x.Organization)
                 .Where(x => x.Id == Id)
                 .FirstOrDefault();
         }
@@ -64,6 +69,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public virtual Department ReadWithChildsAndParents(long Id)
         {
             return this.dbSet
+                .Include(x=>x.Organization)                
                 .Include(x=>x.Childs)
                 .Include(x=>x.Parent)
                 .Where(x => x.Id == Id)

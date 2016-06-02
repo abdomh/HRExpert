@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Data.Entity.Query.Expressions;
-using System.Linq.Expressions;
 using HRExpert.Organization.Data.Models;
 using Microsoft.Data.Entity;
-
 
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
@@ -16,7 +12,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
     {       
         private IQueryable<StaffEstablishedPost> Query()
         {
-            return this.dbSet.FromSql("SELECT * FROM vwStaffEstablishedPostWithAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1",CurrentUserId,CurrentRoleId);
+            if(CurrentRoleId>0)
+                return this.dbSet.FromSql("SELECT * FROM vwStaffEstablishedPostWithAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1",CurrentUserId,CurrentRoleId);
+            else
+                return this.dbSet.FromSql("SELECT * FROM vwStaffEstablishedPostWithAccessLinks where AccessUserId=@p0", CurrentUserId);
         }
         /// <summary>
         /// Все по Id подразделения
@@ -25,7 +24,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         /// <returns></returns>
         public List<StaffEstablishedPost> GetByDepartmentId(long DepartmentId)
         {            
-            return Query().Where(x=>x.DepartmentId==DepartmentId).ToList();
+            return Query()
+                .Include(x => x.Department).ThenInclude(x => x.Organization)
+                .Include(x => x.Position)
+                .Where(x=>x.DepartmentId==DepartmentId).ToList();
         }
         /// <summary>
         /// Создание
@@ -45,7 +47,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public StaffEstablishedPost Read(long DepartmentId, long PositionId)
         {
             return Query()
-                .Include(x => x.Department)
+                .Include(x => x.Department).ThenInclude(x=>x.Organization)
                 .Include(x => x.Position)
                 .Where(x => x.DepartmentId == DepartmentId && x.PositionId == PositionId).FirstOrDefault();
         }        

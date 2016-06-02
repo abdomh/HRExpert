@@ -10,8 +10,9 @@ using ExtCore.Data.Abstractions;
 using HRExpert.Organization.Data.Models;
 namespace HRExpert.Organization.BL
 {
+    using Converters;
     public class StaffEstablishedPostBL: Abstractions.IStaffEstablishedPostBL
-    {        
+    {     
         private IStaffEstablishedPostRepository repository;
         private IAuthService authService;
         public StaffEstablishedPostBL(IAuthService authService, IStorage storage)
@@ -24,23 +25,13 @@ namespace HRExpert.Organization.BL
         public List<StaffEstablishedPostDto> GetByDepartment(long DepartmentId)
         {
             var data = repository.GetByDepartmentId(DepartmentId);
-            return data?.Select(x => new StaffEstablishedPostDto
-            {
-                DepartmentId = x.DepartmentId,
-                PositionId = x.PositionId,
-                PostCount = x.PostCount
-            }).ToList();
+            return data?.Select(x => x.Convert()).ToList();
         }
         public StaffEstablishedPostDto GetByDepartmentAndPosition(long DepartmentId, long PositionId)
         {
             var data = repository.Read(DepartmentId, PositionId);
             if (data == null) return null;
-            return new StaffEstablishedPostDto
-            {
-                DepartmentId = data.DepartmentId,
-                PositionId = data.PositionId,
-                PostCount = data.PostCount
-            };
+            return data.Convert();
         }
     }
 }

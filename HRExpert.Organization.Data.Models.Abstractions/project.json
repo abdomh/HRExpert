@@ -1,0 +1,9 @@
+﻿{
+  "version": "1.0.0-*",
+
+  "dependencies": { "ExtCore.Data.Models.Abstractions": "1.0.0-alpha7" },
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": { }
+  }
+}

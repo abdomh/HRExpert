@@ -6,17 +6,13 @@
     public class StaffEstablishedPostDto
     {
         /// <summary>
-        /// Идентификатор организации
+        /// Подразделение
         /// </summary>
-        public long OrganizationId { get; set; }
+        public DepartmentDto Department {get;set;}
         /// <summary>
-        /// Идентификатор подразделения
+        /// Должность
         /// </summary>
-        public long DepartmentId { get; set; }
-        /// <summary>
-        /// Идентификатор должности
-        /// </summary>
-        public long PositionId { get; set; }        
+        public PositionDto Position { get; set; }
         /// <summary>
         /// Кол-во ставок
         /// </summary>

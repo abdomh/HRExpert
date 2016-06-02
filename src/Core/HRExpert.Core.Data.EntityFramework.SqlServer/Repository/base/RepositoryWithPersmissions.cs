@@ -15,5 +15,6 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
         }
         public long CurrentUserId { get; set; }
         public long CurrentRoleId { get; set; }
+        
     }
 }

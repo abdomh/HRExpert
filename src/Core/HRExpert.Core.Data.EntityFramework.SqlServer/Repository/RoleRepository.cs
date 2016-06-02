@@ -18,7 +18,10 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
         /// <returns>Коллекция записей</returns>
         public virtual IEnumerable<Role> All()
         {
-            return this.dbSet.ToList();
+            return this.dbSet
+                .Include(x=>x.Permissions).ThenInclude(x=>x.PermissionType)
+                .Include(x=>x.Sections)
+                .ToList();
         }
         /// <summary>
         /// Создание
@@ -36,7 +39,10 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
         /// <returns>Сущность</returns>
         public virtual Role Read(long Id)
         {
-            return this.dbSet.Where(x => x.Id == Id).FirstOrDefault();
+            return this.dbSet
+                .Include(x => x.Permissions).ThenInclude(x => x.PermissionType)
+                .Include(x => x.Sections)
+                .Where(x => x.Id == Id).FirstOrDefault();
         }
         /// <summary>
         /// Обновление/редактирование
