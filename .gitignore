@@ -8,3 +8,12 @@ src/HRExpert/node_modules/
 *.suo
 *.suo
 *.log
+.IncrementalCache
+dotnet-compile.rsp
+dotnet-compile-csc.rsp
+*dotnet-compile.deps.json
+.IncrementalCache
+dotnet-compile.rsp
+dotnet-compile-csc.rsp
+HRExpertdotnet-compile.deps.json
+*/bin/Debug/netstandard1.5/*
