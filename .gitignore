@@ -17,3 +17,8 @@ dotnet-compile.rsp
 dotnet-compile-csc.rsp
 HRExpertdotnet-compile.deps.json
 */bin/Debug/netstandard1.5/*
+*/bin/Debug/netstandard1.5/*.*
+*/obj/Debug/netcoreapp1.0/.IncrementalCache
+src/HRExpert/obj/Debug/netcoreapp1.0/dotnet-compile.rsp
+src/HRExpert/obj/Debug/netcoreapp1.0/dotnet-compile-csc.rsp
+src/HRExpert/obj/Debug/netcoreapp1.0/HRExpertdotnet-compile.deps.json
