@@ -32,7 +32,17 @@ namespace HRExpert.Core.Services
             this.storage = storage;
             this.credentialRepository = storage.GetRepository<ICredentialRepository>();
         }
-        
+        public override Task ValidateTokenRequest(ValidateTokenRequestContext context)
+        {
+            context.Skip();
+            return Task.FromResult<object>(null);
+        }
+        public override Task GrantClientCredentials(GrantClientCredentialsContext context)
+        {
+            context.Skip();
+            
+            return Task.FromResult<object>(null);
+        }
         /// <summary>
         /// Создание токена
         /// </summary>
@@ -45,20 +55,21 @@ namespace HRExpert.Core.Services
             var cred = credentialRepository.GetByValueAndSecret(context.UserName, context.Password);
             if (cred == null) { context.Reject("Пользователь не найден"); return Task.FromResult<object>(null); }
             var identity = new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
-            identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value);
-            identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString(), "token id_token");            
+            identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value, OpenIdConnectConstants.Destinations.AccessToken, OpenIdConnectConstants.Destinations.IdentityToken);
+            identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString(), OpenIdConnectConstants.Destinations.AccessToken, OpenIdConnectConstants.Destinations.IdentityToken);            
             if (cred!=null && cred.User.Roles != null)
             {
                 foreach (var role in cred.User.Roles)
                 {
-                    identity.AddClaim(ClaimTypes.Role, role.Role.Name, "token id_token");                    
+                    identity.AddClaim(ClaimTypes.Role, role.Role.Name, OpenIdConnectConstants.Destinations.AccessToken, OpenIdConnectConstants.Destinations.IdentityToken);                    
                 }
              }
             identity.AddClaim(ClaimTypes.Name, cred.User.Name);
             var ticket = new AuthenticationTicket(
                 new ClaimsPrincipal(identity),
                 new AuthenticationProperties(),
-                context.Options.AuthenticationScheme);            
+                context.Options.AuthenticationScheme);
+            ticket.Properties.AllowRefresh = true;   
             ticket.SetResources(new[] { "ApiServer" });            
             ticket.SetScopes(sections.Distinct().ToArray());
             context.Validate(ticket);            

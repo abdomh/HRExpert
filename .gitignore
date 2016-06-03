@@ -22,3 +22,8 @@ HRExpertdotnet-compile.deps.json
 src/HRExpert/obj/Debug/netcoreapp1.0/dotnet-compile.rsp
 src/HRExpert/obj/Debug/netcoreapp1.0/dotnet-compile-csc.rsp
 src/HRExpert/obj/Debug/netcoreapp1.0/HRExpertdotnet-compile.deps.json
+*.dll
+*.pdb
+src/HRExpert/obj/Debug/netcoreapp1.0/*.*
+src/HRExpert/bin/Debug/netcoreapp1.0/*.*
+src/HRExpert/bin/Debug/netcoreapp1.0/*.*
