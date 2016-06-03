@@ -2,15 +2,18 @@
   "version": "1.0.0-*",
   "description": "HRExpert.Core.Services.Abstractions Class Library",
   "authors": [ "baranov" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
   "dependencies": {
+    "NETStandard.Library": "1.5.0-rc2-24027",
     "HRExpert.Core.Data.Models": "1.0.0-*",
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final"
+    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final"
   },
   "frameworks": {
-    "dnx451": { },
-    "dnxcore50": { }
+    "netstandard1.5": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
   }
 }

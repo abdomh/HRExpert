@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
-
+using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
 {
     /// <summary>
@@ -43,7 +43,7 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
         /// <param name="entity">Сущность</param>
         public virtual void Update(Section entity)
         {
-            this.dbContext.Entry(entity).State = Microsoft.Data.Entity.EntityState.Modified;
+            this.dbContext.Entry(entity).State = EntityState.Modified;
             this.dbContext.SaveChanges();
         }
         /// <summary>

@@ -2,8 +2,8 @@
 using AspNet.Security.OpenIdConnect.Server;
 using ExtCore.Data.Abstractions;
 using HRExpert.Core.Data.Abstractions;
-using Microsoft.AspNet.Authentication;
-using Microsoft.AspNet.Http.Authentication;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http.Authentication;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -32,17 +32,7 @@ namespace HRExpert.Core.Services
             this.storage = storage;
             this.credentialRepository = storage.GetRepository<ICredentialRepository>();
         }
-        /// <summary>
-        /// Проверка аутентификации клиента
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        public override Task ValidateClientAuthentication(ValidateClientAuthenticationContext context)
-        {
-            ///Тут требуется коммент. Поскольку пока у нас нет мобильного приложения и других клиентов, то их идентифицировать не надо, эту фазу пропускаем (Skipped)
-            context.Skipped();
-            return Task.FromResult(0);
-        }
+        
         /// <summary>
         /// Создание токена
         /// </summary>
@@ -53,7 +43,7 @@ namespace HRExpert.Core.Services
             List<string> sections = new List<string>();
             sections.Add("offline_access");
             var cred = credentialRepository.GetByValueAndSecret(context.UserName, context.Password);
-            if (cred == null) { context.Rejected("Пользователь не найден"); return Task.FromResult<object>(null); }
+            if (cred == null) { context.Reject("Пользователь не найден"); return Task.FromResult<object>(null); }
             var identity = new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
             identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value);
             identity.AddClaim(ClaimTypes.UserData, cred.User.Id.ToString(), "token id_token");            
@@ -71,7 +61,7 @@ namespace HRExpert.Core.Services
                 context.Options.AuthenticationScheme);            
             ticket.SetResources(new[] { "ApiServer" });            
             ticket.SetScopes(sections.Distinct().ToArray());
-            context.Validated(ticket);
+            context.Validate(ticket);            
             return Task.FromResult<object>(null);
         }
     }

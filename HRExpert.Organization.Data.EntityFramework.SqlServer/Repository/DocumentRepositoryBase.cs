@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using HRExpert.Organization.Data.Models;
 using HRExpert.Organization.Data.Models.Abstractions;
 

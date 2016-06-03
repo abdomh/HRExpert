@@ -2,13 +2,11 @@
   "version": "1.0.0-*",
   "description": "HRExpert.Core Class Library",
   "authors": [ "Baranov Artem" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
   "dependencies": {
-    "Microsoft.AspNet.Mvc": "6.0.0-rc1-final",
-    "Microsoft.AspNet.Mvc.Cors": "6.0.0-rc1-final",
-    "ExtCore.Infrastructure": "1.0.0-alpha7",
+    "NETStandard.Library": "1.5.0-rc2-24027",
+    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+    "Microsoft.AspNetCore.Mvc.Cors": "1.0.0-rc2-final",
+    "ExtCore.Infrastructure": "1.0.0-alpha8",
     "HRExpert.Core.BL": "1.0.0-*",
     "HRExpert.Core.BL.Abstractions": "1.0.0-*",
     "HRExpert.Core.Data.Abstractions": "1.0.0-*",
@@ -18,9 +16,12 @@
     "HRExpert.Core.Data.EntityFramework.SqlServer": "1.0.0-*"
   },
   "frameworks": {
-    "dnx451": {
-      
-    },
-      "dnxcore50": { }
+    "netstandard1.5": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
     }
+  }
   }

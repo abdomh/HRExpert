@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNet.Http;
+﻿using Microsoft.AspNetCore.Http;
 using HRExpert.Core.Data.Models;
 namespace HRExpert.Core.Services.Abstractions
 {

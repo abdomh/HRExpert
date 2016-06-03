@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HRExpert.Organization.Controllers
 {

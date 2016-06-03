@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.Entity;
+﻿using Microsoft.EntityFrameworkCore;
 using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Organization.Data.Models;
 

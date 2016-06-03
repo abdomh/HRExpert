@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HRExpert.Organization.Data.Models;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
     public class DocumentRepository: ExtCore.Data.EntityFramework.SqlServer.RepositoryBase<Document>, Abstractions.IDocumentRepository

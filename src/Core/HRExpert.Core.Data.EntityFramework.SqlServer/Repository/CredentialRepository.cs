@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
@@ -67,7 +67,7 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
         /// <param name="entity">сущность</param>
         public virtual void Update(Credential entity)
         {
-            this.dbContext.Entry(entity).State = Microsoft.Data.Entity.EntityState.Modified;
+            this.dbContext.Entry(entity).State = EntityState.Modified;
             this.dbContext.SaveChanges();
         }
         /// <summary>

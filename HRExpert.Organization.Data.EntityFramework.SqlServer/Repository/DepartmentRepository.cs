@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using HRExpert.Organization.Data.Models;
 using HRExpert.Organization.Data.Abstractions;
 using System.Collections.Generic;

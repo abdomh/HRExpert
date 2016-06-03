@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Http;
-using Microsoft.AspNet.Routing;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using HRExpert.Core.BL.Abstractions;
@@ -8,6 +9,8 @@ using HRExpert.Core.BL;
 using HRExpert.Core.Services.Abstractions;
 using HRExpert.Core.Services;
 using ExtCore.Data.Abstractions;
+using System;
+
 namespace HRExpert.Core
 {
     /// <summary>
@@ -45,7 +48,6 @@ namespace HRExpert.Core
             services.AddScoped<IAuthService, AuthService>();
             
             services.AddAuthentication();
-            services.AddCaching();
             services.AddMvc(config => config.Filters.AddService(typeof(Filters.RoleActionFilter)));
         }
         /// <summary>
@@ -53,18 +55,15 @@ namespace HRExpert.Core
         /// </summary>
         /// <param name="applicationBuilder"></param>
         public void Configure(IApplicationBuilder applicationBuilder)
-        {           
-            
-            applicationBuilder.UseJwtBearerAuthentication(options =>
-            {
-                string authority = this.configurationRoot["JWT:Authority"];
-                string audience = this.configurationRoot["JWT:Audience"];
-                options.AutomaticAuthenticate = true;
-                options.AutomaticChallenge = true;
-                options.Audience = audience;
-                options.Authority = authority;
-                options.RequireHttpsMetadata = false;
-            });
+        {
+            JwtBearerOptions jwtoptions = new JwtBearerOptions {
+               Authority = this.configurationRoot["JWT:Authority"],
+               Audience = this.configurationRoot["JWT:Audience"],
+               AutomaticAuthenticate = true,
+               AutomaticChallenge = true,
+               RequireHttpsMetadata = false
+            };
+            applicationBuilder.UseJwtBearerAuthentication(jwtoptions);
             
             applicationBuilder.UseOpenIdConnectServer(options =>
             {
@@ -79,5 +78,6 @@ namespace HRExpert.Core
         public void RegisterRoutes(IRouteBuilder routeBuilder)
         {
         }
+        
     }
 }

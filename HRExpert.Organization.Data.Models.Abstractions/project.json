@@ -1,9 +1,17 @@
 ﻿{
   "version": "1.0.0-*",
 
-  "dependencies": { "ExtCore.Data.Models.Abstractions": "1.0.0-alpha7" },
+  "dependencies": {
+    "NETStandard.Library": "1.5.0-rc2-24027",
+    "ExtCore.Data.Models.Abstractions": "1.0.0-alpha8"
+  },
   "frameworks": {
-    "dnx451": { },
-    "dnxcore50": { }
+    "netstandard1.5": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
   }
 }

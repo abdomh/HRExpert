@@ -1,6 +1,6 @@
 ﻿using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Core.Data.EntityFramework.SqlServer.ModelRegistrar
 {
     public class ModelRegistrar : IModelRegistrar

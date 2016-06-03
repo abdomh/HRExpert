@@ -10,15 +10,17 @@
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
+      "launchBrowser": true,
       "environmentVariables": {
-        "Hosting:Environment": "Development"
-      },
-      "sdkVersion": "dnx-coreclr-win-x64.1.0.0-rc1-update2"
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     },
-    "web": {
-      "commandName": "web",
+    "WebApplication": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5000/",
       "environmentVariables": {
-        "Hosting:Environment": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     }
   }

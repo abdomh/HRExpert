@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HRExpert.Organization.Data.Models;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
     public class SicklistTypesRepository : ExtCore.Data.EntityFramework.SqlServer.RepositoryBase<SicklistType>, Abstractions.ISicklistTypesRepository

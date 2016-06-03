@@ -1,6 +1,7 @@
 ﻿using System.Security.Claims;
 using System.Linq;
-using Microsoft.AspNet.Http;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using ExtCore.Data.Abstractions;
 using HRExpert.Core.Data.Models;

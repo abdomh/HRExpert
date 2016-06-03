@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
-using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Cors;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Cors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
@@ -10,10 +10,12 @@ namespace HRExpert
 {
     public class Startup : ExtCore.WebApplication.Startup
     {
-        public Startup(IHostingEnvironment hostingEnvironment, IApplicationEnvironment applicationEnvironment, IAssemblyLoaderContainer assemblyLoaderContainer, IAssemblyLoadContextAccessor assemblyLoadContextAccessor, ILibraryManager libraryManager)
-          : base(hostingEnvironment, applicationEnvironment, assemblyLoaderContainer, assemblyLoadContextAccessor, libraryManager)
+        public Startup(IHostingEnvironment hostingEnvironment)
+          : base(hostingEnvironment)
         {
             IConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
+              .SetBasePath(hostingEnvironment.ContentRootPath)
+              .AddJsonFile("config.json", optional: true, reloadOnChange: true)
               .AddJsonFile("appsettings.json")
               .AddJsonFile("dbconfig.json");
 
@@ -26,21 +28,20 @@ namespace HRExpert
         }
 
         public override void Configure(IApplicationBuilder applicationBuilder, IHostingEnvironment hostingEnvironment)
-        {
-            applicationBuilder.UseIISPlatformHandler();            
+        {       
             if (hostingEnvironment.IsEnvironment("Development"))
             {
 
                 applicationBuilder.UseBrowserLink();
-                applicationBuilder.UseDeveloperExceptionPage();
-                applicationBuilder.UseDatabaseErrorPage();
+                //applicationBuilder.UseDeveloperExceptionPage();
+                //applicationBuilder.UseDatabaseErrorPage();
             }
 
             else
             {
                 applicationBuilder.UseBrowserLink();
-                applicationBuilder.UseDeveloperExceptionPage();
-                applicationBuilder.UseDatabaseErrorPage();
+                //applicationBuilder.UseDeveloperExceptionPage();
+                //applicationBuilder.UseDatabaseErrorPage();
             }
             applicationBuilder.UseCors(x => {
                 x.AllowAnyOrigin();
@@ -50,6 +51,6 @@ namespace HRExpert
             });
             base.Configure(applicationBuilder, hostingEnvironment);
         }
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
+        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

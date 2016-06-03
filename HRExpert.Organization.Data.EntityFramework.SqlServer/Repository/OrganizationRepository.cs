@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {

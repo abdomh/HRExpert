@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using ExtCore.Data.EntityFramework.SqlServer;
 using HRExpert.Core.Data.Models;
 using HRExpert.Core.Data.Abstractions;
