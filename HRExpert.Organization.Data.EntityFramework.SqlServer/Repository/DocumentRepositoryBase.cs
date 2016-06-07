@@ -13,7 +13,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         {
             return
             this.dbContext.Set<Document>()
-                .FromSql("SELECT sl.* FROM vwDocumentAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1", CurrentUserId, CurrentRoleId)
+                .FromSql("SELECT * FROM vwDocumentAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1", CurrentUserId, CurrentRoleId)
                 .Join<Document, T, Guid, T>(this.dbSet, x => x.Id, x => x.DocumentGuid, (x, y) => y);
         }
     }

@@ -98,7 +98,7 @@ namespace HRExpert.Organization
         public const string Person = "person";
         /// <summary>
         /// Список персонажей
-        /// </summary>
+         /// </summary>
         public const string PersonList = "/" + Person + "s";
         /// <summary>
         /// Персонаж по ключу
@@ -146,6 +146,20 @@ namespace HRExpert.Organization
         /// </summary>
         public const string PositionsController_key = PositionsController + PositionsKey;
         */
-
+        public const string TimesheetStatus = "timesheetstatus";
+        public const string TimesheetStatusList = "/" + TimesheetStatus + "es";
+        public const string Timesheet = "timesheet";
+        public const string TimesheetList = "/" + Timesheet + "s";
+        public const string Sicklist = "sicklist";
+        public const string SicklistList = "/" + Sicklist + "s";
+        public const string SicklistKey = "({" + Sicklist + "id})";
+        public const string SicklistType = "sicklisttype";
+        public const string SicklistTypeList = "/" + SicklistType + "s";
+        public const string SicklistBabyMindingType = "sicklistbabymindingtype";
+        public const string SicklistBabyMindingTypeList = "/" + SicklistBabyMindingType + "s";
+        public const string SicklistPaymentRestrictType = "sicklistpaymentrestricttype";
+        public const string SicklistPaymentRestrictTypeList = "/" + SicklistPaymentRestrictType + "s";
+        public const string SicklistPaymentPercent = "sicklistpaymentpercent";
+        public const string SicklistPaymentPercentList = "/" + SicklistPaymentPercent + "s";
     }
 }

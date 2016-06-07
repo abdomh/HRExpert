@@ -4,7 +4,14 @@ using System.Collections.Generic;
 namespace HRExpert.Organization.Data.Abstractions
 {
     public interface IPersonRepository : HRExpert.Core.Data.Abstractions.IRepositoryWithPermissions
-    {        
+    {
+        /// <summary>
+        /// Получение сотрудника по идентификатору пользователя привязанного к подразделению
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <param name="TargetDepartmentId"></param>
+        /// <returns></returns>
+        Person GetPersonByUserIdAndTargetDepartment(long UserId, long TargetDepartmentId);
         /// <summary>
         /// Все по штатной единице
         /// </summary>

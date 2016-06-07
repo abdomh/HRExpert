@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0/",
-    "signature": "1b979fea68584c5cffa808f812ed3c35cb79f3a8"
+    "signature": "f602512e6329fc1c7ac7f7919f497698d9a72bf4"
   },
   "compilationOptions": {
     "defines": [
@@ -31,10 +31,13 @@
           "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
           "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
+          "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-final",
           "ExtCore.WebApplication": "1.0.0-alpha8",
           "ExtCore.Data": "1.0.0-alpha8",
           "HRExpert.Core": "1.0.0",
-          "HRExpert.Organization": "1.0.0"
+          "HRExpert.Organization": "1.0.0",
+          "Swashbuckle": "6.0.0-beta9"
         },
         "compile": {
           "HRExpert.dll": {}
@@ -237,12 +240,39 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Diagnostics/1.0.0-rc2-final": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Http.Extensions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.WebUtilities": "1.0.0-rc2-final",
+          "Microsoft.Extensions.FileProviders.Physical": "1.0.0-rc2-final",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.Extensions.Options": "1.0.0-rc2-final",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
+          "System.Diagnostics.DiagnosticSource": "4.0.0-rc2-24027",
+          "System.Reflection.Extensions": "4.0.1-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Diagnostics.Abstractions/1.0.0-rc2-final": {
         "dependencies": {
           "System.Resources.ResourceManager": "4.0.1-rc2-24027"
         },
         "compile": {
           "lib/netstandard1.0/Microsoft.AspNetCore.Diagnostics.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/1.0.0-rc2-final": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0-rc2-final",
+          "System.Threading": "4.0.11-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.AspNetCore.Hosting/1.0.0-rc2-final": {
@@ -1392,6 +1422,34 @@
       "runtime.native.System.Security.Cryptography/4.0.0-rc2-24027": {},
       "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni/4.0.1-rc2-24027": {},
       "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni/4.0.1-rc2-24027": {},
+      "Swashbuckle/6.0.0-beta9": {
+        "dependencies": {
+          "Swashbuckle.SwaggerGen": "6.0.0-beta9",
+          "Swashbuckle.SwaggerUi": "6.0.0-beta9"
+        }
+      },
+      "Swashbuckle.SwaggerGen/6.0.0-beta9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-final",
+          "System.Xml.XPath": "4.0.1-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.5/Swashbuckle.SwaggerGen.dll": {}
+        }
+      },
+      "Swashbuckle.SwaggerUi/6.0.0-beta9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
+          "Microsoft.Extensions.FileProviders.Embedded": "1.0.0-rc2-final",
+          "System.Xml.XPath": "4.0.1-rc2-24027"
+        },
+        "compile": {
+          "lib/netstandard1.5/Swashbuckle.SwaggerUi.dll": {}
+        }
+      },
       "System.AppContext/4.1.0-rc2-24027": {
         "dependencies": {
           "System.Runtime": "4.1.0-rc2-24027"
@@ -2714,6 +2772,9 @@
           "System.Runtime.Extensions": "4.1.0-rc2-24027",
           "System.Threading": "4.0.11-rc2-24027",
           "System.Xml.ReaderWriter": "4.0.11-rc2-24027"
+        },
+        "compile": {
+          "ref/netstandard1.3/System.Xml.XPath.dll": {}
         }
       },
       "System.Xml.XPath.XDocument/4.0.1-rc2-24027": {
@@ -2972,10 +3033,13 @@
           "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final",
           "Microsoft.Extensions.Logging.Debug": "1.0.0-rc2-final",
           "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc2-final",
+          "Microsoft.AspNetCore.Diagnostics": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0-rc2-final",
           "ExtCore.WebApplication": "1.0.0-alpha8",
           "ExtCore.Data": "1.0.0-alpha8",
           "HRExpert.Core": "1.0.0",
-          "HRExpert.Organization": "1.0.0"
+          "HRExpert.Organization": "1.0.0",
+          "Swashbuckle": "6.0.0-beta9"
         },
         "runtime": {
           "HRExpert.dll": {}
@@ -3178,12 +3242,39 @@
           "lib/netstandard1.3/Microsoft.AspNetCore.DataProtection.Abstractions.dll": {}
         }
       },
+      "Microsoft.AspNetCore.Diagnostics/1.0.0-rc2-final": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Diagnostics.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Hosting.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Http.Extensions": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.WebUtilities": "1.0.0-rc2-final",
+          "Microsoft.Extensions.FileProviders.Physical": "1.0.0-rc2-final",
+          "Microsoft.Extensions.Logging.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.Extensions.Options": "1.0.0-rc2-final",
+          "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
+          "System.Diagnostics.DiagnosticSource": "4.0.0-rc2-24027",
+          "System.Reflection.Extensions": "4.0.1-rc2-24027"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.Diagnostics.Abstractions/1.0.0-rc2-final": {
         "dependencies": {
           "System.Resources.ResourceManager": "4.0.1-rc2-24027"
         },
         "runtime": {
           "lib/netstandard1.0/Microsoft.AspNetCore.Diagnostics.Abstractions.dll": {}
+        }
+      },
+      "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/1.0.0-rc2-final": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0-rc2-final",
+          "Microsoft.EntityFrameworkCore.Relational": "1.0.0-rc2-final",
+          "System.Threading": "4.0.11-rc2-24027"
+        },
+        "runtime": {
+          "lib/netstandard1.3/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {}
         }
       },
       "Microsoft.AspNetCore.Hosting/1.0.0-rc2-final": {
@@ -4324,6 +4415,34 @@
       "runtime.native.System.Security.Cryptography/4.0.0-rc2-24027": {},
       "runtime.win7-x64.runtime.native.System.Data.SqlClient.sni/4.0.1-rc2-24027": {},
       "runtime.win7-x86.runtime.native.System.Data.SqlClient.sni/4.0.1-rc2-24027": {},
+      "Swashbuckle/6.0.0-beta9": {
+        "dependencies": {
+          "Swashbuckle.SwaggerGen": "6.0.0-beta9",
+          "Swashbuckle.SwaggerUi": "6.0.0-beta9"
+        }
+      },
+      "Swashbuckle.SwaggerGen/6.0.0-beta9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-final",
+          "System.Xml.XPath": "4.0.1-rc2-24027"
+        },
+        "runtime": {
+          "lib/netstandard1.5/Swashbuckle.SwaggerGen.dll": {}
+        }
+      },
+      "Swashbuckle.SwaggerUi/6.0.0-beta9": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.Mvc.Core": "1.0.0-rc2-final",
+          "Microsoft.AspNetCore.StaticFiles": "1.0.0-rc2-final",
+          "Microsoft.Extensions.FileProviders.Embedded": "1.0.0-rc2-final",
+          "System.Xml.XPath": "4.0.1-rc2-24027"
+        },
+        "runtime": {
+          "lib/netstandard1.5/Swashbuckle.SwaggerUi.dll": {}
+        }
+      },
       "System.AppContext/4.1.0-rc2-24027": {
         "dependencies": {
           "System.Runtime": "4.1.0-rc2-24027"
@@ -5868,10 +5987,20 @@
       "serviceable": true,
       "sha512": "sha512-bQxi4BN0lqNy38KDTLkFRPi0Y+gIWeeeXRRfIz26LdRGHh2StnyMH2ktCxPIb2AhTiusZxMc4riX8OUdZRBbng=="
     },
+    "Microsoft.AspNetCore.Diagnostics/1.0.0-rc2-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qRVVuuIq6RmYultWuGJO0qboJgCdKcC/SPf6JVfZNs7Y9U0u5C3XLW7+/+HLPdXqYMi6AZdDtaM91+UDcyGvLA=="
+    },
     "Microsoft.AspNetCore.Diagnostics.Abstractions/1.0.0-rc2-final": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-WskCvHkZVAc3uQv4pldRBV1XqIlPzfgiJ4hmzB61Goir7t0R+n/AGgmDBAVwWMNonpecNf5ZXK2R00Fv/u+vig=="
+    },
+    "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore/1.0.0-rc2-final": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UI54B8BQGPR8cWjOUbjdPoq6sdAIvraMV7UEC6CX2LlWIcfsVkVv+rSNB/5ElZFgwTthkfcsPjH6HQsacocuEQ=="
     },
     "Microsoft.AspNetCore.Hosting/1.0.0-rc2-final": {
       "type": "package",
@@ -6357,6 +6486,21 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Rk4a5IyEWxQ4Sg5lwbI9a2IamFzXggEg3l9ePRfuCop63TMYtQ70BsDqj7wI6iLehfmBkOKS1AC8yxTp0nsSmg=="
+    },
+    "Swashbuckle/6.0.0-beta9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Be+Sgkd4BRgHZ0eFDWWSNqfaT5J5P1CHPVTmOoEm6AGdkRrO/mYbzTEeW5gAXCjlyAxxbazdJYDdG3FRee+NMQ=="
+    },
+    "Swashbuckle.SwaggerGen/6.0.0-beta9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rMpc9l9QGk70l8OiAKV5vWU4xLWyZmHnWbVZFVwolbz3CV8LMRYFZbqEA2W3QvP9i0lf0InpFYewFnlGtE7dng=="
+    },
+    "Swashbuckle.SwaggerUi/6.0.0-beta9": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kgooI19J0O3fBMbKx3i18DPdq/WSXBgImtcIMrsDZaUvm5PXpsquHdF3sQbwneeIW/SJ18zG1x8m7/AGC88XlA=="
     },
     "System.AppContext/4.1.0-rc2-24027": {
       "type": "package",

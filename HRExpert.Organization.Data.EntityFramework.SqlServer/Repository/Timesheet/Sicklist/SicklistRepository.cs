@@ -5,7 +5,7 @@ using HRExpert.Organization.Data.Models;
 using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
-    public class SicklistRepository: DocumentRepositoryBase<Sicklist>
+    public class SicklistRepository: DocumentRepositoryBase<Sicklist>,Abstractions.ISicklistRepository
     {
         public List<Sicklist> List()
         {

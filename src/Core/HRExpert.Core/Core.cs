@@ -40,6 +40,7 @@ namespace HRExpert.Core
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IUsersBL, UsersBL>();
             services.AddScoped<IRoleBL, RolesBL>();
             services.AddScoped<ISectionBL, SectionsBL>();
@@ -64,13 +65,14 @@ namespace HRExpert.Core
                RequireHttpsMetadata = false
             };
             applicationBuilder.UseJwtBearerAuthentication(jwtoptions);
-            
+           
             applicationBuilder.UseOpenIdConnectServer(options =>
             {
                 options.AllowInsecureHttp = true;
                 options.AutomaticAuthenticate = true;
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
+                options.UseJwtTokens();
                 options.Provider = new HRExpert.Core.Services.AuthorizationProvider(applicationBuilder.ApplicationServices.GetService<IStorage>());
             });           
         }

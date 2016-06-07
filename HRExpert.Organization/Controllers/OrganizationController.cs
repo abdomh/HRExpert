@@ -10,7 +10,8 @@ namespace HRExpert.Organization.Controllers
     /// <summary>
     /// Контроллер организаций
     /// </summary>
-    [Authorize]
+    //[Authorize]
+    [AllowAnonymous]
     public class OrganizationController:Controller
     {        
         private IOrganizationBL organizationBl;

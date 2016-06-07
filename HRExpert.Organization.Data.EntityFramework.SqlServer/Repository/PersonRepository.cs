@@ -33,6 +33,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 x.Id == PersonId
             ).FirstOrDefault();
         }
+        public Person GetPersonByUserIdAndTargetDepartment(long UserId, long TargetDepartmentId)
+        {
+            return this.dbSet.FirstOrDefault(x => x.AccessLinks.Any(y => y.DepartmentId == TargetDepartmentId));
+        }
         /// <summary>
         /// Все сотрудники
         /// </summary>

@@ -38,6 +38,12 @@ namespace HRExpert.Organization
             services.AddScoped<IPositionsBL, PositionsBL>();
             services.AddScoped<IPersonBL, PersonsBL>();
             services.AddScoped<IStaffEstablishedPostBL, StaffEstablishedPostBL>();
+            services.AddScoped<ITimesheetStatusBL, TimesheetStatusBL>();
+            services.AddScoped<ISicklistBabyMindingTypesBL, SicklistBabyMindingTypesBL>();
+            services.AddScoped<ISicklistBL, SicklistBL>();
+            services.AddScoped<ISicklistPaymentPercentBL, SicklistPaymentPercentBL>();
+            services.AddScoped<ISicklistPaymentRestrictTypesBL, SicklistPaymentRestrictTypesBL>();
+            services.AddScoped<ISicklistTypeBL, SicklistTypeBL>();            
         }
 
         public void Configure(IApplicationBuilder applicationBuilder)
