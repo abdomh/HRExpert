@@ -7,7 +7,7 @@ namespace HRExpert.Controllers
     [AllowAnonymous]
     public class TestController:Controller
     {
-        [HttpGet]
+        [HttpGet]        
         public string Index()
         {
             return "Application is working!";

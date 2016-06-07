@@ -29,7 +29,7 @@ namespace HRExpert.Core.Controllers.api
         /// Список прав
         /// </summary>
         /// <returns>Коллекция записей</returns>
-        [Route(CoreConstants.PermissionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.PermissionsList)]
         [HttpGet]
         public virtual IEnumerable<PermissionDto> Get()
         {
@@ -38,9 +38,9 @@ namespace HRExpert.Core.Controllers.api
         /// <summary>
         /// Права по идентификатору
         /// </summary>
-        /// <param name="id">Идентификатор</param>
+        /// <param name="permissionid">Идентификатор</param>
         /// <returns>Права</returns>
-        [Route(CoreConstants.PermissionsController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.PermissionsList+ CoreConstants.PermissionKey)]
         [HttpGet]
         public virtual PermissionDto Get(long permissionid)
         {
@@ -51,7 +51,7 @@ namespace HRExpert.Core.Controllers.api
         /// </summary>
         /// <param name="value">Права</param>
         /// <returns>Права</returns>
-        [Route(CoreConstants.PermissionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.PermissionsList)]
         [HttpPost]
         public PermissionDto Post([FromBody] PermissionDto value)
         {
@@ -62,7 +62,7 @@ namespace HRExpert.Core.Controllers.api
         /// </summary>
         /// <param name="value">Права</param>
         /// <returns>Права</returns>
-        [Route(CoreConstants.PermissionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.PermissionsList)]
         [HttpPut]
         public PermissionDto Put([FromBody] PermissionDto value)
         {
@@ -71,7 +71,7 @@ namespace HRExpert.Core.Controllers.api
         /// <summary>
         /// Удаление
         /// </summary>
-        [Route(CoreConstants.PermissionsController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.PermissionsList + CoreConstants.PermissionKey)]
         [HttpDelete]
         public PermissionDto Delete(long permissionid)
         {

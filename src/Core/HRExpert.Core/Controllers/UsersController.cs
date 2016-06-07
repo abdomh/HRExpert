@@ -23,7 +23,7 @@ namespace HRExpert.Core.Controllers.api
         /// Список пользователей
         /// </summary>
         /// <returns>Коллекция записей</returns>
-        [Route(CoreConstants.UsersController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.UsersList)]
         [HttpGet]
         public virtual IEnumerable<UserDto> Get()
         {
@@ -32,9 +32,9 @@ namespace HRExpert.Core.Controllers.api
         /// <summary>
         /// Пользователь по идентификатору
         /// </summary>
-        /// <param name="id">Идентификатор</param>
+        /// <param name="userid">Идентификатор</param>
         /// <returns>Пользователь</returns>
-        [Route(CoreConstants.UsersController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.UsersList + CoreConstants.UserKey)]
         [HttpGet]
         public virtual UserDto Get(long userid)
         {
@@ -45,7 +45,7 @@ namespace HRExpert.Core.Controllers.api
         /// </summary>
         /// <param name="value">Пользователь</param>
         /// <returns>Пользователь</returns>
-        [Route(CoreConstants.UsersController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.UsersList)]
         [HttpPost]
         public UserDto Post([FromBody] UserDto value)
         {
@@ -56,7 +56,7 @@ namespace HRExpert.Core.Controllers.api
         /// </summary>
         /// <param name="value">Пользователь</param>
         /// <returns>Пользователь</returns>
-        [Route(CoreConstants.UsersController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.UsersList)]
         [HttpPut]
         public UserDto Put([FromBody] UserDto value)
         {
@@ -65,7 +65,7 @@ namespace HRExpert.Core.Controllers.api
         /// <summary>
         /// Удаление
         /// </summary>
-        [Route(CoreConstants.UsersController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.UsersList + CoreConstants.UserKey)]
         [HttpDelete]
         public UserDto Delete(long userid)
         {

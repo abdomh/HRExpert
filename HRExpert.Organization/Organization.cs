@@ -45,11 +45,17 @@ namespace HRExpert.Organization
             services.AddScoped<ISicklistPaymentRestrictTypesBL, SicklistPaymentRestrictTypesBL>();
             services.AddScoped<ISicklistTypeBL, SicklistTypeBL>();            
         }
-
+        /// <summary>
+        /// Конфигурация
+        /// </summary>
+        /// <param name="applicationBuilder"></param>
         public void Configure(IApplicationBuilder applicationBuilder)
         {            
         }
-
+        /// <summary>
+        /// Регистрация маршрутов
+        /// </summary>
+        /// <param name="routeBuilder"></param>
         public void RegisterRoutes(IRouteBuilder routeBuilder)
         {
         }

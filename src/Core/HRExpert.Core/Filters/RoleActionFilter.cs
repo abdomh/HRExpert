@@ -5,16 +5,27 @@ using Microsoft.Extensions.Logging;
 namespace HRExpert.Core.Filters
 {
     using Services.Abstractions;
+    /// <summary>
+    /// Фильтр параметра роли
+    /// </summary>
     public class RoleActionFilter: ActionFilterAttribute
     {
         private readonly ILogger _logger;
         private IAuthService authService;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="loggerFactory"></param>
+        /// <param name="authService"></param>
         public RoleActionFilter(ILoggerFactory loggerFactory, IAuthService authService)
         {
             this.authService = authService;
             _logger = loggerFactory.CreateLogger("RoleActionFilter");
         }
-
+        /// <summary>
+        /// Событие выполнения экшена
+        /// </summary>
+        /// <param name="context"></param>
         public override void OnActionExecuting(ActionExecutingContext context)
         {
             try

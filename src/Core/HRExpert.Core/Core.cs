@@ -29,7 +29,10 @@ namespace HRExpert.Core
                 return "Core";
             }
         }        
-
+        /// <summary>
+        /// Установка конфига
+        /// </summary>
+        /// <param name="configurationRoot"></param>
         public void SetConfigurationRoot(IConfigurationRoot configurationRoot)
         {
             this.configurationRoot = configurationRoot;

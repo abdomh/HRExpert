@@ -15,6 +15,10 @@ namespace HRExpert.Organization.Controllers
     {
         private IPositionsBL positionsBl;
         #region Ctor
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="positionsBl"></param>
         public PositionsController(IPositionsBL positionsBl)            
         {
             this.positionsBl = positionsBl;

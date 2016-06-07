@@ -146,20 +146,65 @@ namespace HRExpert.Organization
         /// </summary>
         public const string PositionsController_key = PositionsController + PositionsKey;
         */
+        /// <summary>
+        /// Табельные статусы
+        /// </summary>
         public const string TimesheetStatus = "timesheetstatus";
+        /// <summary>
+        /// Список всех записей табельных статусов
+        /// </summary>
         public const string TimesheetStatusList = "/" + TimesheetStatus + "es";
+        /// <summary>
+        /// Табель
+        /// </summary>
         public const string Timesheet = "timesheet";
+        /// <summary>
+        /// Список всех записей табеля
+        /// </summary>
         public const string TimesheetList = "/" + Timesheet + "s";
+        /// <summary>
+        /// Табель
+        /// </summary>
         public const string Sicklist = "sicklist";
+        /// <summary>
+        /// Список больничных
+        /// </summary>
         public const string SicklistList = "/" + Sicklist + "s";
+        /// <summary>
+        /// Больничный по ключу
+        /// </summary>
         public const string SicklistKey = "({" + Sicklist + "id})";
+        /// <summary>
+        /// Тип больничного
+        /// </summary>
         public const string SicklistType = "sicklisttype";
+        /// <summary>
+        /// Список типов больничных
+        /// </summary>
         public const string SicklistTypeList = "/" + SicklistType + "s";
+        /// <summary>
+        /// Тип больничных по уходу за ребенком
+        /// </summary>
         public const string SicklistBabyMindingType = "sicklistbabymindingtype";
+        /// <summary>
+        /// Список типов больничных по уходу за ребенком
+        /// </summary>
         public const string SicklistBabyMindingTypeList = "/" + SicklistBabyMindingType + "s";
+        /// <summary>
+        /// Ограничения выплат
+        /// </summary>
         public const string SicklistPaymentRestrictType = "sicklistpaymentrestricttype";
+        /// <summary>
+        /// Список ограничений выплат
+        /// </summary>
         public const string SicklistPaymentRestrictTypeList = "/" + SicklistPaymentRestrictType + "s";
+        /// <summary>
+        /// Проценты выплат
+        /// </summary>
         public const string SicklistPaymentPercent = "sicklistpaymentpercent";
+        /// <summary>
+        /// Список процентов выплат
+        /// </summary>
         public const string SicklistPaymentPercentList = "/" + SicklistPaymentPercent + "s";
     }
 }

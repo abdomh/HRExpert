@@ -2,9 +2,6 @@
   "version": "1.0.0-*",
   "description": "HRExpert.Organization.BL.Abstractions Class Library",
   "authors": [ "baranov" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
 
   "frameworks": {
     "netstandard1.5": {

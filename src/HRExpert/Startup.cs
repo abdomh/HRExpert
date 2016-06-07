@@ -25,34 +25,29 @@ namespace HRExpert
 
             this.configurationRoot = configurationBuilder.Build();
         }
-
+        private string GetXmlCommentsPath(string subproject)
+        {
+            var app = PlatformServices.Default.Application;
+            return System.IO.Path.Combine(app.ApplicationBasePath, System.IO.Path.ChangeExtension(app.ApplicationName+ (subproject.Length>0?"."+subproject:""), "xml"));
+        }
         public override void ConfigureServices(IServiceCollection services)
         {
             string pathToDoc = hostingEnvironment.ContentRootPath;
             services.AddSwaggerGen();
             services.ConfigureSwaggerGen(options => {
-
                 options.DescribeAllEnumsAsStrings();
-               
+                options.IncludeXmlComments(GetXmlCommentsPath(string.Empty));
+                options.IncludeXmlComments(GetXmlCommentsPath("Core"));
+                options.IncludeXmlComments(GetXmlCommentsPath("Organization"));
                 options.SingleApiVersion(new Swashbuckle.SwaggerGen.Generator.Info
                 {
                     Version = "v1",
                     Title = "HRExpert API",
                     Description = "HREXpert API",
-                    TermsOfService = "None"
+                    TermsOfService = "None"                    
                 });
             });
-            //services.ConfigureSwaggerDocument(options =>
-            //{
-                
-            //    //options.OperationFilter(new Swashbuckle.SwaggerGen.XmlComments.ApplyXmlActionComments(pathToDoc));
-            //});
-
-            //services.ConfigureSwaggerSchema(options =>
-            //{
-            //    options.DescribeAllEnumsAsStrings = true;
-            //    //options.ModelFilter(new Swashbuckle.SwaggerGen.XmlComments.ApplyXmlTypeComments(pathToDoc));
-            //});
+            
             base.ConfigureServices(services);
         }
 
@@ -81,7 +76,7 @@ namespace HRExpert
                 x.AllowCredentials();
             });
             base.Configure(applicationBuilder, hostingEnvironment);
-
+            
             applicationBuilder.UseSwaggerGen();
             applicationBuilder.UseSwaggerUi();
         }

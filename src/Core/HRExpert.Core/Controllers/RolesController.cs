@@ -13,6 +13,10 @@ namespace HRExpert.Core.Controllers
     {
         private IRoleBL roleBl;
         #region Ctor
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="roleBl"></param>
         public RolesController(IRoleBL roleBl)
         {
             this.roleBl = roleBl;
@@ -23,7 +27,7 @@ namespace HRExpert.Core.Controllers
         /// </summary>
         /// <returns>Коллекция записей</returns>
         [Authorize]
-        [Route(CoreConstants.RolesController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.RolesList)]
         [HttpGet]
         public virtual IEnumerable<RoleDto> Get()
         {
@@ -32,10 +36,10 @@ namespace HRExpert.Core.Controllers
         /// <summary>
         /// Роль по идентификатору
         /// </summary>
-        /// <param name="id">Идентификатор</param>
+        /// <param name="roleid">Идентификатор</param>
         /// <returns>Роль</returns>
         [Authorize]
-        [Route(CoreConstants.RolesController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.RolesList + CoreConstants.RoleKey)]
         [HttpGet]
         public virtual RoleDto Get(long roleid)
         {
@@ -47,7 +51,7 @@ namespace HRExpert.Core.Controllers
         /// <param name="value">Роль</param>
         /// <returns>Роль</returns>
         [Authorize(Roles = "Администратор")]
-        [Route(CoreConstants.RolesController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.RolesList)]
         [HttpPost]
         public RoleDto Post([FromBody] RoleDto value)
         {
@@ -59,7 +63,7 @@ namespace HRExpert.Core.Controllers
         /// <param name="value">Роль</param>
         /// <returns>Роль</returns>        
         [Authorize(Roles = "Администратор")]
-        [Route(CoreConstants.RolesController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.RolesList)]
         [HttpPut]
         public RoleDto Put([FromBody] RoleDto value)
         {
@@ -69,36 +73,13 @@ namespace HRExpert.Core.Controllers
         /// Удаление
         /// </summary>
         [Authorize(Roles = "Администратор")]
-        [Route(CoreConstants.RolesController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.RolesList+ CoreConstants.RoleKey)]
         [HttpDelete]
         public RoleDto Delete(long roleid)
         {
             return roleBl.Delete(roleid);
         }
 
-        /// <summary>
-        /// Создание роли для сотрудниика
-        /// </summary>
-        /// <param name="value">Роль</param>
-        /// <returns>Роль</returns>
-        [Authorize(Roles = "Администратор")]
-        [Route(CoreConstants.RolesControllerPath)]
-        [HttpPost]
-        public RoleDto Post(long userid, [FromBody] RoleDto value)
-        {
-            return roleBl.Create(value);
-        }
-        /// <summary>
-        /// Создание роли для сотрудниика
-        /// </summary>
-        /// <param name="value">Роль</param>
-        /// <returns>Роль</returns>
-        [Authorize(Roles = "Администратор")]
-        [Route(CoreConstants.RolesControllerPath)]
-        [HttpPut]
-        public RoleDto Put(long userid, [FromBody] RoleDto value)
-        {
-            return roleBl.Create(value);
-        }
+       
     }
 }

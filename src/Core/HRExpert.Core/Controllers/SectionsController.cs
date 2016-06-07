@@ -16,6 +16,10 @@ namespace HRExpert.Core.Controllers
     {
         private ISectionBL sectionBl;
         #region Ctor
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="sectionBl"></param>
         public SectionsController(ISectionBL sectionBl)
         {
             this.sectionBl = sectionBl;
@@ -25,7 +29,7 @@ namespace HRExpert.Core.Controllers
         /// Список Модулей
         /// </summary>
         /// <returns>Коллекция записей</returns>
-        [Route(CoreConstants.SectionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.SectionsList)]
         [HttpGet]
         public virtual IEnumerable<SectionDto> Get()
         {
@@ -34,9 +38,9 @@ namespace HRExpert.Core.Controllers
         /// <summary>
         /// Модуль по идентификатору
         /// </summary>
-        /// <param name="id">Идентификатор</param>
+        /// <param name="sectionid">Идентификатор</param>
         /// <returns>Модуль</returns>
-        [Route(CoreConstants.SectionsController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.SectionsList + CoreConstants.SectionKey)]
         [HttpGet]
         public virtual SectionDto Get(long sectionid)
         {
@@ -47,7 +51,7 @@ namespace HRExpert.Core.Controllers
         /// </summary>
         /// <param name="value">Модуль</param>
         /// <returns>Модуль</returns>
-        [Route(CoreConstants.SectionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.SectionsList)]
         [HttpPost]
         public SectionDto Post([FromBody] SectionDto value)
         {
@@ -58,7 +62,7 @@ namespace HRExpert.Core.Controllers
         /// </summary>
         /// <param name="value">Модуль</param>
         /// <returns>Модуль</returns>
-        [Route(CoreConstants.SectionsController)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.SectionsList)]
         [HttpPut]
         public SectionDto Put([FromBody] SectionDto value)
         {
@@ -67,7 +71,7 @@ namespace HRExpert.Core.Controllers
         /// <summary>
         /// Удаление
         /// </summary>
-        [Route(CoreConstants.SectionsController_key)]
+        [Route(CoreConstants.Api + CoreConstants.version + CoreConstants.SectionsList + CoreConstants.SectionKey)]
         [HttpDelete]
         public SectionDto Delete(long sectionid)
         {

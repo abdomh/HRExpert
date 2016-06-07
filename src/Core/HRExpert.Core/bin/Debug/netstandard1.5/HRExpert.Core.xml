@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HRExpert.Core</name>
+    </assembly>
+    <members>
+        <member name="T:HRExpert.Core.Core">
+            <summary>
+            Startup class для модуля ядра
+            </summary>
+        </member>
+        <member name="P:HRExpert.Core.Core.Name">
+            <summary>
+            Имя модуля
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.Core.SetConfigurationRoot(Microsoft.Extensions.Configuration.IConfigurationRoot)">
+            <summary>
+            Установка конфига
+            </summary>
+            <param name="configurationRoot"></param>
+        </member>
+        <member name="M:HRExpert.Core.Core.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация сервисов
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:HRExpert.Core.Core.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Конфигурация модуля
+            </summary>
+            <param name="applicationBuilder"></param>
+        </member>
+        <member name="T:HRExpert.Core.CoreConstants">
+            <summary>
+            Константы для API
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.Api">
+            <summary>
+            API
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.version">
+            <summary>
+            Версия
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.Childs">
+            <summary>
+            Дочерние элементы
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.ProfileController">
+            <summary>
+            Профиль
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.Users">
+            <summary>
+            Пользователи
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.UsersList">
+            <summary>
+            Список пользователей
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.UserKey">
+            <summary>
+            Пользователь по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.Roles">
+            <summary>
+            Роли
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.RolesList">
+            <summary>
+            Список ролей
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.RoleKey">
+            <summary>
+            Роль по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.Sections">
+            <summary>
+            Модули
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.SectionsList">
+            <summary>
+            Список модулей
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.SectionKey">
+            <summary>
+            Модуль по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.Permissions">
+            <summary>
+            Права
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.PermissionsList">
+            <summary>
+            Список прав
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.CoreConstants.PermissionKey">
+            <summary>
+            Права по ключу
+            </summary>
+        </member>
+        <member name="T:HRExpert.Core.Controllers.api.PermissionsController">
+            <summary>
+            Контроллер прав
+            (доступ только для администраторов)
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.PermissionsController.#ctor(HRExpert.Core.BL.Abstractions.IPermissionBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="permissionBl"></param>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.PermissionsController.Get">
+            <summary>
+            Список прав
+            </summary>
+            <returns>Коллекция записей</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.PermissionsController.Get(System.Int64)">
+            <summary>
+            Права по идентификатору
+            </summary>
+            <param name="permissionid">Идентификатор</param>
+            <returns>Права</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.PermissionsController.Post(HRExpert.Core.DTO.PermissionDto)">
+            <summary>
+            Создание
+            </summary>
+            <param name="value">Права</param>
+            <returns>Права</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.PermissionsController.Put(HRExpert.Core.DTO.PermissionDto)">
+            <summary>
+            Редактирование
+            </summary>
+            <param name="value">Права</param>
+            <returns>Права</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.PermissionsController.Delete(System.Int64)">
+            <summary>
+            Удаление
+            </summary>
+        </member>
+        <member name="T:HRExpert.Core.Controllers.api.ProfileController">
+            <summary>
+            Контроллер профиля(доступ только авторизованным пользователям)
+            </summary>
+        </member>
+        <member name="F:HRExpert.Core.Controllers.api.ProfileController.userBl">
+            <summary>
+            Бизнес логика пользователей
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.ProfileController.#ctor(HRExpert.Core.BL.Abstractions.IUsersBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="userBl"></param>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.ProfileController.Profile">
+            <summary>
+            Получение профиля
+            </summary>
+            <returns>Профиль</returns>
+        </member>
+        <member name="T:HRExpert.Core.Controllers.api.UsersController">
+            <summary>
+            Контроллер пользователей (Доступ только для администраторов)
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.UsersController.Get">
+            <summary>
+            Список пользователей
+            </summary>
+            <returns>Коллекция записей</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.UsersController.Get(System.Int64)">
+            <summary>
+            Пользователь по идентификатору
+            </summary>
+            <param name="userid">Идентификатор</param>
+            <returns>Пользователь</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.UsersController.Post(HRExpert.Core.DTO.UserDto)">
+            <summary>
+            Создание
+            </summary>
+            <param name="value">Пользователь</param>
+            <returns>Пользователь</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.UsersController.Put(HRExpert.Core.DTO.UserDto)">
+            <summary>
+            Редактирование
+            </summary>
+            <param name="value">Пользователь</param>
+            <returns>Пользователь</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.UsersController.Delete(System.Int64)">
+            <summary>
+            Удаление
+            </summary>
+        </member>
+        <member name="T:HRExpert.Core.Controllers.RolesController">
+            <summary>
+            Контроллер ролей
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.RolesController.#ctor(HRExpert.Core.BL.Abstractions.IRoleBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="roleBl"></param>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.RolesController.Get">
+            <summary>
+            Список ролей
+            </summary>
+            <returns>Коллекция записей</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.RolesController.Get(System.Int64)">
+            <summary>
+            Роль по идентификатору
+            </summary>
+            <param name="roleid">Идентификатор</param>
+            <returns>Роль</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.RolesController.Post(HRExpert.Core.DTO.RoleDto)">
+            <summary>
+            Создание
+            </summary>
+            <param name="value">Роль</param>
+            <returns>Роль</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.RolesController.Put(HRExpert.Core.DTO.RoleDto)">
+            <summary>
+            Редактирование
+            </summary>
+            <param name="value">Роль</param>
+            <returns>Роль</returns>        
+        </member>
+        <member name="M:HRExpert.Core.Controllers.RolesController.Delete(System.Int64)">
+            <summary>
+            Удаление
+            </summary>
+        </member>
+        <member name="T:HRExpert.Core.Controllers.SectionsController">
+            <summary>
+            Контроллер модулей (Доступ только для администратора)
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.SectionsController.#ctor(HRExpert.Core.BL.Abstractions.ISectionBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sectionBl"></param>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.SectionsController.Get">
+            <summary>
+            Список Модулей
+            </summary>
+            <returns>Коллекция записей</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.SectionsController.Get(System.Int64)">
+            <summary>
+            Модуль по идентификатору
+            </summary>
+            <param name="sectionid">Идентификатор</param>
+            <returns>Модуль</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.SectionsController.Post(HRExpert.Core.DTO.SectionDto)">
+            <summary>
+            Создание
+            </summary>
+            <param name="value">Модуль</param>
+            <returns>Модуль</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.SectionsController.Put(HRExpert.Core.DTO.SectionDto)">
+            <summary>
+            Редактирование
+            </summary>
+            <param name="value">Модуль</param>
+            <returns>Модуль</returns>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.SectionsController.Delete(System.Int64)">
+            <summary>
+            Удаление
+            </summary>
+        </member>
+        <member name="T:HRExpert.Core.Filters.RoleActionFilter">
+            <summary>
+            Фильтр параметра роли
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.Filters.RoleActionFilter.#ctor(Microsoft.Extensions.Logging.ILoggerFactory,HRExpert.Core.Services.Abstractions.IAuthService)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="loggerFactory"></param>
+            <param name="authService"></param>
+        </member>
+        <member name="M:HRExpert.Core.Filters.RoleActionFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            Событие выполнения экшена
+            </summary>
+            <param name="context"></param>
+        </member>
+    </members>
+</doc>

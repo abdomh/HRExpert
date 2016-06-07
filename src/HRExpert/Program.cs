@@ -3,18 +3,23 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace HRExpert
 {
+    /// <summary>
+    /// Класс программы
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// энтри поинт
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
-            System.Console.WriteLine("Hello world1");
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
                 .Build();
-            System.Console.WriteLine("Hello world");
             host.Run();
         }
     }

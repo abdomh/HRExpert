@@ -5,16 +5,24 @@ namespace HRExpert.Organization.Controllers
     using DTO;
     using BL.Abstractions;
     using Core;
+    /// <summary>
+    /// Штатные единицы
+    /// </summary>
     [Authorize]
     public class StaffEstablishedPostsController:Controller
     {
         private IStaffEstablishedPostBL staffEstablishedPostBl;
         #region Ctor
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="staffEstablishedPostBl"></param>
         public StaffEstablishedPostsController(IStaffEstablishedPostBL staffEstablishedPostBl)            
         {
             this.staffEstablishedPostBl = staffEstablishedPostBl;
         }
-        #endregion        
+        #endregion     
+                   
         [Route(CoreConstants.Api +
             CoreConstants.version +
             OrganizationConstants.OrganizationList +
@@ -25,6 +33,7 @@ namespace HRExpert.Organization.Controllers
             )
         ]
         [HttpGet]
+        
         public StaffEstablishedPostDto[] List(long departmentid)
         {
             return this.staffEstablishedPostBl.GetByDepartment(departmentid)?.ToArray();
