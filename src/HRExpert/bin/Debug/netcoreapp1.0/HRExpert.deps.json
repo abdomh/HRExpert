@@ -1641,6 +1641,9 @@
         "dependencies": {
           "System.Runtime": "4.1.0-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/Microsoft.Win32.Primitives.dll": {}
+        },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
@@ -1654,6 +1657,9 @@
           "System.Runtime.Extensions": "4.1.0-rc2-24027",
           "System.Runtime.Handles": "4.0.1-rc2-24027",
           "System.Runtime.InteropServices": "4.1.0-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/Microsoft.Win32.Registry.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/Microsoft.Win32.Registry.dll": {
@@ -1793,6 +1799,9 @@
       "System.AppContext/4.1.0-rc2-24027": {
         "dependencies": {
           "System.Runtime": "4.1.0-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.AppContext.dll": {}
         },
         "compile": {
           "ref/netstandard1.5/System.AppContext.dll": {}
@@ -1960,6 +1969,9 @@
           "System.Runtime": "4.1.0-rc2-24027",
           "System.Text.Encoding": "4.0.11-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/System.Console.dll": {}
+        },
         "compile": {
           "ref/netstandard1.3/System.Console.dll": {}
         }
@@ -2021,6 +2033,9 @@
           "System.Xml.ReaderWriter": "4.0.11-rc2-24027",
           "runtime.native.System.Data.SqlClient.sni": "4.0.0-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/System.Data.SqlClient.dll": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Data.SqlClient.dll": {
             "rid": "unix",
@@ -2079,6 +2094,9 @@
           "System.Runtime": "4.1.0-rc2-24027",
           "System.Runtime.Extensions": "4.1.0-rc2-24027",
           "System.Runtime.InteropServices": "4.1.0-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.Diagnostics.FileVersionInfo.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Diagnostics.FileVersionInfo.dll": {
@@ -2189,6 +2207,9 @@
           "System.Globalization": "4.0.11-rc2-24027",
           "System.Runtime": "4.1.0-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/System.Globalization.Calendars.dll": {}
+        },
         "compile": {
           "ref/netstandard1.3/System.Globalization.Calendars.dll": {}
         }
@@ -2200,6 +2221,9 @@
           "System.Runtime": "4.1.0-rc2-24027",
           "System.Runtime.Extensions": "4.1.0-rc2-24027",
           "System.Runtime.InteropServices": "4.1.0-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.Globalization.Extensions.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Globalization.Extensions.dll": {
@@ -2293,6 +2317,9 @@
           "System.Text.Encoding": "4.0.11-rc2-24027",
           "System.Threading.Tasks": "4.0.11-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/System.IO.FileSystem.dll": {}
+        },
         "compile": {
           "ref/netstandard1.3/System.IO.FileSystem.dll": {}
         }
@@ -2325,6 +2352,9 @@
           "System.Threading.Tasks": "4.0.11-rc2-24027",
           "System.Threading.Thread": "4.0.0-rc2-24027",
           "runtime.native.System": "4.0.0-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.IO.FileSystem.Watcher.dll": {}
         },
         "runtimeTargets": {
           "runtimes/linux/lib/netstandard1.3/System.IO.FileSystem.Watcher.dll": {
@@ -2386,6 +2416,9 @@
           "System.Threading": "4.0.11-rc2-24027",
           "System.Threading.Overlapped": "4.0.1-rc2-24027",
           "System.Threading.Tasks": "4.0.11-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.IO.Pipes.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.IO.Pipes.dll": {
@@ -2544,6 +2577,9 @@
           "System.Threading": "4.0.11-rc2-24027",
           "System.Threading.Tasks": "4.0.11-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/System.Net.NameResolution.dll": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Net.NameResolution.dll": {
             "rid": "unix",
@@ -2620,6 +2656,9 @@
           "System.Threading.ThreadPool": "4.0.10-rc2-24027",
           "runtime.native.System.Net.Security": "4.0.1-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/System.Net.Security.dll": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.4/System.Net.Security.dll": {
             "rid": "unix",
@@ -2640,6 +2679,9 @@
           "System.Net.Primitives": "4.0.11-rc2-24027",
           "System.Runtime": "4.1.0-rc2-24027",
           "System.Threading.Tasks": "4.0.11-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.Net.Sockets.dll": {}
         },
         "compile": {
           "ref/netstandard1.3/System.Net.Sockets.dll": {}
@@ -2959,6 +3001,9 @@
           "System.Security.Cryptography.Primitives": "4.0.0-rc2-24027",
           "System.Text.Encoding": "4.0.11-rc2-24027"
         },
+        "runtime": {
+          "lib/net461/System.Security.Cryptography.Algorithms.dll": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.4/System.Security.Cryptography.Algorithms.dll": {
             "rid": "unix",
@@ -2984,6 +3029,9 @@
           "System.Security.Cryptography.Algorithms": "4.1.0-rc2-24027",
           "System.Security.Cryptography.Primitives": "4.0.0-rc2-24027",
           "System.Text.Encoding": "4.0.11-rc2-24027"
+        },
+        "runtime": {
+          "lib/net461/System.Security.Cryptography.Cng.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.4/System.Security.Cryptography.Cng.dll": {
@@ -3014,6 +3062,9 @@
           "System.Text.Encoding": "4.0.11-rc2-24027",
           "System.Threading": "4.0.11-rc2-24027"
         },
+        "runtime": {
+          "lib/net46/System.Security.Cryptography.Csp.dll": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Csp.dll": {
             "rid": "unix",
@@ -3042,6 +3093,9 @@
           "System.Security.Cryptography.Primitives": "4.0.0-rc2-24027",
           "System.Text.Encoding": "4.0.11-rc2-24027",
           "runtime.native.System.Security.Cryptography": "4.0.0-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.Security.Cryptography.Encoding.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Encoding.dll": {
@@ -3129,6 +3183,9 @@
           "runtime.native.System.Net.Http": "4.0.1-rc2-24027",
           "runtime.native.System.Security.Cryptography": "4.0.0-rc2-24027"
         },
+        "runtime": {
+          "lib/net461/System.Security.Cryptography.X509Certificates.dll": {}
+        },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.4/System.Security.Cryptography.X509Certificates.dll": {
             "rid": "unix",
@@ -3169,6 +3226,9 @@
           "System.Security.Principal": "4.0.1-rc2-24027",
           "System.Text.Encoding": "4.0.11-rc2-24027",
           "System.Threading": "4.0.11-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.Security.Principal.Windows.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Principal.Windows.dll": {
@@ -3276,6 +3336,9 @@
           "System.Resources.ResourceManager": "4.0.1-rc2-24027",
           "System.Runtime": "4.1.0-rc2-24027",
           "System.Runtime.Handles": "4.0.1-rc2-24027"
+        },
+        "runtime": {
+          "lib/net46/System.Threading.Overlapped.dll": {}
         },
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Threading.Overlapped.dll": {
