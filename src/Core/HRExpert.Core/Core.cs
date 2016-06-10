@@ -47,8 +47,7 @@ namespace HRExpert.Core
             services.AddScoped<IUsersBL, UsersBL>();
             services.AddScoped<IRoleBL, RolesBL>();
             services.AddScoped<ISectionBL, SectionsBL>();
-            services.AddScoped<IPermissionBL, PermissionsBL>();
-            services.AddScoped<Filters.RoleActionFilter>();
+            services.AddScoped<IPermissionBL, PermissionsBL>();            
             services.AddScoped<IAuthService, AuthService>();
             
             services.AddAuthentication();
