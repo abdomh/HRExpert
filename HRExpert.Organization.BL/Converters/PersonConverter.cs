@@ -116,20 +116,16 @@ namespace HRExpert.Organization.BL.Converters
             dto.Name = entity.Name;
             return dto;
         }
-        private static DocumentDto<T> GetDocumentDto<T>(this Document entity)
-        {
-            DocumentDto<T> dto = new DocumentDto<T>();
-            dto.CreateDate = entity.CreateDate;
-            dto.Creator = entity.Creator.Convert();
-            dto.DocumentType = entity.DocumentType.Convert();
-            dto.Person = entity.Person.Convert();
-            return dto;
-        }
-        public static DocumentDto<SicklistDto> Convert(this Sicklist entity)
+        
+        public static SicklistDto Convert(this Sicklist entity)
         {
             if (entity == null) return null;
-            DocumentDto<SicklistDto> dto = entity.Document.GetDocumentDto<SicklistDto>();
             SicklistDto data = new SicklistDto();
+            data.CreateDate = entity.Document.CreateDate;
+            data.Creator = entity.Document.Creator.Convert();
+            data.DocumentType = entity.Document.DocumentType.Convert();
+            data.Person = entity.Document.Person.Convert();
+            
             data.Id = entity.Id;
             data.SicklistBabyMindingType = entity.SicklistBabyMindingType.Convert();
             data.SicklistPaymentPercent = entity.SicklistPaymentPercent.Convert();
@@ -138,9 +134,8 @@ namespace HRExpert.Organization.BL.Converters
             data.BeginDate = entity.Document.Event?.BeginDate;
             data.EndDate = entity.Document.Event?.EndDate;
             data.SicklistNumber = entity.SicklistNumber;
-            data.Type = entity.SicklistType.Convert();
-            dto.Data = data;
-            return dto;
+            data.SicklistType = entity.SicklistType.Convert();
+            return data;
         }
     }
 }

@@ -8,6 +8,8 @@ using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.SwaggerGen;
 using Swashbuckle.SwaggerUi;
 using Swashbuckle;
+using System.Threading;
+using System.Threading.Tasks;
 namespace HRExpert
 {
     public class Startup : ExtCore.WebApplication.Startup
@@ -24,6 +26,7 @@ namespace HRExpert
               .AddJsonFile("dbconfig.json");
 
             this.configurationRoot = configurationBuilder.Build();
+            
         }
         private string GetXmlCommentsPath(string subproject)
         {

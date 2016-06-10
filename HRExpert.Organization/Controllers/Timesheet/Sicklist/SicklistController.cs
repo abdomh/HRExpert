@@ -25,7 +25,7 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         /// <returns></returns>
         [HttpGet]
         [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList)]
-        public List<DocumentDto<SicklistDto>> List()
+        public List<SicklistDto> List()
         {
             return sicklistBL.List();
         }
@@ -34,22 +34,22 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         /// </summary>
         /// <param name="sicklistid"></param>
         /// <returns></returns>
-        [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistKey)]
+        [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList + OrganizationConstants.SicklistKey)]
         [HttpGet]
-        public DocumentDto<SicklistDto> Read(long sicklistid)
+        public SicklistDto Read(long sicklistid)
         {
             return sicklistBL.Read(sicklistid);
         }
         /// <summary>
         /// Создание
         /// </summary>
-        /// <param name="dto"></param>
+        /// <param name="value"></param>
         /// <returns></returns>
         [HttpPost]
         [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList)]        
-        public DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> dto)
+        public SicklistDto Create([FromBody]SicklistDto value)
         {
-           return sicklistBL.Create(dto);           
+           return sicklistBL.Create(value);           
         }
     }
 }

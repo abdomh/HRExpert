@@ -38,14 +38,12 @@
   "frameworks": {
 
     "netcoreapp1.0": {
-      "buildOptions": {
-        "emitEntryPoint": true
-      },
+      
       "imports": [
         "dotnet5.6",
         "dnxcore50",
-        "portable-net45+win8",
-        "net461"
+        "portable-net45+win8"
+
       ]
     }
   },

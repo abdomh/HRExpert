@@ -52,7 +52,7 @@ namespace HRExpert.Core
             services.AddScoped<IAuthService, AuthService>();
             
             services.AddAuthentication();
-            services.AddMvc(config => config.Filters.AddService(typeof(Filters.RoleActionFilter)));
+            services.AddMvc(/*config => config.Filters.AddService(typeof(Filters.RoleActionFilter))*/);
         }
         /// <summary>
         /// Конфигурация модуля

@@ -17,7 +17,7 @@ namespace HRExpert.Organization.Data.Models
         /// Идентификатор пользователя
         /// </summary>
         [ForeignKey("User")]
-        public long UserId { get; set; }
+        public long? UserId { get; set; }
         /// <summary>
         /// Название
         /// </summary>

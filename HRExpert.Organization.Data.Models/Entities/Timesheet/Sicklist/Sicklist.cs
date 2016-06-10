@@ -17,13 +17,13 @@ namespace HRExpert.Organization.Data.Models
         public long SicklistTypeId { get; set; }
         public SicklistType SicklistType { get; set; }
         [ForeignKey("SicklistBabyMindingType")]
-        public long SicklistBabyMindingTypeId { get; set; }
+        public long? SicklistBabyMindingTypeId { get; set; }
         public SicklistBabyMindingType SicklistBabyMindingType { get; set; }
         [ForeignKey("SicklistPaymentRestrictType")]
-        public long SicklistPaymentRestrictTypeId { get; set; }
+        public long? SicklistPaymentRestrictTypeId { get; set; }
         public SicklistPaymentRestrictType SicklistPaymentRestrictType { get; set; }
         [ForeignKey("SicklistPaymentPercent")]
-        public long SicklistPaymentPercentId { get; set; }
+        public long? SicklistPaymentPercentId { get; set; }
         public SicklistPaymentPercent SicklistPaymentPercent { get; set; }
     }
 }

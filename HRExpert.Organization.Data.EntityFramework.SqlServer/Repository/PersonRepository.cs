@@ -10,9 +10,9 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         private IQueryable<Person> Query()
         {
             if(CurrentRoleId>0)
-                return this.dbSet.FromSql("SELECT * FROM vwStaffEstablishedPostWithAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1", CurrentUserId, CurrentRoleId);
+                return this.dbSet.FromSql("SELECT * FROM vwPersonsAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1", CurrentUserId, CurrentRoleId);
             else
-                return this.dbSet.FromSql("SELECT * FROM vwStaffEstablishedPostWithAccessLinks where AccessUserId=@p0", CurrentUserId);
+                return this.dbSet.FromSql("SELECT * FROM vwPersonsAccessLinks where AccessUserId=@p0", CurrentUserId);
         }
         public List<Person> GetByStaffEstablishedPost(long OrganizationId, long DepartmentId, long PositionId)
         {
@@ -35,7 +35,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         }
         public Person GetPersonByUserIdAndTargetDepartment(long UserId, long TargetDepartmentId)
         {
-            return this.dbSet.FirstOrDefault(x => x.AccessLinks.Any(y => y.DepartmentId == TargetDepartmentId));
+            return this.dbSet.FromSql("SELECT p.* FROM vwPersonsAccessLinks acc INNER JOIN Persons p ON acc.AccessPersonId=p.Id where AccessUserId=@p0 and acc.DepartmentId=@p1", UserId, TargetDepartmentId).FirstOrDefault();            
         }
         /// <summary>
         /// Все сотрудники

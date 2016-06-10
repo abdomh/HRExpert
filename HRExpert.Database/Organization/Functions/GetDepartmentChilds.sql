@@ -11,7 +11,7 @@ RETURNS @returntable TABLE
 AS
 BEGIN
 	with tree (nm, id, level)
-		as (	select top 1 Name, Id,0
+		as (	select Name, Id,0
 				from Departments
 				where ParentId = @departmentid
 			union all

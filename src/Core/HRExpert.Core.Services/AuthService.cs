@@ -22,7 +22,7 @@ namespace HRExpert.Core.Services
         public AuthService(IStorage storage, IHttpContextAccessor contextaccessor)
         {
             this.storage = storage;
-            this.contextaccessor = contextaccessor;            
+            this.contextaccessor = contextaccessor;  
             userRepository = storage.GetRepository<IUserRepository>();
         }
         /// <summary>
@@ -32,7 +32,26 @@ namespace HRExpert.Core.Services
         {
             get { return this.contextaccessor.HttpContext; }
         }
-        public long CurrentRoleId { get; set; }
+        private long currentRoleId;
+        public long CurrentRoleId {
+            get
+            {
+                try
+                {
+                    Microsoft.Extensions.Primitives.StringValues role;
+                    if (this.contextaccessor.HttpContext.Request.Query.TryGetValue("for_roleid", out role))
+                    {
+                        currentRoleId = long.Parse(role[0]);
+                    }
+                }
+                catch (Exception e)
+                {
+                    
+                }
+                return currentRoleId;
+            }
+
+             }
         /// <summary>
         /// Текущий пользователь
         /// </summary>

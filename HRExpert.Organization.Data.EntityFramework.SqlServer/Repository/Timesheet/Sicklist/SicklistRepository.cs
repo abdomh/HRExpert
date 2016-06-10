@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using HRExpert.Organization.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
     public class SicklistRepository: DocumentRepositoryBase<Sicklist>,Abstractions.ISicklistRepository
@@ -21,9 +23,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .ToList();
         }        
         public void Create(Sicklist entity)
-        {
-            this.dbSet.Add(entity);
+        {            
+            this.dbSet.Add(entity);            
             this.dbContext.SaveChanges();
+            
         }
         public Sicklist Read(long Id)
         {
@@ -32,6 +35,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Department).ThenInclude(x => x.Organization)
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
                 .Include(x => x.Document).ThenInclude(x => x.DocumentType)
+                .Include(x=>x.Document.Event).ThenInclude(x=>x.Timesheet)
                 .Include(x => x.SicklistBabyMindingType)
                 .Include(x => x.SicklistPaymentPercent)
                 .Include(x => x.SicklistPaymentRestrictType)

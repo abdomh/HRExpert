@@ -5,8 +5,7 @@ namespace HRExpert.Organization.DTO
     /// <summary>
     /// Документ
     /// </summary>
-    /// <typeparam name="T">Тип документа</typeparam>
-    public class DocumentDto<T>
+    public class DocumentDto
     {
         /// <summary>
         /// Создатель
@@ -24,9 +23,6 @@ namespace HRExpert.Organization.DTO
         /// Тип документа
         /// </summary>
         public DocumentTypeDto DocumentType { get; set; }
-        /// <summary>
-        /// Данные документа
-        /// </summary>
-        public T Data { get; set; }
+        
     }
 }

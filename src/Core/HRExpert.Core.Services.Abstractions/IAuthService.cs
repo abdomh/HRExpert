@@ -14,7 +14,7 @@ namespace HRExpert.Core.Services.Abstractions
         /// <summary>
         /// Идентификатор текущей роли
         /// </summary>
-        long CurrentRoleId { get; set; }
+        long CurrentRoleId { get; }
         /// <summary>
         /// Текущий пользователь
         /// </summary>  

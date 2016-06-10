@@ -8,6 +8,17 @@ namespace HRExpert.Organization.BL.Abstractions
     public interface IPersonBL
     {
         /// <summary>
+        /// Все сотрудники
+        /// </summary>
+        /// <returns></returns>
+        List<PersonDto> List();
+        /// <summary>
+        /// Сотрудник по Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        PersonDto Read(long Id);
+        /// <summary>
         /// Все по штатной единице
         /// </summary>
         /// <param name="DepartmentId"></param>

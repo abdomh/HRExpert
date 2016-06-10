@@ -20,6 +20,14 @@ namespace HRExpert.Organization.BL
             
             this.authService = authService;
         }
+        public List<PersonDto> List()
+        {
+            return this.personsRepository.All().Select(x=>x.Convert()).ToList();
+        }
+        public PersonDto Read(long Id)
+        {
+            return this.personsRepository.Read(Id).Convert();
+        }
         public List<PersonDto> GetByStaffEstablishedPost(long OrganizationId, long DepartmentId, long PositionId)
         {
             var result = new List<PersonDto>();

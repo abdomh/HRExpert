@@ -23,50 +23,32 @@ namespace HRExpert.Organization.Controllers
         /// <summary>
         /// Список персонажей по штатной единице
         /// </summary>
-        /// <param name="organizationid">Идентификатор организации</param>
-        /// <param name="departmentid">Идентификатор подразделения</param>
-        /// <param name="positionid">Идентификатор должности</param>
         /// <returns></returns>
         [Route(CoreConstants.Api +
             CoreConstants.version +
-            OrganizationConstants.OrganizationList +
-            OrganizationConstants.OrganizationKey +
-            OrganizationConstants.DepartmentList +
-            OrganizationConstants.DepartmentKey +
-            OrganizationConstants.StaffEstablishedPostsList +
-            OrganizationConstants.PositionsKey +
             OrganizationConstants.PersonList
             )
         ]
         [HttpGet]
-        public PersonDto[] PersonsList(long organizationid,long departmentid,long positionid)
+        public PersonDto[] PersonsList()
         {
-            return personsBl.GetByStaffEstablishedPost(organizationid, departmentid, positionid).ToArray();
+            return personsBl.List().ToArray();
         }
         /// <summary>
-        /// Персонаж по штатной единице и идентификатору
+        /// Список персонажей по штатной единице
         /// </summary>
-        /// <param name="organizationid">организация</param>
-        /// <param name="departmentid">подразделение</param>
-        /// <param name="positionid">должность</param>
-        /// <param name="personid">идентификатор</param>
         /// <returns></returns>
         [Route(CoreConstants.Api +
             CoreConstants.version +
-            OrganizationConstants.OrganizationList +
-            OrganizationConstants.OrganizationKey +
-            OrganizationConstants.DepartmentList +
-            OrganizationConstants.DepartmentKey +
-            OrganizationConstants.StaffEstablishedPostsList +
-            OrganizationConstants.PositionsKey +
             OrganizationConstants.PersonList +
             OrganizationConstants.PersonKey
             )
         ]
         [HttpGet]
-        public PersonDto ByStaffEstablishedPostAndId(long organizationid, long departmentid, long positionid, long personid)
+        public PersonDto Read(long personid)
         {
-            return personsBl.GetByStaffEstablishedPostAndId(organizationid, departmentid, positionid, personid);
+            return personsBl.Read(personid);
         }
+
     }
 }

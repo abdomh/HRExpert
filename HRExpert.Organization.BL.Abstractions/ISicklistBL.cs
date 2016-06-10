@@ -5,8 +5,8 @@ namespace HRExpert.Organization.BL.Abstractions
 {
     public interface ISicklistBL
     {
-        DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> dto);
-        DocumentDto<SicklistDto> Read(long id);
-        List<DocumentDto<SicklistDto>> List();
+        SicklistDto Create(SicklistDto dto);
+        SicklistDto Read(long id);
+        List<SicklistDto> List();
     }
 }
