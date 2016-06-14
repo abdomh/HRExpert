@@ -40,15 +40,15 @@ namespace HRExpert.Organization.BL
 
             
         }
-        public List<SicklistDto> List()
+        public List<DocumentDto<SicklistDto>> List()
         {
             return sicklistRepository.List().Select(x => x.Convert()).ToList();
         }
-        public SicklistDto Read(long Id)
+        public DocumentDto<SicklistDto> Read(long Id)
         {
             return this.sicklistRepository.Read(Id).Convert();
         }
-        public SicklistDto Create(SicklistDto dto)
+        public DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> dto)
         {
             var Person = personRepository.Read(dto.Person.Id);
             Sicklist entity = new Sicklist();
@@ -58,21 +58,21 @@ namespace HRExpert.Organization.BL
             entity.Document.DocumentType = documentTypeRepository.Read(1);
             entity.Document.CreateDate = DateTime.Now;
             entity.Document.Event = new PersonEvent();
-            entity.Document.Event.BeginDate = dto.BeginDate;
-            entity.Document.Event.EndDate = dto.EndDate;
+            entity.Document.Event.BeginDate = dto.Data.BeginDate;
+            entity.Document.Event.EndDate = dto.Data.EndDate;
             entity.Document.Event.Timesheet = new Timesheet();
             entity.Document.Event.Timesheet.IsStaffEstablishedPostTemporaryFree = false;
-            if(dto.TimesheetStatus!=null)
-                entity.Document.Event.Timesheet.Status = timesheetStatusRepository.Read(dto.TimesheetStatus.Id);
-            if (dto.SicklistBabyMindingType != null)
-                entity.SicklistBabyMindingType = sicklistBabyMindingTypesRepository.Read(dto.SicklistBabyMindingType.Id);
-            if(dto.SicklistPaymentPercent!=null)
-                entity.SicklistPaymentPercent = sicklistPaymentPercentRepository.Read(dto.SicklistPaymentPercent.Id);
-            if(dto.SicklistPaymentRestrictType!=null)
-                entity.SicklistPaymentRestrictType = sicklistPaymentRestrictTypesRepository.Read(dto.SicklistPaymentRestrictType.Id);
-            if(dto.SicklistType!=null)
-                entity.SicklistType = sicklistTypesRepository.Read(dto.SicklistType.Id);
-            entity.SicklistNumber = dto.SicklistNumber;
+            if(dto.Data.TimesheetStatus!=null)
+                entity.Document.Event.Timesheet.Status = timesheetStatusRepository.Read(dto.Data.TimesheetStatus.Id);
+            if (dto.Data.SicklistBabyMindingType != null)
+                entity.SicklistBabyMindingType = sicklistBabyMindingTypesRepository.Read(dto.Data.SicklistBabyMindingType.Id);
+            if(dto.Data.SicklistPaymentPercent!=null)
+                entity.SicklistPaymentPercent = sicklistPaymentPercentRepository.Read(dto.Data.SicklistPaymentPercent.Id);
+            if(dto.Data.SicklistPaymentRestrictType!=null)
+                entity.SicklistPaymentRestrictType = sicklistPaymentRestrictTypesRepository.Read(dto.Data.SicklistPaymentRestrictType.Id);
+            if(dto.Data.SicklistType!=null)
+                entity.SicklistType = sicklistTypesRepository.Read(dto.Data.SicklistType.Id);
+            entity.SicklistNumber = dto.Data.SicklistNumber;
             this.sicklistRepository.Create(entity);
             return entity.Convert();
         }
