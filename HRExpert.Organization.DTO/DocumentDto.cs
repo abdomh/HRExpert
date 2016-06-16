@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 namespace HRExpert.Organization.DTO
 {
     /// <summary>
@@ -27,6 +27,10 @@ namespace HRExpert.Organization.DTO
         /// Данные документа
         /// </summary>
         public T Data { get; set; }
+        /// <summary>
+        /// Файлы
+        /// </summary>
+        public List<FileDto> Files { get; set; }
         
     }
 }

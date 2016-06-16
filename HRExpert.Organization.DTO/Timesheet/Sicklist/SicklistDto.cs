@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Http;
 namespace HRExpert.Organization.DTO
 {
     public class SicklistDto
@@ -12,5 +13,7 @@ namespace HRExpert.Organization.DTO
         public DateTime? BeginDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string SicklistNumber { get; set; }
+        //files
+        public IFormFile SicklistDocument { get; set; }
     }
 }

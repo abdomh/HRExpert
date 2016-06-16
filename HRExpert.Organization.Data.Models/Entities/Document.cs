@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
@@ -6,6 +7,10 @@ namespace HRExpert.Organization.Data.Models
     [Table("Documents")]
     public class Document: ExtCore.Data.Models.Abstractions.IEntity
     {       
+        public Document()
+        {
+            this.Files = new List<DocumentFile>();
+        }
         [Key]
         public Guid Id { get; set; }
         public Guid Code1C { get; set; }
@@ -22,6 +27,7 @@ namespace HRExpert.Organization.Data.Models
         public long DocumentTypeId { get; set; }
         public DocumentType DocumentType { get; set; }
         public PersonEvent Event { get; set; }
+        public ICollection<DocumentFile> Files { get; set; }
         
     }
 }

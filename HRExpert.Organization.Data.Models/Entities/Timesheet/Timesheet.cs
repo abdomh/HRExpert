@@ -10,7 +10,7 @@ namespace HRExpert.Organization.Data.Models
         [ForeignKey("Event")]
         public Guid DocumentGuid { get; set; }
         [ForeignKey("Status")]
-        public long StatusId {get;set;}
+        public long? StatusId {get;set;}
         public TimesheetStatus Status { get; set; }
         public PersonEvent Event { get; set; }
         public bool IsStaffEstablishedPostTemporaryFree { get; set; }

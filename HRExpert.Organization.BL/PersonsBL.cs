@@ -6,7 +6,7 @@ using HRExpert.Organization.Data.Abstractions;
 using HRExpert.Organization.DTO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
+
 namespace HRExpert.Organization.BL
 {
     using Converters;

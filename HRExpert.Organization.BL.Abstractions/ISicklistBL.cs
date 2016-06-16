@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HRExpert.Organization.DTO;
 
 namespace HRExpert.Organization.BL.Abstractions
@@ -8,5 +9,6 @@ namespace HRExpert.Organization.BL.Abstractions
         DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> dto);
         DocumentDto<SicklistDto> Read(long id);
         List<DocumentDto<SicklistDto>> List();
+        Guid GetFileKey(long documentId, int filetype);
     }
 }

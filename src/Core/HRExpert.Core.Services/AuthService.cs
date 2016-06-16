@@ -19,8 +19,11 @@ namespace HRExpert.Core.Services
         private IUserRepository userRepository;
         private User currentUser;
         private IHttpContextAccessor contextaccessor;
-        public AuthService(IStorage storage, IHttpContextAccessor contextaccessor)
+        private IHostingEnvironment environment;
+        public AuthService(IStorage storage, IHttpContextAccessor contextaccessor, IHostingEnvironment environment)
         {
+            this.environment = environment;
+            this.RootPath = environment.ContentRootPath;
             this.storage = storage;
             this.contextaccessor = contextaccessor;  
             userRepository = storage.GetRepository<IUserRepository>();
@@ -32,6 +35,7 @@ namespace HRExpert.Core.Services
         {
             get { return this.contextaccessor.HttpContext; }
         }
+        public string RootPath { get; private set; }
         private long currentRoleId;
         public long CurrentRoleId {
             get

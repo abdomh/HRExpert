@@ -1,4 +1,5 @@
-﻿using HRExpert.Organization.Data.Models;
+﻿using System.Linq;
+using HRExpert.Organization.Data.Models;
 using HRExpert.Organization.DTO;
 namespace HRExpert.Organization.BL.Converters
 {
@@ -123,6 +124,8 @@ namespace HRExpert.Organization.BL.Converters
             dto.Creator = entity.Creator.Convert();
             dto.CreateDate = entity.CreateDate;
             dto.DocumentType = entity.DocumentType.Convert();
+            if (entity.Files != null && entity.Files.Count > 0)
+                dto.Files = entity.Files.Select(x => x.Convert()).ToList();
             return dto;
         }
         public static DocumentDto<SicklistDto> Convert(this Sicklist entity)
@@ -142,6 +145,13 @@ namespace HRExpert.Organization.BL.Converters
             data.SicklistType = entity.SicklistType.Convert();
             doc.Data = data;
             return doc;
+        }
+        public static FileDto Convert(this DocumentFile entity)
+        {
+            var dto = new FileDto();
+            dto.FileName = entity.FileName;
+            dto.FileType = entity.FileType;
+            return dto;
         }
     }
 }

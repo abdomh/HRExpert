@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
 using HRExpert.Organization.DTO;
 using HRExpert.Organization.BL.Abstractions;
@@ -47,9 +48,20 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         /// <returns></returns>
         [HttpPost]
         [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList)]        
-        public DocumentDto<SicklistDto> Create([FromBody]DocumentDto<SicklistDto> value)
-        {
+        public DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> value)
+        {           
            return sicklistBL.Create(value);           
+        }
+        /// <summary>
+        /// Редактирование
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        [HttpPut]        
+        [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList)]
+        public DocumentDto<SicklistDto> Update(DocumentDto<SicklistDto> value)
+        {
+            return sicklistBL.Create(value);
         }
     }
 }

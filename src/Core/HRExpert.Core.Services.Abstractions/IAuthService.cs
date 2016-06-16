@@ -8,6 +8,10 @@ namespace HRExpert.Core.Services.Abstractions
     public interface IAuthService
     {
         /// <summary>
+        /// Путь к файлам
+        /// </summary>
+        string RootPath { get; }
+        /// <summary>
         /// Текущий контекст
         /// </summary>
         HttpContext CurrentContext { get;}

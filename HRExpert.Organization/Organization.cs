@@ -32,7 +32,8 @@ namespace HRExpert.Organization
         /// </summary>
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
-        {           
+        {
+            services.AddScoped<IFileBl, FileBl>();
             services.AddScoped<IOrganizationBL, OrganizationBL>();            
             services.AddScoped<IDepartmentBL, DepartmentBL>();
             services.AddScoped<IPositionsBL, PositionsBL>();

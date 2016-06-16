@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
@@ -31,5 +32,13 @@ namespace HRExpert.Organization.Data.Models
         /// Имя файла
         /// </summary>
         public string FileName { get; set; }
+        /// <summary>
+        /// Путь к файлу
+        /// </summary>
+        public string Path { get; set; }
+        /// <summary>
+        /// Коллекция подписанных фалов
+        /// </summary>
+        public ICollection<SignedFile> Signs { get; set; }
     }
 }

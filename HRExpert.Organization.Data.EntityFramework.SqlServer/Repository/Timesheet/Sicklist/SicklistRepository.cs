@@ -25,8 +25,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public void Create(Sicklist entity)
         {            
             this.dbSet.Add(entity);            
-            this.dbContext.SaveChanges();
-            
+            this.dbContext.SaveChanges();            
         }
         public Sicklist Read(long Id)
         {
@@ -35,7 +34,8 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Department).ThenInclude(x => x.Organization)
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
                 .Include(x => x.Document).ThenInclude(x => x.DocumentType)
-                .Include(x=>x.Document.Event).ThenInclude(x=>x.Timesheet)
+                .Include(x=>x.Document).ThenInclude(x=>x.Event).ThenInclude(x=>x.Timesheet)
+                .Include(x=>x.Document).ThenInclude(x=>x.Files)
                 .Include(x => x.SicklistBabyMindingType)
                 .Include(x => x.SicklistPaymentPercent)
                 .Include(x => x.SicklistPaymentRestrictType)
