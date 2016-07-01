@@ -31,15 +31,15 @@ namespace HRExpert.Organization.Data.Models
         /// <summary>
         /// Id подразделения
         /// </summary>
-        public long DepartmentId { get; set; }
+        public long? DepartmentId { get; set; }
         /// <summary>
         /// Id должности
         /// </summary>
-        public long PositionId { get; set; }
+        public long? PositionId { get; set; }
         /// <summary>
         /// Кол-во ставок
         /// </summary>
-        public decimal PostCount { get; set; }
+        public decimal? PostCount { get; set; }
         /// <summary>
         /// Штатная единица
         /// </summary>

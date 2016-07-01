@@ -8,6 +8,8 @@
 	[PersonId] bigint not null,
 	[DocumentId] bigint not null default(0),
 	[DocumentTypeId] bigint not null,
+	[DocumentStatusId] bigint,
+	CONSTRAINT FK_Documents_DocumentStatus Foreign key (DocumentStatusId) References DocumentStatuses(Id),
 	CONSTRAINT FK_Documents_DocumentTypes FOREIGN KEY (DocumentTypeId) References DocumentTypes(Id),
 	CONSTRAINT FK_Documents_Person Foreign Key (PersonId) References Persons(Id),
 	Constraint FK_Documents_Creator Foreign key (CreatorId) References Persons(Id)

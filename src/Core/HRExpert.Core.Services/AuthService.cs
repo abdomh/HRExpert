@@ -78,10 +78,8 @@ namespace HRExpert.Core.Services
         /// <returns>true, если есть права, false в противном случае</returns>
         public bool CheckPermission(long PermissionId)
         {
-            foreach(var role in CurrentUser.Roles)
-            {
-                if(role.Role.Permissions.Any(x => x.PermissionTypeId == PermissionId)) return true;
-            }
+            var role = CurrentUser.Roles.FirstOrDefault(x => x.RoleId == CurrentRoleId);            
+            if(role != null && role.Role.Permissions.Any(x => x.PermissionTypeId == PermissionId)) return true;            
             return false;
         }      
     }

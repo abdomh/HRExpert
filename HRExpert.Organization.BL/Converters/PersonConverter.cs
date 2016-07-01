@@ -46,8 +46,19 @@ namespace HRExpert.Organization.BL.Converters
             PersonDto dto = new PersonDto();
             dto.Id = entity.Id;
             dto.Name = entity.Name;
-            dto.PostCount = entity.PostCount;
+            dto.PostCount = entity.PostCount.HasValue?entity.PostCount.Value:0;
             dto.StaffEstablishedPost = entity.StaffEstablishedPost.Convert();
+            return dto;
+        }
+        public static DocumentApprovementDto Convert(this DocumentApprovement entity)
+        {
+            if (entity == null) return null;
+            DocumentApprovementDto dto = new DocumentApprovementDto();
+            dto.ApprovePosition = entity.ApprovePosition;
+            dto.DateAccept = entity.DateAccept;
+            dto.Person = entity.Person.Convert();
+            dto.RealPerson = entity.RealPerson.Convert();
+            dto.isAccept = entity.isAccept;
             return dto;
         }
         public static DocumentTypeDto Convert(this DocumentType entity)
@@ -124,8 +135,10 @@ namespace HRExpert.Organization.BL.Converters
             dto.Creator = entity.Creator.Convert();
             dto.CreateDate = entity.CreateDate;
             dto.DocumentType = entity.DocumentType.Convert();
+            if (entity.Approvements != null && entity.Approvements.Any())
+                dto.Approvements = entity.Approvements.Select(x => x.Convert()).ToArray();
             if (entity.Files != null && entity.Files.Count > 0)
-                dto.Files = entity.Files.Select(x => x.Convert()).ToList();
+                dto.Files = entity.Files.Select(x => x.Convert()).ToArray();
             return dto;
         }
         public static DocumentDto<SicklistDto> Convert(this Sicklist entity)
@@ -143,6 +156,13 @@ namespace HRExpert.Organization.BL.Converters
             data.EndDate = entity.Document.Event?.EndDate;
             data.SicklistNumber = entity.SicklistNumber;
             data.SicklistType = entity.SicklistType.Convert();
+            data.ExperienceMonth = entity.ExperienceMonth;
+            data.ExperienceYears = entity.ExperienceYears;
+            data.isAddToFullPayment = entity.isAddToFullPayment;
+            data.isPreviousPaymentCounted = entity.isPreviousPaymentCounted;
+            data.isUseBefore = entity.isUseBefore;
+            data.PaymentBeginDate = entity.PaymentBeginDate;
+            data.PaymentDecreaseDate = entity.PaymentDecreaseDate;            
             doc.Data = data;
             return doc;
         }

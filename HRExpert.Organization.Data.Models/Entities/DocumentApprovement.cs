@@ -22,11 +22,20 @@ namespace HRExpert.Organization.Data.Models
         /// Идентификатор согласованта
         /// </summary>
         [ForeignKey("Person")]
-        public long PersonId { get; set; }
+        public long? PersonId { get; set; }
+        /// <summary>
+        /// Идентификатор реального согласованта
+        /// </summary>
+        [ForeignKey("RealPerson")]
+        public long? RealPersonId { get; set; }
         /// <summary>
         /// Согласовант
         /// </summary>
         public Person Person { get; set; }
+        /// <summary>
+        /// Реальный согласовант
+        /// </summary>
+        public Person RealPerson { get; set; }
         /// <summary>
         /// Позиция согласования
         /// </summary>
@@ -35,5 +44,9 @@ namespace HRExpert.Organization.Data.Models
         /// Дата согласования
         /// </summary>
         public DateTime? DateAccept { get; set; }
+        /// <summary>
+        /// Согласование
+        /// </summary>
+        public bool isAccept { get; set; }
     }
 }

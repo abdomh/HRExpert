@@ -46,9 +46,10 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        [HttpPost]
-        [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList)]        
-        public DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> value)
+        [HttpPost]        
+        [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList)]
+        
+        public DocumentDto<SicklistDto> Create([FromForm]DocumentDto<SicklistDto> value)
         {           
            return sicklistBL.Create(value);           
         }
@@ -57,11 +58,11 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        [HttpPut]        
+        [HttpPut]
         [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistList)]
-        public DocumentDto<SicklistDto> Update(DocumentDto<SicklistDto> value)
+        public DocumentDto<SicklistDto> Update([FromForm]DocumentDto<SicklistDto> value)
         {
-            return sicklistBL.Create(value);
+            return sicklistBL.Update(value);
         }
     }
 }

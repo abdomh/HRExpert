@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Cors;
@@ -7,6 +8,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
 using Swashbuckle.SwaggerGen;
 using Swashbuckle.SwaggerUi;
+using Swashbuckle.SwaggerGen.Generator;
+using Swashbuckle.SwaggerUi.Application;
 using Swashbuckle;
 using System.Threading;
 using System.Threading.Tasks;
@@ -37,7 +40,10 @@ namespace HRExpert
         {
             string pathToDoc = hostingEnvironment.ContentRootPath;
             services.AddSwaggerGen();
+            
             services.ConfigureSwaggerGen(options => {
+                options.CustomSchemaIds(type => type.FriendlyId().Replace("[", "Of").Replace("]", ""));
+                options.DescribeStringEnumsInCamelCase();                
                 options.DescribeAllEnumsAsStrings();
                 options.IncludeXmlComments(GetXmlCommentsPath(string.Empty));
                 options.IncludeXmlComments(GetXmlCommentsPath("Core"));
@@ -59,8 +65,7 @@ namespace HRExpert
             if (hostingEnvironment.IsEnvironment("Development"))
             {
                 
-                applicationBuilder.UseBrowserLink();
-                
+                applicationBuilder.UseBrowserLink();                
                 applicationBuilder.UseDeveloperExceptionPage();
                 applicationBuilder.UseDatabaseErrorPage();
             }

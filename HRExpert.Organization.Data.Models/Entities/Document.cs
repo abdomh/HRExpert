@@ -5,8 +5,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
 {
     [Table("Documents")]
-    public class Document: ExtCore.Data.Models.Abstractions.IEntity
-    {       
+    public class Document : ExtCore.Data.Models.Abstractions.IEntity
+    {
         public Document()
         {
             this.Files = new List<DocumentFile>();
@@ -26,8 +26,10 @@ namespace HRExpert.Organization.Data.Models
         [ForeignKey("DocumentType")]
         public long DocumentTypeId { get; set; }
         public DocumentType DocumentType { get; set; }
+        public long? DocumentStatusId { get; set; }
+        public DocumentStatus Status { get; set; }
         public PersonEvent Event { get; set; }
         public ICollection<DocumentFile> Files { get; set; }
-        
+        public ICollection<DocumentApprovement> Approvements { get; set; }
     }
 }

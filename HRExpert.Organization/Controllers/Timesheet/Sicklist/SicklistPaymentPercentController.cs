@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Collections;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using HRExpert.Organization.DTO;
@@ -8,6 +10,7 @@ namespace HRExpert.Organization.Controllers
     /// <summary>
     /// Контроллер процентов выплат
     /// </summary>
+    /// 
     public class SicklistPaymentPercentController: Controller
     {
         ISicklistPaymentPercentBL sicklistPaymentPercentBL;
@@ -25,7 +28,7 @@ namespace HRExpert.Organization.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route(Core.CoreConstants.Api + Core.CoreConstants.version + OrganizationConstants.SicklistPaymentPercentList)]
-        public List<SicklistPaymentPercentDto> List()
+        public IEnumerable<SicklistPaymentPercentDto> List()
         {
             return this.sicklistPaymentPercentBL.List();
         }

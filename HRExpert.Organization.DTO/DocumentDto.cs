@@ -30,7 +30,11 @@ namespace HRExpert.Organization.DTO
         /// <summary>
         /// Файлы
         /// </summary>
-        public List<FileDto> Files { get; set; }
+        public FileDto[] Files { get; set; }
+        /// <summary>
+        /// Согласования
+        /// </summary>
+        public DocumentApprovementDto[] Approvements { get; set; }
         
     }
 }

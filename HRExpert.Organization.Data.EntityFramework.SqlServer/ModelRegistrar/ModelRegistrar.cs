@@ -20,6 +20,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer
             modelbuilder.Entity<AccessLink>().HasOne(x => x.Person).WithMany(x => x.AccessLinks).HasForeignKey(x => x.PersonId);
             //Документы
             modelbuilder.Entity<Document>();
+            modelbuilder.Entity<DocumentStatus>();
             modelbuilder.Entity<DocumentType>();
             modelbuilder.Entity<DocumentFile>();
             modelbuilder.Entity<DocumentApprovement>().HasKey(x=> new { x.DocumentGuid, x.ApprovePosition });
@@ -33,7 +34,8 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer
             modelbuilder.Entity<SicklistType>();
             modelbuilder.Entity<SicklistBabyMindingType>();
             modelbuilder.Entity<SicklistPaymentPercent>();
-            modelbuilder.Entity<SicklistPaymentRestrictType>();            
+            modelbuilder.Entity<SicklistPaymentRestrictType>();      
+                  
         }
     }
 }

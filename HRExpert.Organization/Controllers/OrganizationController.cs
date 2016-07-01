@@ -93,9 +93,9 @@ namespace HRExpert.Organization.Controllers
             OrganizationConstants.OrganizationKey
             )
         ]
-        public virtual OrganizationDto Delete(long id)
+        public virtual OrganizationDto Delete(long organizationid)
         {
-            return this.organizationBl.Delete(id);
+            return this.organizationBl.Delete(organizationid);
         }
 
     }
