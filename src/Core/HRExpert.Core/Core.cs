@@ -10,7 +10,9 @@ using HRExpert.Core.Services.Abstractions;
 using HRExpert.Core.Services;
 using ExtCore.Data.Abstractions;
 using System;
-
+using System.Collections.Generic;
+using AspNet.Security.OpenIdConnect;
+using AspNet.Security;
 namespace HRExpert.Core
 {
     /// <summary>
@@ -28,7 +30,16 @@ namespace HRExpert.Core
             {
                 return "Core";
             }
-        }        
+        }
+
+        public IDictionary<int, Action<IRouteBuilder>> RouteRegistrarsByPriorities
+        {
+            get
+            {
+                return new Dictionary<int, Action<IRouteBuilder>>();
+            }
+        }
+
         /// <summary>
         /// Установка конфига
         /// </summary>
@@ -74,7 +85,8 @@ namespace HRExpert.Core
                 options.AutomaticAuthenticate = true;
                 options.AuthorizationEndpointPath = PathString.Empty;
                 options.TokenEndpointPath = "/connect/token";
-                options.UseJwtTokens();
+                //options.UseJwtTokens();
+                options.AccessTokenHandler = new System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler();
                 options.Provider = new HRExpert.Core.Services.AuthorizationProvider(applicationBuilder.ApplicationServices.GetService<IStorage>());
             });           
         }

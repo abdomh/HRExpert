@@ -1,0 +1,488 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HRExpert.Organization</name>
+    </assembly>
+    <members>
+        <member name="T:HRExpert.Organization.Organization">
+            <summary>
+            Startup class для модуля организация
+            </summary>
+        </member>
+        <member name="P:HRExpert.Organization.Organization.Name">
+            <summary>
+            Название модуля
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Organization.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Регистрация сервисов
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Organization.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            Конфигурация
+            </summary>
+            <param name="applicationBuilder"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Organization.RegisterRoutes(Microsoft.AspNetCore.Routing.IRouteBuilder)">
+            <summary>
+            Регистрация маршрутов
+            </summary>
+            <param name="routeBuilder"></param>
+        </member>
+        <member name="T:HRExpert.Organization.OrganizationConstants">
+            <summary>
+            Константы для API организации
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.Organization">
+            <summary>
+            Организация
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.OrganizationList">
+            <summary>
+            Список организаций
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.OrganizationKey">
+            <summary>
+            Организация по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.Department">
+            <summary>
+            Подразделение
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.DepartmentList">
+            <summary>
+            Список подразделений
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.DepartmentKey">
+            <summary>
+            Подразделение по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.StaffEstablishedPosts">
+            <summary>
+            Штатные единицы
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.StaffEstablishedPostsList">
+            <summary>
+            Список штатных единиц
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.Person">
+            <summary>
+            Персонаж
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.PersonList">
+            <summary>
+            Список персонажей
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.PersonKey">
+            <summary>
+            Персонаж по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.Positions">
+            <summary>
+            Должности
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.PositionsList">
+            <summary>
+            Список должностей
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.PositionsKey">
+            <summary>
+            Должность по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.TimesheetStatus">
+            <summary>
+            Табельные статусы
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.TimesheetStatusList">
+            <summary>
+            Список всех записей табельных статусов
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.Timesheet">
+            <summary>
+            Табель
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.TimesheetList">
+            <summary>
+            Список всех записей табеля
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.Sicklist">
+            <summary>
+            Табель
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistList">
+            <summary>
+            Список больничных
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistKey">
+            <summary>
+            Больничный по ключу
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistType">
+            <summary>
+            Тип больничного
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistTypeList">
+            <summary>
+            Список типов больничных
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistBabyMindingType">
+            <summary>
+            Тип больничных по уходу за ребенком
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistBabyMindingTypeList">
+            <summary>
+            Список типов больничных по уходу за ребенком
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistPaymentRestrictType">
+            <summary>
+            Ограничения выплат
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistPaymentRestrictTypeList">
+            <summary>
+            Список ограничений выплат
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistPaymentPercent">
+            <summary>
+            Проценты выплат
+            </summary>
+        </member>
+        <member name="F:HRExpert.Organization.OrganizationConstants.SicklistPaymentPercentList">
+            <summary>
+            Список процентов выплат
+            </summary>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.DepartmentController">
+            <summary>
+            Контроллер подразделений
+            </summary>    
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.DepartmentController.#ctor(HRExpert.Organization.BL.Abstractions.IDepartmentBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="departmentBl"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.DepartmentController.ByOrganization(System.Int64)">
+            <summary>
+            Список подразделений по организации
+            </summary>
+            <param name="organizationid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.DepartmentController.ByOrganizationAndDepartment(System.Int64,System.Int64)">
+            <summary>
+            Список дочерних
+            </summary>
+            <param name="organizationid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.DepartmentController.ByOrganizationAndKey(System.Int64,System.Int64)">
+            <summary>
+            Подразделение по организации и идентификатору
+            </summary>
+            <param name="organizationid">Идентификатор организации</param>
+            <param name="departmentid">Идентификатор подразделения</param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.FilesController">
+            <summary>
+            Загрузка файлов
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.FilesController.#ctor(HRExpert.Organization.BL.Abstractions.IFileBl)">
+            <summary>
+            конструктор
+            </summary>
+            <param name="filebl"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.FilesController.Index(System.Guid)">
+            <summary>
+            Получает файл по заданному одноразовому ключу
+            </summary>
+            <param name="fileid"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.OrganizationController">
+            <summary>
+            Контроллер организаций
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.Get">
+            <summary>
+            Список организаций
+            </summary>
+            <returns>Коллекция записей</returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.Get(System.Int64)">
+            <summary>
+            Организация по идентификатору
+            </summary>
+            <param name="organizationid">Идентификатор</param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.Post(HRExpert.Organization.DTO.OrganizationDto)">
+            <summary>
+            Создание организации
+            </summary>
+            <param name="value">Организация</param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.Put(HRExpert.Organization.DTO.OrganizationDto)">
+            <summary>
+            Редактирование организации
+            </summary>
+            <param name="value">Организация</param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.Delete(System.Int64)">
+            <summary>
+            Удаление организации
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.PersonsController">
+            <summary>
+            Контроллер персонажей
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PersonsController.PersonsList">
+            <summary>
+            Список персонажей по штатной единице
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PersonsController.Read(System.Int64)">
+            <summary>
+            Список персонажей по штатной единице
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PersonsFromDepartmentController.PersonsList(System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Список персонажей по штатной единице
+            </summary>
+            <param name="organizationid">Идентификатор организации</param>
+            <param name="departmentid">Идентификатор подразделения</param>
+            <param name="positionid">Идентификатор должности</param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PersonsFromDepartmentController.ByStaffEstablishedPostAndId(System.Int64,System.Int64,System.Int64,System.Int64)">
+            <summary>
+            Персонаж по штатной единице и идентификатору
+            </summary>
+            <param name="organizationid">организация</param>
+            <param name="departmentid">подразделение</param>
+            <param name="positionid">должность</param>
+            <param name="personid">идентификатор</param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.PositionsController">
+            <summary>
+            Контроллер должностей
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PositionsController.#ctor(HRExpert.Organization.BL.Abstractions.IPositionsBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="positionsBl"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PositionsController.Get">
+            <summary>
+            Список должностей
+            </summary>
+            <returns>Коллекция записей</returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PositionsController.Get(System.Int64)">
+            <summary>
+            Должность по идентификатору
+            </summary>
+            <param name="positionid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PositionsController.Post(HRExpert.Organization.DTO.PositionDto)">
+            <summary>
+            Создание должности
+            </summary>
+            <param name="value">Должность</param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PositionsController.Put(HRExpert.Organization.DTO.PositionDto)">
+            <summary>
+            Редактирование должности
+            </summary>
+            <param name="value">должность</param>
+            <returns>должность</returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PositionsController.Delete(System.Int64)">
+            <summary>
+            Удаление должности
+            </summary>
+            <param name="positionid">Идентификатор должности</param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.StaffEstablishedPostsController">
+            <summary>
+            Штатные единицы
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.StaffEstablishedPostsController.#ctor(HRExpert.Organization.BL.Abstractions.IStaffEstablishedPostBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="staffEstablishedPostBl"></param>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistBabyMindingTypesController">
+            <summary>
+            Типы больничных по уходу за ребенком
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistBabyMindingTypesController.#ctor(HRExpert.Organization.BL.Abstractions.ISicklistBabyMindingTypesBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sicklistBabyMindingTypesBL"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistBabyMindingTypesController.List">
+            <summary>
+            Список записей
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController">
+            <summary>
+            Контроллер больничных
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.#ctor(HRExpert.Organization.BL.Abstractions.ISicklistBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sicklistBL"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.List">
+            <summary>
+            Список
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.Read(System.Int64)">
+            <summary>
+            Чтение
+            </summary>
+            <param name="sicklistid"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.Create(HRExpert.Organization.DTO.DocumentDto{HRExpert.Organization.DTO.SicklistDto})">
+            <summary>
+            Создание
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.Update(HRExpert.Organization.DTO.DocumentDto{HRExpert.Organization.DTO.SicklistDto})">
+            <summary>
+            Редактирование
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistFilesController">
+            <summary>
+            Контроллер получения ключей доступа к файлу больничных
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistFilesController.Index(System.Int64,System.Int32)">
+            <summary>
+            Получение ключа для загруки файла
+            </summary>
+            <param name="sicklistid"></param>
+            <param name="filetypeid"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.SicklistPaymentPercentController">
+            <summary>
+            Контроллер процентов выплат
+            </summary>
+            
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.SicklistPaymentPercentController.#ctor(HRExpert.Organization.BL.Abstractions.ISicklistPaymentPercentBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sicklistPaymentPercentBL"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.SicklistPaymentPercentController.List">
+            <summary>
+            Список
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.SicklistPaymentRestrictTypesController">
+            <summary>
+            Ограничение выплат
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.SicklistPaymentRestrictTypesController.#ctor(HRExpert.Organization.BL.Abstractions.ISicklistPaymentRestrictTypesBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sicklistPaymentRestrictTypesBL"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.SicklistPaymentRestrictTypesController.List">
+            <summary>
+            Список
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.SicklistTypesController">
+            <summary>
+            Типы больничных
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.SicklistTypesController.#ctor(HRExpert.Organization.BL.Abstractions.ISicklistTypeBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sicklistTypeBl"></param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.SicklistTypesController.List">
+            <summary>
+            Список
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

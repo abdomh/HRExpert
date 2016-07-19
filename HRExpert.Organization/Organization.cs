@@ -4,6 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using HRExpert.Organization.BL;
 using HRExpert.Organization.BL.Abstractions;
+using System;
+using System.Collections.Generic;
 
 namespace HRExpert.Organization
 {
@@ -21,6 +23,15 @@ namespace HRExpert.Organization
             get
             {
                 return "Organization";
+            }
+        }
+
+        public IDictionary<int, Action<IRouteBuilder>> RouteRegistrarsByPriorities
+        {
+            get
+            {
+                return new Dictionary<int, Action<IRouteBuilder>>();
+                //throw new NotImplementedException();
             }
         }
 

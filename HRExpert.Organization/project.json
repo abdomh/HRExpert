@@ -3,9 +3,9 @@
   "description": "HRExpert.Organization Class Library",
   "authors": [ "baranov" ],
   "dependencies": {    
-    "NETStandard.Library": "1.5.0-rc2-24027",
-    "Microsoft.AspNetCore.Mvc": "1.0.0-rc2-final",
-    "ExtCore.Infrastructure": "1.0.0-alpha8",
+    "NETStandard.Library": "1.6.0",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    "ExtCore.Infrastructure": "1.0.0-alpha9",
     "HRExpert.Core": "1.0.0-*",
     "HRExpert.Organization.BL": "1.0.0-*",
     "HRExpert.Organization.BL.Abstractions": "1.0.0-*",
@@ -13,7 +13,7 @@
     "HRExpert.Organization.Data.EntityFramework.SqlServer": "1.0.0-*"
   },
   "frameworks": {
-    "netstandard1.5": {
+    "netstandard1.6": {
       "imports": [
         "dotnet5.6",
         "dnxcore50",

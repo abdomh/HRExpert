@@ -48,7 +48,7 @@ namespace HRExpert
                 options.IncludeXmlComments(GetXmlCommentsPath(string.Empty));
                 options.IncludeXmlComments(GetXmlCommentsPath("Core"));
                 options.IncludeXmlComments(GetXmlCommentsPath("Organization"));
-                options.SingleApiVersion(new Swashbuckle.SwaggerGen.Generator.Info
+                options.SingleApiVersion(new Swashbuckle.Swagger.Model.Info
                 {
                     Version = "v1",
                     Title = "HRExpert API",
@@ -84,8 +84,9 @@ namespace HRExpert
                 x.AllowCredentials();
             });
             base.Configure(applicationBuilder, hostingEnvironment);
-            
-            applicationBuilder.UseSwaggerGen();
+
+            //applicationBuilder.UseSwaggerGen();
+            applicationBuilder.UseSwagger();
             applicationBuilder.UseSwaggerUi();
         }
         //public static void Main(string[] args) => WebApplication.Run<Startup>(args);

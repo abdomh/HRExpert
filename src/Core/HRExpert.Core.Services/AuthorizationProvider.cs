@@ -37,22 +37,12 @@ namespace HRExpert.Core.Services
             context.Skip();
             return Task.FromResult<object>(null);
         }
-        public override Task GrantClientCredentials(GrantClientCredentialsContext context)
-        {
-            context.Skip();
-            
-            return Task.FromResult<object>(null);
-        }        
-        /// <summary>
-        /// Создание токена
-        /// </summary>
-        /// <param name="context"></param>
-        /// <returns></returns>
-        public override Task GrantResourceOwnerCredentials(GrantResourceOwnerCredentialsContext context)
-        {
+
+        public override Task HandleTokenRequest(HandleTokenRequestContext context)
+        {            
             List<string> sections = new List<string>();
             sections.Add("offline_access");
-            var cred = credentialRepository.GetByValueAndSecret(context.UserName, context.Password);
+            var cred = credentialRepository.GetByValueAndSecret(context.Request.Username, context.Request.Password);
             if (cred == null) { context.Reject("Пользователь не найден"); return Task.FromResult<object>(null); }
             var identity = new ClaimsIdentity(OpenIdConnectServerDefaults.AuthenticationScheme);
             identity.AddClaim(ClaimTypes.NameIdentifier, cred.Value, OpenIdConnectConstants.Destinations.AccessToken, OpenIdConnectConstants.Destinations.IdentityToken);
@@ -69,11 +59,11 @@ namespace HRExpert.Core.Services
                 new ClaimsPrincipal(identity),
                 new AuthenticationProperties(),
                 context.Options.AuthenticationScheme);
-            ticket.Properties.AllowRefresh = true;              
-            ticket.SetResources(new[] { "ApiServer" });            
+            ticket.Properties.AllowRefresh = true;
+            ticket.SetResources(new[] { "ApiServer" });
             ticket.SetScopes(sections.Distinct().ToArray());
-            context.Validate(ticket);            
-            return Task.FromResult<object>(null);
+            context.Validate(ticket);
+            return base.HandleTokenRequest(context);
         }
     }
 }
