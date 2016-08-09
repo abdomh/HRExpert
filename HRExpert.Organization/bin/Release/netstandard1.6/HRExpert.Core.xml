@@ -4,6 +4,20 @@
         <name>HRExpert.Core</name>
     </assembly>
     <members>
+        <member name="T:HRExpert.Core.AppBuilderExtensions">
+            <summary>
+            Класс расширений для application builder
+            </summary>
+        </member>
+        <member name="M:HRExpert.Core.AppBuilderExtensions.UseWhen(Microsoft.AspNetCore.Builder.IApplicationBuilder,System.Func{Microsoft.AspNetCore.Http.HttpContext,System.Boolean},System.Action{Microsoft.AspNetCore.Builder.IApplicationBuilder})">
+            <summary>
+            Использовать когда
+            </summary>
+            <param name="app">билдер</param>
+            <param name="condition">условие</param>
+            <param name="configuration">конфигурация</param>
+            <returns></returns>
+        </member>
         <member name="T:HRExpert.Core.Core">
             <summary>
             Startup class для модуля ядра
@@ -12,6 +26,11 @@
         <member name="P:HRExpert.Core.Core.Name">
             <summary>
             Имя модуля
+            </summary>
+        </member>
+        <member name="P:HRExpert.Core.Core.RouteRegistrarsByPriorities">
+            <summary>
+            Регистрация маршрутов по приоритету
             </summary>
         </member>
         <member name="M:HRExpert.Core.Core.SetConfigurationRoot(Microsoft.Extensions.Configuration.IConfigurationRoot)">
@@ -31,6 +50,12 @@
             Конфигурация модуля
             </summary>
             <param name="applicationBuilder"></param>
+        </member>
+        <member name="M:HRExpert.Core.Core.RegisterRoutes(Microsoft.AspNetCore.Routing.IRouteBuilder)">
+            <summary>
+            Регистрация маршрутов
+            </summary>
+            <param name="routeBuilder"></param>
         </member>
         <member name="T:HRExpert.Core.CoreConstants">
             <summary>
@@ -187,6 +212,12 @@
             <summary>
             Контроллер пользователей (Доступ только для администраторов)
             </summary>
+        </member>
+        <member name="M:HRExpert.Core.Controllers.api.UsersController.#ctor(HRExpert.Core.BL.Abstractions.IUsersBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="userBl">БЛ пользователей</param>
         </member>
         <member name="M:HRExpert.Core.Controllers.api.UsersController.Get">
             <summary>

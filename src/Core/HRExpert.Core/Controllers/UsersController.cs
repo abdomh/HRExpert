@@ -14,6 +14,10 @@ namespace HRExpert.Core.Controllers.api
     {
         private IUsersBL userBl;
         #region Ctor
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="userBl">БЛ пользователей</param>
         public UsersController(IUsersBL userBl)
         {
             this.userBl = userBl;

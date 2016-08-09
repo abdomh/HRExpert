@@ -6,6 +6,7 @@
     "NETStandard.Library": "1.6.0",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
     "Microsoft.AspNetCore.Mvc.Cors": "1.0.0",
+    "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
     "ExtCore.Infrastructure": "1.0.0-alpha9",
     "HRExpert.Core.BL": "1.0.0-*",
     "HRExpert.Core.BL.Abstractions": "1.0.0-*",
@@ -13,7 +14,8 @@
     "HRExpert.Core.DTO": "1.0.0-*",
     "HRExpert.Core.Services": "1.0.0-*",
     "HRExpert.Core.Services.Abstractions": "1.0.0-*",
-    "HRExpert.Core.Data.EntityFramework.SqlServer": "1.0.0-*"
+    "HRExpert.Core.Data.EntityFramework.SqlServer": "1.0.0-*",
+    "HRExpert.Core.Mvc": "1.0.0-*"
   },
   "frameworks": {
     "netstandard1.6": {

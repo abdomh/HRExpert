@@ -44,7 +44,8 @@ namespace HRExpert.Organization.Controllers
         /// <summary>
         /// Список дочерних
         /// </summary>
-        /// <param name="organizationid"></param>
+        /// <param name="organizationid">Организация</param>
+        /// <param name="departmentid">Подразделение</param>
         /// <returns></returns>
         [Route(CoreConstants.Api +
             CoreConstants.version +

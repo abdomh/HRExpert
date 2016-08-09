@@ -2,11 +2,12 @@
 
 namespace HRExpert.Core.Data.Models
 {
+    using Abstractions;
     /// <summary>
     /// Данные для входа
     /// </summary>
     [Table("Credentials")]
-    public class Credential: ExtCore.Data.Models.Abstractions.IEntity
+    public class Credential: IEntity
     {/*
         /// <summary>
         /// Идентификатор

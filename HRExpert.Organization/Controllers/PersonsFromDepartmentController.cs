@@ -6,11 +6,18 @@ namespace HRExpert.Organization.Controllers
     using Core;
     using DTO;
     using BL.Abstractions;
-    public class PersonsFromDepartmentController
+    /// <summary>
+    /// Контроллер сотрудников по ШЕ
+    /// </summary>
+    public class PersonsFromStaffEstablishedPostController
     {
         private IPersonBL personsBl;
         #region Ctor
-        public PersonsFromDepartmentController(IPersonBL personsBl)
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="personsBl">БЛ сотрудников</param>
+        public PersonsFromStaffEstablishedPostController(IPersonBL personsBl)
         {
             this.personsBl = personsBl;
         }

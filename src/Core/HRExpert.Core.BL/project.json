@@ -12,10 +12,11 @@
     }
   },
   "dependencies": {
-    "NETStandard.Library": "1.6.0" ,
+    "NETStandard.Library": "1.6.0",
     "ExtCore.Data.Abstractions": "1.0.0-alpha9",
     "HRExpert.Core.BL.Abstractions": "1.0.0-*",
     "HRExpert.Core.Data.Models": "1.0.0-*",
+    "HRExpert.Core.Data.Models.Abstractions": "1.0.0-*",
     "HRExpert.Core.Data.Abstractions": "1.0.0-*",
     "HRExpert.Core.DTO": "1.0.0-*",
     "HRExpert.Core.Services.Abstractions": "1.0.0-*"

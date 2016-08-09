@@ -8,6 +8,7 @@ using HRExpert.Core.DTO;
 
 namespace HRExpert.Core.BL
 {
+    using Converters;
     /// <summary>
     /// Бизнес логика модулей
     /// </summary>
@@ -35,7 +36,7 @@ namespace HRExpert.Core.BL
         /// <returns></returns>
         public virtual IEnumerable<SectionDto> List()
         {
-            return sectionRepository.All().Select(x => ToDto(x));
+            return sectionRepository.All().Select(x => x.Convert());
         }
         /// <summary>
         /// Создание модуля
@@ -56,7 +57,7 @@ namespace HRExpert.Core.BL
         /// <returns>Модуль</returns>
         public virtual SectionDto Read(long id)
         {
-            return ToDto(sectionRepository.Read(id));
+            return sectionRepository.Read(id).Convert();
         }
         /// <summary>
         /// Обновление/редактирование

@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
 {
+    using Abstractions;
     /// <summary>
     /// Связь Роль - Права
     /// </summary>
     [Table("RolePermissionTypes")]
-    public class RolePermission
+    public class RolePermission: IEntity
     {
         /// <summary>
         /// Идентификатор роли

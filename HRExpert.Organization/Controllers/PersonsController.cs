@@ -14,6 +14,10 @@ namespace HRExpert.Organization.Controllers
     {
         private IPersonBL personsBl;
         #region Ctor
+        /// <summary>
+        /// Конструктор контроллера сотрудников
+        /// </summary>
+        /// <param name="personsBl">БЛ сотрудников</param>
         public PersonsController(IPersonBL personsBl)
         {
             this.personsBl = personsBl;

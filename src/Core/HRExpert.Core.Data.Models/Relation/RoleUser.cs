@@ -1,11 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
 {
+    using Abstractions;
     /// <summary>
     /// Связь Роль - Пользователь
     /// </summary>
     [Table("RoleUsers")]
-    public class RoleUser : ExtCore.Data.Models.Abstractions.IEntity
+    public class RoleUser : IEntity
     {
         /// <summary>
         /// Идентификатор пользователя

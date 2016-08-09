@@ -1,7 +1,6 @@
-﻿using HRExpert.Core.Abstractions;
-namespace HRExpert.Core.Data.Models.Abstractions
+﻿namespace HRExpert.Core.Data.Models.Abstractions
 {
-    public interface IReferency: IEntity, IIdName
+    public interface IReferency: IEntity
     {
     }
 }

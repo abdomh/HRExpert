@@ -1,4 +1,5 @@
-﻿namespace HRExpert.Core.DTO
+﻿using System.Collections.Generic;
+namespace HRExpert.Core.DTO
 {
     /// <summary>
     /// Модуль
@@ -16,7 +17,11 @@
         /// <summary>
         /// Имя маршрута
         /// </summary>
-        public string RouteName { get; set; }
+        public string Route { get; set; }
+        /// <summary>
+        /// Права
+        /// </summary>
+        public List<PermissionDto> Permissions { get; set; }
     }
 
 }

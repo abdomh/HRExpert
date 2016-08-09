@@ -13,6 +13,10 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
     public class SicklistFilesController
     {
         ISicklistBL sicklistBl;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="sicklistBl">БЛ больничных</param>
         public SicklistFilesController(ISicklistBL sicklistBl)
         {
             this.sicklistBl = sicklistBl;

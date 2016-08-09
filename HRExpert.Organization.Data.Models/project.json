@@ -6,6 +6,7 @@
   "dependencies": {
     "NETStandard.Library": "1.6.0",
     "HRExpert.Organization.Data.Models.Abstractions": "1.0.0-*",
+    "HRExpert.Core.Data.Models.Abstractions": "1.0.0-*",
     "HRExpert.Core.Data.Models": "1.0.0-*"
   },
   "frameworks": {

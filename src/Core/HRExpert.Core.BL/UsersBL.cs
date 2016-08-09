@@ -1,12 +1,15 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using ExtCore.Data.Abstractions;
-using HRExpert.Core.Data.Abstractions;
-using HRExpert.Core.Data.Models;
-using HRExpert.Core.DTO;
-using HRExpert.Core.Services.Abstractions;
 namespace HRExpert.Core.BL
 {
+    using Data.Abstractions;
+    using Data.Models;
+    using Data.Models.Abstractions;
+    using DTO;
+    using Services.Abstractions;
+    using Converters;
+
     /// <summary>
     /// Бизнес логика пользователей
     /// </summary>
@@ -16,6 +19,7 @@ namespace HRExpert.Core.BL
         /// Хранилище пользователей
         /// </summary>
         private IUserRepository userRepository;
+        private IRoleRepository roleRepository;
         /// <summary>
         /// Сервис доступа к данным контекста
         /// </summary>
@@ -30,6 +34,7 @@ namespace HRExpert.Core.BL
         {
             this.authService = authService;
             userRepository = storage.GetRepository<IUserRepository>();
+            roleRepository = storage.GetRepository<IRoleRepository>();
         }
         #endregion
         #region Public
@@ -42,13 +47,20 @@ namespace HRExpert.Core.BL
             var user = authService.CurrentUser;
             ProfileDto result = new ProfileDto();
             result.UserName = user.Name;
-            result.Roles = user.Roles.Select(x => new RoleDto
+            result.Sections = user.Roles.SelectMany(x => x.Role.Sections)
+                                        .Select(x=>x.Section)
+                                        .Distinct<Section>(new IdEqualityComparer<long>())
+                                        .Select(x => x.Convert())
+                                        .ToList();
+            result.Sections.ForEach(x =>
             {
-                Id = x.RoleId,
-                Name = x.Role.Name,
-                Permissions = x.Role.Permissions.Select(permission => new PermissionDto { Id = permission.PermissionTypeId, Name = permission.PermissionType.Name, }).ToList(),
-                Sections = x.Role.Sections.Select(section => new SectionDto { Id = section.SectionId, Name = section.Section.Name, RouteName = section.Section.RouteName }).ToList()
-            }).ToList();           
+                x.Permissions = user.Roles.SelectMany(y => y.Role.Permissions)
+                                            .Select(y => y.PermissionType)
+                                            .Where(y=>y.SectionId==x.Id)
+                                            .Distinct<PermissionType>(new IdEqualityComparer<long>())
+                                            .Select(y => y.Convert())
+                                            .ToList();
+            });  
             return result;
         }
         /// <summary>
@@ -57,7 +69,7 @@ namespace HRExpert.Core.BL
         /// <returns>Коллекция записей</returns>
         public virtual IEnumerable<UserDto> List()
         {
-            return userRepository.All().Select(x => ToDto(x));
+            return userRepository.All().Select(x => x.Convert());
         }
         /// <summary>
         /// Создание
@@ -69,7 +81,7 @@ namespace HRExpert.Core.BL
             User entity = new User { Name = dto.Name };
             FromDto(entity, dto);
             userRepository.Create(entity);
-            return ToDto(entity);
+            return entity.Convert();
         }
         /// <summary>
         /// Чтение
@@ -78,7 +90,7 @@ namespace HRExpert.Core.BL
         /// <returns>Пользователь</returns>
         public virtual UserDto Read(long id)
         {
-            return ToDto(userRepository.Read(id));
+            return userRepository.Read(id).Convert();
         }
         /// <summary>
         /// Обновление/редактирование
@@ -90,7 +102,7 @@ namespace HRExpert.Core.BL
             var entity = userRepository.Read(dto.Id);
             this.FromDto(entity, dto);
             userRepository.Update(entity);
-            return ToDto(entity);
+            return entity.Convert();
         }
         /// <summary>
         /// Удаление
@@ -102,29 +114,42 @@ namespace HRExpert.Core.BL
             var entity = userRepository.Read(id);
             entity.Delete = true;
             userRepository.Update(entity);
-            return ToDto(entity);
+            return entity.Convert();
         }
         #region Converters
-        /// <summary>
-        /// Конвертер из сущности в dto
-        /// </summary>
-        /// <param name="entity">Сущность</param>
-        /// <returns>Пользователь</returns>
-        public UserDto ToDto(User entity)
-        {
-            UserDto result = new UserDto();
-            result.Id = entity.Id; 
-            result.Name = entity.Name;
-            return result;
-        }
+        
         /// <summary>
         /// Конвертер из dto в сущность
         /// </summary>
         /// <param name="entity">Сущность</param>
         /// <param name="dto">Пользователь</param>
         public void FromDto(User entity, UserDto dto)        
-        {           
-            entity.Name = dto.Name;                       
+        {
+            entity.Name = dto.Name;
+            if(dto.Roles!=null && dto.Roles.Any())
+            {
+                if (entity.Roles == null) entity.Roles = new List<RoleUser>();
+                foreach(var roledto in dto.Roles)
+                {
+                    if(!entity.Roles.Any(x=>x.RoleId==roledto.Id))
+                    {
+                        var newrole = new RoleUser();
+                        newrole.User = entity;
+                        newrole.Role = roleRepository.Read(roledto.Id);
+                        entity.Roles.Add(newrole);
+                    }
+                }
+                List<RoleUser> toRemove = new List<RoleUser>();
+
+                foreach(var role in entity.Roles)
+                {
+                    if(!dto.Roles.Any(x=>x.Id==role.Role.Id))
+                    {                        
+                        toRemove.Add(role);
+                    }
+                }
+                toRemove.ForEach(x => entity.Roles.Remove(x));
+            }
         }
         #endregion
         #endregion

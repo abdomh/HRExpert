@@ -16,6 +16,10 @@ namespace HRExpert.Organization.Controllers
     {        
         private IOrganizationBL organizationBl;
         #region Ctor
+        /// <summary>
+        /// Конструктор организации
+        /// </summary>
+        /// <param name="organizationBl">БЛ организации</param>
         public OrganizationController(IOrganizationBL organizationBl)
         {
             this.organizationBl = organizationBl;
@@ -84,8 +88,8 @@ namespace HRExpert.Organization.Controllers
         /// <summary>
         /// Удаление организации
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="organizationid">Идентификатор организации</param>
+        /// <returns>Организация</returns>
         [HttpDelete]
         [Route(CoreConstants.Api +
             CoreConstants.version +

@@ -14,6 +14,17 @@
             Название модуля
             </summary>
         </member>
+        <member name="P:HRExpert.Organization.Organization.RouteRegistrarsByPriorities">
+            <summary>
+            Регистрация маршрутов по приоритету
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Organization.SetConfigurationRoot(Microsoft.Extensions.Configuration.IConfigurationRoot)">
+            <summary>
+            Установка конфига
+            </summary>
+            <param name="configurationRoot">Конфиг</param>
+        </member>
         <member name="M:HRExpert.Organization.Organization.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             Регистрация сервисов
@@ -204,7 +215,8 @@
             <summary>
             Список дочерних
             </summary>
-            <param name="organizationid"></param>
+            <param name="organizationid">Организация</param>
+            <param name="departmentid">Подразделение</param>
             <returns></returns>
         </member>
         <member name="M:HRExpert.Organization.Controllers.DepartmentController.ByOrganizationAndKey(System.Int64,System.Int64)">
@@ -238,6 +250,12 @@
             Контроллер организаций
             </summary>
         </member>
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.#ctor(HRExpert.Organization.BL.Abstractions.IOrganizationBL)">
+            <summary>
+            Конструктор организации
+            </summary>
+            <param name="organizationBl">БЛ организации</param>
+        </member>
         <member name="M:HRExpert.Organization.Controllers.OrganizationController.Get">
             <summary>
             Список организаций
@@ -269,13 +287,19 @@
             <summary>
             Удаление организации
             </summary>
-            <param name="id"></param>
-            <returns></returns>
+            <param name="organizationid">Идентификатор организации</param>
+            <returns>Организация</returns>
         </member>
         <member name="T:HRExpert.Organization.Controllers.PersonsController">
             <summary>
             Контроллер персонажей
             </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PersonsController.#ctor(HRExpert.Organization.BL.Abstractions.IPersonBL)">
+            <summary>
+            Конструктор контроллера сотрудников
+            </summary>
+            <param name="personsBl">БЛ сотрудников</param>
         </member>
         <member name="M:HRExpert.Organization.Controllers.PersonsController.PersonsList">
             <summary>
@@ -289,7 +313,18 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:HRExpert.Organization.Controllers.PersonsFromDepartmentController.PersonsList(System.Int64,System.Int64,System.Int64)">
+        <member name="T:HRExpert.Organization.Controllers.PersonsFromStaffEstablishedPostController">
+            <summary>
+            Контроллер сотрудников по ШЕ
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PersonsFromStaffEstablishedPostController.#ctor(HRExpert.Organization.BL.Abstractions.IPersonBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="personsBl">БЛ сотрудников</param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.PersonsFromStaffEstablishedPostController.PersonsList(System.Int64,System.Int64,System.Int64)">
             <summary>
             Список персонажей по штатной единице
             </summary>
@@ -298,7 +333,7 @@
             <param name="positionid">Идентификатор должности</param>
             <returns></returns>
         </member>
-        <member name="M:HRExpert.Organization.Controllers.PersonsFromDepartmentController.ByStaffEstablishedPostAndId(System.Int64,System.Int64,System.Int64,System.Int64)">
+        <member name="M:HRExpert.Organization.Controllers.PersonsFromStaffEstablishedPostController.ByStaffEstablishedPostAndId(System.Int64,System.Int64,System.Int64,System.Int64)">
             <summary>
             Персонаж по штатной единице и идентификатору
             </summary>
@@ -364,6 +399,37 @@
             </summary>
             <param name="staffEstablishedPostBl"></param>
         </member>
+        <member name="M:HRExpert.Organization.Controllers.StaffEstablishedPostsController.List(System.Int64)">
+            <summary>
+            Список по подразделению
+            </summary>
+            <param name="departmentid">Идентификатор подразделения</param>         
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.StaffEstablishedPostsController.Read(System.Int64,System.Int64)">
+            <summary>
+            Чтение по идентификтору подразделения и должности
+            </summary>
+            <param name="departmentid">Подразделение</param>
+            <param name="positionid">Должность</param>
+            <returns></returns>
+        </member>
+        <member name="T:HRExpert.Organization.Controllers.TimesheetStatusController">
+            <summary>
+            Контроллер табеля
+            </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.TimesheetStatusController.#ctor(HRExpert.Organization.BL.Abstractions.ITimesheetStatusBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="timesheetStatusBl">БЛ табеля</param>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.TimesheetStatusController.List">
+            <summary>
+            Список
+            </summary>
+            <returns>коллекция значений табеля</returns>
+        </member>
         <member name="T:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistBabyMindingTypesController">
             <summary>
             Типы больничных по уходу за ребенком
@@ -423,6 +489,12 @@
             <summary>
             Контроллер получения ключей доступа к файлу больничных
             </summary>
+        </member>
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistFilesController.#ctor(HRExpert.Organization.BL.Abstractions.ISicklistBL)">
+            <summary>
+            Конструктор
+            </summary>
+            <param name="sicklistBl">БЛ больничных</param>
         </member>
         <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistFilesController.Index(System.Int64,System.Int32)">
             <summary>

@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     /// <summary>
     /// Штатная единица
     /// </summary>
     [Table("StaffEstablishedPosts")]
-    public class StaffEstablishedPost : ExtCore.Data.Models.Abstractions.IEntity
+    public class StaffEstablishedPost : IEntity
     {
         /// <summary>
         /// Id подразделения

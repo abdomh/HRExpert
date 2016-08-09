@@ -2,7 +2,8 @@
 
 namespace HRExpert.Organization.Data.Models.Abstractions
 {
-    public interface IDocument : ExtCore.Data.Models.Abstractions.IEntity
+    using Core.Data.Models.Abstractions;    
+    public interface IDocument : IEntity<long>
     {
         Guid DocumentGuid { get; set; }
     }

@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     [Table("Documents")]
-    public class Document : ExtCore.Data.Models.Abstractions.IEntity
+    public class Document : IEntity<Guid>
     {
         public Document()
         {
@@ -24,7 +25,7 @@ namespace HRExpert.Organization.Data.Models
         public Person Person { get; set; }
         public long DocumentId { get; set; }
         [ForeignKey("DocumentType")]
-        public long DocumentTypeId { get; set; }
+        public long? DocumentTypeId { get; set; }
         public DocumentType DocumentType { get; set; }
         public long? DocumentStatusId { get; set; }
         public DocumentStatus Status { get; set; }

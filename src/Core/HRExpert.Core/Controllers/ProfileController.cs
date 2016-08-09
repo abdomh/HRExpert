@@ -8,7 +8,7 @@ namespace HRExpert.Core.Controllers.api
     /// <summary>
     /// Контроллер профиля(доступ только авторизованным пользователям)
     /// </summary>
-    [Authorize]
+    [Authorize]    
     public class ProfileController: Controller
     {
         /// <summary>

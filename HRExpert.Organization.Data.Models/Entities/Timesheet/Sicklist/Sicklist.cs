@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
-{
+{    
     [Table("Sicklist")]
     public class Sicklist : Abstractions.IDocument
     {

@@ -112,6 +112,8 @@ namespace HRExpert.Core.BL
         public void FromDto(PermissionType entity, PermissionDto dto)
         {            
             entity.Name = dto.Name;
+            if (dto.Section!=null && (entity.Section == null || entity.SectionId != dto.Section.Id))
+                entity.Section = sectionRepository.Read(dto.Section.Id);
         }
         #endregion
         #endregion

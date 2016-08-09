@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     /// <summary>
     /// Вложенные файлы
     /// </summary>
     [Table("DocumentFiles")]
-    public class DocumentFile : ExtCore.Data.Models.Abstractions.IEntity
+    public class DocumentFile : IEntity<Guid>
     {
         /// <summary>
         /// Идентификатор

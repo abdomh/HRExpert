@@ -25,7 +25,9 @@ namespace HRExpert.Organization
                 return "Organization";
             }
         }
-
+        /// <summary>
+        /// Регистрация маршрутов по приоритету
+        /// </summary>
         public IDictionary<int, Action<IRouteBuilder>> RouteRegistrarsByPriorities
         {
             get
@@ -34,7 +36,10 @@ namespace HRExpert.Organization
                 //throw new NotImplementedException();
             }
         }
-
+        /// <summary>
+        /// Установка конфига
+        /// </summary>
+        /// <param name="configurationRoot">Конфиг</param>
         public void SetConfigurationRoot(IConfigurationRoot configurationRoot)
         {
             this.configurationRoot = configurationRoot;

@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRExpert.Core.Data.Models
 {
+    using Abstractions;
     /// <summary>
     /// Роль
     /// </summary>
     [Table("Roles")]
-    public class Role: ExtCore.Data.Models.Abstractions.IEntity
+    public class Role: IEntity<long>
     {
         public Role()
         {

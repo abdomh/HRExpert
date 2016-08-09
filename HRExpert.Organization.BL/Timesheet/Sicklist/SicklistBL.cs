@@ -47,7 +47,10 @@ namespace HRExpert.Organization.BL
         }
         public DocumentDto<SicklistDto> Read(long Id)
         {
-            return this.sicklistRepository.Read(Id).Convert();
+            var document = this.sicklistRepository.Read(Id);
+            var dto = document.Convert();
+            dto.AvailableForRoles = this.sicklistRepository.GetResourceRoles(document.DocumentGuid).Select(x=>new Core.DTO.RoleDto { Id = x.Id, Name = x.Name }).ToList();
+            return dto;
         }                
         private void ChangeEntityProperties(Sicklist entity, DocumentDto<SicklistDto> dto)
         {

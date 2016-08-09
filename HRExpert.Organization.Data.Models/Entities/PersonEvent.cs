@@ -3,8 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     [Table("PersonEvents")]
-    public class PersonEvent: ExtCore.Data.Models.Abstractions.IEntity
+    public class PersonEvent: IEntity
     {
         [Key]
         [ForeignKey("Document")]

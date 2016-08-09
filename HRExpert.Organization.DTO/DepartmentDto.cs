@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-
+﻿using HRExpert.Core.DTO;
 namespace HRExpert.Organization.DTO
 {
     /// <summary>
     /// Подразделение
     /// </summary>
-    public class DepartmentDto
+    public class DepartmentDto: ResourceDto
     {
         /// <summary>
         /// Идентификатор
@@ -22,7 +21,6 @@ namespace HRExpert.Organization.DTO
         /// <summary>
         /// Организация
         /// </summary>
-        public OrganizationDto Organization { get; set; }
-        
+        public OrganizationDto Organization { get; set; }        
     }
 }

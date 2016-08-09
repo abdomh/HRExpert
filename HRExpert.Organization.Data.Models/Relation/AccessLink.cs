@@ -1,11 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using HRExpert.Core.Data.Models;
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     [Table("AccessLinks")]
-    public class AccessLink: ExtCore.Data.Models.Abstractions.IEntity
+    public class AccessLink: IEntity
     {
         [ForeignKey("Person")]
         public long PersonId { get; set; }

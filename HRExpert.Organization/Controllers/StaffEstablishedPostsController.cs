@@ -22,7 +22,10 @@ namespace HRExpert.Organization.Controllers
             this.staffEstablishedPostBl = staffEstablishedPostBl;
         }
         #endregion     
-                   
+        /// <summary>
+        /// Список по подразделению
+        /// </summary>
+        /// <param name="departmentid">Идентификатор подразделения</param>         
         [Route(CoreConstants.Api +
             CoreConstants.version +
             OrganizationConstants.OrganizationList +
@@ -31,14 +34,18 @@ namespace HRExpert.Organization.Controllers
             OrganizationConstants.DepartmentKey +
             OrganizationConstants.StaffEstablishedPostsList
             )
-        ]
-        [HttpGet]
-        
+        ]        
+        [HttpGet]                
         public StaffEstablishedPostDto[] List(long departmentid)
         {
             return this.staffEstablishedPostBl.GetByDepartment(departmentid)?.ToArray();
         }
-
+        /// <summary>
+        /// Чтение по идентификтору подразделения и должности
+        /// </summary>
+        /// <param name="departmentid">Подразделение</param>
+        /// <param name="positionid">Должность</param>
+        /// <returns></returns>
         [Route(CoreConstants.Api +
             CoreConstants.version +
             OrganizationConstants.OrganizationList +

@@ -5,7 +5,6 @@
     "preserveCompilationContext": true,
     "xmlDoc": true
   },
-
   "dependencies": {
     "Microsoft.NETCore.App": {
       "version": "1.0.0",
@@ -33,12 +32,8 @@
     "HRExpert.Organization": "1.0.0-*",
     "Swashbuckle": "6.0.0-beta901"
   },
-  "tools": {
-    "Microsoft.AspNetCore.Server.IISIntegration.Tools": "1.0.0-preview2-final"
-  },
-
+  
   "frameworks": {
-
     "netcoreapp1.0": {
       "imports": [
         "dotnet5.6",

@@ -13,11 +13,19 @@ using Swashbuckle.SwaggerUi.Application;
 using Swashbuckle;
 using System.Threading;
 using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
 namespace HRExpert
 {
+    /// <summary>
+    ///  Startup
+    /// </summary>
     public class Startup : ExtCore.WebApplication.Startup
     {
         IHostingEnvironment hostingEnvironment;
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="hostingEnvironment">хостинг</param>
         public Startup(IHostingEnvironment hostingEnvironment)
           : base(hostingEnvironment)
         {
@@ -36,6 +44,10 @@ namespace HRExpert
             var app = PlatformServices.Default.Application;
             return System.IO.Path.Combine(app.ApplicationBasePath, System.IO.Path.ChangeExtension(app.ApplicationName+ (subproject.Length>0?"."+subproject:""), "xml"));
         }
+        /// <summary>
+        /// Конфигурация сервисов
+        /// </summary>
+        /// <param name="services">коллекция сервисов</param>
         public override void ConfigureServices(IServiceCollection services)
         {
             string pathToDoc = hostingEnvironment.ContentRootPath;
@@ -59,7 +71,11 @@ namespace HRExpert
             
             base.ConfigureServices(services);
         }
-
+        /// <summary>
+        /// Конфигурация
+        /// </summary>
+        /// <param name="applicationBuilder">билдер</param>
+        /// <param name="hostingEnvironment">хостинг</param>
         public override void Configure(IApplicationBuilder applicationBuilder, IHostingEnvironment hostingEnvironment)
         {       
             if (hostingEnvironment.IsEnvironment("Development"))
@@ -84,7 +100,7 @@ namespace HRExpert
                 x.AllowCredentials();
             });
             base.Configure(applicationBuilder, hostingEnvironment);
-
+            
             //applicationBuilder.UseSwaggerGen();
             applicationBuilder.UseSwagger();
             applicationBuilder.UseSwaggerUi();

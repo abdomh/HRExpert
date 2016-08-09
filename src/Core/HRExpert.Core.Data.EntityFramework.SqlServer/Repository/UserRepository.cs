@@ -36,7 +36,10 @@ namespace HRExpert.Core.Data.EntityFramework.SqlServer.Repository
         /// <returns>Сущность</returns>
         public virtual User Read(long Id)
         {
-            return this.dbSet.Where(x => x.Id == Id).FirstOrDefault();
+            return this.dbSet
+                .Include(x=>x.Roles).ThenInclude(x=>x.Role)
+                .Include(x=>x.Credentials).ThenInclude(x=>x.CredentialType)
+                .Where(x => x.Id == Id).FirstOrDefault();
         }
         /// <summary>
         /// Обновление/редактирование сущности

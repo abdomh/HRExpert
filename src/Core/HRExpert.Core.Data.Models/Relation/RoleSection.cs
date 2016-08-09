@@ -1,8 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
 {
+    using Abstractions;
     [Table("RoleSections")]
-    public class RoleSection
+    public class RoleSection: IEntity
     {
         [ForeignKey("Role")]
         public long RoleId { get; set; }

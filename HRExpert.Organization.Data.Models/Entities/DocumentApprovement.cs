@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     /// <summary>
     /// Согласования документов
     /// </summary>
     [Table("DocumentApprovements")]
-    public class DocumentApprovement: ExtCore.Data.Models.Abstractions.IEntity
+    public class DocumentApprovement: IEntity
     {
         /// <summary>
         /// Идентификатор документа

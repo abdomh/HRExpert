@@ -34,7 +34,9 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer
             modelbuilder.Entity<SicklistType>();
             modelbuilder.Entity<SicklistBabyMindingType>();
             modelbuilder.Entity<SicklistPaymentPercent>();
-            modelbuilder.Entity<SicklistPaymentRestrictType>();      
+            modelbuilder.Entity<SicklistPaymentRestrictType>();
+            ///
+            modelbuilder.Entity<SignedFile>();
                   
         }
     }

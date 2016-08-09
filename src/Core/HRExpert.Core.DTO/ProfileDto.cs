@@ -10,10 +10,15 @@ namespace HRExpert.Core.DTO
         /// ФИО
         /// </summary>
         public string UserName { get; set; }
+        
         /// <summary>
-        /// Роли
+        /// Права
         /// </summary>
-        public List<RoleDto> Roles { get; set; }
+        public List<PermissionDto> Permissions { get; set; }
+        /// <summary>
+        /// Меню
+        /// </summary>
+        public List<SectionDto> Sections { get; set; }
 
     }
 }

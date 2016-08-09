@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HRExpert.Organization.Data.Models;
-
+using HRExpert.Core.Data.Models;
 namespace HRExpert.Organization.Data.Abstractions
 {
     public interface IDocumentRepository : ExtCore.Data.Abstractions.IRepository
@@ -13,5 +13,6 @@ namespace HRExpert.Organization.Data.Abstractions
         List<Document> List(long PersonId);
         Document Read(Guid Id);
         void Update(Document entity);
+        
     }
 }

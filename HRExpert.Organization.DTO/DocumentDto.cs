@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using HRExpert.Core.DTO;
 namespace HRExpert.Organization.DTO
 {
     /// <summary>
     /// Документ
     /// </summary>
-    public class DocumentDto<T>
+    public class DocumentDto<T> : ResourceDto
     {
         /// <summary>
         /// Создатель

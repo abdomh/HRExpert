@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     /// <summary>
     /// Подразделение
     /// </summary>
     [Table("Departments")]
-    public class Department : ExtCore.Data.Models.Abstractions.IEntity
+    public class Department : IEntity<long>
     {        
         /// <summary>
         /// Идентификатор

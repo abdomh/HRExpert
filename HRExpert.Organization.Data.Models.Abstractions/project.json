@@ -3,7 +3,7 @@
 
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "ExtCore.Data.Models.Abstractions": "1.0.0-alpha9"
+    "HRExpert.Core.Data.Models.Abstractions": "1.0.0-*"
   },
   "frameworks": {
     "netstandard1.6": {

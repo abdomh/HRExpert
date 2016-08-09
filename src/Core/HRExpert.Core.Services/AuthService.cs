@@ -48,7 +48,7 @@ namespace HRExpert.Core.Services
                         currentRoleId = long.Parse(role[0]);
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     
                 }

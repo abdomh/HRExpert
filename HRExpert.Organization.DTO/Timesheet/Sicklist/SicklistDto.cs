@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
+using HRExpert.Core.DTO;
 namespace HRExpert.Organization.DTO
 {
     public class SicklistDto

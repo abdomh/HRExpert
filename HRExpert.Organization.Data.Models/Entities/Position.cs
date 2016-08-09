@@ -2,11 +2,12 @@
 
 namespace HRExpert.Organization.Data.Models
 {
+    using Core.Data.Models.Abstractions;
     /// <summary>
     /// Должность
     /// </summary>
     [Table("Positions")]
-    public class Position: ExtCore.Data.Models.Abstractions.IEntity
+    public class Position: IEntity<long>
     {
         /// <summary>
         /// Идентификатор

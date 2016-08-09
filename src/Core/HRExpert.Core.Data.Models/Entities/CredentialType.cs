@@ -2,11 +2,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
 {
+    using Abstractions;
     /// <summary>
     /// Типы данных для входа
     /// </summary>
     [Table("CredentialTypes")]
-    public class CredentialType: ExtCore.Data.Models.Abstractions.IEntity
+    public class CredentialType: IEntity<long>
     {
         /// <summary>
         /// Идентификатор

@@ -3,11 +3,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 namespace HRExpert.Core.Data.Models
 {
+    using Abstractions;
     /// <summary>
     /// Модуль
     /// </summary>
     [Table("Sections")]
-    public class Section: ExtCore.Data.Models.Abstractions.IEntity
+    public class Section: IEntity<long>
     {
         /// <summary>
         /// Идентификатор
@@ -35,5 +36,6 @@ namespace HRExpert.Core.Data.Models
         {
             get; set;
         }
+        public virtual ICollection<PermissionType> Sections { get; set; }
     }
 }
