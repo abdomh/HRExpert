@@ -64,6 +64,9 @@
     <Folder Include="Organization\Functions" />
     <Folder Include="Organization\Timesheet" />
     <Folder Include="Organization\Timesheet\Sicklist" />
+    <Folder Include="Integration" />
+    <Folder Include="Integration\In" />
+    <Folder Include="Integration\Out" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Core\Users.sql" />
@@ -105,7 +108,11 @@
     <Build Include="Organization\DocumentFiles.sql" />
     <Build Include="Organization\SignedFiles.sql" />
     <Build Include="Organization\DocumentComments.sql" />
-    <Build Include="Organization\DocumentStatuses.sql" />
+    <Build Include="Integration\In\Department_1C.sql" />
+    <Build Include="Integration\In\Persons_1C.sql" />
+    <Build Include="Integration\In\Position_1C.sql" />
+    <Build Include="Integration\In\StaffEstablishedPost_1C.sql" />
+    <Build Include="Integration\Out\vwSicklistLoad.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

@@ -15,6 +15,8 @@
 	[ExperienceYears] int,
 	[ExperienceMonth] int,
 	[SicklistStatusId] bigint,
+	[IsContinued] bit not null default(0),
+	[DaysCount] int not null default(0),
 	Constraint FK_Sicklist_Type Foreign key (SicklistTypeId) References SicklistTypes(Id),
 	Constraint FK_Sicklist_PaymentRestrictType Foreign key (SicklistPaymentRestrictTypeId) References SicklistPaymentRestrictTypes(Id),
 	Constraint FK_Sicklist_PaymentPercent Foreign key (SicklistPaymentPercentId) References SicklistPaymentPercent(Id),
