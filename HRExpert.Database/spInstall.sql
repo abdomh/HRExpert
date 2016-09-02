@@ -15,29 +15,18 @@ AS
 	('Phone')
 	--Добавление учетных данных
 	INSERT INTO Credentials
-	(CredentialTypeId,Secret,UserId,Value)
+	(CredentialTypeId,Secret,UserId,Identifier)
 	Values
-	(1,'1',1,'baranov@ruscount.ru'),
-	(2,'1',1,'admin'),
-	(1,'1',2,'info@ruscount.ru'),
-	(2,'1',2,'tester')
+	(2,'1',1,'admin')
 	--Роли
 	INSERT INTO Roles
 	(Name)
 	VALUES
 	(N'Администратор'),
 	(N'Тестировщик')
-	--Модули
-	INSERT INTO Sections
-	(Name,RouteName)
-	Values
-	(N'Пользователи','Users'),
-	(N'Роли','Roles'),
-	(N'Модули','Sections'),
-	(N'Права доступа','Permissions'),
-	(N'Организации','Organizations')
+	
 	--Права доступа
-	INSERT INTO PermissionTypes
+	INSERT INTO Permissions
 	(Name)
 	VALUES
 	(N'Делать всё'),
@@ -46,8 +35,8 @@ AS
 	(N'Удаление')
 	
 	--Права доступа по ролям
-	INSERT INTO RolePermissionTypes
-	(RoleId,PermissionTypeId)
+	INSERT INTO RolePermissions
+	(RoleId,PermissionId)
 	VALUES
 	(1,1),
 	(2,2)

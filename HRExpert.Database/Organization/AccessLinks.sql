@@ -1,9 +1,9 @@
 ﻿CREATE TABLE [dbo].[AccessLinks]
 (
-	[PersonId] bigint not null,
-	[DepartmentId] bigint,
-	[TargetPersonId] bigint,
-	[RoleId] bigint not null,
+	[PersonId] int not null,
+	[DepartmentId] int,
+	[TargetPersonId] int,
+	[RoleId] int not null,
 	Constraint FK_AccessLinks_TargetPerson Foreign key (TargetPersonId) references Persons(Id),
 	Constraint FK_AccessLinks_Role foreign key (RoleId) References Roles(Id),
 	Constraint PK_AccessLinks Primary key (PersonId,DepartmentId, RoleId),

@@ -1,8 +1,8 @@
-﻿CREATE TABLE [dbo].[RolePermissionTypes]
+﻿CREATE TABLE [dbo].[RolePermissions]
 (
-	RoleId bigint NOT NULL,
-	PermissionTypeId bigint NOT NULL,
+	RoleId int NOT NULL,
+	PermissionId int NOT NULL,
 	CONSTRAINT FK_RolePermissionTypes_Roles FOREIGN KEY (RoleId) REFERENCES Roles(Id),
-	CONSTRAINT FK_RolePermissionTypes_Permissions FOREIGN KEY (PermissionTypeId) REFERENCES PermissionTypes(Id),
-	CONSTRAINT PK_RolePermissionTypes PRIMARY KEY (RoleId,PermissionTypeId)
+	CONSTRAINT FK_RolePermissionTypes_Permissions FOREIGN KEY (PermissionId) REFERENCES Permissions(Id),
+	CONSTRAINT PK_RolePermissionTypes PRIMARY KEY (RoleId,PermissionId)
 )

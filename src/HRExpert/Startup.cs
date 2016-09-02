@@ -6,11 +6,6 @@ using Microsoft.AspNetCore.Mvc.Cors;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.PlatformAbstractions;
-using Swashbuckle.SwaggerGen;
-using Swashbuckle.SwaggerUi;
-using Swashbuckle.SwaggerGen.Generator;
-using Swashbuckle.SwaggerUi.Application;
-using Swashbuckle;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
@@ -19,20 +14,17 @@ namespace HRExpert
     /// <summary>
     ///  Startup
     /// </summary>
-    public class Startup : ExtCore.WebApplication.Startup
+    public class Startup : Platformus.WebApplication.Startup
     {
-        IHostingEnvironment hostingEnvironment;
         /// <summary>
         /// Конструктор
         /// </summary>
-        /// <param name="hostingEnvironment">хостинг</param>
-        public Startup(IHostingEnvironment hostingEnvironment)
-          : base(hostingEnvironment)
+        /// <param name="serviceProvider">сервис провайдер</param>
+        public Startup(IServiceProvider serviceProvider)
+          : base(serviceProvider)
         {
-            this.hostingEnvironment = hostingEnvironment;
             IConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
-              .SetBasePath(hostingEnvironment.ContentRootPath)
-              .AddJsonFile("config.json", optional: true, reloadOnChange: true)
+              .SetBasePath(this.serviceProvider.GetService<IHostingEnvironment>().ContentRootPath)
               .AddJsonFile("appsettings.json")
               .AddJsonFile("dbconfig.json");
 
@@ -49,36 +41,16 @@ namespace HRExpert
         /// </summary>
         /// <param name="services">коллекция сервисов</param>
         public override void ConfigureServices(IServiceCollection services)
-        {
-            string pathToDoc = hostingEnvironment.ContentRootPath;
-            services.AddSwaggerGen();
-            
-            services.ConfigureSwaggerGen(options => {
-                options.CustomSchemaIds(type => type.FriendlyId().Replace("[", "Of").Replace("]", ""));
-                options.DescribeStringEnumsInCamelCase();                
-                options.DescribeAllEnumsAsStrings();
-                options.IncludeXmlComments(GetXmlCommentsPath(string.Empty));
-                options.IncludeXmlComments(GetXmlCommentsPath("Core"));
-                options.IncludeXmlComments(GetXmlCommentsPath("Organization"));
-                options.SingleApiVersion(new Swashbuckle.Swagger.Model.Info
-                {
-                    Version = "v1",
-                    Title = "HRExpert API",
-                    Description = "HREXpert API",
-                    TermsOfService = "None"                    
-                });
-            });
-            
+        {           
             base.ConfigureServices(services);
         }
         /// <summary>
         /// Конфигурация
         /// </summary>
         /// <param name="applicationBuilder">билдер</param>
-        /// <param name="hostingEnvironment">хостинг</param>
-        public override void Configure(IApplicationBuilder applicationBuilder, IHostingEnvironment hostingEnvironment)
+        public override void Configure(IApplicationBuilder applicationBuilder)
         {       
-            if (hostingEnvironment.IsEnvironment("Development"))
+            if (this.serviceProvider.GetService<IHostingEnvironment>().IsEnvironment("Development"))
             {
                 
                 applicationBuilder.UseBrowserLink();                
@@ -99,12 +71,7 @@ namespace HRExpert
                 x.AllowAnyHeader();
                 x.AllowCredentials();
             });
-            base.Configure(applicationBuilder, hostingEnvironment);
-            
-            //applicationBuilder.UseSwaggerGen();
-            applicationBuilder.UseSwagger();
-            applicationBuilder.UseSwaggerUi();
+            base.Configure(applicationBuilder);            
         }
-        //public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

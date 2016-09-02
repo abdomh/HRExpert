@@ -72,12 +72,10 @@
     <Build Include="Core\Users.sql" />
     <Build Include="Core\Roles.sql" />
     <Build Include="Core\RoleUsers.sql" />
-    <Build Include="Core\PermissionTypes.sql" />
+    <Build Include="Core\Permissions.sql" />
     <Build Include="Core\RolePermissions.sql" />
     <Build Include="Core\Credentials.sql" />
     <Build Include="Core\CredentialTypes.sql" />
-    <Build Include="Core\Photos.sql" />
-    <Build Include="Core\Sections.sql" />
     <Build Include="Organization\Organizations.sql" />
     <Build Include="Organization\Departments.sql" />
     <Build Include="Organization\Persons.sql" />
@@ -90,7 +88,6 @@
     <Build Include="Organization\Views\vwDepartmentAccessLinks.sql" />
     <Build Include="Organization\Views\vwPersonsAccessLinks.sql" />
     <Build Include="Organization\Views\vwOrganizationAccessLinks.sql" />
-    <Build Include="Core\RoleSections.sql" />
     <Build Include="Organization\Functions\GetDepartmentChilds.sql" />
     <Build Include="Organization\Functions\GetDepartmentsAccess.sql" />
     <Build Include="Organization\DocumentTypes.sql" />
@@ -106,7 +103,6 @@
     <Build Include="Organization\Views\vwDocumentAccessLinks.sql" />
     <Build Include="Organization\DocumentApprovements.sql" />
     <Build Include="Organization\DocumentFiles.sql" />
-    <Build Include="Organization\SignedFiles.sql" />
     <Build Include="Organization\DocumentComments.sql" />
     <Build Include="Integration\In\Department_1C.sql" />
     <Build Include="Integration\In\Persons_1C.sql" />

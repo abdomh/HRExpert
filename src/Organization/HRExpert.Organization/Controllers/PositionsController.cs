@@ -1,0 +1,77 @@
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using HRExpert.Organization.BL.Abstractions;
+using HRExpert.Organization.DTO;
+
+namespace HRExpert.Organization.Controllers
+{
+    /// <summary>
+    /// Контроллер должностей
+    /// </summary>
+    [AllowAnonymous]
+    public class PositionsController : Controller
+    {
+        private IPositionsBL positionsBl;
+        #region Ctor
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="positionsBl"></param>
+        public PositionsController(IPositionsBL positionsBl)            
+        {
+            this.positionsBl = positionsBl;
+        }
+        #endregion
+        /// <summary>
+        /// Список должностей
+        /// </summary>
+        /// <returns>Коллекция записей</returns>
+        [HttpGet]
+        //[Route(OrganizationConstants.PositionsController)]
+        public virtual IEnumerable<PositionDto> Get()
+        {
+            return this.positionsBl.List();
+        }
+        /// <summary>
+        /// Должность по идентификатору
+        /// </summary>
+        /// <param name="positionid"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public virtual PositionDto Get(int positionid)
+        {
+            return this.positionsBl.Read(positionid);
+        }
+        /// <summary>
+        /// Создание должности
+        /// </summary>
+        /// <param name="value">Должность</param>
+        /// <returns></returns>
+        [HttpPost]
+        public virtual PositionDto Post([FromBody]PositionDto value)
+        {
+            return this.positionsBl.Create(value);
+        }
+        /// <summary>
+        /// Редактирование должности
+        /// </summary>
+        /// <param name="value">должность</param>
+        /// <returns>должность</returns>
+        [HttpPut]
+        public virtual PositionDto Put([FromBody]PositionDto value)
+        {
+            return this.positionsBl.Update(value);
+        }
+        /// <summary>
+        /// Удаление должности
+        /// </summary>
+        /// <param name="positionid">Идентификатор должности</param>
+        /// <returns></returns>
+        [HttpDelete]
+        public virtual PositionDto Delete(int positionid)
+        {
+            return this.positionsBl.Delete(positionid);
+        }
+    }
+}

@@ -1,10 +1,10 @@
 ﻿CREATE TABLE [dbo].[Credentials]
 (	
-	[Value] nvarchar(256) NOT NULL,
-	[UserId] bigint NOT NULL,
+	[Id] int not null Primary Key identity(1,1),
+	[Identifier] nvarchar(256) NOT NULL,
+	[UserId] int NOT NULL,
 	[Secret] nvarchar(256) NOT NULL,
-	[CredentialTypeId] bigint NOT NULL,
-	CONSTRAINT PK_Credentials PRIMARY KEY(UserId,CredentialTypeId),
+	[CredentialTypeId] int NOT NULL,
 	CONSTRAINT FK_Credentials_Users FOREIGN KEY (UserId) REFERENCES Users(Id),
 	CONSTRAINT FK_Credentials_Types FOREIGN KEY (CredentialTypeId) REFERENCES CredentialTypes(Id)
 	 

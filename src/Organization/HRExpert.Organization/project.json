@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0-*",
+  "description": "HRExpert.Organization Class Library",
+  "authors": [ "baranov" ],
+  "dependencies": {    
+    "NETStandard.Library": "1.6.0",
+    "Microsoft.AspNetCore.Mvc": "1.0.0",
+    "Platformus.Infrastructure": "1.0.0-alpha10",
+    "HRExpert.Organization.BL": "1.0.0-*",
+    "HRExpert.Organization.BL.Abstractions": "1.0.0-*",
+    "HRExpert.Organization.Data.Abstractions": "1.0.0-*",
+    "HRExpert.Organization.Data.EntityFramework.SqlServer": "1.0.0-*"
+  },
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
+  },
+  "buildOptions": {
+    "xmlDoc": true
+  }
+}

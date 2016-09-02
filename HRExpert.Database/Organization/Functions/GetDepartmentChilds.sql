@@ -1,10 +1,10 @@
 ﻿CREATE FUNCTION [dbo].[GetDepartmentChilds]
 (
-	@departmentid bigint
+	@departmentid int
 )
 RETURNS @returntable TABLE
 (
-	Id bigint,
+	Id int,
 	Name nvarchar(256),
 	Distance int
 )

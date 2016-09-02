@@ -2,8 +2,8 @@
 (
 	[DocumentGuid] uniqueidentifier not null,
 	[ApprovePosition] int not null,
-	[PersonId] bigint not null,
-	[RealPersonId] bigint not null,
+	[PersonId] int not null,
+	[RealPersonId] int not null,
 	[IsAccept] bit not null default(0),
 	[DateAccept] datetime,
 

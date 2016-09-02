@@ -1,16 +1,16 @@
 ﻿CREATE FUNCTION [dbo].[GetDepartmentsAccess]
 (
-	@personId bigint
+	@personId int
 )
 RETURNS @returntable TABLE
 (
-	PersonId bigint,
-    DepartmentId bigint,
-	RoleId bigint
+	PersonId int,
+    DepartmentId int,
+	RoleId int
 )
 AS
 BEGIN
-	DECLARE @persid bigint, @roleid bigint,@departmentid bigint
+	DECLARE @persid int, @roleid int,@departmentid int
 	DECLARE access_cursor CURSOR FOR
 	SELECT acc.PersonId, acc.DepartmentId, acc.RoleId FROM AccessLinks acc
 	WHERE @personId is null or acc.PersonId=@personId

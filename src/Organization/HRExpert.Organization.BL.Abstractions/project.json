@@ -1,0 +1,21 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "HRExpert.Organization.BL.Abstractions Class Library",
+  "authors": [ "baranov" ],
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": [
+        "dotnet5.6",
+        "dnxcore50",
+        "portable-net45+win8"
+      ]
+    }
+  },
+  "dependencies": {
+    "NETStandard.Library": "1.6.0",
+    "HRExpert.Organization.Data.Models": "1.0.0-*",
+    "HRExpert.Organization.DTO": "1.0.0-*",
+    "Platformus.Barebone": "1.0.0-alpha10"
+  }
+}
