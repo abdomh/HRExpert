@@ -3,7 +3,7 @@ using HRExpert.Organization.DTO;
 
 namespace HRExpert.Organization.BL.Abstractions
 {
-    public interface ITimesheetStatusBL
+    public interface ITimesheetStatusBL : IBaseBl
     {
         List<TimesheetStatusDto> List();
     }

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v1.6/",
-    "signature": "c50de063d1bc4e82ba2a5dc8e8f9a7fc3b665529"
+    "signature": "870aacbca7a016efdd239fa074069287a5f94b17"
   },
   "compilationOptions": {},
   "targets": {
@@ -1007,52 +1007,6 @@
         },
         "runtime": {
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Platformus.Barebone/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Microsoft.AspNetCore.Mvc": "1.0.0",
-          "Microsoft.AspNetCore.Session": "1.0.0",
-          "Platformus.Infrastructure": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Barebone.dll": {}
-        }
-      },
-      "Platformus.Infrastructure/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Infrastructure.dll": {}
-        }
-      },
-      "Platformus.Security/1.0.0-alpha10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.dll": {}
-        }
-      },
-      "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Security.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Security.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.Data.Models.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -2372,6 +2326,52 @@
         "runtime": {
           "HRExpert.Organization.DTO.dll": {}
         }
+      },
+      "Platformus.Barebone/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
+          "Microsoft.AspNetCore.Session": "1.0.0",
+          "Platformus.Infrastructure": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Barebone.dll": {}
+        }
+      },
+      "Platformus.Infrastructure/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Infrastructure.dll": {}
+        }
+      },
+      "Platformus.Security/1.0.0-alpha10": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Security.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Security.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Security.Data.Models.dll": {}
+        }
       }
     }
   },
@@ -2760,31 +2760,6 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw=="
-    },
-    "Platformus.Barebone/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zMXDMwaKtU5Bej31Ome31v6qpFynMoUB6wvuvjF4v79aNfSGvC+AQS8uPGUZYeRtJd70pUrGPwe9C6NBtq0Vfg=="
-    },
-    "Platformus.Infrastructure/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kTU5vSoLsHQAWs4FdiJpBDpnUmxyxBCCfg31LLCMBrYxWf/dqMWo7Xs04S6YMChxJUw3Tt+V0rXF10Th1Q/4Zw=="
-    },
-    "Platformus.Security/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-l5HETF6PWITMOjnKmo0PCcD6b02KrEXOIJCaC9Og1e/qhNL9trNu551wr1Q0FeOPYq5+ZJ+tp/1zuYZcERfB0w=="
-    },
-    "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-V1uzC+cA7HxjgO9MnEj5ioAWmvj0izp2UiKEwt75vEDzlz5nfam/GQHt3CToy0ZZDyhWM8jtvmI1IL5WC27l+w=="
-    },
-    "Platformus.Security.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ywC+EpI2jNvQJOTV/8tZduWiWP/5ZkSLXt7mVBdWhXgAJJAmvtPiCrlPq6Cv6H6t/1GqjPHEwWjCcCrEUu7YCw=="
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",
@@ -3307,6 +3282,31 @@
       "sha512": ""
     },
     "HRExpert.Organization.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Barebone/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Infrastructure/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Data.Models/1.0.0-alpha10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

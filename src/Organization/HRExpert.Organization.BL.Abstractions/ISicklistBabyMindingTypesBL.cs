@@ -3,7 +3,7 @@ using HRExpert.Organization.DTO;
 
 namespace HRExpert.Organization.BL.Abstractions
 {
-    public interface ISicklistBabyMindingTypesBL
+    public interface ISicklistBabyMindingTypesBL : IBaseBl
     {
         List<SicklistBabyMindingTypeDto> List();
     }

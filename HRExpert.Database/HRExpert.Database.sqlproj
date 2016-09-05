@@ -67,11 +67,20 @@
     <Folder Include="Integration" />
     <Folder Include="Integration\In" />
     <Folder Include="Integration\Out" />
+    <Folder Include="Core\Content" />
+    <Folder Include="Core\Content\Cache" />
+    <Folder Include="Core\Forms" />
+    <Folder Include="Core\Forms\Cache" />
+    <Folder Include="Core\Navigation" />
+    <Folder Include="Core\Navigation\Cache" />
+    <Folder Include="Core\Static" />
+    <Folder Include="Core\Configuration" />
+    <Folder Include="Core\Globalization" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Core\Users.sql" />
     <Build Include="Core\Roles.sql" />
-    <Build Include="Core\RoleUsers.sql" />
+    <Build Include="Core\UserRoles.sql" />
     <Build Include="Core\Permissions.sql" />
     <Build Include="Core\RolePermissions.sql" />
     <Build Include="Core\Credentials.sql" />
@@ -109,6 +118,34 @@
     <Build Include="Integration\In\Position_1C.sql" />
     <Build Include="Integration\In\StaffEstablishedPost_1C.sql" />
     <Build Include="Integration\Out\vwSicklistLoad.sql" />
+    <Build Include="Core\Content\Cache\CachedDataSource.sql" />
+    <Build Include="Core\Content\Cache\CachedObjects.sql" />
+    <Build Include="Core\Content\Cache\CachedProperties.sql" />
+    <Build Include="Core\Content\Class.sql" />
+    <Build Include="Core\Content\DataSources.sql" />
+    <Build Include="Core\Content\DataTypes.sql" />
+    <Build Include="Core\Content\Members.sql" />
+    <Build Include="Core\Content\Objects.sql" />
+    <Build Include="Core\Content\Properties.sql" />
+    <Build Include="Core\Content\Relation.sql" />
+    <Build Include="Core\Content\Tab.sql" />
+    <Build Include="Core\Forms\FieldTypes.sql" />
+    <Build Include="Core\Forms\FieldOptions.sql" />
+    <Build Include="Core\Forms\Field.sql" />
+    <Build Include="Core\Forms\Forms.sql" />
+    <Build Include="Core\Forms\Cache\CachedField.sql" />
+    <Build Include="Core\Forms\Cache\CachedFieldOptions.sql" />
+    <Build Include="Core\Forms\Cache\CachedForms.sql" />
+    <Build Include="Core\Navigation\Menu.sql" />
+    <Build Include="Core\Navigation\MenuItem.sql" />
+    <Build Include="Core\Navigation\Cache\CachedMenu.sql" />
+    <Build Include="Core\Navigation\Cache\CachedMenuItems.sql" />
+    <Build Include="Core\Static\File.sql" />
+    <Build Include="Core\Configuration\Sections.sql" />
+    <Build Include="Core\Configuration\Variables.sql" />
+    <Build Include="Core\Globalization\Dictionaries.sql" />
+    <Build Include="Core\Globalization\Cultures.sql" />
+    <Build Include="Core\Globalization\Localizations.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

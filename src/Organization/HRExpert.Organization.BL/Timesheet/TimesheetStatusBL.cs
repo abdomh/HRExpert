@@ -9,12 +9,16 @@ using ExtCore.Data.Abstractions;
 using Platformus.Barebone;
 namespace HRExpert.Organization.BL
 {
-    public class TimesheetStatusBL: Abstractions.ITimesheetStatusBL
+    public class TimesheetStatusBL: BaseBL,Abstractions.ITimesheetStatusBL
     {
         private ITimesheetStatusRepository timesheetStatusRepository;
-        public TimesheetStatusBL(IHandler handler)
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.timesheetStatusRepository = handler.Storage.GetRepository<ITimesheetStatusRepository>();
+        }
+        public TimesheetStatusBL()
+        {            
         }
         public List<TimesheetStatusDto> List()
         {

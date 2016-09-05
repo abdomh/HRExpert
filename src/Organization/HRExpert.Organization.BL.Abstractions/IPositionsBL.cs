@@ -3,7 +3,7 @@ using HRExpert.Organization.DTO;
 using HRExpert.Organization.Data.Models;
 namespace HRExpert.Organization.BL.Abstractions
 {
-    public interface IPositionsBL
+    public interface IPositionsBL : IBaseBl
     {
         /// <summary>
         /// Создание

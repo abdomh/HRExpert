@@ -12,7 +12,7 @@ using Platformus.Security;
 using Platformus.Infrastructure;
 namespace HRExpert.Organization.BL
 {
-    public class SicklistBL: Abstractions.ISicklistBL
+    public class SicklistBL: BaseBL,Abstractions.ISicklistBL
     {
         private ISicklistRepository sicklistRepository;
         private IDocumentTypesRepository documentTypeRepository;
@@ -23,9 +23,9 @@ namespace HRExpert.Organization.BL
         private ITimesheetStatusRepository timesheetStatusRepository;
         private IPersonRepository personRepository;
         private ISignedFilesRepository signedFileRepository;
-        private IHandler handler;
-        public SicklistBL(IHandler handler)
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.sicklistRepository = handler.Storage.GetRepository<ISicklistRepository>();
             this.documentTypeRepository = handler.Storage.GetRepository<IDocumentTypesRepository>();
             this.personRepository = handler.Storage.GetRepository<IPersonRepository>();
@@ -38,7 +38,9 @@ namespace HRExpert.Organization.BL
             UserManager userManager = new UserManager(handler);
             this.personRepository.CurrentUserId = userManager.GetCurrentUser().Id;
             this.sicklistRepository.CurrentUserId = userManager.GetCurrentUser().Id;
-            this.handler = handler;            
+        }
+        public SicklistBL()
+        {           
         }
         public List<DocumentDto<SicklistDto>> List()
         {

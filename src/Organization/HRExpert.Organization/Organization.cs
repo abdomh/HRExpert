@@ -47,14 +47,26 @@ namespace HRExpert.Organization
                 };
             }
         }
-
+        public override IEnumerable<KeyValuePair<int, Action<IRouteBuilder>>> UseMvcActionsByPriorities
+        {
+            get
+            {
+                return new Dictionary<int, Action<IRouteBuilder>>()
+                {
+                    [1000] = routeBuilder =>
+                    {
+                        routeBuilder.MapRoute(name: "Organizations", template: "{controller=Organization}/", defaults: new { action = "Get" });
+                    }
+                };
+            }
+        }
         public override IEnumerable<KeyValuePair<int, Action<IApplicationBuilder>>> ConfigureActionsByPriorities
         {
             get
             {
                 return new Dictionary<int, Action<IApplicationBuilder>>()
                 {
-                    
+                   
                 };
             }
         }

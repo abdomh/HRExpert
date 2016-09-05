@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v1.0/",
-    "signature": "669844784c2b29c0e7698cfd4d75e00462fe196f"
+    "signature": "f37487a3a86be88d426a991405f2cbd897f382bc"
   },
   "compilationOptions": {
     "defines": [
@@ -17,6 +17,7 @@
     ".NETCoreApp,Version=v1.0": {
       "HRExpert/1.0.0": {
         "dependencies": {
+          "HRExpert.Organization": "1.0.0",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
@@ -1364,433 +1365,6 @@
         },
         "compile": {
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Platformus.Barebone/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Microsoft.AspNetCore.Mvc": "1.0.0",
-          "Microsoft.AspNetCore.Session": "1.0.0",
-          "Platformus.Infrastructure": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Barebone.dll": {}
-        }
-      },
-      "Platformus.Barebone.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Barebone.Backend.dll": {}
-        }
-      },
-      "Platformus.Barebone.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Barebone.Frontend.dll": {}
-        }
-      },
-      "Platformus.Configuration/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Configuration.dll": {}
-        }
-      },
-      "Platformus.Configuration.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Configuration": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Configuration.Backend.dll": {}
-        }
-      },
-      "Platformus.Configuration.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Configuration.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Configuration.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Configuration.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Configuration.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Configuration.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Configuration.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Content/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10",
-          "Platformus.Globalization": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Content.dll": {}
-        }
-      },
-      "Platformus.Content.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Content": "1.0.0-alpha10",
-          "Platformus.Globalization.Backend": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Content.Backend.dll": {}
-        }
-      },
-      "Platformus.Content.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Content.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Content.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Content.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Content.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Content.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Content.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Content.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Content": "1.0.0-alpha10",
-          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Content.Frontend.dll": {}
-        }
-      },
-      "Platformus.Forms/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Forms.dll": {}
-        }
-      },
-      "Platformus.Forms.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Forms": "1.0.0-alpha10",
-          "Platformus.Globalization.Backend": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Forms.Backend.dll": {}
-        }
-      },
-      "Platformus.Forms.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Forms.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Forms.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Forms.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Forms.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Forms.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Forms.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Forms.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Forms": "1.0.0-alpha10",
-          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Forms.Frontend.dll": {}
-        }
-      },
-      "Platformus.Globalization/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Globalization.dll": {}
-        }
-      },
-      "Platformus.Globalization.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Globalization": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Globalization.Backend.dll": {}
-        }
-      },
-      "Platformus.Globalization.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Globalization.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Globalization.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Globalization.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Globalization.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Globalization.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Globalization.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Globalization": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Globalization.Frontend.dll": {}
-        }
-      },
-      "Platformus.Infrastructure/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Infrastructure.dll": {}
-        }
-      },
-      "Platformus.Navigation/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10",
-          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Navigation.dll": {}
-        }
-      },
-      "Platformus.Navigation.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Globalization.Backend": "1.0.0-alpha10",
-          "Platformus.Navigation": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Navigation.Backend.dll": {}
-        }
-      },
-      "Platformus.Navigation.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Navigation.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Navigation.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Navigation.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Navigation.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Navigation.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Navigation.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Navigation.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Globalization.Frontend": "1.0.0-alpha10",
-          "Platformus.Navigation": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Navigation.Frontend.dll": {}
-        }
-      },
-      "Platformus.Security/1.0.0-alpha10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Security.dll": {}
-        }
-      },
-      "Platformus.Security.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Security": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Security.Backend.dll": {}
-        }
-      },
-      "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Security.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Security.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Security.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Security.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Security.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Security.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Static/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Static.dll": {}
-        }
-      },
-      "Platformus.Static.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Static": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Static.Backend.dll": {}
-        }
-      },
-      "Platformus.Static.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Static.Data.Models": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Static.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Static.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Static.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Static.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.Static.Data.Models.dll": {}
-        }
-      },
-      "Platformus.WebApplication/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data": "1.0.0-alpha16",
-          "ExtCore.Mvc": "1.0.0-alpha16",
-          "ExtCore.WebApplication": "1.0.0-alpha16",
-          "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
-          "Microsoft.Extensions.Configuration.Json": "1.0.0",
-          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
-        },
-        "compile": {
-          "lib/netstandard1.6/Platformus.WebApplication.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -3269,11 +2843,531 @@
           "System.Xml.XDocument": "4.0.11",
           "System.Xml.XPath": "4.0.1"
         }
+      },
+      "HRExpert.Organization/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
+          "Platformus.Infrastructure": "1.0.0-alpha10",
+          "HRExpert.Organization.BL": "1.0.0",
+          "HRExpert.Organization.BL.Abstractions": "1.0.0",
+          "HRExpert.Organization.Data.Abstractions": "1.0.0",
+          "HRExpert.Organization.Data.EntityFramework.SqlServer": "1.0.0"
+        },
+        "compile": {
+          "HRExpert.Organization.dll": {}
+        }
+      },
+      "HRExpert.Organization.BL/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "HRExpert.Organization.Data.Models": "1.0.0",
+          "HRExpert.Organization.Data.Abstractions": "1.0.0",
+          "HRExpert.Organization.BL.Abstractions": "1.0.0",
+          "HRExpert.Organization.DTO": "1.0.0",
+          "Platformus.Security": "1.0.0-alpha10",
+          "Platformus.Infrastructure": "1.0.0-alpha10"
+        },
+        "compile": {
+          "HRExpert.Organization.BL.dll": {}
+        }
+      },
+      "HRExpert.Organization.BL.Abstractions/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "HRExpert.Organization.Data.Models": "1.0.0",
+          "HRExpert.Organization.DTO": "1.0.0",
+          "Platformus.Barebone": "1.0.0-alpha10"
+        },
+        "compile": {
+          "HRExpert.Organization.BL.Abstractions.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.Abstractions/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "HRExpert.Organization.Data.Models": "1.0.0"
+        },
+        "compile": {
+          "HRExpert.Organization.Data.Abstractions.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.EntityFramework.SqlServer/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "HRExpert.Organization.Data.Models": "1.0.0",
+          "HRExpert.Organization.Data.Models.Abstractions": "1.0.0",
+          "HRExpert.Organization.Data.Abstractions": "1.0.0"
+        },
+        "compile": {
+          "HRExpert.Organization.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.Models/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "HRExpert.Organization.Data.Models.Abstractions": "1.0.0"
+        },
+        "compile": {
+          "HRExpert.Organization.Data.Models.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.Models.Abstractions/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.0"
+        },
+        "compile": {
+          "HRExpert.Organization.Data.Models.Abstractions.dll": {}
+        }
+      },
+      "HRExpert.Organization.DTO/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Microsoft.AspNetCore.Http": "1.0.0"
+        },
+        "compile": {
+          "HRExpert.Organization.DTO.dll": {}
+        }
+      },
+      "Platformus.Barebone/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
+          "Microsoft.AspNetCore.Session": "1.0.0",
+          "Platformus.Infrastructure": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Barebone.dll": {}
+        }
+      },
+      "Platformus.Barebone.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Barebone.Backend.dll": {}
+        }
+      },
+      "Platformus.Barebone.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Barebone.Frontend.dll": {}
+        }
+      },
+      "Platformus.Configuration/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Configuration.dll": {}
+        }
+      },
+      "Platformus.Configuration.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Configuration": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Configuration.Backend.dll": {}
+        }
+      },
+      "Platformus.Configuration.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Configuration.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Configuration.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Configuration.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Configuration.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Configuration.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "compile": {
+          "Platformus.Configuration.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Content/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10",
+          "Platformus.Globalization": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Content.dll": {}
+        }
+      },
+      "Platformus.Content.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Content": "1.0.0-alpha10",
+          "Platformus.Globalization.Backend": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Content.Backend.dll": {}
+        }
+      },
+      "Platformus.Content.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Content.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Content.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Content.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Content.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Content.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Content.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Content.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Content": "1.0.0-alpha10",
+          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Content.Frontend.dll": {}
+        }
+      },
+      "Platformus.Forms/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Forms.dll": {}
+        }
+      },
+      "Platformus.Forms.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Forms": "1.0.0-alpha10",
+          "Platformus.Globalization.Backend": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Forms.Backend.dll": {}
+        }
+      },
+      "Platformus.Forms.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Forms.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Forms.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Forms.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Forms.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Forms.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Forms.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Forms.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Forms": "1.0.0-alpha10",
+          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Forms.Frontend.dll": {}
+        }
+      },
+      "Platformus.Globalization/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Globalization.dll": {}
+        }
+      },
+      "Platformus.Globalization.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Globalization": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Globalization.Backend.dll": {}
+        }
+      },
+      "Platformus.Globalization.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Globalization.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Globalization.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Globalization.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Globalization.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "compile": {
+          "Platformus.Globalization.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Globalization.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Globalization": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Globalization.Frontend.dll": {}
+        }
+      },
+      "Platformus.Infrastructure/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
+        },
+        "compile": {
+          "Platformus.Infrastructure.dll": {}
+        }
+      },
+      "Platformus.Navigation/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10",
+          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Navigation.dll": {}
+        }
+      },
+      "Platformus.Navigation.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Globalization.Backend": "1.0.0-alpha10",
+          "Platformus.Navigation": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Navigation.Backend.dll": {}
+        }
+      },
+      "Platformus.Navigation.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Navigation.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Navigation.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Navigation.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Navigation.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Navigation.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Navigation.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Navigation.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Globalization.Frontend": "1.0.0-alpha10",
+          "Platformus.Navigation": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Navigation.Frontend.dll": {}
+        }
+      },
+      "Platformus.Security/1.0.0-alpha10": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Security.dll": {}
+        }
+      },
+      "Platformus.Security.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Security": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Security.Backend.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Security.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Security.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Security.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "compile": {
+          "Platformus.Security.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Static/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Static.dll": {}
+        }
+      },
+      "Platformus.Static.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Static": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Static.Backend.dll": {}
+        }
+      },
+      "Platformus.Static.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Static.Data.Models": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Static.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Static.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "compile": {
+          "Platformus.Static.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Static.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "compile": {
+          "Platformus.Static.Data.Models.dll": {}
+        }
+      },
+      "Platformus.WebApplication/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data": "1.0.0-alpha16",
+          "ExtCore.Mvc": "1.0.0-alpha16",
+          "ExtCore.WebApplication": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
+          "Microsoft.Extensions.Configuration.Json": "1.0.0",
+          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
+        },
+        "compile": {
+          "Platformus.WebApplication.dll": {}
+        }
       }
     },
     ".NETCoreApp,Version=v1.0/": {
       "HRExpert/1.0.0": {
         "dependencies": {
+          "HRExpert.Organization": "1.0.0",
           "Microsoft.AspNetCore.Server.IISIntegration": "1.0.0",
           "Microsoft.AspNetCore.Server.Kestrel": "1.0.0",
           "Microsoft.Extensions.Logging.Console": "1.0.0",
@@ -4612,433 +4706,6 @@
         },
         "runtime": {
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Platformus.Barebone/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Microsoft.AspNetCore.Mvc": "1.0.0",
-          "Microsoft.AspNetCore.Session": "1.0.0",
-          "Platformus.Infrastructure": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Barebone.dll": {}
-        }
-      },
-      "Platformus.Barebone.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Barebone.Backend.dll": {}
-        }
-      },
-      "Platformus.Barebone.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Barebone.Frontend.dll": {}
-        }
-      },
-      "Platformus.Configuration/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Configuration.dll": {}
-        }
-      },
-      "Platformus.Configuration.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Configuration": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Configuration.Backend.dll": {}
-        }
-      },
-      "Platformus.Configuration.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Configuration.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Configuration.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Configuration.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Configuration.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Configuration.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Configuration.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Content/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10",
-          "Platformus.Globalization": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Content.dll": {}
-        }
-      },
-      "Platformus.Content.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Content": "1.0.0-alpha10",
-          "Platformus.Globalization.Backend": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Content.Backend.dll": {}
-        }
-      },
-      "Platformus.Content.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Content.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Content.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Content.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Content.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Content.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Content.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Content.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Content": "1.0.0-alpha10",
-          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Content.Frontend.dll": {}
-        }
-      },
-      "Platformus.Forms/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Forms.dll": {}
-        }
-      },
-      "Platformus.Forms.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Forms": "1.0.0-alpha10",
-          "Platformus.Globalization.Backend": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Forms.Backend.dll": {}
-        }
-      },
-      "Platformus.Forms.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Forms.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Forms.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Forms.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Forms.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Forms.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Forms.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Forms.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Forms": "1.0.0-alpha10",
-          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Forms.Frontend.dll": {}
-        }
-      },
-      "Platformus.Globalization/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Globalization.dll": {}
-        }
-      },
-      "Platformus.Globalization.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Globalization": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Globalization.Backend.dll": {}
-        }
-      },
-      "Platformus.Globalization.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Globalization.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Globalization.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Globalization.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Globalization.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Globalization.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Globalization.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Globalization": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Globalization.Frontend.dll": {}
-        }
-      },
-      "Platformus.Infrastructure/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Infrastructure.dll": {}
-        }
-      },
-      "Platformus.Navigation/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10",
-          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Navigation.dll": {}
-        }
-      },
-      "Platformus.Navigation.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Globalization.Backend": "1.0.0-alpha10",
-          "Platformus.Navigation": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Navigation.Backend.dll": {}
-        }
-      },
-      "Platformus.Navigation.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Navigation.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Navigation.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Navigation.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Navigation.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Navigation.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Navigation.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Navigation.Frontend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
-          "Platformus.Globalization.Frontend": "1.0.0-alpha10",
-          "Platformus.Navigation": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Navigation.Frontend.dll": {}
-        }
-      },
-      "Platformus.Security/1.0.0-alpha10": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.dll": {}
-        }
-      },
-      "Platformus.Security.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Security": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.Backend.dll": {}
-        }
-      },
-      "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Security.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Security.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Security.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Security.Data.Models.dll": {}
-        }
-      },
-      "Platformus.Static/1.0.0-alpha10": {
-        "dependencies": {
-          "Platformus.Barebone": "1.0.0-alpha10",
-          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Static.dll": {}
-        }
-      },
-      "Platformus.Static.Backend/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "ExtCore.Infrastructure": "1.0.0-alpha16",
-          "Platformus.Barebone.Backend": "1.0.0-alpha10",
-          "Platformus.Static": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Static.Backend.dll": {}
-        }
-      },
-      "Platformus.Static.Data.Abstractions/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Platformus.Static.Data.Models": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Static.Data.Abstractions.dll": {}
-        }
-      },
-      "Platformus.Static.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
-          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Static.Data.EntityFramework.SqlServer.dll": {}
-        }
-      },
-      "Platformus.Static.Data.Models/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Static.Data.Models.dll": {}
-        }
-      },
-      "Platformus.WebApplication/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data": "1.0.0-alpha16",
-          "ExtCore.Mvc": "1.0.0-alpha16",
-          "ExtCore.WebApplication": "1.0.0-alpha16",
-          "Microsoft.AspNetCore.Diagnostics": "1.0.0",
-          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
-          "Microsoft.Extensions.Configuration.Json": "1.0.0",
-          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.WebApplication.dll": {}
         }
       },
       "Remotion.Linq/2.1.1": {
@@ -6412,6 +6079,525 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "HRExpert.Organization/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
+          "Platformus.Infrastructure": "1.0.0-alpha10",
+          "HRExpert.Organization.BL": "1.0.0",
+          "HRExpert.Organization.BL.Abstractions": "1.0.0",
+          "HRExpert.Organization.Data.Abstractions": "1.0.0",
+          "HRExpert.Organization.Data.EntityFramework.SqlServer": "1.0.0"
+        },
+        "runtime": {
+          "HRExpert.Organization.dll": {}
+        }
+      },
+      "HRExpert.Organization.BL/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "HRExpert.Organization.Data.Models": "1.0.0",
+          "HRExpert.Organization.Data.Abstractions": "1.0.0",
+          "HRExpert.Organization.BL.Abstractions": "1.0.0",
+          "HRExpert.Organization.DTO": "1.0.0",
+          "Platformus.Security": "1.0.0-alpha10",
+          "Platformus.Infrastructure": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "HRExpert.Organization.BL.dll": {}
+        }
+      },
+      "HRExpert.Organization.BL.Abstractions/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "HRExpert.Organization.Data.Models": "1.0.0",
+          "HRExpert.Organization.DTO": "1.0.0",
+          "Platformus.Barebone": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "HRExpert.Organization.BL.Abstractions.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.Abstractions/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "HRExpert.Organization.Data.Models": "1.0.0"
+        },
+        "runtime": {
+          "HRExpert.Organization.Data.Abstractions.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.EntityFramework.SqlServer/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "HRExpert.Organization.Data.Models": "1.0.0",
+          "HRExpert.Organization.Data.Models.Abstractions": "1.0.0",
+          "HRExpert.Organization.Data.Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "HRExpert.Organization.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.Models/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "HRExpert.Organization.Data.Models.Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "HRExpert.Organization.Data.Models.dll": {}
+        }
+      },
+      "HRExpert.Organization.Data.Models.Abstractions/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.0"
+        },
+        "runtime": {
+          "HRExpert.Organization.Data.Models.Abstractions.dll": {}
+        }
+      },
+      "HRExpert.Organization.DTO/1.0.0": {
+        "dependencies": {
+          "NETStandard.Library": "1.6.0",
+          "Microsoft.AspNetCore.Http": "1.0.0"
+        },
+        "runtime": {
+          "HRExpert.Organization.DTO.dll": {}
+        }
+      },
+      "Platformus.Barebone/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
+          "Microsoft.AspNetCore.Session": "1.0.0",
+          "Platformus.Infrastructure": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Barebone.dll": {}
+        }
+      },
+      "Platformus.Barebone.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Barebone.Backend.dll": {}
+        }
+      },
+      "Platformus.Barebone.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Barebone.Frontend.dll": {}
+        }
+      },
+      "Platformus.Configuration/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Configuration.dll": {}
+        }
+      },
+      "Platformus.Configuration.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Configuration": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Configuration.Backend.dll": {}
+        }
+      },
+      "Platformus.Configuration.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Configuration.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Configuration.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Configuration.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Configuration.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Configuration.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Configuration.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Configuration.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Content/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10",
+          "Platformus.Globalization": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Content.dll": {}
+        }
+      },
+      "Platformus.Content.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Content": "1.0.0-alpha10",
+          "Platformus.Globalization.Backend": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Content.Backend.dll": {}
+        }
+      },
+      "Platformus.Content.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Content.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Content.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Content.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Content.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Content.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Content.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Content.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Content.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Content": "1.0.0-alpha10",
+          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Content.Frontend.dll": {}
+        }
+      },
+      "Platformus.Forms/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Forms.dll": {}
+        }
+      },
+      "Platformus.Forms.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Forms": "1.0.0-alpha10",
+          "Platformus.Globalization.Backend": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Forms.Backend.dll": {}
+        }
+      },
+      "Platformus.Forms.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Forms.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Forms.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Forms.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Forms.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Forms.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Forms.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Forms.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Forms.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Forms": "1.0.0-alpha10",
+          "Platformus.Globalization.Frontend": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Forms.Frontend.dll": {}
+        }
+      },
+      "Platformus.Globalization/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Globalization.dll": {}
+        }
+      },
+      "Platformus.Globalization.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Globalization": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Globalization.Backend.dll": {}
+        }
+      },
+      "Platformus.Globalization.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Globalization.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Globalization.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Globalization.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Globalization.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Globalization.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Globalization.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Globalization": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Globalization.Frontend.dll": {}
+        }
+      },
+      "Platformus.Infrastructure/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Infrastructure.dll": {}
+        }
+      },
+      "Platformus.Navigation/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Globalization.Data.Abstractions": "1.0.0-alpha10",
+          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Navigation.dll": {}
+        }
+      },
+      "Platformus.Navigation.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Globalization.Backend": "1.0.0-alpha10",
+          "Platformus.Navigation": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Navigation.Backend.dll": {}
+        }
+      },
+      "Platformus.Navigation.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Navigation.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Navigation.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Navigation.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Navigation.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Navigation.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Navigation.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Globalization.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Navigation.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Navigation.Frontend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Frontend": "1.0.0-alpha10",
+          "Platformus.Globalization.Frontend": "1.0.0-alpha10",
+          "Platformus.Navigation": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Navigation.Frontend.dll": {}
+        }
+      },
+      "Platformus.Security/1.0.0-alpha10": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Authentication.Cookies": "1.0.0",
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Security.dll": {}
+        }
+      },
+      "Platformus.Security.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Security": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Security.Backend.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Security.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Security.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Security.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Security.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Security.Data.Models.dll": {}
+        }
+      },
+      "Platformus.Static/1.0.0-alpha10": {
+        "dependencies": {
+          "Platformus.Barebone": "1.0.0-alpha10",
+          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Static.dll": {}
+        }
+      },
+      "Platformus.Static.Backend/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Barebone.Backend": "1.0.0-alpha10",
+          "Platformus.Static": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Static.Backend.dll": {}
+        }
+      },
+      "Platformus.Static.Data.Abstractions/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Platformus.Static.Data.Models": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Static.Data.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Static.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
+          "Platformus.Static.Data.Abstractions": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Static.Data.EntityFramework.SqlServer.dll": {}
+        }
+      },
+      "Platformus.Static.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Static.Data.Models.dll": {}
+        }
+      },
+      "Platformus.WebApplication/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data": "1.0.0-alpha16",
+          "ExtCore.Mvc": "1.0.0-alpha16",
+          "ExtCore.WebApplication": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Diagnostics": "1.0.0",
+          "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "1.0.0",
+          "Microsoft.Extensions.Configuration.Json": "1.0.0",
+          "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0"
+        },
+        "runtime": {
+          "Platformus.WebApplication.dll": {}
+        }
       }
     }
   },
@@ -6935,226 +7121,6 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw=="
-    },
-    "Platformus.Barebone/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zMXDMwaKtU5Bej31Ome31v6qpFynMoUB6wvuvjF4v79aNfSGvC+AQS8uPGUZYeRtJd70pUrGPwe9C6NBtq0Vfg=="
-    },
-    "Platformus.Barebone.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-RJXbJwlGr3YV9b1mL0Souzpe8N09MHQc4Lgj/mdwL1vFDK4C5QqMjPI9MDovrdg7qXht5YxA+lsMscXlB6vvFA=="
-    },
-    "Platformus.Barebone.Frontend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-mP/7lb8p5vy8z+hmEzuUXGe1e25N4h2TZWMTzVhT7wdPgOh2aNWlbTd10N0nNsPjZb2UC+IY1fh/K/gilAxwkQ=="
-    },
-    "Platformus.Configuration/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-n/Pd9mAdxdZM0aK6Pzc8i2TAILrZicI6Q43dVyz3dTxz2LaFRDc0UrzXdjuQ7gLCP+qM8juLxyX0bqAVn2p1sA=="
-    },
-    "Platformus.Configuration.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-M8Q8klVt8hpwjmihelftGOY5lG5gKAZnDNXUb5wd0APL0v9fWgkJYftKrSAzC0qQxtxWnFegx7m/66kUeO6YIw=="
-    },
-    "Platformus.Configuration.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-042EwkjUhCP694TLe+fLNnFtaoLo0im0we+imDUCb68cRPYrJnkc0T3pEBASFShBZf+EnHkHePozztRdewPtzQ=="
-    },
-    "Platformus.Configuration.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-wDspYzonzQ38knXNaacE3aBI6UIexlg5i2YFF75/+TCHW+hQFgi3jX5EujhfWAfzXRfvtvrRNzYfIaN752Begg=="
-    },
-    "Platformus.Configuration.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4R+Ot0cDgz7vaLMucHey3kdhqUcPH2ma3eWwWflLQ5aTDgMJD5LIkGklEvz/KDBJIzTtjb+NrqSxrWIOmGQFqw=="
-    },
-    "Platformus.Content/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kN2k9/3a3jHrbiADwXxF59Ul8Z4P2h9S3AmEM54n/Tk7Gn7c7rxt3sB8FuFLGdaLHmLcyZ+GaH08WrUFrJJVPA=="
-    },
-    "Platformus.Content.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-8g9wVFAJgT7N8E+502UCxh17Qb9VaLGN/bnvcMx/SROHhDnv6D2/suQAeOBvkKksl21P+0eUtgwh1dplICSe1w=="
-    },
-    "Platformus.Content.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-+vlG3S2LpzMUxdIBzlXogLfCwFiuwyh8/bopo/0i0e5tXmEny1pDQlq0jciPsKeN3arKFJtA26+ihvzGyVkNVA=="
-    },
-    "Platformus.Content.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-AsU8WryLksWWS8ycvUPqpbLPaYGh24igGDtxy4h/trYFEvOf7Hz5w6hKX4O0Mkc+1/Czvy2pT7yi6I3dEUU2tQ=="
-    },
-    "Platformus.Content.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-y1+gR0gw8mydexQgfjQPORGdQmVRIb2WNNwbKaQJFvCBAjyAv+yfRhBCdnK4BuiiO9UONko4JyQsbtDMH7Jfug=="
-    },
-    "Platformus.Content.Frontend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-U6PmBCF3mwRXCNPM18D/OVfZ03vBb8HNBty0vdryI3CPWnEjp7MPQuGpEWvrOmkXEikOTysONN7onHm8ZqpPOA=="
-    },
-    "Platformus.Forms/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-DltBc3I//aJD237321pT5PSOpxgg8tSSIW+ho1cazBx+2L5arDYpVNAAcgV37IwIstlO3yigOuo8QTSGPHgwPA=="
-    },
-    "Platformus.Forms.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-f6Xb8z0+ndREAHEvTTSIWIuhYLJX1HrnUw/lIFHcglpz+zPF9hvfM8Biicepq1W1ObbFVo/i7bzgEHGdQpf2ng=="
-    },
-    "Platformus.Forms.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-nwW/RDc9DL4Nt6v9auMo8cDtIKZ1taoqA0GJlzrq6aTGH+XcjQI4EsCcmGQfpudSeXftQDeVfzmJskbVz3reoQ=="
-    },
-    "Platformus.Forms.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-bBgZNTD6W7YOXox0haCQsU6N1SepJzkupESR0pzM86hRfsqy6EjnfOkciAXq83fdu4XY0Uw2401kQbfmKCDPwA=="
-    },
-    "Platformus.Forms.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-+7sqJn1Dea4Noq1DVfAInpzqw/dEC1JHbHawA+/UK9r8qge2xc7ZOYKhdCiWEzInDutX8u4SNa25/BqujO7AcA=="
-    },
-    "Platformus.Forms.Frontend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rQcTmm/6BoMXSiCrcD9CoeGF+eN77DoOCziJM+CcQLjibowj9kdjGTCv9hhg13tW2wDm9TsJFRsgRpwNzMzsqw=="
-    },
-    "Platformus.Globalization/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-IOyq7VGHie47lQ+c8QP2e5AxCuUK9szLYla58mBcOBD6SimnLHwbGz19PzZKVEcwUc989R4ECE0Ot1WDMhYkIA=="
-    },
-    "Platformus.Globalization.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-vOmyDNFf73EMk+z1qPXTJlXfdFYG1WRc9AGjEchS6X9OrCwXLtcOph8sjXArHzS2jwymZUvRT5CDNTBNeerh0Q=="
-    },
-    "Platformus.Globalization.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-qmZDye6G7vqFqIUtzGQIswI5x5WaaKffR1VluvUgsMHVmM7TgNE88mVKBKmvku9+PbOSpH94n+JLw0S7T/OCrQ=="
-    },
-    "Platformus.Globalization.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-M8LtO1Hw6YZBTj6RuBtFe7lYc7yk3zF4oxe4o5OpM40Gn0YRH2bZx7HPj/KO50DwE9usmeRB1OqmiXIT2Nx6tw=="
-    },
-    "Platformus.Globalization.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3dxK9D2NfqTpdvJz4HlBBWdouCphnCncFebWXCcbZDlZTvWcwZUSJ2kQoIGuqG4ENDamMGO1GjDgeNPJy8hKIA=="
-    },
-    "Platformus.Globalization.Frontend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-TI4wMqj34lT6LNxY01YG2z3QIhlRNBnE4PRUnZh+xhsAHeIDeRLRe32BpeLMj6fdDI90/8FGyKhg/INoyeta/w=="
-    },
-    "Platformus.Infrastructure/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kTU5vSoLsHQAWs4FdiJpBDpnUmxyxBCCfg31LLCMBrYxWf/dqMWo7Xs04S6YMChxJUw3Tt+V0rXF10Th1Q/4Zw=="
-    },
-    "Platformus.Navigation/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-BEJzHhOtN/XQob+ylprLEKO1/UCWs1fckR9yTaHJUhDJTTQLhoYDs3I5iRJrvu31GD1zltWYFdrGzj138nL4pg=="
-    },
-    "Platformus.Navigation.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-CWQq2PK287Q2bIBI0L5R+ZrY9v0UmaBWgVoFaZ3M7TqR5oWcldRU2ASrBiRI2mlUYA9R6OI8v3gpAjuMrwLG1w=="
-    },
-    "Platformus.Navigation.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-txAH60Rj5+HbSWOxbOycW4635NHvuS8LUQCVjr5WRhIG6qarBZihD3esBLEaHVtKkqYo4SOrjQ8pE6Ax+nbJaA=="
-    },
-    "Platformus.Navigation.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-3uzNcvofJxuUZlc0iMWLEJ6P5J2dQh5egawDUvYTMMHCpbL7cYuNiyRjhU/ao6FfgeWF0IMgpAMb9EEZFHN8AA=="
-    },
-    "Platformus.Navigation.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-jicM0d5bMUkZeAlkcg5OpWPFFPYH5Qd+MwOACtIiRtu3Do1pkFcrVBQKsVWO7Pr4tvsbbJnvtI7+wij4E7tGTQ=="
-    },
-    "Platformus.Navigation.Frontend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ScjF3UXR1L7Xjz+ilxOnHkWWzmWdxlGohRbHNGrjNrhT/oKkO+tOZZe1f11w3Dlu7xsC8RqPq9NLUkPYWB5RtA=="
-    },
-    "Platformus.Security/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-l5HETF6PWITMOjnKmo0PCcD6b02KrEXOIJCaC9Og1e/qhNL9trNu551wr1Q0FeOPYq5+ZJ+tp/1zuYZcERfB0w=="
-    },
-    "Platformus.Security.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-gLZ3Yp82rzcgq0HzYaPs6B/D6DdFtbCoMnxi8+cd4eGvTDgewc8Czlq1gPhGsEa5EUV2/LhLbtRqCyji+DmFgw=="
-    },
-    "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-V1uzC+cA7HxjgO9MnEj5ioAWmvj0izp2UiKEwt75vEDzlz5nfam/GQHt3CToy0ZZDyhWM8jtvmI1IL5WC27l+w=="
-    },
-    "Platformus.Security.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kNzjKmkhb7dqeeGW7lHc1jAPIjWYexuwd8x/MnhBB9edJelNxI6dMisbIANKx1xsarFqAk7zyTs58/MT6bZL3Q=="
-    },
-    "Platformus.Security.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ywC+EpI2jNvQJOTV/8tZduWiWP/5ZkSLXt7mVBdWhXgAJJAmvtPiCrlPq6Cv6H6t/1GqjPHEwWjCcCrEUu7YCw=="
-    },
-    "Platformus.Static/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-bsfRHLa0jP/zpClBeAiLMhmU2KVKyIEHPH3CM39dtXT4zcVSLrTgrTC/p+xwZL/aVIkS14yDWWRng59DzCcaqA=="
-    },
-    "Platformus.Static.Backend/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-7tKbr0XT7h+xmKWex3sUw9Sy4L3U4WOOUwgs7+GwpUNBN8e4Tj10vKN3TutL9rAzOq6psW2Kdygmxvl8+n6/Lg=="
-    },
-    "Platformus.Static.Data.Abstractions/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-RNqleFYJZEHC0i3LSwgtv5KsVBw/bKIE8VkUeQVYs7ZBTC7g9yzOoDT8tvPake9pIHjpUxHYdKx86kRL9N6gWg=="
-    },
-    "Platformus.Static.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zkLcUwhdmQcPzILEmFTshNg9HhEDcBpHE03KEXHUMURw2P6as1CA2mOmc9NmZrcaSDdSBjcwRyXUUexEq18qyw=="
-    },
-    "Platformus.Static.Data.Models/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-ta81+Q9eYhiyc9L+GdExYLflb4/mCDw+qp6aVi1xpXpBgGtqxb+PZU7UTBktNMX4URzXlf+U6rxaEwqasrNhfg=="
-    },
-    "Platformus.WebApplication/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-sJNS8KfZCuoye/U4vkOjKB6SZpoysO2gvMbBonwTzCDKnrvNrs1pdUmAI/Y2+dfeydtFPdrYCNa2vaOd+74U5A=="
     },
     "Remotion.Linq/2.1.1": {
       "type": "package",
@@ -7690,6 +7656,266 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-FLhdYJx4331oGovQypQ8JIw2kEmNzCsjVOVYY/16kZTUoquZG85oVn7yUhBE2OZt1yGPSXAL0HTEfzjlbNpM7Q=="
+    },
+    "HRExpert.Organization/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HRExpert.Organization.BL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HRExpert.Organization.BL.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HRExpert.Organization.Data.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HRExpert.Organization.Data.EntityFramework.SqlServer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HRExpert.Organization.Data.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HRExpert.Organization.Data.Models.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "HRExpert.Organization.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Barebone/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Barebone.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Barebone.Frontend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Configuration/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Configuration.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Configuration.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Configuration.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Configuration.Data.Models/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Content/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Content.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Content.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Content.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Content.Data.Models/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Content.Frontend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Forms/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Forms.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Forms.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Forms.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Forms.Data.Models/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Forms.Frontend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Globalization/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Globalization.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Globalization.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Globalization.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Globalization.Data.Models/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Globalization.Frontend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Infrastructure/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Navigation/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Navigation.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Navigation.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Navigation.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Navigation.Data.Models/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Navigation.Frontend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Data.Models/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Static/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Static.Backend/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Static.Data.Abstractions/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Static.Data.EntityFramework.SqlServer/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Static.Data.Models/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.WebApplication/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

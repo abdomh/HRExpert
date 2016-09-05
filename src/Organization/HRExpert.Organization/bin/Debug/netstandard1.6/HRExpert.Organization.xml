@@ -221,7 +221,7 @@
             Контроллер организаций
             </summary>
         </member>
-        <member name="M:HRExpert.Organization.Controllers.OrganizationController.#ctor(HRExpert.Organization.BL.Abstractions.IOrganizationBL)">
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.#ctor(ExtCore.Data.Abstractions.IStorage,HRExpert.Organization.BL.Abstractions.IOrganizationBL)">
             <summary>
             Конструктор организации
             </summary>
@@ -233,7 +233,7 @@
             </summary>
             <returns>Коллекция записей</returns>
         </member>
-        <member name="M:HRExpert.Organization.Controllers.OrganizationController.Get(System.Int32)">
+        <member name="M:HRExpert.Organization.Controllers.OrganizationController.ById(System.Int32)">
             <summary>
             Организация по идентификатору
             </summary>

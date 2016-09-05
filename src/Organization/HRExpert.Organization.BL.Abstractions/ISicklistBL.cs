@@ -4,7 +4,7 @@ using HRExpert.Organization.DTO;
 
 namespace HRExpert.Organization.BL.Abstractions
 {
-    public interface ISicklistBL
+    public interface ISicklistBL : IBaseBl
     {
         DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> dto);
         DocumentDto<SicklistDto> Update(DocumentDto<SicklistDto> dto);

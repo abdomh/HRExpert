@@ -9,12 +9,16 @@ using ExtCore.Data.Abstractions;
 using Platformus.Barebone;
 namespace HRExpert.Organization.BL
 {
-    public class SicklistBabyMindingTypesBL: Abstractions.ISicklistBabyMindingTypesBL
+    public class SicklistBabyMindingTypesBL: BaseBL,Abstractions.ISicklistBabyMindingTypesBL
     {
         private ISicklistBabyMindingTypesRepository sicklistBabyMindingTypesRepository;
-        public SicklistBabyMindingTypesBL(IHandler handler)
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.sicklistBabyMindingTypesRepository = handler.Storage.GetRepository<ISicklistBabyMindingTypesRepository>();
+        }
+        public SicklistBabyMindingTypesBL()
+        {            
         }
         public List<SicklistBabyMindingTypeDto> List()
         {

@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v1.6/",
-    "signature": "e5a26cdf5008ce26744d14ec25e7b19f2f5bf89e"
+    "signature": "a7c443a14470c7e9e612eef6cd5ab60eaa1be62b"
   },
   "compilationOptions": {},
   "targets": {
@@ -918,25 +918,6 @@
         },
         "runtime": {
           "lib/netstandard1.0/Newtonsoft.Json.dll": {}
-        }
-      },
-      "Platformus.Barebone/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
-          "Microsoft.AspNetCore.Mvc": "1.0.0",
-          "Microsoft.AspNetCore.Session": "1.0.0",
-          "Platformus.Infrastructure": "1.0.0-alpha10"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Barebone.dll": {}
-        }
-      },
-      "Platformus.Infrastructure/1.0.0-alpha10": {
-        "dependencies": {
-          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
-        },
-        "runtime": {
-          "lib/netstandard1.6/Platformus.Infrastructure.dll": {}
         }
       },
       "runtime.native.System/4.0.0": {
@@ -2007,6 +1988,25 @@
         "runtime": {
           "HRExpert.Organization.DTO.dll": {}
         }
+      },
+      "Platformus.Barebone/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Abstractions": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
+          "Microsoft.AspNetCore.Session": "1.0.0",
+          "Platformus.Infrastructure": "1.0.0-alpha10"
+        },
+        "runtime": {
+          "Platformus.Barebone.dll": {}
+        }
+      },
+      "Platformus.Infrastructure/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Mvc.Infrastructure": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -2360,16 +2360,6 @@
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-U82mHQSKaIk+lpSVCbWYKNavmNH1i5xrExDEquU1i6I5pV6UMOqRnJRSlKO3cMPfcpp0RgDY+8jUXHdQ4IfXvw=="
-    },
-    "Platformus.Barebone/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-zMXDMwaKtU5Bej31Ome31v6qpFynMoUB6wvuvjF4v79aNfSGvC+AQS8uPGUZYeRtJd70pUrGPwe9C6NBtq0Vfg=="
-    },
-    "Platformus.Infrastructure/1.0.0-alpha10": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-kTU5vSoLsHQAWs4FdiJpBDpnUmxyxBCCfg31LLCMBrYxWf/dqMWo7Xs04S6YMChxJUw3Tt+V0rXF10Th1Q/4Zw=="
     },
     "runtime.native.System/4.0.0": {
       "type": "package",
@@ -2807,6 +2797,16 @@
       "sha512": ""
     },
     "HRExpert.Organization.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Barebone/1.0.0-alpha10": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Infrastructure/1.0.0-alpha10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

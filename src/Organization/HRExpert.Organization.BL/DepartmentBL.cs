@@ -8,14 +8,16 @@ using Platformus.Barebone;
 namespace HRExpert.Organization.BL
 {
     using Converters;
-    public class DepartmentBL : Abstractions.IDepartmentBL
+    public class DepartmentBL : BaseBL,Abstractions.IDepartmentBL
     {        
-        private IHandler handler;
         private IDepartmentRepository departmentRepository;
-        public DepartmentBL(IHandler handler)
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.departmentRepository = handler.Storage.GetRepository<IDepartmentRepository>();
-            this.handler = handler;
+        }
+        public DepartmentBL()
+        {
         }
 
         #region Public

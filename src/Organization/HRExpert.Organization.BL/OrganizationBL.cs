@@ -6,14 +6,17 @@ using System.Linq;
 using Platformus.Barebone;
 namespace HRExpert.Organization.BL
 {
-    public class OrganizationBL: Abstractions.IOrganizationBL
+    public class OrganizationBL: BaseBL, Abstractions.IOrganizationBL
     {
         private IOrganizationRepository organizationRepository;
-        private IHandler handler;
-        public OrganizationBL(IHandler handler)           
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.organizationRepository = handler.Storage.GetRepository<IOrganizationRepository>();
-            this.handler = handler;
+
+        }
+        public OrganizationBL()           
+        {            
         }
         #region CRUD
         public virtual IEnumerable<OrganizationDto> List()

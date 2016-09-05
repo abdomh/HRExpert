@@ -8,14 +8,16 @@ using Platformus.Barebone;
 using Platformus.Security;
 namespace HRExpert.Organization.BL
 {
-    public class PositionsBL: Abstractions.IPositionsBL
+    public class PositionsBL: BaseBL,Abstractions.IPositionsBL
     {
         private IPositionRepository positionRepository;
-        private IHandler handler;
-        public PositionsBL(IHandler handler)        
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.positionRepository = handler.Storage.GetRepository<IPositionRepository>();
-            this.handler = handler;
+        }
+        public PositionsBL()        
+        {
         }
         #region CRUD
         public virtual IEnumerable<PositionDto> List()

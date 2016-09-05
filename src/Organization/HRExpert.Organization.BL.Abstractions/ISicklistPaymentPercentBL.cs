@@ -3,7 +3,7 @@ using HRExpert.Organization.DTO;
 
 namespace HRExpert.Organization.BL.Abstractions
 {
-    public interface ISicklistPaymentPercentBL
+    public interface ISicklistPaymentPercentBL : IBaseBl
     {
         List<SicklistPaymentPercentDto> List();
     }

@@ -3,7 +3,7 @@ using System.Linq;
 using HRExpert.Organization.DTO;
 namespace HRExpert.Organization.BL.Abstractions
 {
-    public interface IDepartmentBL
+    public interface IDepartmentBL: IBaseBl
     {
         /// <summary>
         /// Все

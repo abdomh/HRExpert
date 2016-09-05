@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Platformus.Barebone;
+using ExtCore.Data.Abstractions;
 
 namespace HRExpert.Organization.Controllers
 {
@@ -11,7 +13,7 @@ namespace HRExpert.Organization.Controllers
     /// </summary>
     //[Authorize]
     [AllowAnonymous]
-    public class OrganizationController:Controller
+    public class OrganizationController:Platformus.Barebone.Controllers.ControllerBase
     {        
         private IOrganizationBL organizationBl;
         #region Ctor
@@ -19,9 +21,11 @@ namespace HRExpert.Organization.Controllers
         /// Конструктор организации
         /// </summary>
         /// <param name="organizationBl">БЛ организации</param>
-        public OrganizationController(IOrganizationBL organizationBl)
+        public OrganizationController(IStorage storage,IOrganizationBL organizationBl)
+            :base(storage)
         {
             this.organizationBl = organizationBl;
+            this.organizationBl.SetHandler(this);
         }
         #endregion
         /// <summary>
@@ -39,7 +43,7 @@ namespace HRExpert.Organization.Controllers
         /// <param name="organizationid">Идентификатор</param>
         /// <returns></returns>
         [HttpGet]
-        public virtual OrganizationDto Get(int organizationid)
+        public virtual OrganizationDto ById(int organizationid)
         {
             return this.organizationBl.Read(organizationid);
         }

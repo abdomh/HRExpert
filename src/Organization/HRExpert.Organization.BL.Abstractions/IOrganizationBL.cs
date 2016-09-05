@@ -5,7 +5,7 @@ namespace HRExpert.Organization.BL.Abstractions
     /// <summary>
     /// Бизнес логика организаций
     /// </summary>
-    public interface IOrganizationBL
+    public interface IOrganizationBL : IBaseBl
     {
         /// <summary>
         /// Создание

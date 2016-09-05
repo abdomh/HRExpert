@@ -9,12 +9,16 @@ using ExtCore.Data.Abstractions;
 using Platformus.Barebone;
 namespace HRExpert.Organization.BL
 {
-    public class SicklistPaymentRestrictTypesBL: Abstractions.ISicklistPaymentRestrictTypesBL
+    public class SicklistPaymentRestrictTypesBL: BaseBL,Abstractions.ISicklistPaymentRestrictTypesBL
     {
         private ISicklistPaymentRestrictTypesRepository sicklistPaymentRestrictTypesRepository;
-        public SicklistPaymentRestrictTypesBL(IHandler handler)
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.sicklistPaymentRestrictTypesRepository = handler.Storage.GetRepository<ISicklistPaymentRestrictTypesRepository>();
+        }
+        public SicklistPaymentRestrictTypesBL()
+        {            
         }
         public List<SicklistPaymentRestrictTypeDto> List()
         {

@@ -5,7 +5,7 @@ namespace HRExpert.Organization.BL.Abstractions
     /// <summary>
     /// Бизнес логика персонажей
     /// </summary>
-    public interface IPersonBL
+    public interface IPersonBL : IBaseBl
     {
         /// <summary>
         /// Все сотрудники

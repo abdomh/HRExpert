@@ -10,16 +10,18 @@ using Platformus.Security;
 namespace HRExpert.Organization.BL
 {
     using Converters;
-    public class StaffEstablishedPostBL: Abstractions.IStaffEstablishedPostBL
+    public class StaffEstablishedPostBL: BaseBL,Abstractions.IStaffEstablishedPostBL
     {     
         private IStaffEstablishedPostRepository repository;
-        private IHandler handler;
-        public StaffEstablishedPostBL(IHandler handler)
+        public override void SetHandler(IHandler handler)
         {
-            this.handler = handler;
+            base.SetHandler(handler);
             this.repository = handler.Storage.GetRepository<IStaffEstablishedPostRepository>();
-            UserManager userManager = new UserManager(this.handler);            
+            UserManager userManager = new UserManager(this.handler);
             this.repository.CurrentUserId = userManager.GetCurrentUser().Id;
+        }
+        public StaffEstablishedPostBL()
+        {
         }
         public List<StaffEstablishedPostDto> GetByDepartment(int DepartmentId)
         {

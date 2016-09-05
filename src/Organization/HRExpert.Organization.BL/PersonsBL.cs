@@ -10,15 +10,16 @@ using Platformus.Security;
 namespace HRExpert.Organization.BL
 {
     using Converters;
-    public class PersonsBL : Abstractions.IPersonBL
+    public class PersonsBL : BaseBL, Abstractions.IPersonBL
     {
         private IPersonRepository personsRepository;
-        private IHandler handler;
-        public PersonsBL(IHandler handler)
+        public override void SetHandler(IHandler handler)
         {
+            base.SetHandler(handler);
             this.personsRepository = handler.Storage.GetRepository<IPersonRepository>();
-            
-            this.handler = handler;
+        }
+        public PersonsBL()
+        {            
         }
         public List<PersonDto> List()
         {
