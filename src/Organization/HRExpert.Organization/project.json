@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
   "description": "HRExpert.Organization Class Library",
   "authors": [ "baranov" ],
-  "dependencies": {    
+  "dependencies": {
     "NETStandard.Library": "1.6.0",
     "Microsoft.AspNetCore.Mvc": "1.0.0",
     "Platformus.Infrastructure": "1.0.0-alpha10",
@@ -20,7 +20,10 @@
       ]
     }
   },
-  "buildOptions": {
-    "xmlDoc": true
+  "buildOptions": { "embed": [ "Views/**" ] },
+  "publishOptions": {
+    "include": [
+      "Views"
+    ]
   }
 }

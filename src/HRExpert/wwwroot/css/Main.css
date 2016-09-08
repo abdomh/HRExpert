@@ -1,0 +1,41 @@
+﻿body {
+}
+table{
+    background: #fff;
+}
+.navbar
+{
+    border-radius:0px !important;
+}
+.content
+{
+    padding:20px;
+}
+#TableContainer
+{
+    -webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    background-color:#F3EFFF;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom:10px;
+}
+#ControlsContainer, #FormContainer{
+    -webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);    
+    background-color:#EFF4FF;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom:10px;
+}
+#FilterContainer{
+    -webkit-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    -moz-box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    box-shadow: 2px 2px 7px 0px rgba(0,0,0,0.3);
+    background-color:#EDFFFF;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom:10px;
+}

@@ -2,22 +2,26 @@
 using Microsoft.AspNetCore.Mvc;
 using HRExpert.Organization.DTO;
 using HRExpert.Organization.BL.Abstractions;
+using ExtCore.Data.Abstractions;
 namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
 {
     /// <summary>
     /// Контроллер больничных
     /// </summary>
-    public class SicklistController :Controller
+    public class SicklistController :Platformus.Barebone.Controllers.ControllerBase
     {
         ISicklistBL sicklistBL;
         /// <summary>
         /// Конструктор
         /// </summary>
         /// <param name="sicklistBL"></param>
-        public SicklistController(ISicklistBL sicklistBL)
+        public SicklistController(IStorage storage, ISicklistBL sicklistBL)
+            :base(storage)
         {
             this.sicklistBL = sicklistBL;
         }
+        #region API
+        /*
         /// <summary>
         /// Список
         /// </summary>
@@ -56,6 +60,42 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         public DocumentDto<SicklistDto> Update([FromForm]DocumentDto<SicklistDto> value)
         {
             return sicklistBL.Update(value);
+        }*/
+        #endregion
+        #region MVC
+        [HttpGet]
+        public IActionResult Index()
+        {
+            sicklistBL.SetHandler(this);
+            var model = sicklistBL.List();
+            return View(model);
         }
+        [HttpGet]
+        public IActionResult Edit(int Id)
+        {
+            sicklistBL.SetHandler(this);
+            var model = sicklistBL.Read(Id);
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Edit(DocumentDto<SicklistDto> model)
+        {
+            sicklistBL.SetHandler(this);
+            model = sicklistBL.Update(model);
+            return View(model);
+        }
+        [HttpGet]
+        public IActionResult Create()
+        {
+            var model = new DocumentDto<SicklistDto>();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Create(DocumentDto<SicklistDto> model)
+        {
+            model = sicklistBL.Create(model);
+            return RedirectToAction("Edit", "Sicklist", new { Id = model.Data.Id });
+        }
+        #endregion
     }
 }

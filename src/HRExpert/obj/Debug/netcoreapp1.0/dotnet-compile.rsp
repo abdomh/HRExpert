@@ -244,4 +244,5 @@
 --resource:"C:\Users\baranov\Documents\GitHub\HRExpert\src\HRExpert\obj\Debug\netcoreapp1.0\HRExpertdotnet-compile.deps.json",HRExpert.deps.json
 C:\Users\baranov\Documents\GitHub\HRExpert\src\HRExpert\Program.cs
 C:\Users\baranov\Documents\GitHub\HRExpert\src\HRExpert\Startup.cs
-C:\Users\baranov\Documents\GitHub\HRExpert\src\HRExpert\Controllers\TestController.cs
+C:\Users\baranov\Documents\GitHub\HRExpert\src\HRExpert\ThemeLocationExpander.cs
+C:\Users\baranov\Documents\GitHub\HRExpert\src\HRExpert\Controllers\HomeController.cs

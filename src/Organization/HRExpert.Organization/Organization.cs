@@ -55,7 +55,7 @@ namespace HRExpert.Organization
                 {
                     [1000] = routeBuilder =>
                     {
-                        routeBuilder.MapRoute(name: "Organizations", template: "{controller=Organization}/", defaults: new { action = "Get" });
+                        routeBuilder.MapRoute(name: "Organizations", template: "{culture=ru}/{controller=Home}/{action=Index}");
                     }
                 };
             }

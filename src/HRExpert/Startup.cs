@@ -9,6 +9,7 @@ using Microsoft.Extensions.PlatformAbstractions;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
+using Microsoft.AspNetCore.Mvc.Razor;
 namespace HRExpert
 {
     /// <summary>
@@ -43,6 +44,11 @@ namespace HRExpert
         public override void ConfigureServices(IServiceCollection services)
         {           
             base.ConfigureServices(services);
+            services.Configure<RazorViewEngineOptions>(options =>
+            {
+                options.ViewLocationExpanders.Add(new ThemeLocationExpander(this.configurationRoot));
+            }
+            );
         }
         /// <summary>
         /// Конфигурация

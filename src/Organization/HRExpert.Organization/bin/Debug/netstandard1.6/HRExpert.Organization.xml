@@ -423,38 +423,11 @@
             Контроллер больничных
             </summary>
         </member>
-        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.#ctor(HRExpert.Organization.BL.Abstractions.ISicklistBL)">
+        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.#ctor(ExtCore.Data.Abstractions.IStorage,HRExpert.Organization.BL.Abstractions.ISicklistBL)">
             <summary>
             Конструктор
             </summary>
             <param name="sicklistBL"></param>
-        </member>
-        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.List">
-            <summary>
-            Список
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.Read(System.Int32)">
-            <summary>
-            Чтение
-            </summary>
-            <param name="sicklistid"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.Create(HRExpert.Organization.DTO.DocumentDto{HRExpert.Organization.DTO.SicklistDto})">
-            <summary>
-            Создание
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
-        </member>
-        <member name="M:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistController.Update(HRExpert.Organization.DTO.DocumentDto{HRExpert.Organization.DTO.SicklistDto})">
-            <summary>
-            Редактирование
-            </summary>
-            <param name="value"></param>
-            <returns></returns>
         </member>
         <member name="T:HRExpert.Organization.Controllers.Timesheet.Sicklist.SicklistFilesController">
             <summary>

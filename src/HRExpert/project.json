@@ -49,6 +49,7 @@
     "include": [
       "wwwroot",
       "Views",
+      "Themes",
       "appsettings.json",
       "dbconfig.json",
       "web.config"

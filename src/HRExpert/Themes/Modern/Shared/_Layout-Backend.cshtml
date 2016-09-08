@@ -1,0 +1,58 @@
+﻿@* Copyright © 2015 Dmitry Sikorsky. All rights reserved. *@
+@* Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. *@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>@ViewBag.Title | Platformus CMS</title>
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+  @await Component.InvokeAsync("BackendStyleSheets")
+  @await Component.InvokeAsync("BackendScripts")
+<style>
+    .navbar{
+            padding: 0 20px;
+    color: #fff;
+    font-size: 30px;
+    line-height: 60px;
+    background: #323232;
+    }
+    .container.with-side.toggled{
+        padding-left:0px !important;
+    }
+    .side.toggled{
+        overflow-x:hidden;
+        width:0px !important;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $('#sideToggle').click(function () {
+            $('.container').toggleClass('toggled');
+            $('.side').toggleClass('toggled');
+
+        });
+    });
+</script>
+</head>
+<body>
+  <div class="container with-side @(this.ViewBag.HasSideDetails == null ? null : "with-side-details")">
+    <div class="side">
+      <a class="platformus" href="/backend/">
+          Hi there! <span>CMS</span></a>
+      @await Component.InvokeAsync("BackendMenu")
+      <div class="user-menu">
+        <a class="menu-item" href="/backend/account/signout">
+          Sign out
+        </a>
+      </div>
+    </div>
+    <div class="navbar"><a id="sideToggle"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
+    @RenderSection("sideDetails", false)
+    <div class="content">
+      @RenderBody()
+    </div>
+  </div>
+</body>
+</html>

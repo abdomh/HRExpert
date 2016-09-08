@@ -1,0 +1,20 @@
+﻿@model Platformus.Navigation.Frontend.ViewModels.Shared.MenuItemViewModel
+@if (this.Model.MenuItems != null && this.Model.MenuItems.Any())
+{
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="/@System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName@Model.Url">
+            @Model.Name
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            @foreach (var menuItem in this.Model.MenuItems)
+            {
+                @Html.Partial("_MenuItem", menuItem)
+            }
+        </ul>
+    </li>
+}
+else
+{
+    <li><a href="/@System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName@Model.Url">@Model.Name</a></li>
+}

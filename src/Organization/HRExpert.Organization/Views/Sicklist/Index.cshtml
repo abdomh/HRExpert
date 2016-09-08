@@ -1,0 +1,53 @@
+﻿@using HRExpert.Organization.DTO
+@model List<DocumentDto<SicklistDto>>
+@{
+    this.Layout = "_Layout";
+    ViewBag.Title = "Больничные";
+
+}
+<ul class="breadcrumb">
+    <li><a href="#">Табель</a></li>
+    <li><a href="#">@ViewBag.Title</a></li>
+</ul>
+<div id="FilterContainer">
+    <form>
+        <div class="form-group">
+            <label for="personName">ФИО сотрудника:</label>
+            <input type="text" class="form-control" id="personName">
+        </div>
+        <button type="submit" class="btn btn-info">Выбрать</button>
+    </form>
+</div>
+<div id="ControlsContainer">
+    <a href="/Sicklist/Create" class="btn btn-primary">Создать заявку</a>
+</div>
+<div id="TableContainer">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Номер заявки</th>
+                <th>Дата создания</th>
+                <th>ФИО</th>
+                <th>Дата начала</th>
+                <th>Дата окончания</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var element in Model)
+            {
+                <tr>
+                    <td>@element.Data.Id <span class="badge"></span></td>
+                    <td>@element.CreateDate</td>
+                    <td>@element.Person.Name</td>
+                    <td>@element.Person.StaffEstablishedPost.Position.Name</td>
+                    <td>@element.Person.StaffEstablishedPost.Department.Name</td>
+                    <td>@element.Data.BeginDate</td>
+                    <td>@element.Data.EndDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+
+</script>

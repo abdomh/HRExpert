@@ -6,18 +6,17 @@ namespace HRExpert.Controllers
     /// <summary>
     /// Тест контроллер
     /// </summary>
-    [Route("Test")]
     [AllowAnonymous]
-    public class TestController:Controller
+    public class HomeController:Controller
     {
         /// <summary>
         /// Main
         /// </summary>
         /// <returns>string if ok</returns>
         [HttpGet]        
-        public string Index()
+        public IActionResult Index()
         {
-            return "Application is working!";
+            return View();
         }
     }
 }

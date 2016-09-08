@@ -1,0 +1,38 @@
+﻿@using HRExpert.Organization.DTO
+@model DocumentDto<SicklistDto>
+@{
+    this.Layout = "_Layout";
+    ViewBag.Title = "Редактирование заявки";
+}
+<ul class="breadcrumb">
+    <li><a href="#">Табель</a></li>
+    <li>@Html.ActionLink("Больничные","Index","Sicklist")</li>
+    <li>@ViewBag.Title</li>
+</ul>
+<form method="post">
+    <div id="FormContainer">
+        <div class="form-group">
+            <label for="personName">Сотрудник:</label>
+            <input type="text" class="form-control" id="personName">
+        </div>
+        <div class="form-group">
+            <label for="personName">Дата начала:</label>
+            @Html.EditorFor(model => model.Data.BeginDate, new { Class = "form-control" })
+        </div>
+        <div class="form-group ">
+            <label for="personName">Дата окончания:</label>
+            @Html.EditorFor(model => model.Data.EndDate, new { Class = "form-control" })
+        </div>
+    </div>
+    <div id="ControlsContainer">
+        <input type="submit" class="btn btn-success" value="Сохранить"/>
+        <input type="submit" class="btn btn-danger" value="Отменить" />
+    </div>
+</form>
+<script>
+    $(document).ready(function () {
+        $('#BeginDate').datepicker();
+        $('#EndDate').datepicker();
+    });
+</script>
+
