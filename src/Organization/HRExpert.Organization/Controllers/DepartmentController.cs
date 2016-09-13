@@ -27,7 +27,7 @@ namespace HRExpert.Organization.Controllers
         /// </summary>
         /// <param name="organizationid"></param>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet]        
         public DepartmentDto[] ByOrganization(int organizationid)
         {
             return departmentBl.ListByOrganization(organizationid).ToArray();

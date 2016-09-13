@@ -12,13 +12,11 @@ namespace HRExpert.Organization.BL
     public class TimesheetStatusBL: BaseBL,Abstractions.ITimesheetStatusBL
     {
         private ITimesheetStatusRepository timesheetStatusRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public TimesheetStatusBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.timesheetStatusRepository = handler.Storage.GetRepository<ITimesheetStatusRepository>();
-        }
-        public TimesheetStatusBL()
-        {            
+            this.timesheetStatusRepository = mainService.Storage.GetRepository<ITimesheetStatusRepository>();
         }
         public List<TimesheetStatusDto> List()
         {

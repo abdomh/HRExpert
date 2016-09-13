@@ -11,14 +11,11 @@ namespace HRExpert.Organization.BL
 {
     public class SicklistPaymentPercentBL: BaseBL,Abstractions.ISicklistPaymentPercentBL
     {
-        private ISicklistPaymentPercentRepository sicklistPaymentPercentRepository;
-        public override void SetHandler(IHandler handler)
+        private ISicklistPaymentPercentRepository sicklistPaymentPercentRepository;        
+        public SicklistPaymentPercentBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.sicklistPaymentPercentRepository = handler.Storage.GetRepository<ISicklistPaymentPercentRepository>();
-        }
-        public SicklistPaymentPercentBL()
-        {            
+            this.sicklistPaymentPercentRepository = mainService.Storage.GetRepository<ISicklistPaymentPercentRepository>();
         }
         public List<SicklistPaymentPercentDto> List()
         {

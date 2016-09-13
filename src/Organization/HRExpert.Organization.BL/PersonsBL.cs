@@ -13,13 +13,11 @@ namespace HRExpert.Organization.BL
     public class PersonsBL : BaseBL, Abstractions.IPersonBL
     {
         private IPersonRepository personsRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public PersonsBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.personsRepository = handler.Storage.GetRepository<IPersonRepository>();
-        }
-        public PersonsBL()
-        {            
+            this.personsRepository = mainService.Storage.GetRepository<IPersonRepository>();
         }
         public List<PersonDto> List()
         {

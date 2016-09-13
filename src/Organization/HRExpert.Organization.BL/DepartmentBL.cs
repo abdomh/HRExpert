@@ -11,13 +11,11 @@ namespace HRExpert.Organization.BL
     public class DepartmentBL : BaseBL,Abstractions.IDepartmentBL
     {        
         private IDepartmentRepository departmentRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public DepartmentBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.departmentRepository = handler.Storage.GetRepository<IDepartmentRepository>();
-        }
-        public DepartmentBL()
-        {
+            this.departmentRepository = mainService.Storage.GetRepository<IDepartmentRepository>();
         }
 
         #region Public

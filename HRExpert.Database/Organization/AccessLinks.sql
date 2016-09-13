@@ -4,6 +4,7 @@
 	[DepartmentId] int,
 	[TargetPersonId] int,
 	[RoleId] int not null,
+	[IsManual] bit not null default(0)
 	Constraint FK_AccessLinks_TargetPerson Foreign key (TargetPersonId) references Persons(Id),
 	Constraint FK_AccessLinks_Role foreign key (RoleId) References Roles(Id),
 	Constraint PK_AccessLinks Primary key (PersonId,DepartmentId, RoleId),

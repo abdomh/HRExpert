@@ -11,13 +11,11 @@ namespace HRExpert.Organization.BL
     public class PositionsBL: BaseBL,Abstractions.IPositionsBL
     {
         private IPositionRepository positionRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public PositionsBL(Abstractions.IMainService mainService)        
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.positionRepository = handler.Storage.GetRepository<IPositionRepository>();
-        }
-        public PositionsBL()        
-        {
+            this.positionRepository = mainService.Storage.GetRepository<IPositionRepository>();
         }
         #region CRUD
         public virtual IEnumerable<PositionDto> List()

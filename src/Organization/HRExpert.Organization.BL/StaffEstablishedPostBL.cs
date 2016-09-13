@@ -13,15 +13,13 @@ namespace HRExpert.Organization.BL
     public class StaffEstablishedPostBL: BaseBL,Abstractions.IStaffEstablishedPostBL
     {     
         private IStaffEstablishedPostRepository repository;
-        public override void SetHandler(IHandler handler)
+        
+        public StaffEstablishedPostBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.repository = handler.Storage.GetRepository<IStaffEstablishedPostRepository>();
-            UserManager userManager = new UserManager(this.handler);
+            this.repository = mainService.Storage.GetRepository<IStaffEstablishedPostRepository>();
+            UserManager userManager = new UserManager(mainService);
             this.repository.CurrentUserId = userManager.GetCurrentUser().Id;
-        }
-        public StaffEstablishedPostBL()
-        {
         }
         public List<StaffEstablishedPostDto> GetByDepartment(int DepartmentId)
         {

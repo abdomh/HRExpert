@@ -23,24 +23,22 @@ namespace HRExpert.Organization.BL
         private ITimesheetStatusRepository timesheetStatusRepository;
         private IPersonRepository personRepository;
         private ISignedFilesRepository signedFileRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public SicklistBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.sicklistRepository = handler.Storage.GetRepository<ISicklistRepository>();
-            this.documentTypeRepository = handler.Storage.GetRepository<IDocumentTypesRepository>();
-            this.personRepository = handler.Storage.GetRepository<IPersonRepository>();
-            this.sicklistBabyMindingTypesRepository = handler.Storage.GetRepository<ISicklistBabyMindingTypesRepository>();
-            this.sicklistPaymentPercentRepository = handler.Storage.GetRepository<ISicklistPaymentPercentRepository>();
-            this.sicklistPaymentRestrictTypesRepository = handler.Storage.GetRepository<ISicklistPaymentRestrictTypesRepository>();
-            this.sicklistTypesRepository = handler.Storage.GetRepository<ISicklistTypesRepository>();
-            this.timesheetStatusRepository = handler.Storage.GetRepository<ITimesheetStatusRepository>();
-            this.signedFileRepository = handler.Storage.GetRepository<ISignedFilesRepository>();
-            UserManager userManager = new UserManager(handler);
+            this.sicklistRepository = mainService.Storage.GetRepository<ISicklistRepository>();
+            this.documentTypeRepository = mainService.Storage.GetRepository<IDocumentTypesRepository>();
+            this.personRepository = mainService.Storage.GetRepository<IPersonRepository>();
+            this.sicklistBabyMindingTypesRepository = mainService.Storage.GetRepository<ISicklistBabyMindingTypesRepository>();
+            this.sicklistPaymentPercentRepository = mainService.Storage.GetRepository<ISicklistPaymentPercentRepository>();
+            this.sicklistPaymentRestrictTypesRepository = mainService.Storage.GetRepository<ISicklistPaymentRestrictTypesRepository>();
+            this.sicklistTypesRepository = mainService.Storage.GetRepository<ISicklistTypesRepository>();
+            this.timesheetStatusRepository = mainService.Storage.GetRepository<ITimesheetStatusRepository>();
+            this.signedFileRepository = mainService.Storage.GetRepository<ISignedFilesRepository>();
+            UserManager userManager = new UserManager(mainService);
             this.personRepository.CurrentUserId = userManager.GetCurrentUser().Id;
             this.sicklistRepository.CurrentUserId = userManager.GetCurrentUser().Id;
-        }
-        public SicklistBL()
-        {           
         }
         public List<DocumentDto<SicklistDto>> List()
         {

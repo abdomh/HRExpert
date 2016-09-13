@@ -4,11 +4,10 @@ namespace HRExpert.Organization.BL
 {
     public class BaseBL: Abstractions.IBaseBl
     {
-        protected IHandler handler;
-
-        public virtual void SetHandler(IHandler handler)
+        protected Abstractions.IMainService MainService;
+        public BaseBL(Abstractions.IMainService mainService)
         {
-            this.handler = handler;
-        }
+            this.MainService = mainService;
+        }     
     }
 }

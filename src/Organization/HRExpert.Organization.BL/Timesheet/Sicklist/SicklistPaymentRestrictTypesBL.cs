@@ -12,13 +12,11 @@ namespace HRExpert.Organization.BL
     public class SicklistPaymentRestrictTypesBL: BaseBL,Abstractions.ISicklistPaymentRestrictTypesBL
     {
         private ISicklistPaymentRestrictTypesRepository sicklistPaymentRestrictTypesRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public SicklistPaymentRestrictTypesBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.sicklistPaymentRestrictTypesRepository = handler.Storage.GetRepository<ISicklistPaymentRestrictTypesRepository>();
-        }
-        public SicklistPaymentRestrictTypesBL()
-        {            
+            this.sicklistPaymentRestrictTypesRepository = mainService.Storage.GetRepository<ISicklistPaymentRestrictTypesRepository>();
         }
         public List<SicklistPaymentRestrictTypeDto> List()
         {

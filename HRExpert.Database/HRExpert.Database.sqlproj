@@ -76,6 +76,8 @@
     <Folder Include="Core\Static" />
     <Folder Include="Core\Configuration" />
     <Folder Include="Core\Globalization" />
+    <Folder Include="Integration\Procedures" />
+    <Folder Include="Integration\Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Core\Users.sql" />
@@ -146,6 +148,12 @@
     <Build Include="Core\Globalization\Dictionaries.sql" />
     <Build Include="Core\Globalization\Cultures.sql" />
     <Build Include="Core\Globalization\Localizations.sql" />
+    <Build Include="Integration\Procedures\SyncPositions.sql" />
+    <Build Include="Integration\Procedures\SyncDepartments.sql" />
+    <Build Include="Integration\Procedures\SyncStaffEstablishedPost.sql" />
+    <Build Include="Integration\Procedures\SyncPersons.sql" />
+    <Build Include="Integration\Functions\CreateNewUser.sql" />
+    <Build Include="Integration\Procedures\SyncAll.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

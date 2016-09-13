@@ -20,7 +20,10 @@ AS
 	INSERT INTO Roles
 	(Name,Code)
 	VALUES
-	(N'Administrator',N'Administrator')
+	(N'Администратор',N'Administrator'),
+	(N'Руководитель',N'Manager'),
+	(N'Зам.Руководителя',N'SubManager'),
+	(N'Сотрудник',N'Employee')
 	
 	--Права доступа
 	INSERT INTO Permissions

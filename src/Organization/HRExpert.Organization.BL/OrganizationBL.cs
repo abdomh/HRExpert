@@ -9,14 +9,11 @@ namespace HRExpert.Organization.BL
     public class OrganizationBL: BaseBL, Abstractions.IOrganizationBL
     {
         private IOrganizationRepository organizationRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public OrganizationBL(Abstractions.IMainService mainService) 
+            :base(mainService)          
         {
-            base.SetHandler(handler);
-            this.organizationRepository = handler.Storage.GetRepository<IOrganizationRepository>();
-
-        }
-        public OrganizationBL()           
-        {            
+            this.organizationRepository = mainService.Storage.GetRepository<IOrganizationRepository>();
         }
         #region CRUD
         public virtual IEnumerable<OrganizationDto> List()

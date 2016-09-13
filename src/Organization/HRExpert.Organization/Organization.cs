@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using HRExpert.Organization.BL;
@@ -32,6 +33,7 @@ namespace HRExpert.Organization
                 {
                     [2000] = services =>
                     {
+                        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
                         services.AddScoped<IOrganizationBL, OrganizationBL>();
                         services.AddScoped<IDepartmentBL, DepartmentBL>();
                         services.AddScoped<IPositionsBL, PositionsBL>();
@@ -43,6 +45,7 @@ namespace HRExpert.Organization
                         services.AddScoped<ISicklistPaymentPercentBL, SicklistPaymentPercentBL>();
                         services.AddScoped<ISicklistPaymentRestrictTypesBL, SicklistPaymentRestrictTypesBL>();
                         services.AddScoped<ISicklistTypeBL, SicklistTypeBL>();
+                        services.AddScoped<IMainService, MainService>();
                     }
                 };
             }

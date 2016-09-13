@@ -12,13 +12,11 @@ namespace HRExpert.Organization.BL
     public class SicklistTypeBL : BaseBL,Abstractions.ISicklistTypeBL
     {
         private ISicklistTypesRepository sicklistTypesRepository;
-        public override void SetHandler(IHandler handler)
+        
+        public SicklistTypeBL(Abstractions.IMainService mainService)
+            :base(mainService)
         {
-            base.SetHandler(handler);
-            this.sicklistTypesRepository = handler.Storage.GetRepository<ISicklistTypesRepository>();
-        }
-        public SicklistTypeBL()
-        {            
+            this.sicklistTypesRepository = mainService.Storage.GetRepository<ISicklistTypesRepository>();
         }
         public List<SicklistTypeDto> List()
         {

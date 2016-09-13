@@ -4,6 +4,7 @@
 	[UserId] int,
 	[Code1C] uniqueidentifier,
 	[Name] nvarchar(256),
+	[Email] nvarchar(256),
 	[AcceptDate] DateTime not null default(getdate()),
 	[DismissalDate] DateTime,
 	[DepartmentId] int ,
