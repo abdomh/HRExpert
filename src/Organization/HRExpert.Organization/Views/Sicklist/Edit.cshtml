@@ -12,7 +12,7 @@
 </ul>
 <form method="post" enctype="multipart/form-data">
     <div id="FormContainer">
-        @Html.HiddenFor(x=>x.Data.Id)
+        @Html.HiddenFor(x => x.Data.Id)
         <div class="form-group">
             <label>Сотрудник:</label>@Model.Person.Name
         </div>
@@ -80,27 +80,29 @@
         </div>
         <div class="form-group">
             <label class="control-label">Скан документа:</label>
-            <span>@foreach (var file in Model.Files) { @Html.ActionLink(file.FileName, "GetFile","Sicklist",new { SicklistId=Model.Data.Id, typeId= 1}) }</span>
-            <input type="file" name="Data.SicklistDocument" />
-        </div>
-    </div>
-    <div>
-        @for (int i = 0; i < Model.Approvements.Count; i++)
-        {
-            <div class="form-group">
-                @Html.HiddenFor(x => x.Approvements[i].ApprovePosition)
-                <label>@Model.Approvements[i].Label</label>
-                @Html.CheckBoxFor(model => model.Approvements[i].isAccept)
-                <span>@Model.Approvements[i].Person?.Name</span>
-                <span>(@Model.Approvements[i].RealPerson?.Name)</span>
+            @if (Model.Files!=null)
+            {<span>@foreach (var file in Model.Files)
+                { @Html.ActionLink(file.FileName, "GetFile", "Sicklist", new { SicklistId = Model.Data.Id, typeId = 1 }) }</span>}
+                <input type="file" name="Data.SicklistDocument" />
             </div>
-        }
-    </div>
-    <div id="ControlsContainer">
-        <input type="submit" class="btn btn-success" value="Сохранить" />
-        <input type="submit" class="btn btn-danger" value="Отменить" />
-    </div>
-</form>
+        </div>
+        <div>
+            @for (int i = 0; i < Model.Approvements.Count; i++)
+            {
+                <div class="form-group">
+                    @Html.HiddenFor(x => x.Approvements[i].ApprovePosition)
+                    <label>@Model.Approvements[i].Label</label>
+                    @Html.CheckBoxFor(model => model.Approvements[i].isAccept)
+                    <span>@Model.Approvements[i].Person?.Name</span>
+                    <span>(@Model.Approvements[i].RealPerson?.Name)</span>
+                </div>
+            }
+        </div>
+        <div id="ControlsContainer">
+            <input type="submit" class="btn btn-success" value="Сохранить" />
+            <input type="submit" class="btn btn-danger" value="Отменить" />
+        </div>
+    </form>
 <script>
     $(document).ready(function () {
         $('#Data_BeginDate').datepicker({ dateFormat: 'dd.mm.yy' });

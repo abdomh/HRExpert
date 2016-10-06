@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v1.6/",
-    "signature": "4a256bcfcf62d0c9015bb803e03edee6c2d4d8c4"
+    "signature": "03f87300b768d931b0d56b2b97a311b5475b1738"
   },
   "compilationOptions": {},
   "targets": {
@@ -10,33 +10,19 @@
       "HRExpert.Organization.Data.Models/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "HRExpert.Organization.Data.Models.Abstractions": "1.0.0",
-          "HRExpert.Core.Data.Models.Abstractions": "1.0.0",
-          "HRExpert.Core.Data.Models": "1.0.0"
+          "Platformus.Security.Data.Models": "1.0.0-alpha10",
+          "HRExpert.Organization.Data.Models.Abstractions": "1.0.0"
         },
         "runtime": {
           "HRExpert.Organization.Data.Models.dll": {}
         }
       },
-      "ExtCore.Data.Models.Abstractions/1.0.0-alpha9": {
+      "ExtCore.Data.Models.Abstractions/1.0.0-alpha16": {
         "dependencies": {
-          "ExtCore.Infrastructure": "1.0.0-alpha9",
           "NETStandard.Library": "1.6.0"
         },
         "runtime": {
           "lib/netstandard1.6/ExtCore.Data.Models.Abstractions.dll": {}
-        }
-      },
-      "ExtCore.Infrastructure/1.0.0-alpha9": {
-        "dependencies": {
-          "Microsoft.AspNetCore.Http.Abstractions": "1.0.0",
-          "Microsoft.AspNetCore.Routing": "1.0.0",
-          "Microsoft.Extensions.Configuration.Abstractions": "1.0.0",
-          "Microsoft.Extensions.DependencyInjection.Abstractions": "1.0.0",
-          "NETStandard.Library": "1.6.0"
-        },
-        "runtime": {
-          "lib/netstandard1.6/ExtCore.Infrastructure.dll": {}
         }
       },
       "Microsoft.AspNetCore.Authorization/1.0.0": {
@@ -1315,42 +1301,22 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
-      "HRExpert.Core.Abstractions/1.0.0": {
-        "dependencies": {
-          "ExtCore.Infrastructure": "1.0.0-alpha9",
-          "NETStandard.Library": "1.6.0"
-        },
-        "runtime": {
-          "HRExpert.Core.Abstractions.dll": {}
-        }
-      },
-      "HRExpert.Core.Data.Models/1.0.0": {
-        "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "HRExpert.Core.Data.Models.Abstractions": "1.0.0",
-          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.0"
-        },
-        "runtime": {
-          "HRExpert.Core.Data.Models.dll": {}
-        }
-      },
-      "HRExpert.Core.Data.Models.Abstractions/1.0.0": {
-        "dependencies": {
-          "NETStandard.Library": "1.6.0",
-          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha9",
-          "HRExpert.Core.Abstractions": "1.0.0"
-        },
-        "runtime": {
-          "HRExpert.Core.Data.Models.Abstractions.dll": {}
-        }
-      },
       "HRExpert.Organization.Data.Models.Abstractions/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "HRExpert.Core.Data.Models.Abstractions": "1.0.0"
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16",
+          "Microsoft.AspNetCore.Mvc.DataAnnotations": "1.0.0"
         },
         "runtime": {
           "HRExpert.Organization.Data.Models.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Security.Data.Models.dll": {}
         }
       }
     }
@@ -1361,15 +1327,10 @@
       "serviceable": false,
       "sha512": ""
     },
-    "ExtCore.Data.Models.Abstractions/1.0.0-alpha9": {
+    "ExtCore.Data.Models.Abstractions/1.0.0-alpha16": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-rIIMKyT46/Ss3OyBtwvoWA6S/87SFSrZ6s9lAgwL7h3EkfHRqpE+6PrFnLcjcpQf4rik7zRlHSr0+FEpRbGoGg=="
-    },
-    "ExtCore.Infrastructure/1.0.0-alpha9": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-EJZ4VuvNgCfXdPGCky+Q9hHMo9Ing4uJHbqzdwBGkmstQvEzgeFNB/YcJnwQ0RUASQpWfGZvFu9lc31ojRG6pQ=="
+      "sha512": "sha512-/PdvD5ertgyhcN7ErglSbVKqQSDerYYwf7OlFnuzuv0dW8+q13RyePn39GAEE7A7DnF48j/hCS7Zze5OaXIkgg=="
     },
     "Microsoft.AspNetCore.Authorization/1.0.0": {
       "type": "package",
@@ -1886,22 +1847,12 @@
       "serviceable": true,
       "sha512": "sha512-Mk2mKmPi0nWaoiYeotq1dgeNK1fqWh61+EK+w4Wu8SWuTYLzpUnschb59bJtGywaPq7SmTuPf44wrXRwbIrukg=="
     },
-    "HRExpert.Core.Abstractions/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "HRExpert.Core.Data.Models/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "HRExpert.Core.Data.Models.Abstractions/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "HRExpert.Organization.Data.Models.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Data.Models/1.0.0-alpha10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
