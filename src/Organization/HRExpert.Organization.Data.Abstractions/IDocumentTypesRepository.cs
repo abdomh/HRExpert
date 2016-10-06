@@ -7,6 +7,7 @@ namespace HRExpert.Organization.Data.Abstractions
     {
         void Create(DocumentType entity);
         void Delete(int Id);
+        DocumentType WithCode(string code);
         void Delete(DocumentType entity);
         List<DocumentType> List();
         DocumentType Read(int Id);

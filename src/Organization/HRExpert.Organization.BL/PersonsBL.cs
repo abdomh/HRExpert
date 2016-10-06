@@ -18,6 +18,16 @@ namespace HRExpert.Organization.BL
             :base(mainService)
         {
             this.personsRepository = mainService.Storage.GetRepository<IPersonRepository>();
+            UserManager userManager = new UserManager(mainService);
+            this.personsRepository.CurrentUserId = userManager.GetCurrentUser().Id;
+        }
+        public PersonDto GetCurrentPerson()
+        {
+            return this.personsRepository.GetCurrentPerson()?.Convert();
+        }
+        public List<PersonDto> GetPersonsByPermissions()
+        {
+            return this.personsRepository.GetPersonsByPermissions().Select(x => x.Convert()).ToList();
         }
         public List<PersonDto> List()
         {

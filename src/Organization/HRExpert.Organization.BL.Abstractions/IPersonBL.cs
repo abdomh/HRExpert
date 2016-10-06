@@ -7,6 +7,12 @@ namespace HRExpert.Organization.BL.Abstractions
     /// </summary>
     public interface IPersonBL : IBaseBl
     {
+        PersonDto GetCurrentPerson();
+        /// <summary>
+        /// Список сотрудников доступных по правам
+        /// </summary>
+        /// <returns></returns>
+        List<PersonDto> GetPersonsByPermissions();
         /// <summary>
         /// Все сотрудники
         /// </summary>

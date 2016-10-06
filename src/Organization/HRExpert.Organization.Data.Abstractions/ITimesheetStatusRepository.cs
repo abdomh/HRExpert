@@ -3,7 +3,7 @@ using HRExpert.Organization.Data.Models;
 
 namespace HRExpert.Organization.Data.Abstractions
 {
-    public interface ITimesheetStatusRepository : ExtCore.Data.Abstractions.IRepository
+    public interface ITimesheetStatusRepository : IReferenceRepository
     {
         void Create(TimesheetStatus entity);
         void Delete(TimesheetStatus entity);

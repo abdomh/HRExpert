@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using HRExpert.Organization.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Expressions;
@@ -10,20 +11,27 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
     public class SicklistRepository: DocumentRepositoryBase<Sicklist>,Abstractions.ISicklistRepository
     {
+        private static IQueryable<Sicklist> IncludeAll(IQueryable<Sicklist> query)
+        {
+            return query
+                .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Department).ThenInclude(x => x.Organization)
+                .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
+                .Include(x => x.Document).ThenInclude(x => x.DocumentType)
+                .Include(x => x.Document).ThenInclude(x => x.Event).ThenInclude(x => x.Timesheet).ThenInclude(x => x.Status)
+                .Include(x => x.SicklistBabyMindingType)
+                .Include(x => x.SicklistPaymentPercent)
+                .Include(x => x.SicklistPaymentRestrictType)
+                .Include(x => x.SicklistType);
+        }
         public List<Sicklist> List()
         {
-            return
-            Query()
-                .Include(x=>x.Document).ThenInclude(x=>x.Person).ThenInclude(x=>x.StaffEstablishedPost).ThenInclude(x=>x.Department).ThenInclude(x=>x.Organization)
-                .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
-                .Include(x => x.Document).ThenInclude(x=>x.DocumentType)
-                .Include(x => x.Document).ThenInclude(x => x.Event).ThenInclude(x => x.Timesheet).ThenInclude(x => x.Status)
-                .Include(x=>x.SicklistBabyMindingType)
-                .Include(x=>x.SicklistPaymentPercent)
-                .Include(x=>x.SicklistPaymentRestrictType)
-                .Include(x=>x.SicklistType)
+            return IncludeAll(Query()).ToList();
+        }   
+        public List<Sicklist> List(Expression<Func<Sicklist,bool>> filter)
+        {
+            return IncludeAll(base.Filter(filter))
                 .ToList();
-        }        
+        }
         public void Create(Sicklist entity)
         {            
             this.dbSet.Add(entity);            
@@ -32,18 +40,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         public Sicklist Read(int Id)
         {
             return
-             Query()
-                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Department).ThenInclude(x => x.Organization)
-                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
-                 .Include(x => x.Document).ThenInclude(x => x.DocumentType)
-                 .Include(x => x.Document).ThenInclude(x => x.Event).ThenInclude(x => x.Timesheet).ThenInclude(x => x.Status)
-                 .Include(x => x.Document).ThenInclude(x => x.Files)
-                 .Include(x => x.Document).ThenInclude(x => x.Approvements).ThenInclude(x => x.Person)
-                 .Include(x => x.Document).ThenInclude(x => x.Approvements).ThenInclude(x => x.RealPerson)
-                 .Include(x => x.SicklistBabyMindingType)
-                 .Include(x => x.SicklistPaymentPercent)
-                 .Include(x => x.SicklistPaymentRestrictType)
-                 .Include(x => x.SicklistType)
+             IncludeAll(Query())
                  .Single(x => x.Id == Id);                 
         }
         public void Update(Sicklist entity)

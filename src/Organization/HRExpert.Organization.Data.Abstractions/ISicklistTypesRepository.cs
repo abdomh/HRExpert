@@ -3,7 +3,7 @@ using HRExpert.Organization.Data.Models;
 
 namespace HRExpert.Organization.Data.Abstractions
 {
-    public interface ISicklistTypesRepository : ExtCore.Data.Abstractions.IRepository
+    public interface ISicklistTypesRepository : IReferenceRepository
     {
         void Create(SicklistType entity);
         void Delete(SicklistType entity);

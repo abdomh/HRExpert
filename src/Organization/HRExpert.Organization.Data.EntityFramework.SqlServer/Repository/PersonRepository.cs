@@ -9,10 +9,19 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
     {
         private IQueryable<Person> Query()
         {
-            if(CurrentRoleId>0)
-                return this.dbSet.FromSql("SELECT * FROM vwPersonsAccessLinks where AccessUserId=@p0 and AccessRoleId=@p1", CurrentUserId, CurrentRoleId);
-            else
                 return this.dbSet.FromSql("SELECT * FROM vwPersonsAccessLinks where AccessUserId=@p0", CurrentUserId);
+        }
+        public Person GetByUserId(int UserId)
+        {
+            return this.dbSet.FirstOrDefault(x => x.UserId == UserId);
+        }
+        public List<Person> GetPersonsByPermissions()
+        {
+            return this.Query().ToList();
+        }
+        public Person GetCurrentPerson()
+        {
+            return this.dbSet.FirstOrDefault(x => x.UserId == CurrentUserId);
         }
         public List<Person> GetByStaffEstablishedPost(int OrganizationId, int DepartmentId, int PositionId)
         {

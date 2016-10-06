@@ -24,6 +24,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
             this.dbSet
                 .FirstOrDefault(x => x.Id == Id);
         }
+        public DocumentType WithCode(string code)
+        {
+            return this.dbSet.FirstOrDefault(x => x.Code == code);
+        }
         public void Update(DocumentType entity)
         {
             this.dbContext.Entry(entity).State = EntityState.Modified;

@@ -19,7 +19,7 @@ namespace HRExpert.Organization.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync(string fieldname)
         {
-            List<IdNameViewModel> options = personBL.List().Select(x => new IdNameViewModel { Id = x.Id, Name = x.Name }).ToList();
+            List<IdNameViewModel> options = personBL.GetPersonsByPermissions().Select(x => new IdNameViewModel { Id = x.Id, Name = x.Name }).ToList();
             PersonSelectViewModel model = new PersonSelectViewModel { FieldName = fieldname, SelectOptions = options };
             return this.View(model);
         }

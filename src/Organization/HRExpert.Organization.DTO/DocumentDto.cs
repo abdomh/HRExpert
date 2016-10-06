@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 namespace HRExpert.Organization.DTO
 {
@@ -7,6 +8,10 @@ namespace HRExpert.Organization.DTO
     /// </summary>
     public class DocumentDto<T> : ResourceDto
     {
+        public DocumentDto()
+        {
+            this.Approvements = new List<DocumentApprovementDto>();
+        }
         /// <summary>
         /// Создатель
         /// </summary>
@@ -30,11 +35,11 @@ namespace HRExpert.Organization.DTO
         /// <summary>
         /// Файлы
         /// </summary>
-        public FileDto[] Files { get; set; }
+        public List<FileDto> Files { get; set; }
         /// <summary>
         /// Согласования
         /// </summary>
-        public DocumentApprovementDto[] Approvements { get; set; }
+        public List<DocumentApprovementDto> Approvements { get; set; }
         
     }
 }

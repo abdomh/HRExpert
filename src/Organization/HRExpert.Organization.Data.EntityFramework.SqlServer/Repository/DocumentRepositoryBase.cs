@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using HRExpert.Organization.Data.Models;
@@ -15,6 +16,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .FromSql("SELECT * FROM vwDocumentAccessLinks where AccessUserId=@p0", CurrentUserId)
                 .Join<Document, T, Guid, T>(this.dbSet, x => x.Id, x => x.DocumentGuid, (x, y) => y);
                 
+        }
+        public virtual IQueryable<T> Filter(Expression<Func<T,bool>> filter)
+        {
+            return this.Query().Where(filter);
         }
         public virtual List<int> GetResourceRoles(Guid DocumentGuid)
         {

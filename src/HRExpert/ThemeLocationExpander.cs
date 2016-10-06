@@ -28,7 +28,8 @@ namespace HRExpert
         }
         public void PopulateValues(ViewLocationExpanderContext context)
         {
-            context.Values[THEME_KEY] = _configuration["ThemeManager:Theme"];
+            if(!(context.AreaName!=null && context.AreaName.ToLower()=="backend"))
+                context.Values[THEME_KEY] = _configuration["ThemeManager:Theme"];
         }
     }
 }

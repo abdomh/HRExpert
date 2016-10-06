@@ -24,7 +24,7 @@ namespace HRExpert.Organization.ViewComponents
             {
                 element.children = departments.Where(x => x.parentId == element.id);
             }
-            TreeViewModel model = new TreeViewModel { }
+            TreeViewModel model = new TreeViewModel { };
             return this.View(model);
         }
     }

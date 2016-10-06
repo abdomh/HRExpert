@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq.Expressions;
 using System.Collections.Generic;
 using HRExpert.Organization.Data.Models;
 namespace HRExpert.Organization.Data.Abstractions
@@ -9,6 +10,7 @@ namespace HRExpert.Organization.Data.Abstractions
         void Delete(Sicklist entity);
         void Delete(int Id);
         List<Sicklist> List();
+        List<Sicklist> List(Expression<Func<Sicklist, bool>> filter);
         Sicklist Read(int Id);
         void Update(Sicklist entity);
 

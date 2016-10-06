@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using HRExpert.Organization.Data.Models;
 using HRExpert.Organization.DTO;
 using HRExpert.Organization.Data.Abstractions;
@@ -21,9 +22,9 @@ namespace HRExpert.Organization.BL
         private ISicklistPaymentRestrictTypesRepository sicklistPaymentRestrictTypesRepository;
         private ISicklistPaymentPercentRepository sicklistPaymentPercentRepository;
         private ITimesheetStatusRepository timesheetStatusRepository;
-        private IPersonRepository personRepository;
-        private ISignedFilesRepository signedFileRepository;
-        
+        private IPersonRepository personRepository;        
+        private IDocumentFilesRepository documentFilesRepository;
+        private IDocumentRepository documentRepository;
         public SicklistBL(Abstractions.IMainService mainService)
             :base(mainService)
         {
@@ -35,22 +36,50 @@ namespace HRExpert.Organization.BL
             this.sicklistPaymentRestrictTypesRepository = mainService.Storage.GetRepository<ISicklistPaymentRestrictTypesRepository>();
             this.sicklistTypesRepository = mainService.Storage.GetRepository<ISicklistTypesRepository>();
             this.timesheetStatusRepository = mainService.Storage.GetRepository<ITimesheetStatusRepository>();
-            this.signedFileRepository = mainService.Storage.GetRepository<ISignedFilesRepository>();
+            this.documentFilesRepository = mainService.Storage.GetRepository<IDocumentFilesRepository>();
+            this.documentRepository = mainService.Storage.GetRepository<IDocumentRepository>();
+
             UserManager userManager = new UserManager(mainService);
             this.personRepository.CurrentUserId = userManager.GetCurrentUser().Id;
             this.sicklistRepository.CurrentUserId = userManager.GetCurrentUser().Id;
+        }
+        public List<DocumentDto<SicklistDto>> GetByFilterModel(object filterModel)
+        {
+            var filter = ContentFilterFactory.Create<Sicklist>(filterModel);
+            return this.List(filter);
         }
         public List<DocumentDto<SicklistDto>> List()
         {
             return sicklistRepository.List().Select(x => x.Convert()).ToList();
         }
+        public List<DocumentDto<SicklistDto>> List(Expression<Func<Sicklist,bool>> filter)
+        {
+            return sicklistRepository.List(filter).Select(x => x.Convert()).ToList();
+        }
         public DocumentDto<SicklistDto> Read(int Id)
         {
-            var document = this.sicklistRepository.Read(Id);
+            var document = this.sicklistRepository.Read(Id);            
             var dto = document.Convert();
             dto.AvailableForRoles = this.sicklistRepository.GetResourceRoles(document.DocumentGuid);
+            var persons = this.documentRepository.AvailableForPersons(document.DocumentGuid);
+            var CurrentPerson = this.personRepository.GetCurrentPerson();
+            var roles = this.documentRepository.AvailableForRoles(document.DocumentGuid, CurrentPerson.Id);
+            var permissions = this.documentRepository.AvailablePermissions(document.DocumentGuid, CurrentPerson.Id);
             return dto;
         }                
+        public byte[] GetFile(int SicklistId, int FileType, out string fileName)
+        {
+            fileName = "document";
+            byte[] result = null;
+            var entity = sicklistRepository.Read(SicklistId);
+            var file = entity.Document.Files.FirstOrDefault(x => x.FileType == FileType);
+            if (file != null)
+            {
+                result = GetFile(file.Id.ToString());
+                fileName = file.FileName;
+            }
+            return result;
+        }
         private void ChangeEntityProperties(Sicklist entity, DocumentDto<SicklistDto> dto)
         {
             var Person = entity.Document.Person==null? personRepository.Read(dto.Person.Id): entity.Document.Person;
@@ -62,7 +91,7 @@ namespace HRExpert.Organization.BL
             entity.isPreviousPaymentCounted = dto.Data.isPreviousPaymentCounted;
             entity.isUseBefore = dto.Data.isUseBefore;
             entity.Document.Person = Person;
-            entity.Document.DocumentType = documentTypeRepository.Read(1);
+            entity.Document.DocumentType = documentTypeRepository.WithCode("Sicklist");
             entity.Document.CreateDate = DateTime.Now;
             if(entity.Document.Event==null) entity.Document.Event = new PersonEvent();
             entity.Document.Event.BeginDate = dto.Data.BeginDate;
@@ -93,9 +122,9 @@ namespace HRExpert.Organization.BL
                     if (element.isAccept)
                     {
                         //проверка прав
-                        if (element.ApprovePosition == 1 && !handler.HttpContext.User.HasClaim("Permission","Табель.СогласованиеЗаСотрудника")) continue;
-                        if (element.ApprovePosition == 2 && !handler.HttpContext.User.HasClaim("Permission", "Табель.СогласованиеЗаРуководителя")) continue;
-                        if (element.ApprovePosition == 3 && !handler.HttpContext.User.HasClaim("Permission", "Табель.СогласованиеЗаКадровика")) continue;
+                        if (element.ApprovePosition == 1 && !MainService.HttpContext.User.HasClaim("Permission","Табель.СогласованиеЗаСотрудника")) continue;
+                        if (element.ApprovePosition == 2 && !MainService.HttpContext.User.HasClaim("Permission", "Табель.СогласованиеЗаРуководителя")) continue;
+                        if (element.ApprovePosition == 3 && !MainService.HttpContext.User.HasClaim("Permission", "Табель.СогласованиеЗаКадровика")) continue;
                         DocumentApprovement approve = entity.Document.Approvements.FirstOrDefault(x => x.ApprovePosition == element.ApprovePosition);
                         if (approve == null) approve = new DocumentApprovement();
                         if (!approve.isAccept)
@@ -112,13 +141,11 @@ namespace HRExpert.Organization.BL
             }
             if(dto.Data.SicklistDocument!=null)
             {
-                //var dir = Path.Combine(this.authService.RootPath, "uploads");
-                var filename = Guid.NewGuid().ToString();
-                //if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
-                //var fs = new FileStream(Path.Combine(dir, filename), FileMode.Create);
-                //dto.Data.SicklistDocument.CopyTo(fs);
-                //fs.Flush();
-                //entity.Document.Files.Add(new DocumentFile() { FileName = dto.Data.SicklistDocument.FileName, Path=Path.Combine("uploads",filename), FileType = 1 });
+                foreach(var file in entity.Document.Files.Where(x=>x.FileType==(int)FileTypesEnum.SicklistDocument))
+                {
+                    documentFilesRepository.Delete(file);
+                }
+                entity.Document.Files.Add(SaveFile(dto.Data.SicklistDocument, FileTypesEnum.SicklistDocument));
             }
         }
         public DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> dto)
@@ -127,8 +154,10 @@ namespace HRExpert.Organization.BL
             entity.Document = new Document();
 
             ChangeEntityProperties(entity, dto);
-
+            entity.Document.DocumentType = documentTypeRepository.WithCode("Sicklist");
             this.sicklistRepository.Create(entity);
+            entity.Document.DocumentId = entity.Id;
+            this.sicklistRepository.Update(entity);
             return entity.Convert();
         }
         public DocumentDto<SicklistDto> Update(DocumentDto<SicklistDto> dto)
@@ -141,15 +170,7 @@ namespace HRExpert.Organization.BL
             return entity.Convert();
         }
 
-        //files 
-        public Guid GetFileKey(int documentId, int filetype)
-        {
-            var doc = this.sicklistRepository.Read(documentId);
-            var file = doc.Document.Files.FirstOrDefault(x => x.FileType == filetype);
-            var signed = new SignedFile() { File = file, DeleteAfterDownload = true };
-            if (file != null) this.signedFileRepository.Create(signed); return signed.Id;
-            throw new FileNotFoundException("Файл не найден");
-        }
+        
 
     }
 }

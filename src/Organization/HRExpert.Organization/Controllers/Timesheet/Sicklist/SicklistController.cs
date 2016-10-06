@@ -5,6 +5,7 @@ using HRExpert.Organization.BL.Abstractions;
 using ExtCore.Data.Abstractions;
 namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
 {
+    using ViewModels;
     /// <summary>
     /// Контроллер больничных
     /// </summary>
@@ -66,21 +67,24 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         [HttpGet]
         public IActionResult Index()
         {
-            sicklistBL.SetHandler(this);
-            var model = sicklistBL.List();
+            SicklistListViewModel model = new SicklistListViewModel();
+            return View(model);
+        }
+        [HttpPost]
+        public IActionResult Index(SicklistListViewModel model)
+        {
+            model.Documents = this.sicklistBL.GetByFilterModel(model.Filter);
             return View(model);
         }
         [HttpGet]
         public IActionResult Edit(int Id)
         {
-            sicklistBL.SetHandler(this);
             var model = sicklistBL.Read(Id);
             return View(model);
         }
         [HttpPost]
         public IActionResult Edit(DocumentDto<SicklistDto> model)
         {
-            sicklistBL.SetHandler(this);
             model = sicklistBL.Update(model);
             return View(model);
         }
@@ -88,6 +92,9 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         public IActionResult Create()
         {
             var model = new DocumentDto<SicklistDto>();
+            model.Approvements.Add(new DocumentApprovementDto() { ApprovePosition = 1 });
+            model.Approvements.Add(new DocumentApprovementDto() { ApprovePosition = 2 });
+            model.Approvements.Add(new DocumentApprovementDto() { ApprovePosition = 3 });
             return View(model);
         }
         [HttpPost]
@@ -95,6 +102,13 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         {
             model = sicklistBL.Create(model);
             return RedirectToAction("Edit", "Sicklist", new { Id = model.Data.Id });
+        }
+
+        [HttpGet]
+        public IActionResult GetFile(int SicklistId, int fileType)
+        {
+            string filename;
+            return File(sicklistBL.GetFile(SicklistId, fileType, out filename), "application/octet-stream", filename);
         }
         #endregion
     }

@@ -1,11 +1,10 @@
-﻿@* Copyright © 2015 Dmitry Sikorsky. All rights reserved. *@
-@* Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information. *@
-@model Platformus.Navigation.Frontend.ViewModels.Shared.MenuViewModel
+﻿@model Platformus.Navigation.Frontend.ViewModels.Shared.MenuViewModel
 <div class="menu">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">WEBOR</a>
+                <img src="~/img/logo.png" style="display:inline;float:left" />
+                <a class="navbar-brand" href="~/"> WEBOR</a>
             </div>
             <ul class="nav navbar-nav">
                 @foreach (var menuItem in this.Model.MenuItems)
@@ -13,6 +12,12 @@
                     @Html.Partial("_MenuItem", menuItem)
                 }
             </ul>
+@if (Context.User.Identity.IsAuthenticated)
+{
+            <ul class="nav navbar-nav navbar-right">
+                @await Component.InvokeAsync("CurrentPerson")
+            </ul>
+}
         </div>
     </nav>
 </div>

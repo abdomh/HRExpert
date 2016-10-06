@@ -20,6 +20,6 @@
     "HRExpert.Organization.BL.Abstractions": "1.0.0-*",
     "HRExpert.Organization.DTO": "1.0.0-*",
     "Platformus.Security": "1.0.0-alpha10",
-    "Platformus.Infrastructure": "1.0.0-alpha10"
+    "Platformus.Infrastructure": "1.0.0-alpha10"    
   }
 }

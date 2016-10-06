@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using HRExpert.Organization.Data.Models;
 using HRExpert.Organization.DTO;
+using Platformus.Security.Data.Models;
 namespace HRExpert.Organization.BL.Converters
 {
     public static class Converter
@@ -117,7 +118,6 @@ namespace HRExpert.Organization.BL.Converters
             SicklistPaymentRestrictTypeDto dto = new SicklistPaymentRestrictTypeDto();
             dto.Id = entity.Id;
             dto.Name = entity.Name;
-            dto.Value = entity.Value;
             return dto;
         }
         public static SicklistBabyMindingTypeDto Convert(this SicklistBabyMindingType entity)
@@ -136,9 +136,9 @@ namespace HRExpert.Organization.BL.Converters
             dto.CreateDate = entity.CreateDate;
             dto.DocumentType = entity.DocumentType.Convert();
             if (entity.Approvements != null && entity.Approvements.Any())
-                dto.Approvements = entity.Approvements.Select(x => x.Convert()).ToArray();
+                dto.Approvements = entity.Approvements.Select(x => x.Convert()).ToList();
             if (entity.Files != null && entity.Files.Count > 0)
-                dto.Files = entity.Files.Select(x => x.Convert()).ToArray();
+                dto.Files = entity.Files.Select(x => x.Convert()).ToList();
             return dto;
         }
         public static DocumentDto<SicklistDto> Convert(this Sicklist entity)
@@ -171,6 +171,25 @@ namespace HRExpert.Organization.BL.Converters
             var dto = new FileDto();
             dto.FileName = entity.FileName;
             dto.FileType = entity.FileType;
+            return dto;
+        }
+
+        public static RoleDto Convert(this Role entity)
+        {
+            if (entity == null) return null;
+            RoleDto dto = new RoleDto();
+            dto.Name = entity.Name;
+            dto.Code = entity.Code;
+            dto.Id = entity.Id;
+            return dto;
+        }
+        public static PermissionDto Convert(this Permission entity)
+        {
+            if (entity == null) return null;
+            PermissionDto dto = new PermissionDto();
+            dto.Name = entity.Name;
+            dto.Code = entity.Code;
+            dto.Id = entity.Id;
             return dto;
         }
     }

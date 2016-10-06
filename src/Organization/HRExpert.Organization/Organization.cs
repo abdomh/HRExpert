@@ -35,6 +35,7 @@ namespace HRExpert.Organization
                     {
                         services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
                         services.AddScoped<IOrganizationBL, OrganizationBL>();
+                        services.AddScoped<IReferenceBL, ReferenceBL>();
                         services.AddScoped<IDepartmentBL, DepartmentBL>();
                         services.AddScoped<IPositionsBL, PositionsBL>();
                         services.AddScoped<IPersonBL, PersonsBL>();
@@ -58,7 +59,7 @@ namespace HRExpert.Organization
                 {
                     [1000] = routeBuilder =>
                     {
-                        routeBuilder.MapRoute(name: "Organizations", template: "{culture=ru}/{controller=Home}/{action=Index}");
+                        routeBuilder.MapRoute(name: "Organizations", template: "{culture=ru}/{controller=Home}/{action=Index}/{Id?}");
                     }
                 };
             }

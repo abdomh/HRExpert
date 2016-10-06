@@ -1,38 +1,104 @@
 ﻿@using HRExpert.Organization.DTO
+@using HRExpert.Organization.BL
 @model DocumentDto<SicklistDto>
 @{
     this.Layout = "_Layout";
-    ViewBag.Title = "Редактирование заявки";
+    ViewBag.Title = "Создание заявки";
 }
 <ul class="breadcrumb">
     <li><a href="#">Табель</a></li>
     <li>@Html.ActionLink("Больничные","Index","Sicklist")</li>
     <li>@ViewBag.Title</li>
 </ul>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     <div id="FormContainer">
         <div class="form-group">
-            <label for="personName">Сотрудник:</label>
-            <input type="text" class="form-control" id="personName">
+            @await Component.InvokeAsync("PersonSelect", new { fieldname = "Person.Id" })
         </div>
         <div class="form-group">
             <label for="personName">Дата начала:</label>
-            @Html.EditorFor(model => model.Data.BeginDate, new { Class = "form-control" })
+            @Html.EditorFor(model => model.Data.BeginDate, new Dictionary<string, string> { { "class", "form-control" } })
         </div>
         <div class="form-group ">
             <label for="personName">Дата окончания:</label>
-            @Html.EditorFor(model => model.Data.EndDate, new { Class = "form-control" })
+            @Html.EditorFor(model => model.Data.EndDate, new Dictionary<string, string> { { "class", "form-control" } })
+        </div>
+        <div class="form-group ">
+            <label for="personName">Назначить с:</label>
+            @Html.EditorFor(model => model.Data.PaymentBeginDate, new Dictionary<string, string> { { "class", "form-control" } })
+        </div>
+        <div class="form-group ">
+            <label for="personName">Количество дней:</label>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">Номер больничного листа:</label>
+            @Html.EditorFor(x => x.Data.SicklistNumber)
+        </div>
+        <div class="form-group">
+            <label class="control-label">Тип больничного листа:</label>
+            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistTypes, fieldname = "Data.SicklistType.Id" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">В случае ухода за ребенком:</label>
+            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistBabyMindingTypes, fieldname = "Data.SicklistBabyMindingType.Id" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Процент оплаты заработка:</label>
+            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistPaymentPercent, fieldname = "Data.SicklistPaymentPercent.Id" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Ограничение заработка (пособия):</label>
+            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistPaymentRestrictTypes, fieldname = "Data.SicklistPaymentRestrictType.Id" })
+        </div>
+        <div class="form-group">
+            <label>Снизить пособие за нарушение режима с:</label>
+            @Html.EditorFor(x => x.Data.PaymentDecreaseDate)
+        </div>
+        <div class="form-group">
+            <label>Учитывать заработок предыдущих страхователей</label>
+            @Html.CheckBoxFor(x => x.Data.isPreviousPaymentCounted)
+        </div>
+        <div class="form-group">
+            <label>Доплачивать до среднего заработка</label>
+            @Html.CheckBoxFor(x => x.Data.isAddToFullPayment)
+        </div>
+        <div class="form-group">
+            <label>Больничный имеет продолжение</label>
+
+        </div>
+        <div class="form-group">
+            <label class="control-label">Заполнение табеля:</label>
+            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.TimesheetStatus, fieldname = "Data.TimesheetStatus.Id" })
+        </div>
+        <div class="form-group">
+            <label class="control-label">Скан документа:</label>
+            <input type="file" name="Data.SicklistDocument" />
         </div>
     </div>
+    <div>
+        @for(int i=0; i<Model.Approvements.Count; i++)
+        {
+            <div class="form-group">
+                @Html.HiddenFor(x=>x.Approvements[i].ApprovePosition)                
+                <label>@Model.Approvements[i].Label</label>
+                @Html.CheckBoxFor(model=>model.Approvements[i].isAccept)
+                <span>@Model.Approvements[i].Person?.Name</span>
+                <span>(@Model.Approvements[i].RealPerson?.Name)</span>
+            </div>
+        }
+    </div>
     <div id="ControlsContainer">
-        <input type="submit" class="btn btn-success" value="Сохранить"/>
+        <input type="submit" class="btn btn-success" value="Сохранить" />
         <input type="submit" class="btn btn-danger" value="Отменить" />
     </div>
 </form>
 <script>
     $(document).ready(function () {
-        $('#Data_BeginDate').datepicker();
-        $('#Data_EndDate').datepicker();
+        $('#Data_BeginDate').datepicker({ dateFormat: 'dd.mm.yy' });
+        $('#Data_EndDate').datepicker({ dateFormat: 'dd.mm.yy' });
+        $('#Data_PaymentDecreaseDate').datepicker({ dateFormat: 'dd.mm.yy' });
+        $('#Data_PaymentBeginDate').datepicker({ dateFormat: 'dd.mm.yy' });
     });
 </script>
 

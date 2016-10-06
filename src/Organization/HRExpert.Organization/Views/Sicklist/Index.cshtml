@@ -1,5 +1,5 @@
 ﻿@using HRExpert.Organization.DTO
-@model List<DocumentDto<SicklistDto>>
+@model HRExpert.Organization.ViewModels.SicklistListViewModel
 @{
     this.Layout = "_Layout";
     ViewBag.Title = "Больничные";
@@ -10,13 +10,25 @@
     <li><a href="#">@ViewBag.Title</a></li>
 </ul>
 <div id="FilterContainer">
-    <form>
-        <div class="form-group">
-            <label for="personName">ФИО сотрудника:</label>
-            <input type="text" class="form-control" id="personName">
-        </div>
-        <button type="submit" class="btn btn-info">Выбрать</button>
-    </form>
+    <fieldset class="form-group">
+        <form method="post">
+            @Html.HiddenFor(x => x.OrderBy)
+            @Html.HiddenFor(x => x.OrderDirection)
+            <div class="form-group ">
+                <label for="personName">ФИО сотрудника:</label>
+                @Html.EditorFor(x => x.Filter.PersonName, new { @class = "form-control", placeholder = "ФИО сотрудника" })
+            </div>
+            <div class="form-group ">
+                <label>Дата начала:</label>
+                @Html.EditorFor(x => x.Filter.BeginDate, new { @class = "form-control" })
+            </div>
+            <div class="form-group ">
+                <label>Дата окончания:</label>
+                @Html.EditorFor(x => x.Filter.EndDate, new { @class = "form-control" })
+            </div>
+            <button type="submit" class="btn btn-info">Выбрать</button>
+        </form>
+        </fieldset>
 </div>
 <div id="ControlsContainer">
     <a href="@Url.Action("Create","Sicklist")" class="btn btn-primary">Создать заявку</a>
@@ -25,22 +37,28 @@
     <table class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
-                <th>Номер заявки</th>
-                <th>Дата создания</th>
-                <th>ФИО</th>
-                <th>Дата начала</th>
-                <th>Дата окончания</th>
+                <th onclick="ChangeSort('Data.Id')">Номер заявки</th>
+                <th onclick="ChangeSort('CreateDate')">Дата создания</th>
+                <th onclick="ChangeSort('Person.Name')">ФИО</th>
+                <th onclick="ChangeSort('Person.StaffEstablishedPost.Position.Name')">Должность</th>
+                <th onclick="ChangeSort('Person.StaffEstablishedPost.Department.Name')">Подразделение</th>
+                <th onclick="ChangeSort('Data.SicklistNumber')">Номер больничного листа</th>
+                <th onclick="ChangeSort('Data.SicklistType.Name')">Вид больничного</th>
+                <th onclick="ChangeSort('Data.BeginDate')">Дата начала</th>
+                <th onclick="ChangeSort('Data.EndDate')">Дата окончания</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var element in Model)
+            @foreach (var element in Model.Documents)
             {
                 <tr>
-                    <td>@element.Data.Id <span class="badge"></span></td>
+                    <td>@Html.ActionLink(element.Data.Id.ToString(),"Edit",new { Id=element.Data.Id }) <span class="badge"></span></td>
                     <td>@element.CreateDate</td>
                     <td>@element.Person.Name</td>
                     <td>@element.Person.StaffEstablishedPost.Position.Name</td>
                     <td>@element.Person.StaffEstablishedPost.Department.Name</td>
+                    <td>@element.Data.SicklistNumber</td>
+                    <td>@element.Data.SicklistType.Name</td>
                     <td>@element.Data.BeginDate</td>
                     <td>@element.Data.EndDate</td>
                 </tr>
@@ -49,5 +67,12 @@
     </table>
 </div>
 <script>
-
+    function ChangeSort(column)
+    {
+        var direction = $('#OrderDirection');
+        var orderby = $('#OrderBy')
+        if (orderby.val() == column) direction.val() = !direction.val();
+        orderby.val(column);
+        document.forms[0].submit();
+    }
 </script>

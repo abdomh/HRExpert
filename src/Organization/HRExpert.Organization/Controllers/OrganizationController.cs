@@ -25,7 +25,6 @@ namespace HRExpert.Organization.Controllers
             :base(storage)
         {
             this.organizationBl = organizationBl;
-            this.organizationBl.SetHandler(this);
         }
         #endregion
         /// <summary>

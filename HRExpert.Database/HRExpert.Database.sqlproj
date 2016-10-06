@@ -154,6 +154,13 @@
     <Build Include="Integration\Procedures\SyncPersons.sql" />
     <Build Include="Integration\Functions\CreateNewUser.sql" />
     <Build Include="Integration\Procedures\SyncAll.sql" />
+    <Build Include="Integration\In\SicklistTypes_1C.sql" />
+    <Build Include="Integration\In\SicklistBabyMindingTypes_1C.sql" />
+    <Build Include="Integration\In\SicklistPaymentRestrictTypes_1C.sql" />
+    <Build Include="Integration\Procedures\SyncSicklistTypes.sql" />
+    <Build Include="Integration\Procedures\SyncSicklistBabyMindingTypes.sql" />
+    <Build Include="Integration\Procedures\SyncSicklistPaymentRestrictTypes.sql" />
+    <Build Include="Organization\Views\vwDocumentAccess.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

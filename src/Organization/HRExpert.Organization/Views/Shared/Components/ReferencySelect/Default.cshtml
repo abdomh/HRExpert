@@ -1,0 +1,21 @@
+﻿@model HRExpert.Organization.ViewModels.ReferencySelectViewModel
+    <select  class="form-control" name="@Model.FieldName" @if (!Model.IsEditable)
+    { 
+        <text> disabled="disabled" </text>
+    }
+    
+    >
+@foreach (var element in Model.SelectOptions)
+        {
+           <option value="@element.Id" 
+                  @if (Model.CurrentValue == element.Id)
+                  {
+                      <text>selected="selected"</text>
+                  }
+            >@element.Name</option>
+        }
+    </select>
+@if (!Model.IsEditable)
+{
+    <input type="hidden" name="@Model.FieldName" value="@Model.CurrentValue"/>
+}

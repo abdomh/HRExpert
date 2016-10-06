@@ -13,7 +13,7 @@ BEGIN
 	DECLARE @persid int, @roleid int,@departmentid int
 	DECLARE access_cursor CURSOR FOR
 	SELECT acc.PersonId, acc.DepartmentId, acc.RoleId FROM AccessLinks acc
-	WHERE @personId is null or acc.PersonId=@personId
+	WHERE (@personId is null or acc.PersonId=@personId) and acc.TargetPersonId is null
 
 	OPEN access_cursor;
 

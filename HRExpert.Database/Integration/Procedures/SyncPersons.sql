@@ -14,7 +14,7 @@ AS
 		pers.DepartmentId = d.Id,
 		pers.PositionId = p.Id,
 		pers.Email = p1c.Email,
-		pers.AcceptDate = p1c.AcceptDate,
+		pers.AcceptDate = ISNULL(p1c.AcceptDate,GETDATE()),
 		pers.DismissalDate = p1c.DismissalDate,
 		pers.PostCount = p1c.PostCount
 	FROM Persons_1C p1c
@@ -45,7 +45,7 @@ AS
 	INSERT INTO UserRoles
 	(UserId,RoleId)
 	SELECT u.Id,r.Id FROM Users u
-	INNER JOIN Persons p on u.id=p.Id
+	INNER JOIN Persons p on u.id=p.UserId
 	INNER JOIN Positions pos on p.PositionId = pos.Id
 	INNER JOIN Roles r on r.Code = 'Manager' and pos.Rank=1
 	LEFT JOIN UserRoles ur on u.Id = ur.UserId and ur.RoleId = r.Id
@@ -54,7 +54,7 @@ AS
 	INSERT INTO UserRoles
 	(UserId,RoleId)
 	SELECT u.Id,r.Id FROM Users u
-	INNER JOIN Persons p on u.id=p.Id
+	INNER JOIN Persons p on u.id=p.UserId
 	INNER JOIN Positions pos on p.PositionId = pos.Id
 	INNER JOIN Roles r on r.Code = 'SubManager' and pos.Rank=2
 	LEFT JOIN UserRoles ur on u.Id = ur.UserId and ur.RoleId = r.Id
@@ -89,8 +89,14 @@ AS
 	SELECT pers.DepartmentId,pers.Id, r.Id FROM Persons pers
 	INNER JOIN Users u on pers.UserId = u.Id
 	INNER JOIN UserRoles ur on u.Id=ur.UserId
-	INNER JOIN Roles r on ur.RoleId =r.Id and (r.Code = 'Manager' or r.Code = 'SubManager')
-	
+	INNER JOIN Roles r on ur.RoleId =r.Id and (r.Code = 'Manager')
+
+	INSERT INTO AccessLinks
+	(DepartmentId,PersonId,RoleId)
+	SELECT pers.DepartmentId,pers.Id, r.Id FROM Persons pers
+	INNER JOIN Users u on pers.UserId = u.Id
+	INNER JOIN UserRoles ur on u.Id=ur.UserId
+	INNER JOIN Roles r on ur.RoleId =r.Id and (r.Code = 'SubManager')
 	INSERT INTO AccessLinks
 	(DepartmentId,TargetPersonId,PersonId,RoleId)
 	SELECT pers.DepartmentId, pers.Id,pers.Id, r.Id FROM Persons pers

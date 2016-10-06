@@ -2013,6 +2013,7 @@
       "HRExpert.Organization.Data.Models/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10",
           "HRExpert.Organization.Data.Models.Abstractions": "1.0.0"
         },
         "runtime": {
@@ -2031,6 +2032,7 @@
       },
       "HRExpert.Organization.DTO/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
           "NETStandard.Library": "1.6.0",
           "Microsoft.AspNetCore.Http": "1.0.0"
         },

@@ -3,7 +3,7 @@ using HRExpert.Organization.Data.Models;
 
 namespace HRExpert.Organization.Data.Abstractions
 {
-    public interface ISicklistBabyMindingTypesRepository: ExtCore.Data.Abstractions.IRepository
+    public interface ISicklistBabyMindingTypesRepository: IReferenceRepository
     {
         void Create(SicklistBabyMindingType entity);
         void Delete(SicklistBabyMindingType entity);

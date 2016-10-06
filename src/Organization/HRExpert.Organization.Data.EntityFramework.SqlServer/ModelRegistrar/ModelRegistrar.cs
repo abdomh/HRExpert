@@ -37,6 +37,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer
             modelbuilder.Entity<SicklistPaymentRestrictType>();
             ///
             modelbuilder.Entity<SignedFile>();
+            //modelbuilder.Entity<vwDocumentAccess>();
                   
         }
     }

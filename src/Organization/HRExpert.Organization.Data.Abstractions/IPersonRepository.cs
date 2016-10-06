@@ -4,6 +4,9 @@ namespace HRExpert.Organization.Data.Abstractions
 {
     public interface IPersonRepository : Base.IRepositoryWithPermissions
     {
+        Person GetByUserId(int UserId);
+        Person GetCurrentPerson();
+        List<Person> GetPersonsByPermissions();
         /// <summary>
         /// Получение сотрудника по идентификатору пользователя привязанного к подразделению
         /// </summary>

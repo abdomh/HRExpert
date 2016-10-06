@@ -1312,6 +1312,7 @@
       "HRExpert.Organization.Data.Models/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10",
           "HRExpert.Organization.Data.Models.Abstractions": "1.0.0"
         },
         "runtime": {
@@ -1326,6 +1327,14 @@
         },
         "runtime": {
           "HRExpert.Organization.Data.Models.Abstractions.dll": {}
+        }
+      },
+      "Platformus.Security.Data.Models/1.0.0-alpha10": {
+        "dependencies": {
+          "ExtCore.Data.Models.Abstractions": "1.0.0-alpha16"
+        },
+        "runtime": {
+          "Platformus.Security.Data.Models.dll": {}
         }
       }
     }
@@ -1867,6 +1876,11 @@
       "sha512": ""
     },
     "HRExpert.Organization.Data.Models.Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Platformus.Security.Data.Models/1.0.0-alpha10": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

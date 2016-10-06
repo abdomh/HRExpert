@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using HRExpert.Organization.Data.Models;
+using HRExpert.Organization.Data.Models.Abstractions;
 using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
@@ -37,6 +38,10 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         {
             this.dbSet.Remove(entity);
             this.dbContext.SaveChanges();
+        }
+        public List<IReference> GetReferencies()
+        {
+            return this.List().ToList<IReference>();
         }
     }
 }

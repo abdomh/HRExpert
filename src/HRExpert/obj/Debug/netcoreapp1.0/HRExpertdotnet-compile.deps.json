@@ -2849,6 +2849,7 @@
           "NETStandard.Library": "1.6.0",
           "Microsoft.AspNetCore.Mvc": "1.0.0",
           "Platformus.Infrastructure": "1.0.0-alpha10",
+          "Platformus.Security.Backend": "1.0.0-alpha10",
           "HRExpert.Organization.BL": "1.0.0",
           "HRExpert.Organization.BL.Abstractions": "1.0.0",
           "HRExpert.Organization.Data.Abstractions": "1.0.0",
@@ -2900,6 +2901,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
           "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
           "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10",
           "HRExpert.Organization.Data.Models": "1.0.0",
           "HRExpert.Organization.Data.Models.Abstractions": "1.0.0",
           "HRExpert.Organization.Data.Abstractions": "1.0.0"
@@ -2911,6 +2913,7 @@
       "HRExpert.Organization.Data.Models/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10",
           "HRExpert.Organization.Data.Models.Abstractions": "1.0.0"
         },
         "compile": {
@@ -2929,6 +2932,7 @@
       },
       "HRExpert.Organization.DTO/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
           "NETStandard.Library": "1.6.0",
           "Microsoft.AspNetCore.Http": "1.0.0"
         },
@@ -6085,6 +6089,7 @@
           "NETStandard.Library": "1.6.0",
           "Microsoft.AspNetCore.Mvc": "1.0.0",
           "Platformus.Infrastructure": "1.0.0-alpha10",
+          "Platformus.Security.Backend": "1.0.0-alpha10",
           "HRExpert.Organization.BL": "1.0.0",
           "HRExpert.Organization.BL.Abstractions": "1.0.0",
           "HRExpert.Organization.Data.Abstractions": "1.0.0",
@@ -6136,6 +6141,7 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "1.0.0",
           "ExtCore.Data.EntityFramework.SqlServer": "1.0.0-alpha16",
           "ExtCore.Infrastructure": "1.0.0-alpha16",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10",
           "HRExpert.Organization.Data.Models": "1.0.0",
           "HRExpert.Organization.Data.Models.Abstractions": "1.0.0",
           "HRExpert.Organization.Data.Abstractions": "1.0.0"
@@ -6147,6 +6153,7 @@
       "HRExpert.Organization.Data.Models/1.0.0": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
+          "Platformus.Security.Data.Models": "1.0.0-alpha10",
           "HRExpert.Organization.Data.Models.Abstractions": "1.0.0"
         },
         "runtime": {
@@ -6165,6 +6172,7 @@
       },
       "HRExpert.Organization.DTO/1.0.0": {
         "dependencies": {
+          "Microsoft.AspNetCore.Mvc": "1.0.0",
           "NETStandard.Library": "1.6.0",
           "Microsoft.AspNetCore.Http": "1.0.0"
         },
