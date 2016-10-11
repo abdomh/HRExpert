@@ -14,7 +14,7 @@
 	[isUseBefore] bit not null default(0),
 	[ExperienceYears] int,
 	[ExperienceMonth] int,
-	[SicklistStatusId] int,
+	[StatusId] int,
 	[IsContinued] bit not null default(0),
 	[DaysCount] int not null default(0),
 	Constraint FK_Sicklist_Type Foreign key (SicklistTypeId) References SicklistTypes(Id),

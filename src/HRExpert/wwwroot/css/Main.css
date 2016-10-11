@@ -15,24 +15,41 @@ table{
 #TableContainer
 {
     background-color:#F3EFFF;
+    border:1px solid #d0ceeb;
+    border-radius:2px;
     padding: 10px;
     margin: 5px;
     margin-bottom:10px;
+    overflow-x:scroll;
 }
 #ControlsContainer{   
     background-color:#EFF4FF;
+    border:1px solid #97e5e5;
+    border-radius:2px;
     padding: 10px;
     margin: 5px;
     margin-bottom:10px;
 }
 #FilterContainer{
     background-color:#EDFFFF;
+    border:1px solid #97e5e5;
+    border-radius:2px;
     padding: 10px;
     margin: 5px;
     margin-bottom:10px;
 }
 #FormContainer{
     background-color:#E9FFE9;
+    border:1px solid #8ad58a;
+    border-radius:2px;
+    padding: 10px;
+    margin: 5px;
+    margin-bottom:10px;
+}
+#ApproveContainer{
+    background-color:#edf5fb;
+    border:1px solid #c1efef;
+    border-radius:2px;
     padding: 10px;
     margin: 5px;
     margin-bottom:10px;

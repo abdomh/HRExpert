@@ -74,6 +74,7 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         public IActionResult Index(SicklistListViewModel model)
         {
             model.Documents = this.sicklistBL.GetByFilterModel(model.Filter);
+           
             return View(model);
         }
         [HttpGet]

@@ -6,6 +6,7 @@ namespace HRExpert.Organization.Data.Models
     [Table("Sicklist")]
     public class Sicklist : Abstractions.IDocument
     {
+        //Property
         [Key]
         public int Id { get; set; }
         [ForeignKey("Document")]
@@ -20,15 +21,21 @@ namespace HRExpert.Organization.Data.Models
         public int? ExperienceYears { get; set; }
         public int? ExperienceMonth {get;set;}
         
+        public int StatusId { get; set; }
+
+        //Справочники
         [ForeignKey("SicklistType")]
         public int SicklistTypeId { get; set; }
         public SicklistType SicklistType { get; set; }
+
         [ForeignKey("SicklistBabyMindingType")]
         public int? SicklistBabyMindingTypeId { get; set; }
         public SicklistBabyMindingType SicklistBabyMindingType { get; set; }
+
         [ForeignKey("SicklistPaymentRestrictType")]
         public int? SicklistPaymentRestrictTypeId { get; set; }
         public SicklistPaymentRestrictType SicklistPaymentRestrictType { get; set; }
+
         [ForeignKey("SicklistPaymentPercent")]
         public int? SicklistPaymentPercentId { get; set; }
         public SicklistPaymentPercent SicklistPaymentPercent { get; set; }

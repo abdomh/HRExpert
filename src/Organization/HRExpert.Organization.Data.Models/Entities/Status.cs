@@ -2,10 +2,11 @@
 
 namespace HRExpert.Organization.Data.Models
 {
-    [Table("DocumentStatuses")]
-    public class DocumentStatus: Abstractions.IEntity<int>
+    [Table("Statuses")]
+    public class Status: Abstractions.IEntity<int>
     {
         public int Id { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
     }
 }

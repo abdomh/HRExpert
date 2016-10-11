@@ -28,7 +28,7 @@ namespace HRExpert.Organization.BL
         }
         public byte[] GetFile(string Name)
         {
-            var dir = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
+            var dir = Directory.GetCurrentDirectory();
             byte[] result;
             using (var fs = new FileStream(Path.Combine(dir, Name), FileMode.Open))
             {

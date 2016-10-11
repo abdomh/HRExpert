@@ -68,10 +68,11 @@ AS
 	INSERT INTO Statuses
 	(Name, Code)
 	Values
-	(N'Черновик',N'Temp'),
-	(N'Документ оформлен',N'Ready'),
-	(N'Выгружен в 1С',N'Uploaded'),
-	(N'Отменено',N'Cancelled')
+	(N'Черновик',N'Draft'),
+	(N'Документ оформлен',N'Approved'),
+	(N'Выгружен в 1С',N'Sended'),
+	(N'Отменено',N'Cancelled'),
+	(N'В процессе согласования',N'WorkInProgress')
 
 	INSERT INTO DocumentTypes
 	(Name,Code)

@@ -26,8 +26,10 @@ namespace HRExpert.Organization.Data.Models
         [ForeignKey("DocumentType")]
         public int? DocumentTypeId { get; set; }
         public DocumentType DocumentType { get; set; }
-        public int? DocumentStatusId { get; set; }
-        public DocumentStatus Status { get; set; }
+        [ForeignKey("Status")]
+        public int? DocumentStatusId { get; set; }        
+        public Status Status { get; set; }
+       
         public PersonEvent Event { get; set; }
         public ICollection<DocumentFile> Files { get; set; }
         public ICollection<DocumentApprovement> Approvements { get; set; }

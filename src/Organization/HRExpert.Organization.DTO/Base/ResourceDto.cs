@@ -6,9 +6,6 @@ namespace HRExpert.Organization.DTO
     /// </summary>
     public class ResourceDto
     {
-        /// <summary>
-        /// Доступность для ролей
-        /// </summary>
-        public List<int> AvailableForRoles { get; set; }
+        public bool IsEditable { get; set; }
     }
 }

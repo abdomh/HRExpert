@@ -4,6 +4,9 @@
 @{
     this.Layout = "_Layout";
     ViewBag.Title = "Создание заявки";
+    object htmlAttributes = new { @class = "form-control" };    
+    var Options = new { htmlAttributes = htmlAttributes };
+
 }
 <ul class="breadcrumb">
     <li><a href="#">Табель</a></li>
@@ -17,15 +20,15 @@
         </div>
         <div class="form-group">
             <label for="personName">Дата начала:</label>
-            @Html.EditorFor(model => model.Data.BeginDate, new Dictionary<string, string> { { "class", "form-control" } })
+            @Html.EditorFor(model => model.Data.BeginDate, Options)
         </div>
         <div class="form-group ">
             <label for="personName">Дата окончания:</label>
-            @Html.EditorFor(model => model.Data.EndDate, new Dictionary<string, string> { { "class", "form-control" } })
+            @Html.EditorFor(model => model.Data.EndDate, Options)
         </div>
         <div class="form-group ">
             <label for="personName">Назначить с:</label>
-            @Html.EditorFor(model => model.Data.PaymentBeginDate, new Dictionary<string, string> { { "class", "form-control" } })
+            @Html.EditorFor(model => model.Data.PaymentBeginDate, Options)
         </div>
         <div class="form-group ">
             <label for="personName">Количество дней:</label>
@@ -33,7 +36,7 @@
         </div>
         <div class="form-group">
             <label class="control-label">Номер больничного листа:</label>
-            @Html.EditorFor(x => x.Data.SicklistNumber)
+            @Html.EditorFor(x => x.Data.SicklistNumber, Options)
         </div>
         <div class="form-group">
             <label class="control-label">Тип больничного листа:</label>
@@ -53,7 +56,7 @@
         </div>
         <div class="form-group">
             <label>Снизить пособие за нарушение режима с:</label>
-            @Html.EditorFor(x => x.Data.PaymentDecreaseDate)
+            @Html.EditorFor(x => x.Data.PaymentDecreaseDate, Options)
         </div>
         <div class="form-group">
             <label>Учитывать заработок предыдущих страхователей</label>
@@ -76,18 +79,7 @@
             <input type="file" name="Data.SicklistDocument" />
         </div>
     </div>
-    <div>
-        @for(int i=0; i<Model.Approvements.Count; i++)
-        {
-            <div class="form-group">
-                @Html.HiddenFor(x=>x.Approvements[i].ApprovePosition)                
-                <label>@Model.Approvements[i].Label</label>
-                @Html.CheckBoxFor(model=>model.Approvements[i].isAccept)
-                <span>@Model.Approvements[i].Person?.Name</span>
-                <span>(@Model.Approvements[i].RealPerson?.Name)</span>
-            </div>
-        }
-    </div>
+    
     <div id="ControlsContainer">
         <input type="submit" class="btn btn-success" value="Сохранить" />
         <input type="submit" class="btn btn-danger" value="Отменить" />

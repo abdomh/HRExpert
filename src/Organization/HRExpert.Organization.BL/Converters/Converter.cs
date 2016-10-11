@@ -152,6 +152,8 @@ namespace HRExpert.Organization.BL.Converters
             data.SicklistPaymentPercent = entity.SicklistPaymentPercent.Convert();
             data.SicklistPaymentRestrictType = entity.SicklistPaymentRestrictType.Convert();
             data.TimesheetStatus = entity.Document.Event?.Timesheet?.Status.Convert();
+
+            data.SicklistStatusId = entity.StatusId;
             data.BeginDate = entity.Document.Event?.BeginDate;
             data.EndDate = entity.Document.Event?.EndDate;
             data.SicklistNumber = entity.SicklistNumber;
