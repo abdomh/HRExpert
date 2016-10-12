@@ -18,6 +18,7 @@ namespace HRExpert.Organization.Data.Models
         public bool isPreviousPaymentCounted { get; set; }
         public bool isAddToFullPayment { get; set; }
         public bool isUseBefore { get; set; }
+        public bool IsContinued { get; set; }
         public int? ExperienceYears { get; set; }
         public int? ExperienceMonth {get;set;}
         

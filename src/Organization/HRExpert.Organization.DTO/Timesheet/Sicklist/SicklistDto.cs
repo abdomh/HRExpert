@@ -32,5 +32,6 @@ namespace HRExpert.Organization.DTO
         //files
         public IFormFile SicklistDocument { get; set; }
         public int SicklistStatusId { get; set; }
+        public string ApproveStatus { get; set; }
     }
 }

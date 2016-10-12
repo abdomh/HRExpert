@@ -134,6 +134,7 @@ namespace HRExpert.Organization.BL.Converters
             dto.Person = entity.Person.Convert();
             dto.Creator = entity.Creator.Convert();
             dto.CreateDate = entity.CreateDate;
+            dto.Status = entity.Status.Convert();
             dto.DocumentType = entity.DocumentType.Convert();
             if (entity.Approvements != null && entity.Approvements.Any())
                 dto.Approvements = entity.Approvements.Select(x => x.Convert()).ToList();
@@ -141,19 +142,43 @@ namespace HRExpert.Organization.BL.Converters
                 dto.Files = entity.Files.Select(x => x.Convert()).ToList();
             return dto;
         }
+        public static StatusDto Convert(this Status entity)
+        {
+            if (entity == null) return null;
+            StatusDto dto = new StatusDto();
+            dto.Name = entity.Name;
+            dto.Id = entity.Id;
+            return dto;
+        }
         public static DocumentDto<SicklistDto> Convert(this Sicklist entity)
         {
             if (entity == null) return null;
             SicklistDto data = new SicklistDto();
             var doc = GetDocumentDto<SicklistDto>(entity.Document);
-            
+            doc.Approvements.ForEach(x => x.SetApproveCheck(y =>
+                {
+                    bool result = !x.isAccept;
+                    switch(x.ApprovePosition)
+                    {
+                        case 1: result = result && doc.IsHasPermission(PermissionsCodeConstants.Request_Edit_Employee);
+                            break;
+                        case 2: result = result && doc.IsHasPermission(PermissionsCodeConstants.Request_Edit_Manager);
+                            break;
+                        case 3:
+                            result = result && doc.IsHasPermission(PermissionsCodeConstants.Request_Edit_PersonnelManager);
+                            break;
+                    }
+                    return result;
+                }
+            ));
             data.Id = entity.Id;
             data.SicklistBabyMindingType = entity.SicklistBabyMindingType.Convert();
             data.SicklistPaymentPercent = entity.SicklistPaymentPercent.Convert();
             data.SicklistPaymentRestrictType = entity.SicklistPaymentRestrictType.Convert();
             data.TimesheetStatus = entity.Document.Event?.Timesheet?.Status.Convert();
-
+            data.IsContinue = entity.IsContinued;
             data.SicklistStatusId = entity.StatusId;
+            data.ApproveStatus = ApproveConstants.Names[(ApproveProgressStatusEnum)entity.StatusId];
             data.BeginDate = entity.Document.Event?.BeginDate;
             data.EndDate = entity.Document.Event?.EndDate;
             data.SicklistNumber = entity.SicklistNumber;

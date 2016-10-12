@@ -17,6 +17,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Department).ThenInclude(x => x.Organization)
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
                 .Include(x => x.Document).ThenInclude(x => x.DocumentType)
+                .Include(x=>x.Document).ThenInclude(x=>x.Status)
                 .Include(x=>x.Document).ThenInclude(x=>x.Approvements).ThenInclude(x=>x.Person)
                 .Include(x => x.Document).ThenInclude(x => x.Approvements).ThenInclude(x => x.RealPerson)
                 .Include(x => x.Document).ThenInclude(x => x.Event).ThenInclude(x => x.Timesheet).ThenInclude(x => x.Status)
@@ -44,7 +45,7 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
         {
             return
              IncludeAll(Query())
-                 .Single(x => x.Id == Id);                 
+                 .FirstOrDefault(x => x.Id == Id);                 
         }
         public void Update(Sicklist entity)
         {

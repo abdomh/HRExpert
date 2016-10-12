@@ -29,6 +29,10 @@ namespace HRExpert.Organization.DTO
         /// </summary>
         public DocumentTypeDto DocumentType { get; set; }
         /// <summary>
+        /// Статус документа
+        /// </summary>
+        public StatusDto Status { get; set; }
+        /// <summary>
         /// Данные документа
         /// </summary>
         public T Data { get; set; }

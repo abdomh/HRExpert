@@ -15,4 +15,11 @@
         /// </summary>
         public const string Absence = "Absence";
     }
+    public static class PermissionsCodeConstants
+    {
+        public const string Request_Edit_Employee = "Request.Edit.Employee";
+        public const string Request_Edit_Manager = "Request.Edit.Manager";
+        public const string Request_Edit_PersonnelManager ="Request.Edit.PersonnelManager";
+    }
+    
 }

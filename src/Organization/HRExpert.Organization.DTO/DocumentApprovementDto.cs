@@ -12,8 +12,16 @@ namespace HRExpert.Organization.DTO
             { 2,"Руководитель"},
             { 3,"Кадровик"}
         };
+        private Func<DocumentApprovementDto, bool> IsApproveAvailable = (x) => { return !x.isAccept; };
+        public void SetApproveCheck(Func<DocumentApprovementDto, bool> IsApproveAvailable)
+        {
+            this.IsApproveAvailable = IsApproveAvailable;
+        }
         public void SetLabelsDictionary(Dictionary<int, string> labels) => this.Labels = labels;
-
+        public bool IsEditable
+        {
+            get { return IsApproveAvailable(this); }
+        }
         public bool isAccept {get;set;}
         public int ApprovePosition { get; set; }
         public string Label

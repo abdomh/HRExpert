@@ -1,10 +1,7 @@
 ﻿@model HRExpert.Organization.ViewModels.PersonSelectViewModel
-<div class="form-group">
-    <label>Сотрудник:</label>
     <select class="form-control" name="@Model.FieldName">
         @foreach (var element in Model.SelectOptions)
         {
            <option value="@element.Id">@element.Name</option>
         }
     </select>
-</div>

@@ -34,7 +34,7 @@ namespace HRExpert.Organization.BL
             var CurrentPerson = this.personRepository.GetCurrentPerson();
             var permissions = this.documentRepository.AvailablePermissions(Id, CurrentPerson.Id)?.Select(x => x.Code);
             if (permissions == null) return;
-
+            dto.ResourcePermissions = permissions;
             switch (dto.Data.SicklistStatusId)
             {
                 case 1:
@@ -105,6 +105,7 @@ namespace HRExpert.Organization.BL
             entity.isAddToFullPayment = dto.Data.isAddToFullPayment;
             entity.isPreviousPaymentCounted = dto.Data.isPreviousPaymentCounted;
             entity.isUseBefore = dto.Data.isUseBefore;
+            entity.IsContinued = dto.Data.IsContinue;
             entity.Document.Person = Person;
             entity.Document.DocumentType = documentTypeRepository.WithCode("Sicklist");
             entity.Document.CreateDate = DateTime.Now;

@@ -1,4 +1,5 @@
-﻿namespace HRExpert.Organization.Data.Models
+﻿using System.Collections.Generic;
+namespace HRExpert.Organization.Data.Models
 {
     public enum ApproveProgressStatusEnum
     {
@@ -18,5 +19,15 @@
         /// Согласован кадровиком
         /// </summary>
         ApprovedByPersonnelManager =4
+    }
+    public static class ApproveConstants
+    {
+        public static Dictionary<ApproveProgressStatusEnum, string> Names = new Dictionary<ApproveProgressStatusEnum, string>
+        {
+            { ApproveProgressStatusEnum.NotApproved, "Не согласован" },
+            { ApproveProgressStatusEnum.ApprovedByEmployee, "Согласовано сотрудником" },
+            { ApproveProgressStatusEnum.ApprovedByManager, "Согласовано руководителем" },
+            { ApproveProgressStatusEnum.ApprovedByPersonnelManager, "Согласовано кадровиком" }
+        };
     }
 }
