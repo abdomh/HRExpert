@@ -12,7 +12,9 @@ table{
 {
     padding:20px;
 }
-
+.hiddenDiv{
+    display:none;
+}
 .TableContainer
 {
     background-color:#F3EFFF;  
@@ -33,7 +35,15 @@ table{
 .collapsed-body{
     display:none;
 }
-.collaps-button{
+.defaultDialog{
+    width:800px;
+    height:600px;
 }
-.collaps-button .active{
+.defaultDialogContent{
+    width:750px;
+    height:500px;
+}
+.defaultDialogButtons{
+    width: 750px;
+    height:100px;
 }

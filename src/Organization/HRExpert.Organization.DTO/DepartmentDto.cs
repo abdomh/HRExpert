@@ -16,7 +16,7 @@
         /// <summary>
         /// Идентификатор родителя
         /// </summary>
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
         /// <summary>
         /// Организация
         /// </summary>

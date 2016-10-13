@@ -18,8 +18,8 @@ namespace HRExpert.Organization.BL
             :base(mainService)
         {
             this.repository = mainService.Storage.GetRepository<IStaffEstablishedPostRepository>();
-            UserManager userManager = new UserManager(mainService);
-            this.repository.CurrentUserId = userManager.GetCurrentUser().Id;
+
+            this.repository.CurrentUserId = mainService.CurrentUserId;
         }
         public List<StaffEstablishedPostDto> GetByDepartment(int DepartmentId)
         {

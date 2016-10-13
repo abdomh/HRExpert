@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
 using HRExpert.Organization.BL.Abstractions;
@@ -22,6 +23,10 @@ namespace HRExpert.Organization.Controllers
             this.departmentBl = departmentBl;
         }
         #endregion
+        public IEnumerable<TreeDto> GetTree()
+        {
+            return departmentBl.DepartmentsTreeForCurrentUser();
+        }
         /// <summary>
         /// Список подразделений по организации
         /// </summary>

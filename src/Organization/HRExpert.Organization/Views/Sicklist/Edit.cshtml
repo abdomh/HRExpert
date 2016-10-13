@@ -22,7 +22,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">Ревизиты сотрудника</div>
     <div class="panel-body">
-        <fieldset class="form-horizontal">
+        <fieldset class="form-horizontal">            
             <div class="form-group">
                 <label class="col-sm-2">Сотрудник:</label>
                 <div class="col-sm-10">
@@ -190,7 +190,8 @@
 </form>
 
 <script>
-    $(document).ready(function () {        
+    $(document).ready(function () {
+        HRexpert.TypicalInit();        
         $('#Data_BeginDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_EndDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_PaymentDecreaseDate').datepicker({ dateFormat: 'dd.mm.yy' });

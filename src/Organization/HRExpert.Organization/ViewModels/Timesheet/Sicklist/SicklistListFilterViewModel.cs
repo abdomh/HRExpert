@@ -12,8 +12,9 @@ namespace HRExpert.Organization.ViewModels
     {
         [ContentFilter(ModelPropertyName ="Document.Person.Name", CheckAction = ContentFilterActions.StartsWith)]
         public string PersonName { get; set; }
-        [ContentFilter(ModelPropertyName = "Document.Person.Department.Id", CheckAction = ContentFilterActions.StartsWith)]
+        [ContentFilter(ModelPropertyName = "Document.Person.DepartmentId", CheckAction = ContentFilterActions.Equals)]
         public int? DepartmentId { get; set; }
+        public string DepartmentName { get; set; }
         [ContentFilter(ModelPropertyName = "Document.Event.BeginDate", CheckAction = ContentFilterActions.GreatOrEquals)]
         public DateTime? BeginDate { get; set; }
         [ContentFilter(ModelPropertyName = "Document.Event.EndDate", CheckAction = ContentFilterActions.LessOrEquals)]

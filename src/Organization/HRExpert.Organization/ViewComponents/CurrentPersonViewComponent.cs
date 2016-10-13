@@ -22,10 +22,8 @@ namespace HRExpert.Organization.ViewComponents
             this.mainService = mainService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
-        {
-            UserManager userManager = new UserManager(mainService);
-            var User = userManager.GetCurrentUser();
-            if (User == null) return null;
+        {            
+            if (!mainService.IsUserLoggedIn) return null;
             var Person = personBL.GetCurrentPerson();
             CurrentPersonViewModel model = new CurrentPersonViewModel();
             model.Name = Person.Name;

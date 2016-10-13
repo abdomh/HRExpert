@@ -22,12 +22,17 @@ namespace HRExpert.Organization.Data.Models
     }
     public static class ApproveConstants
     {
+        public const string NotApproved = "Не согласован";
+        public const string ApprovedByEmployee = "Согласовано сотрудником";
+        public const string ApprovedByManager = "Согласовано руководителем";
+        public const string ApprovedByPersonnelManager = "Согласовано кадровиком";
+
         public static Dictionary<ApproveProgressStatusEnum, string> Names = new Dictionary<ApproveProgressStatusEnum, string>
         {
-            { ApproveProgressStatusEnum.NotApproved, "Не согласован" },
-            { ApproveProgressStatusEnum.ApprovedByEmployee, "Согласовано сотрудником" },
-            { ApproveProgressStatusEnum.ApprovedByManager, "Согласовано руководителем" },
-            { ApproveProgressStatusEnum.ApprovedByPersonnelManager, "Согласовано кадровиком" }
+            { ApproveProgressStatusEnum.NotApproved, NotApproved },
+            { ApproveProgressStatusEnum.ApprovedByEmployee, ApprovedByEmployee },
+            { ApproveProgressStatusEnum.ApprovedByManager, ApprovedByManager },
+            { ApproveProgressStatusEnum.ApprovedByPersonnelManager, ApprovedByPersonnelManager }
         };
     }
 }

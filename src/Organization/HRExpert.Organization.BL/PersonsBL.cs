@@ -18,8 +18,7 @@ namespace HRExpert.Organization.BL
             :base(mainService)
         {
             this.personsRepository = mainService.Storage.GetRepository<IPersonRepository>();
-            UserManager userManager = new UserManager(mainService);
-            this.personsRepository.CurrentUserId = userManager.GetCurrentUser().Id;
+            this.personsRepository.CurrentUserId = MainService.CurrentUserId;
         }
         public PersonDto GetCurrentPerson()
         {

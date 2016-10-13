@@ -1,9 +1,9 @@
 ﻿using ExtCore.Data.Abstractions;
 using Microsoft.AspNetCore.Http;
-
+using Platformus.Security;
 namespace HRExpert.Organization.BL
 {
-    public class MainService : Abstractions.IMainService
+    public class MainService : Abstractions.IMainService, Platformus.Barebone.IHandler
     {
         private IHttpContextAccessor httpContextAccessor;
         private IStorage storage;
@@ -13,6 +13,17 @@ namespace HRExpert.Organization.BL
             this.storage = storage;
 
         }
+        public bool IsUserLoggedIn { get { return this.HttpContext.User.Identity.IsAuthenticated; } }
+        private UserManager userManager;
+        public UserManager UserManager
+        {
+            get { if (userManager == null) userManager = new UserManager(this); return userManager; }            
+        }
+        public int CurrentUserId
+        {
+            get { return this.UserManager.GetCurrentUser().Id; }
+        }
+
         public HttpContext HttpContext
         {
             get

@@ -11,6 +11,11 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
     /// </summary>
     public class DepartmentRepository : ExtCore.Data.EntityFramework.SqlServer.RepositoryBase<Department>, IDepartmentRepository
     {
+
+        public IEnumerable<Department> GetDepartmentsForUser(int UserId)
+        {
+            return this.dbSet.FromSql("select * from [dbo].[vwAllDepartmentsByPersonOrganization] where accessuserid = {0} ", UserId).ToList();
+        }
         /// <summary>
         /// Все подразделения
         /// </summary>

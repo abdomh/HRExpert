@@ -160,10 +160,9 @@ namespace HRExpert.Organization.BL
             this.documentFilesRepository = mainService.Storage.GetRepository<IDocumentFilesRepository>();
             this.documentRepository = mainService.Storage.GetRepository<IDocumentRepository>();
             this.documentStatusRepository = mainService.Storage.GetRepository<IDocumentStatusRepository>();
-
-            UserManager userManager = new UserManager(mainService);
-            this.personRepository.CurrentUserId = userManager.GetCurrentUser().Id;
-            this.sicklistRepository.CurrentUserId = userManager.GetCurrentUser().Id;
+            
+            this.personRepository.CurrentUserId = mainService.CurrentUserId;
+            this.sicklistRepository.CurrentUserId = mainService.CurrentUserId;
         }
         #endregion
 

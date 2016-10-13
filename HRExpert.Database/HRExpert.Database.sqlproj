@@ -161,6 +161,7 @@
     <Build Include="Integration\Procedures\SyncSicklistBabyMindingTypes.sql" />
     <Build Include="Integration\Procedures\SyncSicklistPaymentRestrictTypes.sql" />
     <Build Include="Organization\Views\vwDocumentAccess.sql" />
+    <Build Include="Organization\Views\vwAllDepartmentsByPersonOrganization.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="HRExpert.Database.publish.xml" />

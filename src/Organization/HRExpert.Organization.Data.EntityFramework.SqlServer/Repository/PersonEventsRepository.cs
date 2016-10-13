@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using HRExpert.Organization.Data.Models;
 using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
@@ -16,7 +17,14 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
                 .ToList();
         }
-        
+        public List<PersonEvent> GetPersonEvents(Expression<Func<PersonEvent,bool>> searchOptions)
+        {
+            var query = this.dbSet.Where(x =>
+                (x.Document.Status.Code == DocumentStatusCodeConstants.Codes[DocumentStatusEnum.Approved] || x.Document.Status.Code == DocumentStatusCodeConstants.Codes[DocumentStatusEnum.SendedTo1C])
+                );
+            if (searchOptions != null) query.Where(searchOptions);
+            return query.ToList();
+        }
         public void Create(PersonEvent entity)
         {
             this.dbSet.Add(entity);

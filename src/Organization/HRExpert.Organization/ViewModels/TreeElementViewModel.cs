@@ -9,7 +9,7 @@ namespace HRExpert.Organization.ViewModels
     {
         public string text { get; set; }
         public int id { get; set; }
-        public int parentId { get; set; }
+        public int? parentId { get; set; }
         public IEnumerable<TreeElementViewModel> children { get; set; }
     }
 }

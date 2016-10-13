@@ -19,6 +19,16 @@ namespace HRExpert.Organization.BL
         }
 
         #region Public
+        public IEnumerable<TreeDto> DepartmentsTreeForCurrentUser()
+        {
+            var departments = this.departmentRepository.GetDepartmentsForUser(this.MainService.CurrentUserId);
+            List<TreeDto> treedtos = departments?.Select(x => new TreeDto { id = x.Id, parentId = x.ParentId, text = x.Name }).ToList();
+            foreach(var branch in treedtos)
+            {
+                branch.children.AddRange(treedtos.Where(x => x.parentId.HasValue && x.parentId == branch.id));
+            }
+            return treedtos.Where(x => !x.parentId.HasValue);
+        }
         public IEnumerable<DepartmentDto> List()
         {
             var all = departmentRepository.All();            

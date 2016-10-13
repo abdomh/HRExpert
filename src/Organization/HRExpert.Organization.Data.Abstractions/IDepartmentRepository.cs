@@ -8,6 +8,12 @@ namespace HRExpert.Organization.Data.Abstractions
     public interface IDepartmentRepository: ExtCore.Data.Abstractions.IRepository
     {
         /// <summary>
+        /// Подразделения для пользователя
+        /// </summary>
+        /// <param name="UserId"></param>
+        /// <returns></returns>
+        IEnumerable<Department> GetDepartmentsForUser(int UserId);
+        /// <summary>
         /// Все подразделения по Id организации
         /// </summary>
         /// <param name="Id"></param>

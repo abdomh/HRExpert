@@ -6,6 +6,11 @@ namespace HRExpert.Organization.BL.Abstractions
     public interface IDepartmentBL: IBaseBl
     {
         /// <summary>
+        /// Дерево подразделений для пользователя
+        /// </summary>
+        /// <returns></returns>
+        IEnumerable<TreeDto> DepartmentsTreeForCurrentUser();
+        /// <summary>
         /// Все
         /// </summary>
         /// <returns></returns>
