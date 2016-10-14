@@ -87,8 +87,11 @@ var HRexpert =
             }
             else onFinish(createDialog());
         }
-    }
+    }    
     ,
+    ClearFilter: function () {
+        $('input[name^="Filter"]').val('');
+    },
     TypicalInit : function()
     {
         this.ConfigureHiddenDiv();

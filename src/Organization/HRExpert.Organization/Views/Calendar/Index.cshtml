@@ -1,0 +1,57 @@
+﻿@using HRExpert.Organization.DTO
+@{
+    this.Layout = "_Layout";
+    ViewBag.Title = "Календарь";
+
+}
+<ul class="breadcrumb">
+    <li><a href="#">Табель</a></li>
+    <li><a href="#">@ViewBag.Title</a></li>
+</ul>
+<div class="panel panel-default">
+    <div class="panel-heading">Календарь</div>
+    <div class="panel-body TableContainer">
+
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Легенда</div>
+    <div class="panel-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>Наименование</th>
+                <th>Цвет</th>
+            </tr>
+            @foreach (var el in HRExpert.Organization.Data.Models.DocumentCodeNames.Names)
+            {
+                <tr>
+                    <td>@el.Value</td>
+                    <td style="background-color:@HRExpert.Organization.Data.Models.DocumentColorConstants.ByCode[el.Key]"></td>
+                </tr>
+            }
+        </table>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        HRexpert.TypicalInit();
+        $('.TableContainer').fullCalendar({
+            events: '/ru/calendar/GetData',
+            eventRender: function (event, element) {
+                element.qtip({
+                    content: event.description,
+                    style: { classes: 'qtip-bootstrap' },
+                    position: {
+                        my: 'top center',
+                        at: 'bottom center',
+                        target: 'mouse'
+                    }
+                });
+            },
+            locale: 'ru',
+            eventLimit: true
+        });
+    });
+
+</script>

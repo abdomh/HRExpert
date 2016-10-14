@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
 {
     public class PersonEventsRepository: ExtCore.Data.EntityFramework.SqlServer.RepositoryBase<PersonEvent>,Abstractions.IPersonEventsRepository
-    {
+    {        
         public List<PersonEvent> List()
         {
             return
@@ -17,13 +17,16 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
                 .ToList();
         }
-        public List<PersonEvent> GetPersonEvents(Expression<Func<PersonEvent,bool>> searchOptions)
+        public List<PersonEvent> GetPersonEvents(int UserId, DateTime start, DateTime end)
         {
-            var query = this.dbSet.Where(x =>
-                (x.Document.Status.Code == DocumentStatusCodeConstants.Codes[DocumentStatusEnum.Approved] || x.Document.Status.Code == DocumentStatusCodeConstants.Codes[DocumentStatusEnum.SendedTo1C])
-                );
-            if (searchOptions != null) query.Where(searchOptions);
-            return query.ToList();
+            return this.dbSet
+                .Include(x => x.Document).ThenInclude(x => x.DocumentType)
+                .Include(x => x.Timesheet).ThenInclude(x => x.Status)
+                .Include(x => x.Document).ThenInclude(x => x.Person).ThenInclude(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
+                .FromSql("select pe.* from vwDocumentAccessLinks dal INNER JOIN PersonEvents pe on pe.DocumentGuid = dal.Id INNER JOIN Statuses s on dal.DocumentStatusId=s.Id and (s.Code=N'Approved' or s.Code = N'Sended') where dal.AccessUserId = {0} and (pe.BeginDate between {1} and {2} or pe.EndDate between {1} and {2})", UserId, start, end)
+                .ToList();
+                ;
+            
         }
         public void Create(PersonEvent entity)
         {

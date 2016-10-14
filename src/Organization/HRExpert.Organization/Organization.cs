@@ -39,6 +39,7 @@ namespace HRExpert.Organization
                         services.AddScoped<IDepartmentBL, DepartmentBL>();
                         services.AddScoped<IPositionsBL, PositionsBL>();
                         services.AddScoped<IPersonBL, PersonsBL>();
+                        services.AddScoped<IPersonEventBL, PersonEventBL>();
                         services.AddScoped<IStaffEstablishedPostBL, StaffEstablishedPostBL>();
                         services.AddScoped<ITimesheetStatusBL, TimesheetStatusBL>();
                         services.AddScoped<ISicklistBabyMindingTypesBL, SicklistBabyMindingTypesBL>();
