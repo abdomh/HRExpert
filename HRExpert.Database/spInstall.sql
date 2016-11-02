@@ -82,7 +82,7 @@ AS
 	(N'Неявка',N'Absence')
 
 	INSERT INTO TimesheetStatuses
-	(Name,ShortName)
+	(ShortName, Name)
 	Values
 	(N'Я',N'Явка'),
 	(N'Б',N'Временная нетрудоспособность с назначением пособия согласно законодательству'),

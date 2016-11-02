@@ -21,7 +21,10 @@ namespace HRExpert.Organization.ViewComponents
             List<IdNameViewModel> options = referenceBL.List(referenceName).Select(x=>new IdNameViewModel { Id = x.Id, Name = x.Name }).ToList();
             ReferencySelectViewModel model = new ReferencySelectViewModel { FieldName = fieldname, SelectOptions = options };
             model.IsEditable = isEditable;
-            model.CurrentValue = currentValue.Value;
+            if (currentValue.HasValue && currentValue.Value != 0)
+            {
+                model.CurrentValue = currentValue.Value;
+            }
             return this.View(model);
         }
     }

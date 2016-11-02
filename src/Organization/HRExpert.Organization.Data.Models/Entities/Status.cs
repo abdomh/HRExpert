@@ -3,7 +3,7 @@
 namespace HRExpert.Organization.Data.Models
 {
     [Table("Statuses")]
-    public class Status: Abstractions.IEntity<int>
+    public class Status: Abstractions.IReference
     {
         public int Id { get; set; }
         public string Code { get; set; }

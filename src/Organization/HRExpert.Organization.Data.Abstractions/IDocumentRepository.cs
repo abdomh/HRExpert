@@ -14,6 +14,7 @@ namespace HRExpert.Organization.Data.Abstractions
         Document Read(Guid Id);
         void Update(Document entity);
         List<Person> AvailableForPersons(Guid DocumentGuid);
+        List<Person> AvailableForPersonsWithRole(Guid DocumentGuid, string RoleCode);
         List<Role> AvailableForRoles(Guid DocumentGuid, int PersonId);
         List<Permission> AvailablePermissions(Guid DocumentGuid, int PersonId);
     }

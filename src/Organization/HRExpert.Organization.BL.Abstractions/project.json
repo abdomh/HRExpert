@@ -16,6 +16,6 @@
     "NETStandard.Library": "1.6.0",
     "HRExpert.Organization.Data.Models": "1.0.0-*",
     "HRExpert.Organization.DTO": "1.0.0-*",
-    "Platformus.Barebone": "1.0.0-alpha10"
+    "Platformus.Barebone": "1.0.0-alpha11"
   }
 }

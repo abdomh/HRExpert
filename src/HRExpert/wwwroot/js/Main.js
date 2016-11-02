@@ -34,15 +34,21 @@ var HRexpert =
     Factory: {
         CreateDepartmentSelectDialog: function (id, name, onFinish) {
             createDialog = function()
-            {
+            {                
                 var dialogId = id + '_SelectDialog';
                 if (!HRexpert.Dialogs[dialogId]) {
                     var dialog = $('<div/>').attr({ id: dialogId, title: 'Выбор подразделения' });
-                    var searchinput = $('<input/>').attr({ type: 'text' });
-                    var searchButton = $('<input/>').attr({ type: 'button', value: 'Искать' });
-                    
+                    var headerControlsDiv = $('<div/>').attr({ class: 'input-group' });
+                    var searchinput = $('<input/>').attr({ type: 'text',class:'form-control' });
+                    var searchButtonDiv = $('<div/>').attr({
+                        class: 'input-group-btn', style:'font-size:14px;'
+                    });
+                    var searchButton = $('<input/>').attr({ type: 'button', class: "btn btn-default", value: 'Искать' });
+                    searchButtonDiv.append(searchButton);                    
+                    headerControlsDiv.append(searchinput);
+                    headerControlsDiv.append(searchButtonDiv);
                     HRexpert.Dialogs[dialogId] = dialog
-                    var tree = $('<div/>').attr({ id: id + '_DepartmentTree' });
+                    var tree = $('<div/>').attr({ id: id + '_DepartmentTree', style:'height:90%;overflow-y:scroll;' });
                     tree.jstree({
                         "core": {
                             "animation": 0,
@@ -56,27 +62,36 @@ var HRexpert =
                         "plugins": ["search"]
                     });
                     searchButton.click(function () { tree.jstree(true).search(searchinput.val()); });
-                    dialog.append(searchinput);
-                    dialog.append(searchButton);
+                    
+                    dialog.append(headerControlsDiv);
                     dialog.append(tree);
                     HRexpert.HiddenDiv.append(dialog);
                     dialog.dialog({
                         autoOpen: false,
                         width: 400,
                         height: 400,
-                        buttons: {
-                            "Выбрать": function () {
-                                var selected = tree.jstree(true).get_selected(true);
-                                if (selected[0]) {                                
-                                    $('#' + id).val(selected[0].id);
-                                    $('#' + name).val(selected[0].text);
+                        buttons:[ 
+                            {
+                                text:"Выбрать",
+                                class:'btn btn-primary',
+                                click: function () {
+                                    var selected = tree.jstree(true).get_selected(true);
+                                    if (selected[0]) {                                
+                                        $('#' + id).val(selected[0].id);
+                                        $('#' + name).val(selected[0].text);
+                                    }
+                                    $(this).dialog("close");
                                 }
-                                $(this).dialog("close");
-                            },
-                            "Отмена": function () {
-                                $(this).dialog("close");
                             }
-                        }
+                        ,
+                            {
+                                text: "Отмена",
+                                class: 'btn btn-default',
+                                click: function () {
+                                    $(this).dialog("close");
+                                }
+                            }
+                        ]                        
                     });
                     return dialog;
                 }

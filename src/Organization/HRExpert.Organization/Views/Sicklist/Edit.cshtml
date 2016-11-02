@@ -13,6 +13,12 @@
         htmlAttributesCheckBox = htmlAttributesCheckBox_disabled;
     }
     var Options = new { htmlAttributes = htmlAttributes };
+    int DaysCount = 0;
+    if(Model.Data.BeginDate.HasValue && Model.Data.EndDate.HasValue)
+    {
+        DaysCount = (Model.Data.EndDate - Model.Data.BeginDate).Value.Days;
+
+    }
 }
 <ul class="breadcrumb">
     <li><a href="#">Табель</a></li>
@@ -27,6 +33,7 @@
                 <label class="col-sm-2">Сотрудник:</label>
                 <div class="col-sm-10">
                     @Model.Person.Name
+                    <input type="hidden" id="#Person_Id" value="@Model.Person.Id"/>
                 </div>
             </div>
             <div class="form-group">
@@ -47,118 +54,149 @@
 <form method="post" enctype="multipart/form-data">
     <div class="panel panel-default">
         <div class="panel-heading">Данные заявки</div>
+        @Html.ValidationSummary()
         <div class="panel-body FormContainer">
-                <fieldset class="form-horizontal">
-                    @Html.HiddenFor(x => x.Data.Id)
-                    <div class="form-group">
-                        <label class="col-sm-2" for="personName">Дата начала:</label>
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Data.BeginDate, Options)
-                        </div>
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <fieldset class="form-horizontal">
+                @Html.HiddenFor(x => x.Data.Id)
+                <div class="form-group">
+                    <label class="col-sm-2" for="personName">Дата начала:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Data.BeginDate, Options)
+                        @Html.ValidationMessageFor(model=>model.Data.BeginDate)
                     </div>
-                    <div class="form-group ">
-                        <label class="col-sm-2" for="personName">Дата окончания:</label>
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Data.EndDate, Options)
-                        </div>
+                </div>
+                <div class="form-group ">
+                    <label class="col-sm-2" for="personName">Дата окончания:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Data.EndDate, Options)
+                        @Html.ValidationMessageFor(model=>model.Data.EndDate)
                     </div>
-                    <div class="form-group ">
-                        <label for="personName" class="col-sm-2">Назначить с:</label>
-                        <div class="col-sm-10">
-                            @Html.EditorFor(model => model.Data.PaymentBeginDate, Options)
-                        </div>
+                </div>
+                <div class="form-group ">
+                    <label for="personName" class="col-sm-2">Назначить с:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Data.PaymentBeginDate, Options)
                     </div>
-                    <div class="form-group ">
-                        <label for="personName" class="col-sm-2">Количество дней:</label>
-                        <div class="col-sm-10">
-
-                        </div>
+                </div>
+                <div class="form-group ">
+                    <label for="personName" class="col-sm-2">Количество дней:</label>
+                    <div class="col-sm-10">
+                        @DaysCount
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Номер больничного листа:</label>
-                        <div class="col-sm-10">
-                            @Html.EditorFor(x => x.Data.SicklistNumber, Options)
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Номер больничного листа:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(x => x.Data.SicklistNumber, Options)
+                        @Html.ValidationMessageFor(model=>model.Data.SicklistNumber)
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Тип больничного листа:</label>
-                        <div class="col-sm-10">
-                            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistTypes, fieldname = "Data.SicklistType.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistType?.Id })
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Тип больничного листа:</label>
+                    <div class="col-sm-10">
+                        @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistTypes, fieldname = "Data.SicklistType.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistType?.Id })
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">В случае ухода за ребенком:</label>
-                        <div class="col-sm-10">
-                            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistBabyMindingTypes, fieldname = "Data.SicklistBabyMindingType.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistBabyMindingType?.Id })
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">В случае ухода за ребенком:</label>
+                    <div class="col-sm-10">
+                        @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistBabyMindingTypes, fieldname = "Data.SicklistBabyMindingType.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistBabyMindingType?.Id })
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Процент оплаты заработка:</label>
-                        <div class="col-sm-10">
-                            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistPaymentPercent, fieldname = "Data.SicklistPaymentPercent.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistPaymentPercent?.Id })
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Процент оплаты заработка:</label>
+                    <div class="col-sm-10">
+                        @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistPaymentPercent, fieldname = "Data.SicklistPaymentPercent.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistPaymentPercent?.Id })
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Ограничение заработка (пособия):</label>
-                        <div class="col-sm-10">
-                            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistPaymentRestrictTypes, fieldname = "Data.SicklistPaymentRestrictType.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistPaymentRestrictType?.Id })
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Ограничение заработка (пособия):</label>
+                    <div class="col-sm-10">
+                        @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.SicklistPaymentRestrictTypes, fieldname = "Data.SicklistPaymentRestrictType.Id", isEditable = Model.IsEditable, currentValue = Model.Data.SicklistPaymentRestrictType?.Id })
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Снизить пособие за нарушение режима с:</label>
-                        <div class="col-sm-10">
-                            @Html.EditorFor(x => x.Data.PaymentDecreaseDate, Options)
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Снизить пособие за нарушение режима с:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(x => x.Data.PaymentDecreaseDate, Options)
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Учитывать заработок предыдущих страхователей</label>
-                        <div class="col-sm-10">
-                            @Html.CheckBoxFor(x => x.Data.isPreviousPaymentCounted, htmlAttributesCheckBox)
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Учитывать заработок предыдущих страхователей</label>
+                    <div class="col-sm-10">
+                        @Html.CheckBoxFor(x => x.Data.isPreviousPaymentCounted, htmlAttributesCheckBox)
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Доплачивать до среднего заработка</label>
-                        <div class="col-sm-10">
-                            @Html.CheckBoxFor(x => x.Data.isAddToFullPayment, htmlAttributesCheckBox)
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Доплачивать до среднего заработка</label>
+                    <div class="col-sm-10">
+                        @Html.CheckBoxFor(x => x.Data.isAddToFullPayment, htmlAttributesCheckBox)
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Больничный имеет продолжение</label>
-                        <div class="col-sm-10">
-                            @Html.CheckBoxFor(x => x.Data.IsContinue, htmlAttributesCheckBox)
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Больничный имеет продолжение</label>
+                    <div class="col-sm-10">
+                        @Html.CheckBoxFor(x => x.Data.IsContinue, htmlAttributesCheckBox)
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Заполнение табеля:</label>
-                        <div class="col-sm-10">
-                            @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.TimesheetStatus, fieldname = "Data.TimesheetStatus.Id", isEditable = Model.IsEditable, currentValue = Model.Data.TimesheetStatus?.Id })
-                        </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Страховой стаж:</label>
+                    <div class="col-sm-3">
+                        @Html.EditorFor(x => x.Data.ExperienceYears, Options)
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2">Скан документа:</label>
-                        <div class="col-sm-10">
-                            @if (Model.Files != null)
-                            {
-                                <span>
-                                    @foreach (var file in Model.Files)
-                                    {
-                                        <span class="glyphicon glyphicon-file"></span>
-                                        @Html.ActionLink(file.FileName, "GetFile", "Sicklist", new { SicklistId = Model.Data.Id, fileType = 1 })
-                                    }
-                                </span>
-                            }
-                            @if (Model.IsEditable)
-                            {
-                                <input type="file" name="Data.SicklistDocument" />
-                            }
-                        </div>
+                    <label class="col-sm-1">лет</label>
+                    <div class="col-sm-3">
+                        @Html.EditorFor(x => x.Data.ExperienceMonth, Options)
                     </div>
-                </fieldset>            
+                    <label class="col-sm-1">месяцев</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Заполнение табеля:</label>
+                    <div class="col-sm-10">
+                        @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.TimesheetStatus, fieldname = "Data.TimesheetStatus.Id", isEditable = Model.IsEditable, currentValue = Model.Data.TimesheetStatus?.Id })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2">Скан документа:</label>
+                    <div class="col-sm-10">
+                        @if (Model.Files != null)
+                        {
+                            <span>
+                                @foreach (var file in Model.Files)
+                                {
+                                    <span class="glyphicon glyphicon-file"></span>
+                                    @Html.ActionLink(file.FileName, "GetFile", "Sicklist", new { SicklistId = Model.Data.Id, fileType = 1 })
+                                }
+                            </span>
+                        }
+                        @if (Model.IsEditable)
+                        {
+                            <input type="file" name="Data.SicklistDocument" />
+                        }
+                    </div>
+                </div>
+            </fieldset>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading">Согласование</div>
         <div class="panel-body ApproveContainer">
+            <div id="ApprovePermissions" class="well">
+                @foreach (var group in Model.AvailableFor)
+                {
+                    <div>
+                        <label>@group.Key</label>
+                        <span>
+                            @foreach (var name in Model.AvailableFor[group.Key])
+                            {
+                                @(name + "; ")
+
+                            }
+                        </span>
+                    </div>
+                }
+            </div>
             <div class="form-horizontal">
                 @for (int i = 0; i < Model.Approvements.Count; i++)
             {
@@ -168,6 +206,7 @@
                         <span class="col-sm-8">
                             @Html.CheckBoxFor(model => model.Approvements[i].isAccept, Model.IsEditable && Model.Approvements[i].IsEditable ? htmlAttributesCheckBox : htmlAttributesCheckBox_disabled)
                             @Model.Approvements[i].Person?.Name
+                            @Model.Approvements[i].DateAccept
                             @if (Model.Approvements[i].Person != null && Model.Approvements[i].RealPerson != null && Model.Approvements[i].Person.Id != Model.Approvements[i].RealPerson.Id)
                 {
                                 <p>@Model.Approvements[i].RealPerson.Name</p>
@@ -186,16 +225,29 @@
                 <input type="submit" class="btn btn-danger" value="Отменить" />
             </div>
         </div>
-            }
+    }
 </form>
 
-<script>
+
+<script>   
     $(document).ready(function () {
         HRexpert.TypicalInit();        
         $('#Data_BeginDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_EndDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_PaymentDecreaseDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_PaymentBeginDate').datepicker({ dateFormat: 'dd.mm.yy' });
+
+        $('[name="Data.SicklistType.Id"]').change(function ()
+        {
+            var val = $(this).val();
+            if(val==4)
+            {
+                $('[name="Data.SicklistBabyMindingType.Id"]').prop("disabled", false);
+            }
+            else { $('[name="Data.SicklistBabyMindingType.Id"]').prop("disabled", true); }
+        }
+        );
+        $('[name="Data.SicklistType.Id"]').change();
     });
 </script>
 

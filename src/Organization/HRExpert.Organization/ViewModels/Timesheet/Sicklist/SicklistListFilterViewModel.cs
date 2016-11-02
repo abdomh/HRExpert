@@ -19,5 +19,13 @@ namespace HRExpert.Organization.ViewModels
         public DateTime? BeginDate { get; set; }
         [ContentFilter(ModelPropertyName = "Document.Event.EndDate", CheckAction = ContentFilterActions.LessOrEquals)]
         public DateTime? EndDate { get; set; }
+        [ContentFilter(ModelPropertyName = "Document.DocumentStatusId", CheckAction = ContentFilterActions.Equals)]
+        public int? DocumentStatusId { get; set; }
+        [ContentFilter(ModelPropertyName = "StatusId", CheckAction = ContentFilterActions.Equals)]
+        public int? ApproveStatusId { get; set; }
+        [ContentFilter(ModelPropertyName = "Id", CheckAction = ContentFilterActions.Equals)]
+        public int? DocumentId { get; set; }
+        [ContentFilter(ModelPropertyName = "SicklistNumber", CheckAction = ContentFilterActions.Equals)]
+        public int? SicklistNumber { get; set; }
     }
 }

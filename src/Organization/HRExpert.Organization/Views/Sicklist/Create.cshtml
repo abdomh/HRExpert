@@ -16,6 +16,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">Данные заявки</div>
             <div class="panel-body FormContainer">
+                @Html.ValidationSummary()
                 <fieldset class="form-horizontal">
                     <div class="form-group">
                         <label class="col-sm-2" for="personName">Дата начала:</label>
@@ -27,12 +28,14 @@
                         <label class="col-sm-2">Дата начала:</label>
                         <div class="col-sm-10">
                             @Html.EditorFor(model => model.Data.BeginDate, Options)
+                            @Html.ValidationMessageFor(model => model.Data.BeginDate)
                         </div>
                     </div>
                     <div class="form-group ">
                         <label class="col-sm-2">Дата окончания:</label>
                         <div class="col-sm-10">
                             @Html.EditorFor(model => model.Data.EndDate, Options)
+                            @Html.ValidationMessageFor(model => model.Data.EndDate)
                         </div>
                     </div>
                     <div class="form-group ">
@@ -41,16 +44,11 @@
                             @Html.EditorFor(model => model.Data.PaymentBeginDate, Options)
                         </div>
                     </div>
-                    <div class="form-group ">
-                        <label for="personName" class="col-sm-2">Количество дней:</label>
-                        <div class="col-sm-10">
-
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label class="col-sm-2">Номер больничного листа:</label>
                         <div class="col-sm-10">
                             @Html.EditorFor(x => x.Data.SicklistNumber, Options)
+                            @Html.ValidationMessageFor(model=>model.Data.SicklistNumber)
                         </div>
                     </div>
                     <div class="form-group">
@@ -102,6 +100,17 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2">Страховой стаж:</label>
+                        <div class="col-sm-3">
+                            @Html.EditorFor(x => x.Data.ExperienceYears, Options)
+                        </div>
+                        <label class="col-sm-1">лет</label>
+                        <div class="col-sm-3">
+                            @Html.EditorFor(x => x.Data.ExperienceMonth, Options)
+                        </div>
+                        <label class="col-sm-1">месяцев</label>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2">Заполнение табеля:</label>
                         <div class="col-sm-10">
                             @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.TimesheetStatus, fieldname = "Data.TimesheetStatus.Id" })
@@ -111,6 +120,7 @@
                         <label class="col-sm-2">Скан документа:</label>
                         <div class="col-sm-10">
                             <input type="file" name="Data.SicklistDocument" />
+                            @Html.ValidationMessageFor(model=>model.Data.SicklistDocument)
                         </div>
                     </div>
                 </fieldset>
@@ -122,12 +132,22 @@
         </div>
     </div>
 </form>
-<script>
+<script>    
     $(document).ready(function () {
         $('#Data_BeginDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_EndDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_PaymentDecreaseDate').datepicker({ dateFormat: 'dd.mm.yy' });
         $('#Data_PaymentBeginDate').datepicker({ dateFormat: 'dd.mm.yy' });
+
+        $('[name="Data.SicklistType.Id"]').change(function () {
+            var val = $(this).val();
+            if (val == 4) {
+                $('[name="Data.SicklistBabyMindingType.Id"]').prop("disabled", false);
+            }
+            else { $('[name="Data.SicklistBabyMindingType.Id"]').prop("disabled", true); }
+        }
+        );
+        $('[name="Data.SicklistType.Id"]').change();
     });
 </script>
 

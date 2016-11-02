@@ -8,6 +8,7 @@ namespace HRExpert.Organization.BL.Abstractions
     using Data.Models;
     public interface ISicklistBL : IBaseBl
     {
+        bool CheckOtherDocuments(DocumentDto<SicklistDto> dto);
         DocumentDto<SicklistDto> Create(DocumentDto<SicklistDto> dto);
         DocumentDto<SicklistDto> Update(DocumentDto<SicklistDto> dto);
         DocumentDto<SicklistDto> Read(int id);

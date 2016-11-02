@@ -1,4 +1,5 @@
 ﻿@using HRExpert.Organization.DTO
+@using HRExpert.Organization.BL
 @model HRExpert.Organization.ViewModels.SicklistListViewModel
 @{
     this.Layout = "_Layout";
@@ -32,6 +33,24 @@
                     <label for="personName" class="col-sm-2">ФИО сотрудника:</label>
                     <div class="col-sm-10">
                         @Html.EditorFor(x => x.Filter.PersonName, new { htmlAttributes = new { @class = "form-control", placeholder = "ФИО сотрудника" } })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label class="col-sm-2">Номер заявки:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(x => x.Filter.DocumentId, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label class="col-sm-2">Номер больничного листа:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(x => x.Filter.SicklistNumber, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label class="col-sm-2">Статус документа:</label>
+                    <div class="col-sm-10">
+                        @await Component.InvokeAsync("ReferencySelect", new { referenceName = ReferenceNames.DocumentStatus, fieldname = "Filter.DocumentStatusId", isEditable = true, currentValue = Model.Filter.DocumentStatusId })
                     </div>
                 </div>
                 <div class="form-group ">

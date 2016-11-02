@@ -15,6 +15,13 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 .Include(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)                
                 .ToList();
         }
+        public List<Person> AvailableForPersonsWithRole(Guid DocumentGuid,string RoleCode)
+        {
+            return this.dbContext.Set<Person>().FromSql("SELECT pers.* FROM vwDocumentAccess vw INNER JOIN Persons pers on pers.Id = vw.AccessPersonId INNER JOIN Roles r on r.Id=  vw.AccessRoleId where vw.DocumentGuid={0} and r.Code = {1}", DocumentGuid,RoleCode)
+                .Include(x => x.StaffEstablishedPost).ThenInclude(x => x.Department).ThenInclude(x => x.Organization)
+                .Include(x => x.StaffEstablishedPost).ThenInclude(x => x.Position)
+                .ToList();
+        }
         public List<Role> AvailableForRoles(Guid DocumentGuid, int PersonId)
         {
             return this.dbContext.Set<Role>().FromSql("SELECT role.* FROM vwDocumentAccess vw INNER JOIN Roles role on role.Id = vw.AccessRoleId where vw.DocumentGuid={0} and vw.AccessPersonId={1}", DocumentGuid,PersonId)

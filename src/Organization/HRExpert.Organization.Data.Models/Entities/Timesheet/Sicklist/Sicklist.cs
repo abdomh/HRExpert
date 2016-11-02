@@ -19,6 +19,8 @@ namespace HRExpert.Organization.Data.Models
         public bool isAddToFullPayment { get; set; }
         public bool isUseBefore { get; set; }
         public bool IsContinued { get; set; }
+        
+        /// Страховой стаж        
         public int? ExperienceYears { get; set; }
         public int? ExperienceMonth {get;set;}
         

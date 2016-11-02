@@ -27,5 +27,10 @@ namespace HRExpert.Organization.Controllers
         {
             return this.personEventBL.GetPersonEvents(start,end);
         }
+        [HttpGet]
+        public List<CalendarDto> GetTimeSheetEventForPerson(int PersonId,  DateTime BeginDate, DateTime EndDate)
+        {
+            return this.personEventBL.GetPersonEvents(PersonId, BeginDate, EndDate);
+        }
     }
 }

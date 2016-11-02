@@ -19,6 +19,8 @@ namespace HRExpert.Organization.DTO
         public bool IsContinue { get; set; }
         public bool isAddToFullPayment { get; set; }
         public bool isUseBefore { get; set; }
+        
+        /// Страховой стаж
         public int? ExperienceYears { get; set; }
         public int? ExperienceMonth { get; set; }
         [Required]

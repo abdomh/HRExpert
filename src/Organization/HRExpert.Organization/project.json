@@ -4,9 +4,9 @@
   "authors": [ "baranov" ],
   "dependencies": {
     "NETStandard.Library": "1.6.0",
-    "Microsoft.AspNetCore.Mvc": "1.0.0",
-    "Platformus.Infrastructure": "1.0.0-alpha10",
-    "Platformus.Security.Backend": "1.0.0-alpha10",
+    "Microsoft.AspNetCore.Mvc": "1.0.1",
+    "Platformus.Infrastructure": "1.0.0-alpha11",
+    "Platformus.Security.Backend": "1.0.0-alpha11",
     "HRExpert.Organization.BL": "1.0.0-*",
     "HRExpert.Organization.BL.Abstractions": "1.0.0-*",
     "HRExpert.Organization.Data.Abstractions": "1.0.0-*",

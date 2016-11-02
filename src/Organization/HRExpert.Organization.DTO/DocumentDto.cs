@@ -11,6 +11,7 @@ namespace HRExpert.Organization.DTO
         public DocumentDto()
         {
             this.Approvements = new List<DocumentApprovementDto>();
+            this.AvailableFor = new Dictionary<string, List<string>>();
         }
         /// <summary>
         /// Создатель
@@ -44,6 +45,6 @@ namespace HRExpert.Organization.DTO
         /// Согласования
         /// </summary>
         public List<DocumentApprovementDto> Approvements { get; set; }
-        
+        public Dictionary<string,List<string>> AvailableFor { get; set; }
     }
 }

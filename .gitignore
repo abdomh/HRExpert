@@ -79,3 +79,7 @@ src/HRExpert/bin/Debug/netcoreapp1.0/HRExpert.pdb
 src/HRExpert/obj/Debug/netcoreapp1.0/HRExpertdotnet-compile.deps.json
 src/HRExpert/uploads/
 .vs/HRExpert/v14/
+**/bin/Debug/
+**/obj/Debug/
+.vs/**
+**.jfm

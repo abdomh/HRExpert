@@ -23,7 +23,8 @@ namespace HRExpert.Organization.BL
         private ISicklistPaymentRestrictTypesRepository sicklistPaymentRestrictTypesRepository;
         private ISicklistPaymentPercentRepository sicklistPaymentPercentRepository;
         private ITimesheetStatusRepository timesheetStatusRepository;
-        private IPersonRepository personRepository;        
+        private IPersonRepository personRepository;
+        private IPersonEventsRepository personEventRepository;     
         private IDocumentFilesRepository documentFilesRepository;
         private IDocumentRepository documentRepository;
         private IDocumentStatusRepository documentStatusRepository;
@@ -94,7 +95,6 @@ namespace HRExpert.Organization.BL
                 entity.Document.Status = this.documentStatusRepository.WithCode("Approved");
             }
         }
-
         private void ChangeEntityProperties(Sicklist entity, DocumentDto<SicklistDto> dto)
         {
             var Person = entity.Document.Person == null ? personRepository.Read(dto.Person.Id) : entity.Document.Person;
@@ -106,6 +106,8 @@ namespace HRExpert.Organization.BL
             entity.isPreviousPaymentCounted = dto.Data.isPreviousPaymentCounted;
             entity.isUseBefore = dto.Data.isUseBefore;
             entity.IsContinued = dto.Data.IsContinue;
+            entity.ExperienceMonth = dto.Data.ExperienceMonth;
+            entity.ExperienceYears = dto.Data.ExperienceYears;
             entity.Document.Person = Person;
             entity.Document.DocumentType = documentTypeRepository.WithCode("Sicklist");
             entity.Document.CreateDate = DateTime.Now;
@@ -160,13 +162,24 @@ namespace HRExpert.Organization.BL
             this.documentFilesRepository = mainService.Storage.GetRepository<IDocumentFilesRepository>();
             this.documentRepository = mainService.Storage.GetRepository<IDocumentRepository>();
             this.documentStatusRepository = mainService.Storage.GetRepository<IDocumentStatusRepository>();
-            
+            this.personEventRepository = mainService.Storage.GetRepository<IPersonEventsRepository>();
+
             this.personRepository.CurrentUserId = mainService.CurrentUserId;
             this.sicklistRepository.CurrentUserId = mainService.CurrentUserId;
         }
         #endregion
 
         #region Public methods
+        public bool CheckOtherDocuments(DocumentDto<SicklistDto> dto)
+        {
+            var events = this.personEventRepository.GetEventsForPersonByPeriod(dto.Person.Id, dto.Data.BeginDate.Value, dto.Data.EndDate.Value);
+            if (events != null && events.Any())
+            {
+                if (dto.Data.Id > 0) return events.Any(x => !(x.Document.DocumentId == dto.Data.Id && x.Document.DocumentType.Code == "Sicklist"));
+                else return true;
+            }
+            else return false;
+        }
         public List<DocumentDto<SicklistDto>> GetByFilterModel(object filterModel)
         {
             var filter = ContentFilterFactory.Create<Sicklist>(filterModel);
@@ -182,8 +195,10 @@ namespace HRExpert.Organization.BL
         }
         public DocumentDto<SicklistDto> Read(int Id)
         {
-            var document = this.sicklistRepository.Read(Id);            
+            var document = this.sicklistRepository.Read(Id);                        
             var dto = document.Convert();
+            dto.AvailableFor.Add(RoleConstants.Manager, documentRepository.AvailableForPersonsWithRole(document.DocumentGuid, RoleConstants.ManagerCode).Select(x=>x.Name).ToList());
+            dto.AvailableFor.Add(RoleConstants.PersonnelManager, documentRepository.AvailableForPersonsWithRole(document.DocumentGuid, RoleConstants.PersonnelManagerCode).Select(x => x.Name).ToList());
             SetFlagState(document.DocumentGuid, dto);            
             return dto;
         }                
@@ -230,6 +245,10 @@ namespace HRExpert.Organization.BL
                 ChangeEntityProperties(entity, dto);
                 this.sicklistRepository.Update(entity);
             }
+            dto = entity.Convert();
+            dto.AvailableFor.Add(RoleConstants.Manager, documentRepository.AvailableForPersonsWithRole(entity.DocumentGuid, RoleConstants.ManagerCode).Select(x => x.Name).ToList());
+            dto.AvailableFor.Add(RoleConstants.PersonnelManager, documentRepository.AvailableForPersonsWithRole(entity.DocumentGuid, RoleConstants.PersonnelManagerCode).Select(x => x.Name).ToList());
+            SetFlagState(entity.DocumentGuid, dto);
             return entity.Convert();
         }
         #endregion

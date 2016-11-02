@@ -28,6 +28,13 @@ namespace HRExpert.Organization.Data.EntityFramework.SqlServer.Repository
                 ;
             
         }
+        public IEnumerable<PersonEvent> GetEventsForPersonByPeriod(int PersonId, DateTime start, DateTime end)
+        {
+            return this.dbSet.Where(x => x.Document.Person.Id == PersonId && ((x.BeginDate >= start && start <= x.EndDate) || (x.BeginDate >= end && end <= x.EndDate)))
+                .Include(x => x.Document).ThenInclude(x => x.DocumentType)
+                .Include(x => x.Timesheet).ThenInclude(x => x.Status).ToList();
+            
+        }
         public void Create(PersonEvent entity)
         {
             this.dbSet.Add(entity);

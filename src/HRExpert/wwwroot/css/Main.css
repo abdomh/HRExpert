@@ -1,5 +1,16 @@
-﻿body {
+﻿html{
     height:100%;
+}
+body {
+    min-height:100%;
+    position:relative;
+}
+.footer{
+    width:100%;
+    position:absolute;
+    bottom:0px;
+    background-color:#f8f8f8;
+    border-top:1px solid #e7e7e7;
 }
 table{
     background: #fff;
@@ -14,6 +25,24 @@ table{
 }
 .hiddenDiv{
     display:none;
+}
+.field-validation-error
+{
+    color:red;
+}
+.field-validation-error:before
+{
+    font-family: 'Glyphicons Halflings';
+   content: "\e014";
+   color:red;
+}
+.validation-summary-errors
+{
+    background-color:#f8f8f8;
+    border:1px solid #e7e7e7;
+    border-radius:5px;
+    color:red;
+    margin-bottom:5px;
 }
 .TableContainer
 {

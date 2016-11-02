@@ -3,7 +3,7 @@ using HRExpert.Organization.Data.Models;
 
 namespace HRExpert.Organization.Data.Abstractions
 {
-    public interface IDocumentStatusRepository : ExtCore.Data.Abstractions.IRepository
+    public interface IDocumentStatusRepository : IReferenceRepository
     {
         void Create(Status entity);
         void Delete(int Id);

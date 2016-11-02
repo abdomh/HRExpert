@@ -16,7 +16,7 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         /// Конструктор
         /// </summary>
         /// <param name="sicklistBL"></param>
-        public SicklistController(IStorage storage, ISicklistBL sicklistBL)
+        public SicklistController(IStorage storage, ISicklistBL sicklistBL, IPersonEventBL personEventBL)
             :base(storage)
         {
             this.sicklistBL = sicklistBL;
@@ -86,7 +86,15 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         [HttpPost]
         public IActionResult Edit(DocumentDto<SicklistDto> model)
         {
-            model = sicklistBL.Update(model);
+            Validate(model);
+            if (ModelState.IsValid)
+            {
+                model = sicklistBL.Update(model);
+            }
+            else
+            {
+                model = sicklistBL.Read(model.Data.Id);
+            }
             return View(model);
         }
         [HttpGet]
@@ -101,10 +109,48 @@ namespace HRExpert.Organization.Controllers.Timesheet.Sicklist
         [HttpPost]
         public IActionResult Create(DocumentDto<SicklistDto> model)
         {
-            model = sicklistBL.Create(model);
-            return RedirectToAction("Edit", "Sicklist", new { Id = model.Data.Id });
+            Validate(model);
+            if (ModelState.IsValid)
+            {
+                model = sicklistBL.Create(model);
+                return RedirectToAction("Edit", "Sicklist", new { Id = model.Data.Id });
+            }
+            else return View(model);
         }
 
+        public void Validate(DocumentDto<SicklistDto> model)
+        {
+            ModelState.Clear();
+            if(model.Data.Id==0)
+            {
+                if (model.Data.SicklistDocument == null)
+                    ModelState.AddModelError("Data.SicklistDocument", "Скан больничного листа обязателен");
+            }
+            if(!model.Data.BeginDate.HasValue)
+            {
+                ModelState.AddModelError("Data.BeginDate", "Дата начала обязательна");
+            }
+            if (!model.Data.EndDate.HasValue)
+            {
+                ModelState.AddModelError("Data.BeginDate", "Дата окончания обязательна");
+            }
+            if(model.Data.EndDate<model.Data.BeginDate)
+            {
+                ModelState.AddModelError("Data.BeginDate", "Дата начала должна быть меньше даты окончания");
+            }
+            if (string.IsNullOrEmpty(model.Data.SicklistNumber))
+            {
+                ModelState.AddModelError("Data.SicklistNumber", "Номер больничного обязателен");
+            }
+            if(model.Data.BeginDate.HasValue && model.Data.EndDate.HasValue)
+            {                
+                if(sicklistBL.CheckOtherDocuments(model))
+                {
+                    ModelState.AddModelError("Person.Id", "Для выбранного сотрудника существуют другие заявки в указаном интервале дат.");
+                }
+            }
+
+        }
         [HttpGet]
         public IActionResult GetFile(int SicklistId, int fileType)
         {

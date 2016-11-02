@@ -21,6 +21,7 @@ namespace HRExpert.Organization.BL
             RegisterReferency<ISicklistPaymentPercentRepository>(ReferenceNames.SicklistPaymentPercent);
             RegisterReferency<ISicklistBabyMindingTypesRepository>(ReferenceNames.SicklistBabyMindingTypes);
             RegisterReferency<ITimesheetStatusRepository>(ReferenceNames.TimesheetStatus);
+            RegisterReferency<IDocumentStatusRepository>(ReferenceNames.DocumentStatus);            
         }
         
         public List<Data.Models.Abstractions.IReference> List(string referenceName)
@@ -34,6 +35,8 @@ namespace HRExpert.Organization.BL
         public const string SicklistPaymentRestrictTypes = "Справочник типы ограничений выплат";
         public const string SicklistPaymentPercent = "Справочник процентов выплат";
         public const string SicklistBabyMindingTypes = "Справочник типов больничных по уходу за ребенком";
-        public const string TimesheetStatus = "Справочник статусов табеля";        
+        public const string TimesheetStatus = "Справочник статусов табеля";
+        public const string SicklistStatus = "Справочник статусов больничных листов";
+        public const string DocumentStatus = "Справочник статусов документа";
     }
 }

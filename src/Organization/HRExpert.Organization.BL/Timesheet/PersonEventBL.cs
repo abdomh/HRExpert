@@ -21,7 +21,11 @@ namespace HRExpert.Organization.BL
         }
         public List<CalendarDto> GetPersonEvents(DateTime start, DateTime end)
         {
-            var events = this.personEventRepository.GetPersonEvents(MainService.CurrentUserId, start, end );
+            return GetPersonEvents(MainService.CurrentUserId,start,end);
+        }
+        public List<CalendarDto> GetPersonEvents(int PersonId,DateTime start, DateTime end)
+        {
+            var events = this.personEventRepository.GetPersonEvents(PersonId, start, end);
             return events?.Select(x => new CalendarDto()
             {
                 backgroundColor = DocumentColorConstants.ByCode[x.Document.DocumentType.Code],
@@ -32,7 +36,8 @@ namespace HRExpert.Organization.BL
                                 + (x.EndDate.HasValue ? " по " + x.EndDate.Value.ToString("dd.MM.yyyy") : ""),
                 id = x.DocumentGuid.ToString(),
                 start = x.BeginDate,
-                end =x.EndDate }).ToList();
+                end = x.EndDate
+            }).ToList();
         }
         
     }

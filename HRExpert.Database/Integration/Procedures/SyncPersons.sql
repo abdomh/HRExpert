@@ -82,6 +82,7 @@ AS
 				inner join Persons p on p.UserId=u.Id
 				inner join Positions pos on p.PositionId = pos.Id
 				where pos.Rank=2 and u.Id = UserId)
+
 	DELETE FROM AccessLinks where IsManual=0
 
 	INSERT INTO AccessLinks
@@ -90,6 +91,7 @@ AS
 	INNER JOIN Users u on pers.UserId = u.Id
 	INNER JOIN UserRoles ur on u.Id=ur.UserId
 	INNER JOIN Roles r on ur.RoleId =r.Id and (r.Code = 'Manager')
+	where pers.DepartmentId is not null
 
 	INSERT INTO AccessLinks
 	(DepartmentId,PersonId,RoleId)
@@ -97,11 +99,14 @@ AS
 	INNER JOIN Users u on pers.UserId = u.Id
 	INNER JOIN UserRoles ur on u.Id=ur.UserId
 	INNER JOIN Roles r on ur.RoleId =r.Id and (r.Code = 'SubManager')
+	where pers.DepartmentId is not null
+
 	INSERT INTO AccessLinks
 	(DepartmentId,TargetPersonId,PersonId,RoleId)
 	SELECT pers.DepartmentId, pers.Id,pers.Id, r.Id FROM Persons pers
 	INNER JOIN Users u on pers.UserId = u.Id
 	INNER JOIN UserRoles ur on u.Id=ur.UserId
 	INNER JOIN Roles r on ur.RoleId =r.Id and (r.Code = 'Employee')
+	where pers.DepartmentId is not null
 
 RETURN 0
